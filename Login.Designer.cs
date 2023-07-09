@@ -35,8 +35,8 @@
             this.iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.gunaTextBox3 = new Guna.UI.WinForms.GunaTextBox();
-            this.gunaTextBox4 = new Guna.UI.WinForms.GunaTextBox();
+            this.txtUser = new Guna.UI.WinForms.GunaTextBox();
+            this.txtPass = new Guna.UI.WinForms.GunaTextBox();
             this.gunaButton1 = new Guna.UI.WinForms.GunaButton();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
@@ -115,44 +115,44 @@
             this.panel2.Size = new System.Drawing.Size(70, 1);
             this.panel2.TabIndex = 4;
             // 
-            // gunaTextBox3
+            // txtUser
             // 
-            this.gunaTextBox3.BaseColor = System.Drawing.Color.White;
-            this.gunaTextBox3.BorderColor = System.Drawing.Color.Silver;
-            this.gunaTextBox3.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.gunaTextBox3.FocusedBaseColor = System.Drawing.Color.White;
-            this.gunaTextBox3.FocusedBorderColor = System.Drawing.SystemColors.ControlText;
-            this.gunaTextBox3.FocusedForeColor = System.Drawing.SystemColors.ControlText;
-            this.gunaTextBox3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaTextBox3.ForeColor = System.Drawing.Color.Silver;
-            this.gunaTextBox3.Location = new System.Drawing.Point(15, 153);
-            this.gunaTextBox3.Name = "gunaTextBox3";
-            this.gunaTextBox3.PasswordChar = '\0';
-            this.gunaTextBox3.SelectedText = "";
-            this.gunaTextBox3.Size = new System.Drawing.Size(246, 32);
-            this.gunaTextBox3.TabIndex = 11;
-            this.gunaTextBox3.Text = "username";
-            this.gunaTextBox3.TextOffsetX = 25;
+            this.txtUser.BaseColor = System.Drawing.Color.White;
+            this.txtUser.BorderColor = System.Drawing.Color.Silver;
+            this.txtUser.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtUser.FocusedBaseColor = System.Drawing.Color.White;
+            this.txtUser.FocusedBorderColor = System.Drawing.SystemColors.ControlText;
+            this.txtUser.FocusedForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtUser.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUser.ForeColor = System.Drawing.Color.Silver;
+            this.txtUser.Location = new System.Drawing.Point(15, 153);
+            this.txtUser.Name = "txtUser";
+            this.txtUser.PasswordChar = '\0';
+            this.txtUser.SelectedText = "";
+            this.txtUser.Size = new System.Drawing.Size(246, 32);
+            this.txtUser.TabIndex = 11;
+            this.txtUser.Text = "username";
+            this.txtUser.TextOffsetX = 25;
             // 
-            // gunaTextBox4
+            // txtPass
             // 
-            this.gunaTextBox4.BaseColor = System.Drawing.Color.White;
-            this.gunaTextBox4.BorderColor = System.Drawing.Color.Silver;
-            this.gunaTextBox4.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.gunaTextBox4.FocusedBaseColor = System.Drawing.Color.White;
-            this.gunaTextBox4.FocusedBorderColor = System.Drawing.SystemColors.ControlText;
-            this.gunaTextBox4.FocusedForeColor = System.Drawing.SystemColors.ControlText;
-            this.gunaTextBox4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaTextBox4.ForeColor = System.Drawing.Color.Silver;
-            this.gunaTextBox4.Location = new System.Drawing.Point(15, 191);
-            this.gunaTextBox4.Name = "gunaTextBox4";
-            this.gunaTextBox4.PasswordChar = '●';
-            this.gunaTextBox4.SelectedText = "";
-            this.gunaTextBox4.Size = new System.Drawing.Size(246, 32);
-            this.gunaTextBox4.TabIndex = 11;
-            this.gunaTextBox4.Text = "Password";
-            this.gunaTextBox4.TextOffsetX = 25;
-            this.gunaTextBox4.UseSystemPasswordChar = true;
+            this.txtPass.BaseColor = System.Drawing.Color.White;
+            this.txtPass.BorderColor = System.Drawing.Color.Silver;
+            this.txtPass.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtPass.FocusedBaseColor = System.Drawing.Color.White;
+            this.txtPass.FocusedBorderColor = System.Drawing.SystemColors.ControlText;
+            this.txtPass.FocusedForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtPass.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPass.ForeColor = System.Drawing.Color.Silver;
+            this.txtPass.Location = new System.Drawing.Point(15, 191);
+            this.txtPass.Name = "txtPass";
+            this.txtPass.PasswordChar = '●';
+            this.txtPass.SelectedText = "";
+            this.txtPass.Size = new System.Drawing.Size(246, 32);
+            this.txtPass.TabIndex = 11;
+            this.txtPass.Text = "Password";
+            this.txtPass.TextOffsetX = 25;
+            this.txtPass.UseSystemPasswordChar = true;
             // 
             // gunaButton1
             // 
@@ -196,8 +196,8 @@
             this.Controls.Add(this.iconPictureBox3);
             this.Controls.Add(this.iconPictureBox2);
             this.Controls.Add(this.iconPictureBox1);
-            this.Controls.Add(this.gunaTextBox3);
-            this.Controls.Add(this.gunaTextBox4);
+            this.Controls.Add(this.txtUser);
+            this.Controls.Add(this.txtPass);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Login";
             this.Text = "Cinta Bunda - Login ";
@@ -218,8 +218,8 @@
         private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
         protected System.Windows.Forms.Panel panel1;
         protected System.Windows.Forms.Panel panel2;
-        private Guna.UI.WinForms.GunaTextBox gunaTextBox3;
-        private Guna.UI.WinForms.GunaTextBox gunaTextBox4;
+        private Guna.UI.WinForms.GunaTextBox txtUser;
+        private Guna.UI.WinForms.GunaTextBox txtPass;
         private Guna.UI.WinForms.GunaButton gunaButton1;
     }
 }

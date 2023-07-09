@@ -10,18 +10,22 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using KasirApp.GUI;
 using KasirApp.Model;
+using KasirApp.View;
 using RestSharp;
 using Newtonsoft.Json;
 using System.Net;
+using System.Net.NetworkInformation;
 
 namespace KasirApp
 {
-    public partial class Login : Form
+    public partial class Login : Form,iLogin    
     {
         Koneksi1 con = new Koneksi1();
         string user, pass;
         MasterForm br = new MasterForm();
 
+        public string Username { get { return txtUser.Text; } set { txtUser.Text = value; } }
+        public string Password { get { return txtUser.Text; } set { txtUser.Text = value; } }
         public Login()
         {
             InitializeComponent();
@@ -30,7 +34,7 @@ namespace KasirApp
 
         public bool isNull()
         {
-            if (gunaTextBox3.Text == string.Empty || gunaTextBox4.Text == string.Empty)
+            if (txtUser.Text == string.Empty || txtPass.Text == string.Empty)
             {
                 return true;
             }
@@ -42,11 +46,17 @@ namespace KasirApp
 
         public bool cekKoneksi()
         {
-            if (System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
+            try
             {
+                Ping myPing = new Ping();
+                String host = "google.com";
+                byte[] buffer = new byte[32];
+                int timeout = 1000;
+                PingOptions pingOptions = new PingOptions();
+                PingReply reply = myPing.Send(host, timeout, buffer, pingOptions);
                 return true;
             }
-            else
+            catch (Exception)
             {
                 return false;
             }
@@ -60,8 +70,8 @@ namespace KasirApp
 
         private void gunaButton1_Click(object sender, EventArgs e)
         {
-            user = gunaTextBox3.Text;
-            pass = gunaTextBox4.Text;
+            user = txtUser.Text;
+            pass = txtPass.Text;
             if (isNull()==true)
             {
                 MessageBox.Show("Tolong Lengkapi User dan Password", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Information);
