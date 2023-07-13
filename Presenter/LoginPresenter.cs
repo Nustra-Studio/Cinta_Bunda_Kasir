@@ -24,13 +24,7 @@ namespace KasirApp.Presenter
         {
             _login = log;
         }
-
-        public bool cekStatus(HttpStatusCode code)
-        {
-            int status = (int)code;
-            return status >= 200 && status <= 250;
-        }
-
+       
         public bool isNull()
         {
             if (_login.Username == "" || _login.Password == "")
@@ -50,7 +44,7 @@ namespace KasirApp.Presenter
                 Ping myPing = new Ping();
                 String host = "google.com";
                 byte[] buffer = new byte[32];
-                int timeout = 1000;
+                int timeout = 5;
                 PingOptions pingOptions = new PingOptions();
                 PingReply reply = myPing.Send(host, timeout, buffer, pingOptions);
                 return true;
@@ -87,7 +81,7 @@ namespace KasirApp.Presenter
                             var jso = res.Content.ToString();
                             Root fn = JsonConvert.DeserializeObject<Root>(jso);
 
-                            mb.InformasiOK("Login BerHasil");
+                            mb.InformasiOK("Login sebagai : " + fn.user.role.ToString() + " Berhasil");
                             _login.hideForm();
                             mf.RoleSellect(fn.user.role);
                             mf.Show();

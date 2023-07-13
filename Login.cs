@@ -31,7 +31,12 @@ namespace KasirApp
         public Login()
         {
             InitializeComponent();
-            CenterToScreen();
+            CenterToParent();
+        }
+
+        public void showMenu()
+        {
+
         }
 
         private void gunaButton1_Click(object sender, EventArgs e)
@@ -39,6 +44,5 @@ namespace KasirApp
             LoginPresenter lp = new LoginPresenter(this);
             lp.AttemptLogin();
         }
-
     }
 }

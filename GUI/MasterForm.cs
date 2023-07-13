@@ -13,7 +13,6 @@ namespace KasirApp.GUI
 {
     public partial class MasterForm : Form
     {
-        public static string RoleUsr;
         public MasterForm()
         {
             InitializeComponent();
@@ -27,12 +26,19 @@ namespace KasirApp.GUI
                 kasBankToolStripMenuItem.Visible = true;
                 akuntaToolStripMenuItem.Visible = true;
                 supervisorToolStripMenuItem.Visible = true;
+                loginToolStripMenuItem.Enabled = false;
+                utilityToolStripMenuItem.Visible = true;
+                logOutToolStripMenuItem.Enabled = true;
+                kasBankToolStripMenuItem.Visible = true;
             }
             else
             {
                 kasBankToolStripMenuItem.Visible = false;
                 akuntaToolStripMenuItem.Visible = false;
                 supervisorToolStripMenuItem.Visible = false;
+                utilityToolStripMenuItem.Visible = true;
+                loginToolStripMenuItem.Enabled = false;
+                logOutToolStripMenuItem.Enabled = true;
             }
         }
 
@@ -209,6 +215,22 @@ namespace KasirApp.GUI
         private void MasterForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void loginToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Login lg = new Login();
+            lg.TopLevel = false;
+            MainPanel.Controls.Add(lg);
+            lg.BringToFront();
+            lg.Show();
+        }
+
+        private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Login lg = new Login();
+            this.Hide();
+            lg.ShowDialog();
         }
     }
 }
