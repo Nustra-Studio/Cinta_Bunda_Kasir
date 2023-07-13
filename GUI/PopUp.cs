@@ -30,15 +30,16 @@ namespace KasirApp.GUI
 
         public void getMember(string text)
         {
-            DGV.DataSource = op.getByQuery("SELECT no_hp,nama,point from members where nama LIKE '%" + text + "%'");
+            DGV.DataSource = op.getByQuery("SELECT telepon,nama,email from members where nama LIKE '%" + text + "%'");
             gunaGradientButton1.Text = "Tambah";
             gunaGradientButton3.Visible = true;
         }
 
         public void member()
         {
-            DGV.DataSource = op.getByQuery("select no_hp,nama,point from members");
+            DGV.DataSource = op.getByQuery("select telepon,nama,email from members");
         }
+
         private void gunaGradientButton1_Click(object sender, EventArgs e)
         {
             if (gunaGradientButton1.Text == "Proses")

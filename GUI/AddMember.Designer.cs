@@ -32,13 +32,17 @@ namespace KasirApp.GUI
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddMember));
             this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtBarang = new Guna.UI.WinForms.GunaTextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.gunaTextBox1 = new Guna.UI.WinForms.GunaTextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.gunaGradientButton2 = new Guna.UI.WinForms.GunaGradientButton();
             this.btnProses = new Guna.UI.WinForms.GunaGradientButton();
+            this.txtEmail = new Guna.UI.WinForms.GunaTextBox();
+            this.noHp = new Guna.UI.WinForms.GunaTextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtNama = new Guna.UI.WinForms.GunaTextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtPassword = new Guna.UI.WinForms.GunaTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -51,7 +55,7 @@ namespace KasirApp.GUI
             this.iconPictureBox2.IconColor = System.Drawing.Color.Lime;
             this.iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconPictureBox2.IconSize = 99;
-            this.iconPictureBox2.Location = new System.Drawing.Point(30, 77);
+            this.iconPictureBox2.Location = new System.Drawing.Point(33, 77);
             this.iconPictureBox2.Name = "iconPictureBox2";
             this.iconPictureBox2.Size = new System.Drawing.Size(99, 101);
             this.iconPictureBox2.TabIndex = 8;
@@ -62,8 +66,12 @@ namespace KasirApp.GUI
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
             this.panel1.Controls.Add(this.gunaGradientButton2);
             this.panel1.Controls.Add(this.btnProses);
-            this.panel1.Controls.Add(this.gunaTextBox1);
-            this.panel1.Controls.Add(this.txtBarang);
+            this.panel1.Controls.Add(this.txtPassword);
+            this.panel1.Controls.Add(this.txtEmail);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.noHp);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.txtNama);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label2);
@@ -73,70 +81,6 @@ namespace KasirApp.GUI
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(487, 267);
             this.panel1.TabIndex = 9;
-            // 
-            // txtBarang
-            // 
-            this.txtBarang.BackColor = System.Drawing.SystemColors.Control;
-            this.txtBarang.BaseColor = System.Drawing.Color.White;
-            this.txtBarang.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
-            this.txtBarang.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtBarang.FocusedBaseColor = System.Drawing.Color.White;
-            this.txtBarang.FocusedBorderColor = System.Drawing.Color.Lime;
-            this.txtBarang.FocusedForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtBarang.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txtBarang.Location = new System.Drawing.Point(217, 95);
-            this.txtBarang.Name = "txtBarang";
-            this.txtBarang.PasswordChar = '\0';
-            this.txtBarang.SelectedText = "";
-            this.txtBarang.Size = new System.Drawing.Size(253, 32);
-            this.txtBarang.TabIndex = 9;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(43, 54);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 20);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Add User";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(152, 100);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 20);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Nama :";
-            // 
-            // gunaTextBox1
-            // 
-            this.gunaTextBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.gunaTextBox1.BaseColor = System.Drawing.Color.White;
-            this.gunaTextBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
-            this.gunaTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.gunaTextBox1.FocusedBaseColor = System.Drawing.Color.White;
-            this.gunaTextBox1.FocusedBorderColor = System.Drawing.Color.Lime;
-            this.gunaTextBox1.FocusedForeColor = System.Drawing.SystemColors.ControlText;
-            this.gunaTextBox1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.gunaTextBox1.Location = new System.Drawing.Point(217, 133);
-            this.gunaTextBox1.Name = "gunaTextBox1";
-            this.gunaTextBox1.PasswordChar = '\0';
-            this.gunaTextBox1.SelectedText = "";
-            this.gunaTextBox1.Size = new System.Drawing.Size(253, 32);
-            this.gunaTextBox1.TabIndex = 9;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(148, 139);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 20);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "No HP :";
             // 
             // gunaGradientButton2
             // 
@@ -154,18 +98,19 @@ namespace KasirApp.GUI
             this.gunaGradientButton2.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.gunaGradientButton2.Image = null;
             this.gunaGradientButton2.ImageSize = new System.Drawing.Size(20, 20);
-            this.gunaGradientButton2.Location = new System.Drawing.Point(307, 171);
+            this.gunaGradientButton2.Location = new System.Drawing.Point(311, 216);
             this.gunaGradientButton2.Name = "gunaGradientButton2";
             this.gunaGradientButton2.OnHoverBaseColor1 = System.Drawing.Color.White;
-            this.gunaGradientButton2.OnHoverBaseColor2 = System.Drawing.Color.Lime;
+            this.gunaGradientButton2.OnHoverBaseColor2 = System.Drawing.Color.LightGreen;
             this.gunaGradientButton2.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.gunaGradientButton2.OnHoverForeColor = System.Drawing.Color.White;
+            this.gunaGradientButton2.OnHoverForeColor = System.Drawing.Color.Black;
             this.gunaGradientButton2.OnHoverImage = null;
             this.gunaGradientButton2.OnPressedColor = System.Drawing.Color.Black;
             this.gunaGradientButton2.Size = new System.Drawing.Size(79, 30);
             this.gunaGradientButton2.TabIndex = 12;
             this.gunaGradientButton2.Text = "Batal";
             this.gunaGradientButton2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.gunaGradientButton2.Click += new System.EventHandler(this.gunaGradientButton2_Click);
             // 
             // btnProses
             // 
@@ -183,12 +128,12 @@ namespace KasirApp.GUI
             this.btnProses.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.btnProses.Image = null;
             this.btnProses.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnProses.Location = new System.Drawing.Point(217, 171);
+            this.btnProses.Location = new System.Drawing.Point(221, 216);
             this.btnProses.Name = "btnProses";
             this.btnProses.OnHoverBaseColor1 = System.Drawing.Color.White;
-            this.btnProses.OnHoverBaseColor2 = System.Drawing.Color.Lime;
+            this.btnProses.OnHoverBaseColor2 = System.Drawing.Color.LightGreen;
             this.btnProses.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.btnProses.OnHoverForeColor = System.Drawing.Color.White;
+            this.btnProses.OnHoverForeColor = System.Drawing.Color.Black;
             this.btnProses.OnHoverImage = null;
             this.btnProses.OnPressedColor = System.Drawing.Color.Black;
             this.btnProses.Size = new System.Drawing.Size(79, 30);
@@ -196,6 +141,124 @@ namespace KasirApp.GUI
             this.btnProses.Text = "Proses";
             this.btnProses.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnProses.Click += new System.EventHandler(this.btnProses_Click);
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.BackColor = System.Drawing.SystemColors.Control;
+            this.txtEmail.BaseColor = System.Drawing.Color.White;
+            this.txtEmail.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
+            this.txtEmail.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtEmail.FocusedBaseColor = System.Drawing.Color.White;
+            this.txtEmail.FocusedBorderColor = System.Drawing.Color.Lime;
+            this.txtEmail.FocusedForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtEmail.Location = new System.Drawing.Point(221, 127);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.PasswordChar = '\0';
+            this.txtEmail.SelectedText = "";
+            this.txtEmail.Size = new System.Drawing.Size(244, 32);
+            this.txtEmail.TabIndex = 9;
+            // 
+            // noHp
+            // 
+            this.noHp.BackColor = System.Drawing.SystemColors.Control;
+            this.noHp.BaseColor = System.Drawing.Color.White;
+            this.noHp.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
+            this.noHp.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.noHp.FocusedBaseColor = System.Drawing.Color.White;
+            this.noHp.FocusedBorderColor = System.Drawing.Color.Lime;
+            this.noHp.FocusedForeColor = System.Drawing.SystemColors.ControlText;
+            this.noHp.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.noHp.Location = new System.Drawing.Point(221, 89);
+            this.noHp.Name = "noHp";
+            this.noHp.PasswordChar = '\0';
+            this.noHp.SelectedText = "";
+            this.noHp.Size = new System.Drawing.Size(244, 32);
+            this.noHp.TabIndex = 9;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(159, 134);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(56, 20);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Email :";
+            // 
+            // txtNama
+            // 
+            this.txtNama.BackColor = System.Drawing.SystemColors.Control;
+            this.txtNama.BaseColor = System.Drawing.Color.White;
+            this.txtNama.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
+            this.txtNama.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtNama.FocusedBaseColor = System.Drawing.Color.White;
+            this.txtNama.FocusedBorderColor = System.Drawing.Color.Lime;
+            this.txtNama.FocusedForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtNama.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtNama.Location = new System.Drawing.Point(221, 51);
+            this.txtNama.Name = "txtNama";
+            this.txtNama.PasswordChar = '\0';
+            this.txtNama.SelectedText = "";
+            this.txtNama.Size = new System.Drawing.Size(244, 32);
+            this.txtNama.TabIndex = 9;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(152, 96);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(63, 20);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "No HP :";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(156, 58);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 20);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Nama :";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(43, 54);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(76, 20);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Add User";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(129, 169);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(86, 20);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Password :";
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.BackColor = System.Drawing.SystemColors.Control;
+            this.txtPassword.BaseColor = System.Drawing.Color.White;
+            this.txtPassword.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
+            this.txtPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtPassword.FocusedBaseColor = System.Drawing.Color.White;
+            this.txtPassword.FocusedBorderColor = System.Drawing.Color.Lime;
+            this.txtPassword.FocusedForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtPassword.Location = new System.Drawing.Point(221, 165);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '\0';
+            this.txtPassword.SelectedText = "";
+            this.txtPassword.Size = new System.Drawing.Size(244, 32);
+            this.txtPassword.TabIndex = 9;
             // 
             // AddMember
             // 
@@ -218,12 +281,16 @@ namespace KasirApp.GUI
 
         private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
         private System.Windows.Forms.Panel panel1;
-        private Guna.UI.WinForms.GunaTextBox txtBarang;
+        private Guna.UI.WinForms.GunaTextBox txtNama;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private Guna.UI.WinForms.GunaTextBox gunaTextBox1;
+        private Guna.UI.WinForms.GunaTextBox noHp;
         private System.Windows.Forms.Label label3;
         private Guna.UI.WinForms.GunaGradientButton gunaGradientButton2;
         private Guna.UI.WinForms.GunaGradientButton btnProses;
+        private Guna.UI.WinForms.GunaTextBox txtEmail;
+        private System.Windows.Forms.Label label4;
+        private Guna.UI.WinForms.GunaTextBox txtPassword;
+        private System.Windows.Forms.Label label5;
     }
 }

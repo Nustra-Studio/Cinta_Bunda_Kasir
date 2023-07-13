@@ -22,11 +22,19 @@ namespace KasirApp.GUI
             _getData = frm;
         }
 
+        public void clear()
+        {
+            txtNama.Text = string.Empty;
+            txtEmail.Text = string.Empty;
+            txtPassword.Text = string.Empty;
+            noHp.Text = string.Empty;
+        }
+
         public bool cekUnique()
         {
             using (MySqlCommand cmd = new MySqlCommand("select nama from members where nama=@nama", op.Conn))
             {
-                cmd.Parameters.AddWithValue("nama", txtBarang.Text);
+                cmd.Parameters.AddWithValue("nama", txtNama.Text);
                 op.KonekDB();
                 using (MySqlDataReader rd = cmd.ExecuteReader())
                 {
@@ -51,14 +59,23 @@ namespace KasirApp.GUI
             }
             else
             {
-                using (MySqlCommand com = new MySqlCommand("insert into members values(null,md5('@nama'),@nama,@hp,'0',null,null)", op.Conn))
+                op.KonekDB();
+                using (MySqlCommand com = new MySqlCommand("insert into members values(null,md5(@nama),@nama,@telepon,@email,@password,null)", op.Conn))
                 {
-                    com.Parameters.AddWithValue("nama", txtBarang.Text);
-                    com.Parameters.AddWithValue("hp", gunaTextBox1.Text);
+                    com.Parameters.AddWithValue("nama", txtNama.Text);
+                    com.Parameters.AddWithValue("telepon", noHp.Text);
+                    com.Parameters.AddWithValue("email",txtEmail.Text);
+                    com.Parameters.AddWithValue("password",txtPassword.Text);
                     com.ExecuteNonQuery();
+                    clear();
                     _getData();
                 }
             }
+        }
+
+        private void gunaGradientButton2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }
