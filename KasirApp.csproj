@@ -275,6 +275,7 @@
     <Compile Include="Model\Koneksi.cs" />
     <Compile Include="Model\MboxOperator.cs" />
     <Compile Include="Model\Model.cs" />
+    <Compile Include="Model\SuplierModel.cs" />
     <Compile Include="Model\TestAPI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -292,6 +293,8 @@
     </Compile>
     <Compile Include="Report\Receipt.cs" />
     <Compile Include="View\iLogin.cs" />
+    <Compile Include="View\iMasterForm.cs" />
+    <Compile Include="View\iRole.cs" />
     <EmbeddedResource Include="GUI\AddMember.resx">
       <DependentUpon>AddMember.cs</DependentUpon>
     </EmbeddedResource>

@@ -18,6 +18,8 @@ namespace KasirApp.Model
 
     public class Operator
     {
+        public string url = "https://inventory.nustrastudio.com/api/";
+        public string urlcloud = "https://cloudinventory.nustrastudio.com/api/";
         public MySqlConnection Conn = new MySqlConnection("server=localhost;user id=root;password=admin;port=3307;database=kasirdb");
         public void KonekDB()
         {

@@ -23,6 +23,9 @@ namespace KasirApp
     {
         public string Username { get { return txtUser.Text; } set { txtUser.Text = value; } }
         public string Password { get { return txtPass.Text; } set { txtPass.Text = value; } }
+
+        public string token { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
         public void hideForm()
         {
             this.Hide();

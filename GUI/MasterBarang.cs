@@ -9,12 +9,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using KasirApp.Model;
+using RestSharp;
+using Newtonsoft.Json;
 
 namespace KasirApp.GUI
 {
     public partial class MasterBarang : Form
     {
         Operator op = new Operator();
+        SuplierModel sm = new SuplierModel();
+        LoginTOKEN _lg;
         string select = null;
 
         public MasterBarang()
@@ -26,6 +30,22 @@ namespace KasirApp.GUI
 
         public void fillCombo()
         {
+            //using (var client = new RestClient(op.urlcloud))
+            //{
+            //    FprPbNY8WewfFpKrA8Ppy4clot2Z5xWOiuA6uVGt
+            //    var request = new RestRequest("supplier");
+            //    request.AddParameter("token", _lg.token);
+            //    RestResponse res = client.GetAsync(request).Result;
+
+            //    var jso = res.Content.ToString();
+
+            //    List<SuplierModel> dn = JsonConvert.DeserializeObject<List<SuplierModel>>(jso);
+
+            //    foreach (var item in dn)
+            //    {
+            //        comboBox1.Items.Add(item.nama.ToString());
+            //    }
+            //}
             using (MySqlCommand cmd = new MySqlCommand("select * from category_barangs", op.Conn))
             {
                 op.KonekDB();
@@ -37,8 +57,7 @@ namespace KasirApp.GUI
                     }
                 }
                 op.KonekDB();
-            }
-            using (MySqlCommand cmd = new MySqlCommand("select * from supliers", op.Conn))
+            }using (MySqlCommand cmd = new MySqlCommand("select * from supliers", op.Conn))
             {
                 op.KonekDB();
                 using (MySqlDataReader rd = cmd.ExecuteReader())

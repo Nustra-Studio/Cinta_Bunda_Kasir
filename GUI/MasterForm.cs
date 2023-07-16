@@ -8,15 +8,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using KasirApp.View;
 
 namespace KasirApp.GUI
 {
-    public partial class MasterForm : Form
+    public partial class MasterForm : Form, iMasterForm
     {
+        iRole _role;
         public MasterForm()
         {
             InitializeComponent();
             WindowState = FormWindowState.Maximized;
+        }
+
+        public void Role()
+        {
+            throw new NotImplementedException();
         }
 
         public void RoleSellect(string Role)
@@ -232,5 +239,7 @@ namespace KasirApp.GUI
             this.Hide();
             lg.ShowDialog();
         }
+
+        
     }
 }

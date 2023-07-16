@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using KasirApp.Model;
+using RestSharp;
+using Newtonsoft.Json;
 using MySql.Data.MySqlClient;
 
 namespace KasirApp.GUI
@@ -195,8 +197,7 @@ namespace KasirApp.GUI
                     }
                 }
                 op.KonekDB();
-            }
-            using (MySqlCommand cmd = new MySqlCommand("select * from supliers",op.Conn))
+            }using (MySqlCommand cmd = new MySqlCommand("select * from supliers",op.Conn))
             {
                 op.KonekDB();
                 using (MySqlDataReader rd = cmd.ExecuteReader())
@@ -208,6 +209,21 @@ namespace KasirApp.GUI
                 }
                 op.KonekDB();
             }
+            //using (var client = new RestClient(op.urlcloud))
+            //{
+            //    var request = new RestRequest("supplier");
+            //    request.AddParameter("token", "FprPbNY8WewfFpKrA8Ppy4clot2Z5xWOiuA6uVGt");
+            //    RestResponse res = client.GetAsync(request).Result;
+
+            //    var jso = res.Content.ToString();
+
+            //    List<SuplierModel> dn = JsonConvert.DeserializeObject<List<SuplierModel>>(jso);
+
+            //    foreach (var item in dn)
+            //    {
+            //        gunaComboBox2.Items.Add(item.nama.ToString());
+            //    }
+            //}
         }
 
         private void Insert_KeyDown(object sender, KeyEventArgs e)
@@ -240,7 +256,7 @@ namespace KasirApp.GUI
 
         public void DigitOnly(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar);
         }
 
         private void txtHarga_TextChanged(object sender, EventArgs e)

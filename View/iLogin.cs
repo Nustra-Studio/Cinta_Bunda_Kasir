@@ -11,6 +11,7 @@ namespace KasirApp.View
     {
         string Username { get; set; }
         string Password { get; set; }
+        string token { get; set; }
         void hideForm();
     }
 }

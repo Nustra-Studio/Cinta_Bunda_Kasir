@@ -13,12 +13,17 @@ using KasirApp.GUI;
 
 namespace KasirApp.Presenter
 {
-    class LoginPresenter 
+    class LoginPresenter : iRole
     {
         MboxOperator mb = new MboxOperator();
         Koneksi1 con = new Koneksi1();
 
         iLogin _login;
+        string _role;
+        string _token;
+
+        public string Role { get { return _role; } set { _role = value; } }
+        public string Token { get { return _token; } set { _token = value; } }
 
         public LoginPresenter(iLogin log)
         {
@@ -55,8 +60,9 @@ namespace KasirApp.Presenter
             }
         }
 
-        public void AttemptLogin()
+        public string AttemptLogin()
         {
+            string token = "";
             if (CekNetwork() == false)
             {
                 mb.PeringatanOK("Tidak Ada Koneksi Internet");
@@ -82,9 +88,11 @@ namespace KasirApp.Presenter
                             Root fn = JsonConvert.DeserializeObject<Root>(jso);
 
                             mb.InformasiOK("Login sebagai : " + fn.user.role.ToString() + " Berhasil");
+                            token = fn.token.ToString();
+
                             _login.hideForm();
-                            mf.RoleSellect(fn.user.role);
-                            mf.Show();
+                            _role = fn.user.role.ToString();
+                            _token = fn.token.ToString();
                         }
                         else if (res.StatusCode == HttpStatusCode.Unauthorized)
                         {
@@ -96,15 +104,14 @@ namespace KasirApp.Presenter
                     catch (Exception ex)
                     {
                         mb.PeringatanOK(ex.Message);
+
                     }
                 }
             }
+            return token;
         }
 
-        public void hideForm()
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public class Root
         {
