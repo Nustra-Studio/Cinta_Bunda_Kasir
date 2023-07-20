@@ -9,64 +9,62 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using KasirApp.View;
+using KasirApp.Model;
+using KasirApp.Presenter;
 
 namespace KasirApp.GUI
 {
     public partial class MasterForm : Form, iMasterForm
     {
         iRole _role;
+        public void Role(usrRole rl)
+        {
+            masterToolStripMenuItem.Visible = rl.Masters.Equals(1) ? true : false;
+            gudangToolStripMenuItem.Visible = rl.Gudang.Equals(1) ? true : false;
+            penjualanToolStripMenuItem.Visible = rl.Penjualan.Equals(1) ? true : false;
+            kasBankToolStripMenuItem.Visible = rl.Kasbank.Equals(1) ? true : false;
+            akuntaToolStripMenuItem.Visible = rl.Akuntansi.Equals(1) ? true : false;
+            supervisorToolStripMenuItem.Visible = rl.Supervisor.Equals(1) ? true : false;
+        }
         public MasterForm()
         {
             InitializeComponent();
             WindowState = FormWindowState.Maximized;
         }
 
-        public void Role()
+        public void RoleSellect()
         {
-            throw new NotImplementedException();
+            
         }
 
-        public void RoleSellect(string Role)
+        public void logoutState()
         {
-            if (Role == "admin")
-            {
-                kasBankToolStripMenuItem.Visible = true;
-                akuntaToolStripMenuItem.Visible = true;
-                supervisorToolStripMenuItem.Visible = true;
-                loginToolStripMenuItem.Enabled = false;
-                utilityToolStripMenuItem.Visible = true;
-                logOutToolStripMenuItem.Enabled = true;
-                kasBankToolStripMenuItem.Visible = true;
-            }
-            else
-            {
-                kasBankToolStripMenuItem.Visible = false;
-                akuntaToolStripMenuItem.Visible = false;
-                supervisorToolStripMenuItem.Visible = false;
-                utilityToolStripMenuItem.Visible = true;
-                loginToolStripMenuItem.Enabled = false;
-                logOutToolStripMenuItem.Enabled = true;
-            }
+            masterToolStripMenuItem.Visible = false;
+            gudangToolStripMenuItem.Visible = false;
+            penjualanToolStripMenuItem.Visible = false;
+            kasBankToolStripMenuItem.Visible = false;
+            akuntaToolStripMenuItem.Visible = false;
+            supervisorToolStripMenuItem.Visible = false;
         }
 
         public void addform(Form form)
         {
-            Form frm = new Form();
-            frm.TopLevel = false;
-            frm.Show();
-            MainPanel.Controls.Add(frm);
-            frm.BringToFront();
-            frm.Show();
+            form.TopLevel = false;
+            MainPanel.Controls.Add(form);
+            form.BringToFront();
+            form.Show();
         }
 
         private void pOSToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Transaksi frm = new Transaksi();
-            frm.TopLevel = false;
-            frm.Show();
-            MainPanel.Controls.Add(frm);
-            frm.BringToFront();
-            frm.Show();
+            addform(frm);
+            //Transaksi frm = new Transaksi();
+            //frm.TopLevel = false;
+            //frm.Show();
+            //MainPanel.Controls.Add(frm);
+            //frm.BringToFront();
+            //frm.Show();
         }
 
         private void menuStrip1_Click(object sender, EventArgs e)
@@ -146,7 +144,7 @@ namespace KasirApp.GUI
 
         private void MasterForm_Load(object sender, EventArgs e)
         {
-            kasBankToolStripMenuItem.Visible = false;
+            logoutState();
         }
 
         private void laporanPOSToolStripMenuItem_Click(object sender, EventArgs e)
@@ -226,20 +224,18 @@ namespace KasirApp.GUI
 
         private void loginToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Login lg = new Login();
+            Login lg = new Login(this);
             lg.TopLevel = false;
             MainPanel.Controls.Add(lg);
             lg.BringToFront();
             lg.Show();
-        }
+        } 
 
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Login lg = new Login();
-            this.Hide();
-            lg.ShowDialog();
+            
         }
 
-        
+       
     }
 }

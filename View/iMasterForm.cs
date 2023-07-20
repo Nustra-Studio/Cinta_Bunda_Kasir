@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using KasirApp.Model;
 
 namespace KasirApp.View
 {
-    interface iMasterForm
+    public interface iMasterForm
     {
-        void Role();
+        void Role(usrRole rl);
     }
 }

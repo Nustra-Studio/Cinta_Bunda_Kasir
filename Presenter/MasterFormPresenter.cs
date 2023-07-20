@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KasirApp.Model
+namespace KasirApp.Presenter
 {
-    class Model
+    class MasterFormPresenter
     {
+        public MasterFormPresenter()
+        {
+
+        }
     }
 }

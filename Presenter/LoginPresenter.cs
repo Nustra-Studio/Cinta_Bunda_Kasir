@@ -5,6 +5,7 @@ using System.Net.NetworkInformation;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
 using RestSharp;
 using Newtonsoft.Json;
 using KasirApp.Model;
@@ -17,19 +18,47 @@ namespace KasirApp.Presenter
     {
         MboxOperator mb = new MboxOperator();
         Koneksi1 con = new Koneksi1();
-
+        Operator op = new Operator();
         iLogin _login;
+        iMasterForm _iform;
+        readonly Action _loadRole;
+
+        //Interface Variable API
         string _role;
         string _token;
+        //local db 
+        int _id;
+        string _uuid;
+        string _kode;
+        string _nama;
+        private int _masters;
+        private int _gudang;
+        private int _penjualan;
+        private int _kasbank;
+        private int _akuntansi;
+        private int _supervisor;
 
+        //Interface API
         public string Role { get { return _role; } set { _role = value; } }
         public string Token { get { return _token; } set { _token = value; } }
+        //LOCAL DB
+        public int id { get => _id; set => _id = value; }
+        public string uuid { get => _uuid; set => _uuid = value; }
+        public string Kode { get => _kode; set => _kode = value; }
+        public string nama { get => _nama; set => _nama = value; }
+        public int masters { get => _masters; set => _masters = value; }
+        public int gudang { get => _gudang; set => _gudang = value; }
+        public int penjualan { get => _penjualan; set => _penjualan = value; }
+        public int kasbank { get => _kasbank; set => _kasbank = value; }
+        public int akuntansi { get => _akuntansi; set => _akuntansi = value; }
+        public int supervisor { get => _supervisor; set => _supervisor = value; }
 
-        public LoginPresenter(iLogin log)
+        public LoginPresenter(iLogin lg, iMasterForm frm1)
         {
-            _login = log;
+            _login = lg;
+            _iform = frm1;
         }
-       
+
         public bool isNull()
         {
             if (_login.Username == "" || _login.Password == "")
@@ -60,9 +89,8 @@ namespace KasirApp.Presenter
             }
         }
 
-        public string AttemptLogin()
+        public void AttemptLogin()
         {
-            string token = "";
             if (CekNetwork() == false)
             {
                 mb.PeringatanOK("Tidak Ada Koneksi Internet");
@@ -83,58 +111,55 @@ namespace KasirApp.Presenter
                     {
                         if (res.StatusCode == HttpStatusCode.OK)
                         {
-                            MasterForm mf = new MasterForm();
                             var jso = res.Content.ToString();
                             Root fn = JsonConvert.DeserializeObject<Root>(jso);
 
                             mb.InformasiOK("Login sebagai : " + fn.user.role.ToString() + " Berhasil");
-                            token = fn.token.ToString();
 
                             _login.hideForm();
                             _role = fn.user.role.ToString();
                             _token = fn.token.ToString();
+
+                            using (MySqlCommand cmd = new MySqlCommand("select * from roles where nama = @nama", op.Conn))
+                            {
+                                cmd.Parameters.AddWithValue("@nama", _role);
+                                op.KonekDB();
+                                using (MySqlDataReader rd = cmd.ExecuteReader())
+                                {
+                                    while (rd.Read())
+                                    {
+                                        usrRole user = new usrRole() 
+                                        {
+                                        Id = Convert.ToInt32(rd["id"]),
+                                        Uuid = rd["uuid"].ToString(),
+                                        Kode1 = rd["kode"].ToString(),
+                                        Nama = rd["nama"].ToString(),
+                                        Masters = Convert.ToInt32(rd["masters"].ToString()),
+                                        Gudang = Convert.ToInt32(rd["Gudang"].ToString()),
+                                        Penjualan = Convert.ToInt32(rd["Penjualan"].ToString()),
+                                        Kasbank = Convert.ToInt32(rd["KasBank"].ToString()),
+                                        Akuntansi = Convert.ToInt32(rd["Akuntansi"].ToString()),
+                                        Supervisor = Convert.ToInt32(rd["Supervisor"].ToString())
+                                        };
+                                        _iform.Role(user);
+                                    }
+                                }
+                            }
                         }
                         else if (res.StatusCode == HttpStatusCode.Unauthorized)
                         {
                             var jso = res.Content.ToString();
-                            Root1 fn = JsonConvert.DeserializeObject<Root1>(jso);
+                            error fn = JsonConvert.DeserializeObject<error>(jso);
                             mb.PeringatanOK(fn.message.ToString());
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        mb.PeringatanOK(ex.Message);
-
+                        //mb.PeringatanOK(ex.Message);
+                        throw;
                     }
                 }
             }
-            return token;
-        }
-
-        
-
-        public class Root
-        {
-            public User user { get; set; }
-            public string token { get; set; }
-        }
-
-        public class User
-        {
-            public int id { get; set; }
-            public string username { get; set; }
-            public string password { get; set; }
-            public string uuid { get; set; }
-            public string role { get; set; }
-            public string cabang_id { get; set; }
-            public string api_key { get; set; }
-            public DateTime created_at { get; set; }
-            public DateTime updated_at { get; set; }
-        }
-
-        public class Root1
-        {
-            public string message { get; set; }
         }
     }
 }

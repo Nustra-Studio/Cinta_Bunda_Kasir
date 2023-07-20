@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using KasirApp.Model;
+using KasirApp.View;
 
 namespace KasirApp
 {

@@ -31,6 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MasterForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.masterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.divisiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,7 +70,6 @@
             this.setupPerusahaanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setGroupUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tambahUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingAccGlobalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.tutupHarianPOSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -106,10 +109,7 @@
             this.MainPanel = new Guna.UI.WinForms.GunaGradient2Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.loginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tambahUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.MainPanel.SuspendLayout();
             this.SuspendLayout();
@@ -142,6 +142,31 @@
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
+            // 
+            // loginToolStripMenuItem
+            // 
+            this.loginToolStripMenuItem.Name = "loginToolStripMenuItem";
+            this.loginToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.loginToolStripMenuItem.Text = "Login";
+            this.loginToolStripMenuItem.Click += new System.EventHandler(this.loginToolStripMenuItem_Click);
+            // 
+            // logOutToolStripMenuItem
+            // 
+            this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.logOutToolStripMenuItem.Text = "Log Out";
+            this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(114, 6);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
             // 
             // masterToolStripMenuItem
             // 
@@ -177,7 +202,7 @@
             this.salesToolStripMenuItem,
             this.articleToolStripMenuItem});
             this.dataToolStripMenuItem.Name = "dataToolStripMenuItem";
-            this.dataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dataToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.dataToolStripMenuItem.Text = "Data";
             // 
             // divisiToolStripMenuItem
@@ -281,7 +306,7 @@
             this.laporanPOSToolStripMenuItem,
             this.laporanKartuStokBarangToolStripMenuItem});
             this.barangToolStripMenuItem.Name = "barangToolStripMenuItem";
-            this.barangToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.barangToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.barangToolStripMenuItem.Text = "Laporan";
             // 
             // laporanPOSToolStripMenuItem
@@ -301,35 +326,35 @@
             // pOSToolStripMenuItem
             // 
             this.pOSToolStripMenuItem.Name = "pOSToolStripMenuItem";
-            this.pOSToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pOSToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.pOSToolStripMenuItem.Text = "POS";
             this.pOSToolStripMenuItem.Click += new System.EventHandler(this.pOSToolStripMenuItem_Click);
             // 
             // laporanKartuStokToolStripMenuItem
             // 
             this.laporanKartuStokToolStripMenuItem.Name = "laporanKartuStokToolStripMenuItem";
-            this.laporanKartuStokToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.laporanKartuStokToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.laporanKartuStokToolStripMenuItem.Text = "Laporan Kartu Stok";
             this.laporanKartuStokToolStripMenuItem.Click += new System.EventHandler(this.laporanKartuStokToolStripMenuItem_Click);
             // 
             // opnameToolStripMenuItem
             // 
             this.opnameToolStripMenuItem.Name = "opnameToolStripMenuItem";
-            this.opnameToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.opnameToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.opnameToolStripMenuItem.Text = "Opname";
             this.opnameToolStripMenuItem.Click += new System.EventHandler(this.opnameToolStripMenuItem_Click);
             // 
             // transferGudangToolStripMenuItem
             // 
             this.transferGudangToolStripMenuItem.Name = "transferGudangToolStripMenuItem";
-            this.transferGudangToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.transferGudangToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.transferGudangToolStripMenuItem.Text = "Transfer Gudang";
             this.transferGudangToolStripMenuItem.Click += new System.EventHandler(this.transferGudangToolStripMenuItem_Click);
             // 
             // penyesuaianToolStripMenuItem1
             // 
             this.penyesuaianToolStripMenuItem1.Name = "penyesuaianToolStripMenuItem1";
-            this.penyesuaianToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.penyesuaianToolStripMenuItem1.Size = new System.Drawing.Size(174, 22);
             this.penyesuaianToolStripMenuItem1.Text = "Penyesuaian";
             this.penyesuaianToolStripMenuItem1.Click += new System.EventHandler(this.penyesuaianToolStripMenuItem1_Click);
             // 
@@ -403,14 +428,7 @@
             // 
             this.setGroupUserToolStripMenuItem.Name = "setGroupUserToolStripMenuItem";
             this.setGroupUserToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
-            this.setGroupUserToolStripMenuItem.Text = "Set Group User";
-            // 
-            // tambahUserToolStripMenuItem
-            // 
-            this.tambahUserToolStripMenuItem.Name = "tambahUserToolStripMenuItem";
-            this.tambahUserToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
-            this.tambahUserToolStripMenuItem.Text = "Tambah User";
-            this.tambahUserToolStripMenuItem.Click += new System.EventHandler(this.tambahUserToolStripMenuItem_Click);
+            this.setGroupUserToolStripMenuItem.Text = "Set Priviledges User";
             // 
             // settingAccGlobalToolStripMenuItem
             // 
@@ -696,30 +714,12 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Cinta Bunda";
             // 
-            // loginToolStripMenuItem
+            // tambahUserToolStripMenuItem
             // 
-            this.loginToolStripMenuItem.Name = "loginToolStripMenuItem";
-            this.loginToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.loginToolStripMenuItem.Text = "Login";
-            this.loginToolStripMenuItem.Click += new System.EventHandler(this.loginToolStripMenuItem_Click);
-            // 
-            // logOutToolStripMenuItem
-            // 
-            this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.logOutToolStripMenuItem.Text = "Log Out";
-            this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(177, 6);
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
+            this.tambahUserToolStripMenuItem.Name = "tambahUserToolStripMenuItem";
+            this.tambahUserToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.tambahUserToolStripMenuItem.Text = "Tambah User";
+            this.tambahUserToolStripMenuItem.Click += new System.EventHandler(this.tambahUserToolStripMenuItem_Click);
             // 
             // MasterForm
             // 
@@ -809,7 +809,6 @@
         private System.Windows.Forms.ToolStripMenuItem setupPerusahaanToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settingDataToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem setGroupUserToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tambahUserToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settingAccGlobalToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem tutupHarianPOSToolStripMenuItem;
@@ -826,5 +825,6 @@
         private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tambahUserToolStripMenuItem;
     }
 }

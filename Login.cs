@@ -30,11 +30,13 @@ namespace KasirApp
         {
             this.Hide();
         }
-
-        public Login()
+        public iMasterForm _frm;
+        
+        public Login(iMasterForm frm)
         {
             InitializeComponent();
             CenterToParent();
+            _frm = frm;
         }
 
         public void showMenu()
@@ -44,7 +46,7 @@ namespace KasirApp
 
         private void gunaButton1_Click(object sender, EventArgs e)
         {
-            LoginPresenter lp = new LoginPresenter(this);
+            LoginPresenter lp = new LoginPresenter(this, _frm);
             lp.AttemptLogin();
         }
     }
