@@ -16,16 +16,15 @@ namespace KasirApp.GUI
     {
         public static Transaksi instance;
         public TextBox tb;
-        public TextBox tb2;
         Operator op = new Operator();
         MySqlDataReader rd;
+
         int i;
         public Transaksi()
         {
             InitializeComponent();
             instance = this;
             tb = textBox1;
-            tb2 = textBox5;
             i = 1;
         }
 
@@ -160,11 +159,21 @@ namespace KasirApp.GUI
 
         private void textBox5_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+           
+        }
+
+            AddMember frm = new AddMember();
+        private void btnProses_Click(object sender, EventArgs e)
+        {
+            if (frm.IsDisposed)
             {
-                PopUp frm = new PopUp();
+                AddMember fra = new AddMember();
+                fra.Show();
+            }
+            else
+            {
                 frm.Show();
-                frm.getMember(textBox5.Text);
+                frm.BringToFront();
             }
         }
     }

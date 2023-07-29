@@ -18,7 +18,6 @@ namespace KasirApp.GUI
     {
         Operator op = new Operator();
         SuplierModel sm = new SuplierModel();
-        LoginTOKEN _lg;
         string select = null;
 
         public MasterBarang()
@@ -57,7 +56,8 @@ namespace KasirApp.GUI
                     }
                 }
                 op.KonekDB();
-            }using (MySqlCommand cmd = new MySqlCommand("select * from supliers", op.Conn))
+            }
+            using (MySqlCommand cmd = new MySqlCommand("select * from supliers", op.Conn))
             {
                 op.KonekDB();
                 using (MySqlDataReader rd = cmd.ExecuteReader())

@@ -21,7 +21,6 @@ namespace KasirApp.Presenter
         Operator op = new Operator();
         iLogin _login;
         iMasterForm _iform;
-        readonly Action _loadRole;
 
         //Interface Variable API
         string _role;

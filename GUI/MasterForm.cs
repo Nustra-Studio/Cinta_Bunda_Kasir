@@ -29,8 +29,18 @@ namespace KasirApp.GUI
         {
             form.TopLevel = false;
             MainPanel.Controls.Add(form);
-            form.BringToFront();
             form.Show();
+            form.BringToFront();
+        }
+        public void FormParent(Form frm)
+        {
+            frmParent prn = new frmParent(frm);
+            prn.TopLevel = false;
+            MainPanel.Controls.Add(prn);
+            prn.FormBorderStyle = FormBorderStyle.None;
+            prn.Dock = DockStyle.Fill;
+            prn.Show();
+            prn.BringToFront();
         }
         public MasterForm()
         {
@@ -140,7 +150,7 @@ namespace KasirApp.GUI
         private void tambahUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var frm = new MasterUser();
-            addForm(frm);
+            FormParent(frm);
         }
 
         private void returPenjualanPOSToolStripMenuItem_Click(object sender, EventArgs e)
@@ -168,12 +178,13 @@ namespace KasirApp.GUI
 
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            logoutState();
         }
 
         private void divisiToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            KasirApp.GUI.Master.dataDivisi.FrmDivisi frm = new KasirApp.GUI.Master.dataDivisi.FrmDivisi();
+            FormParent(frm);
         }
 
         

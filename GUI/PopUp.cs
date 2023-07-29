@@ -49,7 +49,6 @@ namespace KasirApp.GUI
             }
             else if (gunaGradientButton1.Text == "Tambah")
             {
-                Transaksi.instance.tb2.Text = select;
                 this.Hide();
             }
         }
@@ -61,8 +60,7 @@ namespace KasirApp.GUI
 
         private void gunaGradientButton3_Click(object sender, EventArgs e)
         {
-            AddMember frm = new AddMember(this.member);
-            frm.Show();
+            
         }
 
         public void PopUp_FormClosed(object sender, FormClosedEventArgs e)

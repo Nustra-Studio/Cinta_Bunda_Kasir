@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Transaksi));
             this.gunaElipsePanel1 = new Guna.UI.WinForms.GunaElipsePanel();
             this.textBox8 = new System.Windows.Forms.TextBox();
@@ -53,8 +53,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
@@ -72,6 +70,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.btnProses = new Guna.UI.WinForms.GunaGradientButton();
+            this.label6 = new System.Windows.Forms.Label();
             this.gunaElipsePanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.panel1.SuspendLayout();
@@ -90,7 +90,7 @@
             this.gunaElipsePanel1.Location = new System.Drawing.Point(0, 0);
             this.gunaElipsePanel1.Name = "gunaElipsePanel1";
             this.gunaElipsePanel1.Radius = 10;
-            this.gunaElipsePanel1.Size = new System.Drawing.Size(1049, 126);
+            this.gunaElipsePanel1.Size = new System.Drawing.Size(1053, 126);
             this.gunaElipsePanel1.TabIndex = 2;
             // 
             // textBox8
@@ -124,21 +124,21 @@
             // 
             // dgv
             // 
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
             this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgv.ColumnHeadersHeight = 21;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.No,
@@ -147,14 +147,14 @@
             this.Qty,
             this.Harga,
             this.Total});
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgv.Dock = System.Windows.Forms.DockStyle.Top;
             this.dgv.EnableHeadersVisualStyles = false;
             this.dgv.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
@@ -162,7 +162,7 @@
             this.dgv.Name = "dgv";
             this.dgv.RowHeadersVisible = false;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(1049, 240);
+            this.dgv.Size = new System.Drawing.Size(1053, 240);
             this.dgv.TabIndex = 3;
             this.dgv.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Guna;
             this.dgv.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -233,7 +233,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 126);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1049, 21);
+            this.panel1.Size = new System.Drawing.Size(1053, 21);
             this.panel1.TabIndex = 5;
             // 
             // label2
@@ -315,29 +315,10 @@
             this.label5.TabIndex = 6;
             this.label5.Text = "Disc";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(800, 423);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(67, 20);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Member";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(866, 423);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(177, 29);
-            this.textBox5.TabIndex = 7;
-            this.textBox5.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox5_KeyDown);
-            // 
             // textBox6
             // 
             this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(804, 458);
+            this.textBox6.Location = new System.Drawing.Point(805, 483);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(239, 29);
             this.textBox6.TabIndex = 7;
@@ -346,7 +327,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(800, 496);
+            this.label7.Location = new System.Drawing.Point(801, 518);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(102, 20);
             this.label7.TabIndex = 6;
@@ -355,7 +336,7 @@
             // textBox7
             // 
             this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(908, 490);
+            this.textBox7.Location = new System.Drawing.Point(909, 515);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(135, 29);
             this.textBox7.TabIndex = 7;
@@ -497,21 +478,61 @@
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
+            // btnProses
+            // 
+            this.btnProses.AnimationHoverSpeed = 0.07F;
+            this.btnProses.AnimationSpeed = 0.03F;
+            this.btnProses.BaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
+            this.btnProses.BaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(246)))), ((int)(((byte)(197)))));
+            this.btnProses.BorderColor = System.Drawing.Color.Black;
+            this.btnProses.BorderSize = 1;
+            this.btnProses.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnProses.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnProses.FocusedColor = System.Drawing.Color.Empty;
+            this.btnProses.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnProses.ForeColor = System.Drawing.Color.Black;
+            this.btnProses.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            this.btnProses.Image = null;
+            this.btnProses.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnProses.Location = new System.Drawing.Point(805, 423);
+            this.btnProses.Name = "btnProses";
+            this.btnProses.OnHoverBaseColor1 = System.Drawing.Color.White;
+            this.btnProses.OnHoverBaseColor2 = System.Drawing.Color.Lime;
+            this.btnProses.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnProses.OnHoverForeColor = System.Drawing.Color.Black;
+            this.btnProses.OnHoverImage = null;
+            this.btnProses.OnPressedColor = System.Drawing.Color.Black;
+            this.btnProses.Size = new System.Drawing.Size(239, 30);
+            this.btnProses.TabIndex = 9;
+            this.btnProses.Text = "Tambah Member";
+            this.btnProses.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnProses.Click += new System.EventHandler(this.btnProses_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(905, 460);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(54, 20);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Kode :";
+            // 
             // Transaksi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1049, 553);
+            this.ClientSize = new System.Drawing.Size(1053, 553);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.btnProses);
             this.Controls.Add(this.gunaElipsePanel2);
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -547,7 +568,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox7;
@@ -575,6 +595,7 @@
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Label label19;
         public System.Windows.Forms.TextBox textBox1;
-        public System.Windows.Forms.TextBox textBox5;
+        private Guna.UI.WinForms.GunaGradientButton btnProses;
+        private System.Windows.Forms.Label label6;
     }
 }

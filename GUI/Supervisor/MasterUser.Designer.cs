@@ -30,12 +30,15 @@ namespace KasirApp.GUI.Supervisor
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -44,11 +47,8 @@ namespace KasirApp.GUI.Supervisor
             this.label2 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.textBox10 = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
@@ -58,12 +58,12 @@ namespace KasirApp.GUI.Supervisor
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -78,24 +78,14 @@ namespace KasirApp.GUI.Supervisor
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 248F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 248F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 248F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 248F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 248F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 248F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(681, 248);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.tableLayoutPanel1);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(687, 267);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
             // 
             // panel1
             // 
@@ -120,6 +110,14 @@ namespace KasirApp.GUI.Supervisor
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(380, 242);
             this.panel1.TabIndex = 1;
+            // 
+            // textBox6
+            // 
+            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox6.Location = new System.Drawing.Point(222, 207);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(78, 22);
+            this.textBox6.TabIndex = 9;
             // 
             // textBox7
             // 
@@ -153,13 +151,43 @@ namespace KasirApp.GUI.Supervisor
             this.textBox3.Size = new System.Drawing.Size(116, 22);
             this.textBox3.TabIndex = 12;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(11, 210);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(62, 16);
+            this.label9.TabIndex = 15;
+            this.label9.Text = "Gudang";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(11, 182);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(36, 16);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "Max";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(183, 149);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(90, 16);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "2 - Operator";
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(183, 128);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(77, 16);
+            this.label6.Size = new System.Drawing.Size(72, 16);
             this.label6.TabIndex = 15;
             this.label6.Text = "1 - Admin";
             // 
@@ -169,7 +197,7 @@ namespace KasirApp.GUI.Supervisor
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(183, 107);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(109, 16);
+            this.label5.Size = new System.Drawing.Size(104, 16);
             this.label5.TabIndex = 16;
             this.label5.Text = "0 - Supervisor";
             // 
@@ -179,9 +207,9 @@ namespace KasirApp.GUI.Supervisor
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(11, 104);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(75, 16);
+            this.label3.Size = new System.Drawing.Size(46, 16);
             this.label3.TabIndex = 17;
-            this.label3.Text = "Qty Retur";
+            this.label3.Text = "Level";
             // 
             // label1
             // 
@@ -189,7 +217,7 @@ namespace KasirApp.GUI.Supervisor
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(11, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 16);
+            this.label1.Size = new System.Drawing.Size(46, 16);
             this.label1.TabIndex = 20;
             this.label1.Text = "Login";
             // 
@@ -199,7 +227,7 @@ namespace KasirApp.GUI.Supervisor
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(11, 76);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(51, 16);
+            this.label4.Size = new System.Drawing.Size(50, 16);
             this.label4.TabIndex = 18;
             this.label4.Text = "Group";
             // 
@@ -209,9 +237,9 @@ namespace KasirApp.GUI.Supervisor
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(11, 48);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(102, 16);
+            this.label2.Size = new System.Drawing.Size(86, 16);
             this.label2.TabIndex = 19;
-            this.label2.Text = "Kode Barang";
+            this.label2.Text = "Nama User";
             // 
             // textBox2
             // 
@@ -229,44 +257,6 @@ namespace KasirApp.GUI.Supervisor
             this.textBox1.Size = new System.Drawing.Size(134, 22);
             this.textBox1.TabIndex = 14;
             // 
-            // textBox6
-            // 
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(222, 207);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(78, 22);
-            this.textBox6.TabIndex = 9;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(183, 149);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(95, 16);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "2 - Operator";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(11, 182);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(37, 16);
-            this.label8.TabIndex = 15;
-            this.label8.Text = "Max";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(11, 210);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(63, 16);
-            this.label9.TabIndex = 15;
-            this.label9.Text = "Gudang";
-            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.textBox10);
@@ -278,6 +268,14 @@ namespace KasirApp.GUI.Supervisor
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(295, 248);
             this.panel2.TabIndex = 2;
+            // 
+            // textBox10
+            // 
+            this.textBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox10.Location = new System.Drawing.Point(85, 125);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(50, 22);
+            this.textBox10.TabIndex = 9;
             // 
             // groupBox2
             // 
@@ -338,7 +336,7 @@ namespace KasirApp.GUI.Supervisor
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(194, 79);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(36, 16);
+            this.label12.Size = new System.Drawing.Size(34, 16);
             this.label12.TabIndex = 15;
             this.label12.Text = "Kali";
             // 
@@ -348,7 +346,7 @@ namespace KasirApp.GUI.Supervisor
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(194, 51);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(38, 16);
+            this.label11.Size = new System.Drawing.Size(37, 16);
             this.label11.TabIndex = 15;
             this.label11.Text = "Hari";
             // 
@@ -360,7 +358,7 @@ namespace KasirApp.GUI.Supervisor
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(121, 16);
             this.label10.TabIndex = 15;
-            this.label10.Text = "Tidal Ganti Pwd";
+            this.label10.Text = "Tidak Ganti Pwd";
             // 
             // label13
             // 
@@ -368,17 +366,19 @@ namespace KasirApp.GUI.Supervisor
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(6, 128);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(73, 16);
+            this.label13.Size = new System.Drawing.Size(69, 16);
             this.label13.TabIndex = 15;
             this.label13.Text = "No. User";
             // 
-            // textBox10
+            // groupBox1
             // 
-            this.textBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox10.Location = new System.Drawing.Point(85, 125);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(50, 22);
-            this.textBox10.TabIndex = 9;
+            this.groupBox1.Controls.Add(this.tableLayoutPanel1);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(687, 267);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
             // 
             // MasterUser
             // 
@@ -389,13 +389,13 @@ namespace KasirApp.GUI.Supervisor
             this.Name = "MasterUser";
             this.Text = "Master User";
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

@@ -15,11 +15,12 @@ namespace KasirApp.GUI
     public partial class AddMember : Form
     {
         Operator op = new Operator();
-        public readonly Action _getData;
-        public AddMember(Action frm)
+        //public readonly Action _getData;
+        public AddMember()
         {
             InitializeComponent();
-            _getData = frm;
+            CenterToParent();
+            //_getData = frm;
         }
 
         public void clear()
@@ -68,7 +69,6 @@ namespace KasirApp.GUI
                     com.Parameters.AddWithValue("password",txtPassword.Text);
                     com.ExecuteNonQuery();
                     clear();
-                    _getData();
                 }
             }
         }
