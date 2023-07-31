@@ -7,15 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using KasirApp.View;
 
 namespace KasirApp.GUI
 {
     public partial class frmParent : Form
     {
-        public frmParent(Form frm)
+        iParentDock _dock;
+        public frmParent(Form frm, iParentDock dck)
         {
             InitializeComponent();
             ShowChild(frm);
+            _dock = dck;
         }
 
         public void ShowChild(Form frm)
@@ -30,6 +33,16 @@ namespace KasirApp.GUI
         {
             this.Hide();
             this.Close();
+        }
+
+        private void btnTop_Click(object sender, EventArgs e)
+        {
+            _dock.top();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            _dock.add();
         }
     }
 }
