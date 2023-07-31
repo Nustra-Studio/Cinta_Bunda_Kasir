@@ -306,6 +306,7 @@
       <DependentUpon>PrintReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Report\Receipt.cs" />
+    <Compile Include="Repository\DeptRepo.cs" />
     <Compile Include="View\iDepartemen.cs" />
     <Compile Include="View\iLogin.cs" />
     <Compile Include="View\iMasterForm.cs" />
@@ -401,9 +402,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Repository\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Guna.UI.dll" />
     <Content Include="Guna.UI2.dll" />
