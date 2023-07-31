@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Transaksi));
             this.gunaElipsePanel1 = new Guna.UI.WinForms.GunaElipsePanel();
             this.textBox8 = new System.Windows.Forms.TextBox();
@@ -83,14 +83,14 @@
             // 
             this.gunaElipsePanel1.BackColor = System.Drawing.Color.Transparent;
             this.gunaElipsePanel1.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
+            this.gunaElipsePanel1.Controls.Add(this.label19);
             this.gunaElipsePanel1.Controls.Add(this.textBox8);
             this.gunaElipsePanel1.Controls.Add(this.label9);
-            this.gunaElipsePanel1.Controls.Add(this.label19);
             this.gunaElipsePanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.gunaElipsePanel1.Location = new System.Drawing.Point(0, 0);
             this.gunaElipsePanel1.Name = "gunaElipsePanel1";
             this.gunaElipsePanel1.Radius = 10;
-            this.gunaElipsePanel1.Size = new System.Drawing.Size(1053, 126);
+            this.gunaElipsePanel1.Size = new System.Drawing.Size(1084, 126);
             this.gunaElipsePanel1.TabIndex = 2;
             // 
             // textBox8
@@ -116,7 +116,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(652, 15);
+            this.label19.Location = new System.Drawing.Point(641, 16);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(49, 13);
             this.label19.TabIndex = 9;
@@ -124,22 +124,22 @@
             // 
             // dgv
             // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
             this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.dgv.ColumnHeadersHeight = 21;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            this.dgv.ColumnHeadersHeight = 30;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.No,
             this.Kode,
@@ -147,22 +147,23 @@
             this.Qty,
             this.Harga,
             this.Total});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle9;
             this.dgv.Dock = System.Windows.Forms.DockStyle.Top;
             this.dgv.EnableHeadersVisualStyles = false;
             this.dgv.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgv.Location = new System.Drawing.Point(0, 147);
             this.dgv.Name = "dgv";
             this.dgv.RowHeadersVisible = false;
+            this.dgv.RowHeadersWidth = 51;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(1053, 240);
+            this.dgv.Size = new System.Drawing.Size(1084, 240);
             this.dgv.TabIndex = 3;
             this.dgv.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Guna;
             this.dgv.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -177,7 +178,7 @@
             this.dgv.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
             this.dgv.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.dgv.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.dgv.ThemeStyle.HeaderStyle.Height = 21;
+            this.dgv.ThemeStyle.HeaderStyle.Height = 30;
             this.dgv.ThemeStyle.ReadOnly = false;
             this.dgv.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.dgv.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
@@ -189,32 +190,39 @@
             // 
             // No
             // 
+            this.No.FillWeight = 30F;
             this.No.HeaderText = "No";
+            this.No.MinimumWidth = 12;
             this.No.Name = "No";
             // 
             // Kode
             // 
             this.Kode.HeaderText = "Kode";
+            this.Kode.MinimumWidth = 6;
             this.Kode.Name = "Kode";
             // 
             // Barang
             // 
             this.Barang.HeaderText = "Barang";
+            this.Barang.MinimumWidth = 6;
             this.Barang.Name = "Barang";
             // 
             // Qty
             // 
             this.Qty.HeaderText = "Qty";
+            this.Qty.MinimumWidth = 6;
             this.Qty.Name = "Qty";
             // 
             // Harga
             // 
             this.Harga.HeaderText = "Harga";
+            this.Harga.MinimumWidth = 6;
             this.Harga.Name = "Harga";
             // 
             // Total
             // 
             this.Total.HeaderText = "Total";
+            this.Total.MinimumWidth = 6;
             this.Total.Name = "Total";
             // 
             // label1
@@ -233,7 +241,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 126);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1053, 21);
+            this.panel1.Size = new System.Drawing.Size(1084, 21);
             this.panel1.TabIndex = 5;
             // 
             // label2
@@ -318,7 +326,7 @@
             // textBox6
             // 
             this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(805, 483);
+            this.textBox6.Location = new System.Drawing.Point(833, 491);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(239, 29);
             this.textBox6.TabIndex = 7;
@@ -327,7 +335,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(801, 518);
+            this.label7.Location = new System.Drawing.Point(802, 530);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(102, 20);
             this.label7.TabIndex = 6;
@@ -336,7 +344,7 @@
             // textBox7
             // 
             this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(909, 515);
+            this.textBox7.Location = new System.Drawing.Point(937, 526);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(135, 29);
             this.textBox7.TabIndex = 7;
@@ -347,9 +355,9 @@
             this.gunaElipsePanel2.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
             this.gunaElipsePanel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.gunaElipsePanel2.Controls.Add(this.gunaElipsePanel3);
-            this.gunaElipsePanel2.Location = new System.Drawing.Point(12, 490);
+            this.gunaElipsePanel2.Location = new System.Drawing.Point(13, 501);
             this.gunaElipsePanel2.Name = "gunaElipsePanel2";
-            this.gunaElipsePanel2.Padding = new System.Windows.Forms.Padding(2);
+            this.gunaElipsePanel2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.gunaElipsePanel2.Size = new System.Drawing.Size(782, 51);
             this.gunaElipsePanel2.TabIndex = 8;
             // 
@@ -494,7 +502,7 @@
             this.btnProses.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.btnProses.Image = null;
             this.btnProses.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnProses.Location = new System.Drawing.Point(805, 423);
+            this.btnProses.Location = new System.Drawing.Point(833, 423);
             this.btnProses.Name = "btnProses";
             this.btnProses.OnHoverBaseColor1 = System.Drawing.Color.White;
             this.btnProses.OnHoverBaseColor2 = System.Drawing.Color.Lime;
@@ -512,7 +520,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(905, 460);
+            this.label6.Location = new System.Drawing.Point(928, 463);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(54, 20);
             this.label6.TabIndex = 10;
@@ -522,7 +530,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1053, 553);
+            this.ClientSize = new System.Drawing.Size(1084, 570);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnProses);
             this.Controls.Add(this.gunaElipsePanel2);
@@ -584,12 +592,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.DataGridViewTextBoxColumn No;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Kode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Barang;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Qty;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Harga;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Total;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.TextBox textBox8;
@@ -597,5 +599,11 @@
         public System.Windows.Forms.TextBox textBox1;
         private Guna.UI.WinForms.GunaGradientButton btnProses;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn No;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Kode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Barang;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Qty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Harga;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Total;
     }
 }

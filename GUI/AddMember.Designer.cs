@@ -34,15 +34,15 @@ namespace KasirApp.GUI
             this.panel1 = new System.Windows.Forms.Panel();
             this.gunaGradientButton2 = new Guna.UI.WinForms.GunaGradientButton();
             this.btnProses = new Guna.UI.WinForms.GunaGradientButton();
+            this.txtPassword = new Guna.UI.WinForms.GunaTextBox();
             this.txtEmail = new Guna.UI.WinForms.GunaTextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.noHp = new Guna.UI.WinForms.GunaTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtNama = new Guna.UI.WinForms.GunaTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtPassword = new Guna.UI.WinForms.GunaTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -54,10 +54,11 @@ namespace KasirApp.GUI
             this.iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.UserAlt;
             this.iconPictureBox2.IconColor = System.Drawing.Color.Lime;
             this.iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox2.IconSize = 99;
-            this.iconPictureBox2.Location = new System.Drawing.Point(33, 77);
+            this.iconPictureBox2.IconSize = 124;
+            this.iconPictureBox2.Location = new System.Drawing.Point(44, 95);
+            this.iconPictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.iconPictureBox2.Name = "iconPictureBox2";
-            this.iconPictureBox2.Size = new System.Drawing.Size(99, 101);
+            this.iconPictureBox2.Size = new System.Drawing.Size(132, 124);
             this.iconPictureBox2.TabIndex = 8;
             this.iconPictureBox2.TabStop = false;
             // 
@@ -77,9 +78,10 @@ namespace KasirApp.GUI
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.iconPictureBox2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(10, 10);
+            this.panel1.Location = new System.Drawing.Point(13, 12);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(487, 267);
+            this.panel1.Size = new System.Drawing.Size(650, 329);
             this.panel1.TabIndex = 9;
             // 
             // gunaGradientButton2
@@ -98,7 +100,8 @@ namespace KasirApp.GUI
             this.gunaGradientButton2.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.gunaGradientButton2.Image = null;
             this.gunaGradientButton2.ImageSize = new System.Drawing.Size(20, 20);
-            this.gunaGradientButton2.Location = new System.Drawing.Point(311, 216);
+            this.gunaGradientButton2.Location = new System.Drawing.Point(415, 266);
+            this.gunaGradientButton2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gunaGradientButton2.Name = "gunaGradientButton2";
             this.gunaGradientButton2.OnHoverBaseColor1 = System.Drawing.Color.White;
             this.gunaGradientButton2.OnHoverBaseColor2 = System.Drawing.Color.LightGreen;
@@ -106,7 +109,7 @@ namespace KasirApp.GUI
             this.gunaGradientButton2.OnHoverForeColor = System.Drawing.Color.Black;
             this.gunaGradientButton2.OnHoverImage = null;
             this.gunaGradientButton2.OnPressedColor = System.Drawing.Color.Black;
-            this.gunaGradientButton2.Size = new System.Drawing.Size(79, 30);
+            this.gunaGradientButton2.Size = new System.Drawing.Size(105, 37);
             this.gunaGradientButton2.TabIndex = 12;
             this.gunaGradientButton2.Text = "Batal";
             this.gunaGradientButton2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -128,7 +131,8 @@ namespace KasirApp.GUI
             this.btnProses.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.btnProses.Image = null;
             this.btnProses.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnProses.Location = new System.Drawing.Point(221, 216);
+            this.btnProses.Location = new System.Drawing.Point(295, 266);
+            this.btnProses.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnProses.Name = "btnProses";
             this.btnProses.OnHoverBaseColor1 = System.Drawing.Color.White;
             this.btnProses.OnHoverBaseColor2 = System.Drawing.Color.LightGreen;
@@ -136,11 +140,29 @@ namespace KasirApp.GUI
             this.btnProses.OnHoverForeColor = System.Drawing.Color.Black;
             this.btnProses.OnHoverImage = null;
             this.btnProses.OnPressedColor = System.Drawing.Color.Black;
-            this.btnProses.Size = new System.Drawing.Size(79, 30);
+            this.btnProses.Size = new System.Drawing.Size(105, 37);
             this.btnProses.TabIndex = 11;
             this.btnProses.Text = "Proses";
             this.btnProses.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnProses.Click += new System.EventHandler(this.btnProses_Click);
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.BackColor = System.Drawing.SystemColors.Control;
+            this.txtPassword.BaseColor = System.Drawing.Color.White;
+            this.txtPassword.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
+            this.txtPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtPassword.FocusedBaseColor = System.Drawing.Color.White;
+            this.txtPassword.FocusedBorderColor = System.Drawing.Color.Lime;
+            this.txtPassword.FocusedForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtPassword.Location = new System.Drawing.Point(295, 203);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '\0';
+            this.txtPassword.SelectedText = "";
+            this.txtPassword.Size = new System.Drawing.Size(325, 46);
+            this.txtPassword.TabIndex = 9;
             // 
             // txtEmail
             // 
@@ -152,12 +174,24 @@ namespace KasirApp.GUI
             this.txtEmail.FocusedBorderColor = System.Drawing.Color.Lime;
             this.txtEmail.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txtEmail.Location = new System.Drawing.Point(221, 127);
+            this.txtEmail.Location = new System.Drawing.Point(295, 156);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.PasswordChar = '\0';
             this.txtEmail.SelectedText = "";
-            this.txtEmail.Size = new System.Drawing.Size(244, 32);
+            this.txtEmail.Size = new System.Drawing.Size(325, 46);
             this.txtEmail.TabIndex = 9;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(172, 208);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(109, 25);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Password :";
             // 
             // noHp
             // 
@@ -169,20 +203,22 @@ namespace KasirApp.GUI
             this.noHp.FocusedBorderColor = System.Drawing.Color.Lime;
             this.noHp.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.noHp.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.noHp.Location = new System.Drawing.Point(221, 89);
+            this.noHp.Location = new System.Drawing.Point(295, 110);
+            this.noHp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.noHp.Name = "noHp";
             this.noHp.PasswordChar = '\0';
             this.noHp.SelectedText = "";
-            this.noHp.Size = new System.Drawing.Size(244, 32);
+            this.noHp.Size = new System.Drawing.Size(325, 46);
             this.noHp.TabIndex = 9;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(159, 134);
+            this.label4.Location = new System.Drawing.Point(212, 165);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 20);
+            this.label4.Size = new System.Drawing.Size(71, 25);
             this.label4.TabIndex = 10;
             this.label4.Text = "Email :";
             // 
@@ -196,20 +232,22 @@ namespace KasirApp.GUI
             this.txtNama.FocusedBorderColor = System.Drawing.Color.Lime;
             this.txtNama.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.txtNama.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txtNama.Location = new System.Drawing.Point(221, 51);
+            this.txtNama.Location = new System.Drawing.Point(295, 63);
+            this.txtNama.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNama.Name = "txtNama";
             this.txtNama.PasswordChar = '\0';
             this.txtNama.SelectedText = "";
-            this.txtNama.Size = new System.Drawing.Size(244, 32);
+            this.txtNama.Size = new System.Drawing.Size(325, 46);
             this.txtNama.TabIndex = 9;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(152, 96);
+            this.label3.Location = new System.Drawing.Point(203, 118);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 20);
+            this.label3.Size = new System.Drawing.Size(80, 25);
             this.label3.TabIndex = 10;
             this.label3.Text = "No HP :";
             // 
@@ -217,9 +255,10 @@ namespace KasirApp.GUI
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(156, 58);
+            this.label1.Location = new System.Drawing.Point(208, 71);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 20);
+            this.label1.Size = new System.Drawing.Size(75, 25);
             this.label1.TabIndex = 10;
             this.label1.Text = "Nama :";
             // 
@@ -227,48 +266,23 @@ namespace KasirApp.GUI
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(43, 54);
+            this.label2.Location = new System.Drawing.Point(57, 66);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 20);
+            this.label2.Size = new System.Drawing.Size(94, 25);
             this.label2.TabIndex = 10;
             this.label2.Text = "Add User";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(129, 169);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(86, 20);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Password :";
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.BackColor = System.Drawing.SystemColors.Control;
-            this.txtPassword.BaseColor = System.Drawing.Color.White;
-            this.txtPassword.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
-            this.txtPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtPassword.FocusedBaseColor = System.Drawing.Color.White;
-            this.txtPassword.FocusedBorderColor = System.Drawing.Color.Lime;
-            this.txtPassword.FocusedForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txtPassword.Location = new System.Drawing.Point(221, 165);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '\0';
-            this.txtPassword.SelectedText = "";
-            this.txtPassword.Size = new System.Drawing.Size(244, 32);
-            this.txtPassword.TabIndex = 9;
-            // 
             // AddMember
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(507, 287);
+            this.ClientSize = new System.Drawing.Size(676, 353);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "AddMember";
-            this.Padding = new System.Windows.Forms.Padding(10);
+            this.Padding = new System.Windows.Forms.Padding(13, 12, 13, 12);
             this.Text = "AddMember";
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();
             this.panel1.ResumeLayout(false);

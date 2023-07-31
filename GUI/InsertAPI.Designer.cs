@@ -104,14 +104,14 @@ namespace KasirApp.GUI
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(10, 10);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(770, 587);
+            this.groupBox1.Size = new System.Drawing.Size(770, 613);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Insert Data";
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(3, 562);
+            this.statusStrip1.Location = new System.Drawing.Point(3, 588);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(764, 22);
             this.statusStrip1.TabIndex = 5;
@@ -222,7 +222,7 @@ namespace KasirApp.GUI
             this.txtSTOK.FocusedBorderColor = System.Drawing.Color.Lime;
             this.txtSTOK.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.txtSTOK.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txtSTOK.Location = new System.Drawing.Point(126, 293);
+            this.txtSTOK.Location = new System.Drawing.Point(146, 299);
             this.txtSTOK.Name = "txtSTOK";
             this.txtSTOK.PasswordChar = '\0';
             this.txtSTOK.SelectedText = "";
@@ -251,7 +251,7 @@ namespace KasirApp.GUI
             this.txtGrosir.FocusedBorderColor = System.Drawing.Color.Lime;
             this.txtGrosir.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.txtGrosir.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txtGrosir.Location = new System.Drawing.Point(126, 217);
+            this.txtGrosir.Location = new System.Drawing.Point(146, 223);
             this.txtGrosir.Name = "txtGrosir";
             this.txtGrosir.PasswordChar = '\0';
             this.txtGrosir.SelectedText = "";
@@ -269,7 +269,7 @@ namespace KasirApp.GUI
             this.txtHargapokok.FocusedBorderColor = System.Drawing.Color.Lime;
             this.txtHargapokok.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.txtHargapokok.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txtHargapokok.Location = new System.Drawing.Point(126, 255);
+            this.txtHargapokok.Location = new System.Drawing.Point(146, 261);
             this.txtHargapokok.Name = "txtHargapokok";
             this.txtHargapokok.PasswordChar = '\0';
             this.txtHargapokok.SelectedText = "";
@@ -287,7 +287,7 @@ namespace KasirApp.GUI
             this.txtHargaJual.FocusedBorderColor = System.Drawing.Color.Lime;
             this.txtHargaJual.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.txtHargaJual.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txtHargaJual.Location = new System.Drawing.Point(126, 156);
+            this.txtHargaJual.Location = new System.Drawing.Point(146, 156);
             this.txtHargaJual.Name = "txtHargaJual";
             this.txtHargaJual.PasswordChar = '\0';
             this.txtHargaJual.SelectedText = "";
@@ -305,7 +305,7 @@ namespace KasirApp.GUI
             this.txtPajak.FocusedBorderColor = System.Drawing.Color.Lime;
             this.txtPajak.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.txtPajak.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txtPajak.Location = new System.Drawing.Point(126, 118);
+            this.txtPajak.Location = new System.Drawing.Point(146, 118);
             this.txtPajak.Name = "txtPajak";
             this.txtPajak.PasswordChar = '\0';
             this.txtPajak.SelectedText = "";
@@ -334,7 +334,7 @@ namespace KasirApp.GUI
             this.txtLaba.FocusedBorderColor = System.Drawing.Color.Lime;
             this.txtLaba.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.txtLaba.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txtLaba.Location = new System.Drawing.Point(126, 80);
+            this.txtLaba.Location = new System.Drawing.Point(146, 80);
             this.txtLaba.Name = "txtLaba";
             this.txtLaba.PasswordChar = '\0';
             this.txtLaba.SelectedText = "";
@@ -357,7 +357,7 @@ namespace KasirApp.GUI
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(176, 124);
+            this.label16.Location = new System.Drawing.Point(196, 124);
             this.label16.Name = "label16";
             this.label16.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label16.Size = new System.Drawing.Size(23, 20);
@@ -374,7 +374,7 @@ namespace KasirApp.GUI
             this.txtHarga.FocusedBorderColor = System.Drawing.Color.Lime;
             this.txtHarga.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.txtHarga.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txtHarga.Location = new System.Drawing.Point(126, 42);
+            this.txtHarga.Location = new System.Drawing.Point(146, 42);
             this.txtHarga.Name = "txtHarga";
             this.txtHarga.PasswordChar = '\0';
             this.txtHarga.SelectedText = "";
@@ -398,7 +398,7 @@ namespace KasirApp.GUI
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(176, 86);
+            this.label14.Location = new System.Drawing.Point(196, 86);
             this.label14.Name = "label14";
             this.label14.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label14.Size = new System.Drawing.Size(23, 20);
@@ -509,7 +509,7 @@ namespace KasirApp.GUI
             this.gunaComboBox2.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.gunaComboBox2.ForeColor = System.Drawing.Color.Black;
             this.gunaComboBox2.FormattingEnabled = true;
-            this.gunaComboBox2.Location = new System.Drawing.Point(126, 174);
+            this.gunaComboBox2.Location = new System.Drawing.Point(146, 174);
             this.gunaComboBox2.Name = "gunaComboBox2";
             this.gunaComboBox2.OnHoverItemBaseColor = System.Drawing.Color.Lime;
             this.gunaComboBox2.OnHoverItemForeColor = System.Drawing.Color.Black;
@@ -527,7 +527,7 @@ namespace KasirApp.GUI
             this.gunaComboBox1.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.gunaComboBox1.ForeColor = System.Drawing.Color.Black;
             this.gunaComboBox1.FormattingEnabled = true;
-            this.gunaComboBox1.Location = new System.Drawing.Point(126, 138);
+            this.gunaComboBox1.Location = new System.Drawing.Point(146, 138);
             this.gunaComboBox1.Name = "gunaComboBox1";
             this.gunaComboBox1.OnHoverItemBaseColor = System.Drawing.Color.Lime;
             this.gunaComboBox1.OnHoverItemForeColor = System.Drawing.Color.Black;
@@ -544,7 +544,7 @@ namespace KasirApp.GUI
             this.txtKeterangan.FocusedBorderColor = System.Drawing.Color.Lime;
             this.txtKeterangan.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.txtKeterangan.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txtKeterangan.Location = new System.Drawing.Point(126, 100);
+            this.txtKeterangan.Location = new System.Drawing.Point(146, 100);
             this.txtKeterangan.Name = "txtKeterangan";
             this.txtKeterangan.PasswordChar = '\0';
             this.txtKeterangan.SelectedText = "";
@@ -561,7 +561,7 @@ namespace KasirApp.GUI
             this.txtMerek.FocusedBorderColor = System.Drawing.Color.Lime;
             this.txtMerek.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.txtMerek.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txtMerek.Location = new System.Drawing.Point(126, 62);
+            this.txtMerek.Location = new System.Drawing.Point(146, 62);
             this.txtMerek.Name = "txtMerek";
             this.txtMerek.PasswordChar = '\0';
             this.txtMerek.SelectedText = "";
@@ -608,7 +608,7 @@ namespace KasirApp.GUI
             this.txtBarang.FocusedBorderColor = System.Drawing.Color.Lime;
             this.txtBarang.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.txtBarang.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txtBarang.Location = new System.Drawing.Point(126, 24);
+            this.txtBarang.Location = new System.Drawing.Point(146, 24);
             this.txtBarang.Name = "txtBarang";
             this.txtBarang.PasswordChar = '\0';
             this.txtBarang.SelectedText = "";
@@ -639,7 +639,7 @@ namespace KasirApp.GUI
             // 
             this.lblperPCS.AutoSize = true;
             this.lblperPCS.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblperPCS.Location = new System.Drawing.Point(621, 344);
+            this.lblperPCS.Location = new System.Drawing.Point(643, 344);
             this.lblperPCS.Name = "lblperPCS";
             this.lblperPCS.Size = new System.Drawing.Size(88, 26);
             this.lblperPCS.TabIndex = 0;
@@ -649,7 +649,7 @@ namespace KasirApp.GUI
             // 
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.Location = new System.Drawing.Point(621, 383);
+            this.lblTotal.Location = new System.Drawing.Point(643, 383);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(88, 26);
             this.lblTotal.TabIndex = 0;
@@ -660,7 +660,7 @@ namespace KasirApp.GUI
             // 
             this.lblPajak.AutoSize = true;
             this.lblPajak.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPajak.Location = new System.Drawing.Point(621, 309);
+            this.lblPajak.Location = new System.Drawing.Point(643, 309);
             this.lblPajak.Name = "lblPajak";
             this.lblPajak.Size = new System.Drawing.Size(88, 26);
             this.lblPajak.TabIndex = 0;
@@ -670,7 +670,7 @@ namespace KasirApp.GUI
             // 
             this.lblLaba.AutoSize = true;
             this.lblLaba.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLaba.Location = new System.Drawing.Point(621, 273);
+            this.lblLaba.Location = new System.Drawing.Point(643, 273);
             this.lblLaba.Name = "lblLaba";
             this.lblLaba.Size = new System.Drawing.Size(88, 26);
             this.lblLaba.TabIndex = 0;
@@ -701,7 +701,7 @@ namespace KasirApp.GUI
             // 
             this.lblHarga.AutoSize = true;
             this.lblHarga.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHarga.Location = new System.Drawing.Point(621, 235);
+            this.lblHarga.Location = new System.Drawing.Point(643, 235);
             this.lblHarga.Name = "lblHarga";
             this.lblHarga.Size = new System.Drawing.Size(88, 26);
             this.lblHarga.TabIndex = 0;
@@ -743,7 +743,7 @@ namespace KasirApp.GUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
-            this.ClientSize = new System.Drawing.Size(790, 607);
+            this.ClientSize = new System.Drawing.Size(790, 633);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Insert";

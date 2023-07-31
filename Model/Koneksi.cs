@@ -8,9 +8,11 @@ using System.Data;
 
 namespace KasirApp.Model
 {
+    
     public class Koneksi1
     {
-        public MySqlConnection Conn = new MySqlConnection("server=localhost;user id=root;password=admin;port=3307;database=kasirdb");
+        public string connString1 = "server=localhost;user id=root;password=123;port=3306;database=kasirdb";
+        public MySqlConnection Conn = new MySqlConnection("server=localhost;user id=root;password=123;port=3306;database=kasirdb");
         public string url = "https://inventory.nustrastudio.com/api/";
         //MySqlDataReader rd;
         //MySqlDataAdapter da;
@@ -20,7 +22,7 @@ namespace KasirApp.Model
     {
         public string url = "https://inventory.nustrastudio.com/api/";
         public string urlcloud = "https://cloudinventory.nustrastudio.com/api/";
-        public MySqlConnection Conn = new MySqlConnection("server=localhost;user id=root;password=admin;port=3307;database=kasirdb");
+        public MySqlConnection Conn = new MySqlConnection("server=localhost;user id=root;password=123;port=3306;database=kasirdb");
         public void KonekDB()
         {
             if (Conn.State == ConnectionState.Open)

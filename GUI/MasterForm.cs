@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using KasirApp.View;
 using KasirApp.Model;
+using KasirApp.GUI.Master;
 using KasirApp.Presenter;
 
 namespace KasirApp.GUI
@@ -29,12 +30,12 @@ namespace KasirApp.GUI
         {
             form.TopLevel = false;
             MainPanel.Controls.Add(form);
-            form.Show();
             form.BringToFront();
+            form.Show();
         }
-        public void FormParent(Form frm)
+        public void FormParent(Form frm, iParentDock dock)
         {
-            frmParent prn = new frmParent(frm);
+            frmParent prn = new frmParent(frm, dock);
             prn.TopLevel = false;
             MainPanel.Controls.Add(prn);
             prn.FormBorderStyle = FormBorderStyle.None;
@@ -42,10 +43,11 @@ namespace KasirApp.GUI
             prn.Show();
             prn.BringToFront();
         }
+
         public MasterForm()
         {
             InitializeComponent();
-            WindowState = FormWindowState.Maximized;
+            this.WindowState = FormWindowState.Maximized;
         }
 
         public void logoutState()
@@ -149,8 +151,8 @@ namespace KasirApp.GUI
 
         private void tambahUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new MasterUser();
-            FormParent(frm);
+            //var frm = new MasterUser();
+            //FormParent(frm);
         }
 
         private void returPenjualanPOSToolStripMenuItem_Click(object sender, EventArgs e)
@@ -183,8 +185,8 @@ namespace KasirApp.GUI
 
         private void divisiToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            KasirApp.GUI.Master.dataDivisi.FrmDivisi frm = new KasirApp.GUI.Master.dataDivisi.FrmDivisi();
-            FormParent(frm);
+            frmDepartemen frm = new frmDepartemen();
+            FormParent(frm,frm);
         }
 
         

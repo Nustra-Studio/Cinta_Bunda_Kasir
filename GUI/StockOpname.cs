@@ -15,11 +15,20 @@ namespace KasirApp.GUI
         public StockOpname()
         {
             InitializeComponent();
+            dateTimePicker1.Text = DateTime.Now.ToString("dd/MM/yyyy");
         }
 
-        private void StockOpname_Load(object sender, EventArgs e)
+        public void raiseKeyEvent(KeyEventArgs e)
         {
+            if (e.KeyCode == Keys.F10)
+            {
+                txtNomor.Text = $"POP-{DateTime.Now.ToString("MMdd")} ";
+            }
+        }
 
+        private void StockOpname_KeyDown(object sender, KeyEventArgs e)
+        {
+            raiseKeyEvent(e);
         }
     }
 }
