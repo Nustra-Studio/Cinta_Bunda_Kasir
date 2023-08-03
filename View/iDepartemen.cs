@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using KasirApp.Model;
 
 namespace KasirApp.View
 {
@@ -12,5 +13,7 @@ namespace KasirApp.View
         string nama { get; set; }
         bool kenaDiskon { get; set; }
         void startState();
+        void clear();
+        void showRd(DepartemenModel model);
     }
 }

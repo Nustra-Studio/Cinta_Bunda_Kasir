@@ -106,6 +106,7 @@ namespace KasirApp.GUI.Master
             this.Controls.Add(this.label3);
             this.Name = "frmDepartemen";
             this.Text = "frmDepartemen";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmDepartemen_FormClosing);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.raiseTombol);
             this.ResumeLayout(false);
             this.PerformLayout();

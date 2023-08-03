@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using KasirApp.View;
 using KasirApp.Presenter;
+using KasirApp.Model;
 
 namespace KasirApp.GUI.Master
 {
@@ -27,7 +28,7 @@ namespace KasirApp.GUI.Master
         {
             InitializeComponent();
             startState();
-            _prn = new DepartemenPresenter(this);
+            _prn = new DepartemenPresenter(this, this);
         }
         
         //Method
@@ -36,6 +37,20 @@ namespace KasirApp.GUI.Master
             txtKode.Enabled = false;
             txtNama.Enabled = false;
             cekDiskon.Enabled = false;
+        }
+
+        public void clear()
+        {
+            txtKode.Text = null;
+            txtNama.Text = null;
+            cekDiskon.Checked = false;
+        }
+
+        public void showRd(DepartemenModel model)
+        {
+            txtKode.Text = model.Kode;
+            txtNama.Text = model.Nama;
+            cekDiskon.Checked = model.KenaDiskon;
         }
 
         public void openState()
@@ -52,58 +67,68 @@ namespace KasirApp.GUI.Master
             {
                  _prn.Simpan();
             }
+            else if (e.KeyCode == Keys.Escape)
+            {
+                _prn.atas();
+                startState();
+            }
+        }
+
+        private void frmDepartemen_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            exit();
         }
 
         //Interface Field
         public void add()
         {
+            clear();
             openState();
-            _prn.Simpan();
-        }
-
-        public void Bot()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void delete()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void exit()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void list()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void next()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void prev()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void print()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void search()
-        {
-            throw new NotImplementedException();
         }
 
         public void top()
         {
-            openState();
+            _prn.atas();
         }
+        public void next()
+        {
+            _prn.lanjut();
+        }
+
+        public void prev()
+        {
+            _prn.sebelum();
+        }
+        public void Bot()
+        {
+            _prn.bawah();
+        }
+
+        public void delete()
+        {
+            _prn.hapus();
+        }
+
+        public void exit()
+        {
+            return;
+        }
+
+        public void list()
+        {
+            return;
+        }
+
+        public void print()
+        {
+            return;
+        }
+
+        public void search()
+        {
+            return;
+        }
+
+       
     }
 }

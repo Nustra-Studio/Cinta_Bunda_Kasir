@@ -13,35 +13,70 @@ namespace KasirApp.Presenter
     {
         //Fields
         iDepartemen _dept;
+        iParentDock _dock;
         DeptRepo _repo = new DeptRepo();
         MboxOperator mb = new MboxOperator();
-        public DepartemenPresenter(iDepartemen dep)
+
+        //Constructor
+        public DepartemenPresenter(iDepartemen dep, iParentDock dock)
         {
             _dept = dep;
+            _dock = dock;
         }
 
+        //Crud Method
         public void Simpan()
         {
-            if (_dept.nama == null || _dept.kode == null)
+            var model = new DepartemenModel();
+            model.Nama = _dept.nama;
+            model.Kode = _dept.kode;
+            model.KenaDiskon = _dept.kenaDiskon;
+            try
+            {
+                _repo.Insert(model);
+                _dept.startState();
+            }
+            catch (ArgumentNullException)
             {
                 mb.PeringatanOK("Lengkapi Data");
             }
-            else
-            {
-                var model = new DepartemenModel();
-                model.Nama = _dept.nama;
-                model.Kode = _dept.kode;
-                model.KenaDiskon = _dept.kenaDiskon;
-                try
-                {
-                    _repo.Insert(model);
-                }
-                catch (Exception)
-                {
+        }
 
-                    throw;
-                }
+        public void hapus()
+        {
+            var model = new DepartemenModel();
+            model.Kode = _dept.kode;
+            try
+            {
+                _repo.Delete(model);
+                _dept.showRd(_repo.topValue());
             }
+            catch (ArgumentNullException)
+            {
+                mb.PeringatanOK("Lengkapi Data");
+            }
+        }
+
+
+        //Direction Method
+        public void atas()
+        {
+            _dept.showRd(_repo.topValue());
+        }
+       
+        public void lanjut()
+        {
+            _dept.showRd(_repo.nextValue());
+        }
+
+        public void sebelum()
+        {
+            _dept.showRd(_repo.prevValue());
+        }
+
+        public void bawah()
+        {
+            _dept.showRd(_repo.botValue());
         }
     }
 }

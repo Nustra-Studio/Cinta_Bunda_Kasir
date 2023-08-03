@@ -5,10 +5,6 @@ VisualStudioVersion = 16.0.33801.447
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KasirApp", "KasirApp.csproj", "{C791AF75-FC4E-49DD-AE00-78A8A3A667E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test API", "..\Test API\Test API.csproj", "{DF7B7080-659E-4322-9FBE-6995CCE43B26}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mvp Template", "..\mvp Template\mvp Template.csproj", "{C9DEC512-7A40-4AC6-9D45-E74D5CED8248}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,14 +15,6 @@ Global
 		{C791AF75-FC4E-49DD-AE00-78A8A3A667E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C791AF75-FC4E-49DD-AE00-78A8A3A667E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C791AF75-FC4E-49DD-AE00-78A8A3A667E7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DF7B7080-659E-4322-9FBE-6995CCE43B26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DF7B7080-659E-4322-9FBE-6995CCE43B26}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DF7B7080-659E-4322-9FBE-6995CCE43B26}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DF7B7080-659E-4322-9FBE-6995CCE43B26}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C9DEC512-7A40-4AC6-9D45-E74D5CED8248}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C9DEC512-7A40-4AC6-9D45-E74D5CED8248}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C9DEC512-7A40-4AC6-9D45-E74D5CED8248}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C9DEC512-7A40-4AC6-9D45-E74D5CED8248}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
