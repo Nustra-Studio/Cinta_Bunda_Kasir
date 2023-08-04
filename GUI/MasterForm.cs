@@ -17,7 +17,10 @@ namespace KasirApp.GUI
 {
     public partial class MasterForm : Form, iMasterForm
     {
-        public void Role(usrRole rl)
+        //Fields
+        userDataModel _user;
+
+        public void Role(usrRole rl, userDataModel user)
         {
             masterToolStripMenuItem.Visible = rl.Masters.Equals(1) ? true : false;
             gudangToolStripMenuItem.Visible = rl.Gudang.Equals(1) ? true : false;
@@ -25,7 +28,9 @@ namespace KasirApp.GUI
             kasBankToolStripMenuItem.Visible = rl.Kasbank.Equals(1) ? true : false;
             akuntaToolStripMenuItem.Visible = rl.Akuntansi.Equals(1) ? true : false;
             supervisorToolStripMenuItem.Visible = rl.Supervisor.Equals(1) ? true : false;
+            _user = user;
         }
+
         public void addForm(Form form)
         {
             form.TopLevel = false;
@@ -61,9 +66,9 @@ namespace KasirApp.GUI
         }
       
 
-        private void pOSToolStripMenuItem_Click(object sender, EventArgs e)
+        public void pOSToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Transaksi frm = new Transaksi();
+            Transaksi frm = new Transaksi(_user);
             addForm(frm);
             //Transaksi frm = new Transaksi();
             //frm.TopLevel = false;
@@ -116,7 +121,8 @@ namespace KasirApp.GUI
 
         private void opnameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            StockOpname frm = new StockOpname();
+            PopUp pop = new PopUp();
+            StockOpname frm = new StockOpname(pop);
             addForm(frm);
         }
 

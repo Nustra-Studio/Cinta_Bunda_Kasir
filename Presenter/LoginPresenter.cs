@@ -119,6 +119,11 @@ namespace KasirApp.Presenter
                             _role = fn.user.role.ToString();
                             _token = fn.token.ToString();
 
+                            var usercl = new userDataModel();
+                            usercl.token = _token;
+                            usercl.username = fn.user.username.ToString();
+                            usercl.role = _role;
+
                             using (MySqlCommand cmd = new MySqlCommand("select * from roles where nama = @nama", op.Conn))
                             {
                                 cmd.Parameters.AddWithValue("@nama", _role);
@@ -127,20 +132,21 @@ namespace KasirApp.Presenter
                                 {
                                     while (rd.Read())
                                     {
-                                        usrRole user = new usrRole() 
+                                        usrRole user = new usrRole()
                                         {
-                                        Id = Convert.ToInt32(rd["id"]),
-                                        Uuid = rd["uuid"].ToString(),
-                                        Kode1 = rd["kode"].ToString(),
-                                        Nama = rd["nama"].ToString(),
-                                        Masters = Convert.ToInt32(rd["masters"].ToString()),
-                                        Gudang = Convert.ToInt32(rd["Gudang"].ToString()),
-                                        Penjualan = Convert.ToInt32(rd["Penjualan"].ToString()),
-                                        Kasbank = Convert.ToInt32(rd["KasBank"].ToString()),
-                                        Akuntansi = Convert.ToInt32(rd["Akuntansi"].ToString()),
-                                        Supervisor = Convert.ToInt32(rd["Supervisor"].ToString())
+                                            Id = Convert.ToInt32(rd["id"]),
+                                            Uuid = rd["uuid"].ToString(),
+                                            Kode1 = rd["kode"].ToString(),
+                                            Nama = rd["nama"].ToString(),
+                                            Masters = Convert.ToInt32(rd["masters"].ToString()),
+                                            Gudang = Convert.ToInt32(rd["Gudang"].ToString()),
+                                            Penjualan = Convert.ToInt32(rd["Penjualan"].ToString()),
+                                            Kasbank = Convert.ToInt32(rd["KasBank"].ToString()),
+                                            Akuntansi = Convert.ToInt32(rd["Akuntansi"].ToString()),
+                                            Supervisor = Convert.ToInt32(rd["Supervisor"].ToString()),
+                                            Token = _token
                                         };
-                                        _iform.Role(user);
+                                        _iform.Role(user, usercl);
                                     }
                                 }
                             }

@@ -10,7 +10,7 @@ namespace KasirApp.View
 {
     public interface iMasterForm
     {
-        void Role(usrRole rl);
+        void Role(usrRole rl, userDataModel user);
         void addForm(Form frm);
     }
 }

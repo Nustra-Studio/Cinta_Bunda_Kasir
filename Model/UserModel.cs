@@ -6,10 +6,6 @@ using System.Threading.Tasks;
 
 namespace KasirApp.Model
 {
-    public class UserModel
-    {
-    }
-
     //FIELDS
     public class Root
     {
@@ -50,14 +46,57 @@ namespace KasirApp.Model
             get; set; 
         }
         public DateTime updated_at {
-            get; set; 
+            get; set;
         }
     }
 
-    public class error
+    public class userDataModel 
     {
-        public string message { get; set; }
+        public string token { get; set; }
+        public int id
+        {
+            get;
+            set;
+        }
+        public string username
+        {
+            get;
+            set;
+        }
+        public string password
+        {
+            get;
+            set;
+        }
+        public string uuid
+        {
+            get;
+            set;
+        }
+        public string role
+        {
+            get;
+            set;
+        }
+        public string cabang_id
+        {
+            get;
+            set;
+        }
+        public string api_key
+        {
+            get; set;
+        }
+        public DateTime created_at
+        {
+            get; set;
+        }
+        public DateTime updated_at
+        {
+            get; set;
+        }
     }
+
 
     public class usrRole
     {
@@ -65,6 +104,7 @@ namespace KasirApp.Model
         private string uuid;
         private string Kode;
         private string nama;
+        private string token;
         private int masters;
         private int gudang;
         private int penjualan;
@@ -83,5 +123,6 @@ namespace KasirApp.Model
         public int Kasbank { get => kasbank; set => kasbank = value; }
         public int Akuntansi { get => akuntansi; set => akuntansi = value; }
         public int Supervisor { get => supervisor; set => supervisor = value; }
+        public string Token { get => token; set => token = value; }
     }
 }
