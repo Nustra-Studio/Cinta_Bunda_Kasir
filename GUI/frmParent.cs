@@ -44,5 +44,40 @@ namespace KasirApp.GUI
         {
             _dock.add();
         }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            _dock.next();
+        }
+
+        private void btnPrevous_Click(object sender, EventArgs e)
+        {
+            _dock.prev();
+        }
+
+        private void btnBottom_Click(object sender, EventArgs e)
+        {
+            _dock.Bot();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            _dock.delete();
+        }
+
+        private void btnFind_Click(object sender, EventArgs e)
+        {
+            _dock.search();
+        }
+
+        private void btnList_Click(object sender, EventArgs e)
+        {
+            _dock.list();
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            _dock.print();
+        }
     }
 }

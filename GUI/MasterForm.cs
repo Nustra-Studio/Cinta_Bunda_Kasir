@@ -121,9 +121,7 @@ namespace KasirApp.GUI
 
         private void opnameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PopUp pop = new PopUp();
-            StockOpname frm = new StockOpname(pop);
-            addForm(frm);
+            
         }
 
         private void MasterForm_Load(object sender, EventArgs e)
@@ -195,6 +193,17 @@ namespace KasirApp.GUI
             FormParent(frm,frm);
         }
 
-        
+        private void pOSSMToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Transaksi frm = new Transaksi(_user);
+            addForm(frm);
+        }
+
+        private void stockOpnameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PopUp pop = new PopUp();
+            StockOpname frm = new StockOpname(pop);
+            addForm(frm);
+        }
     }
 }
