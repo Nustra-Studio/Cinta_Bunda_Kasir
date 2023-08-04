@@ -8,18 +8,31 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using KasirApp.Model;
+using KasirApp.View;
+using KasirApp.Presenter;
 using MySql.Data.MySqlClient;
 
 namespace KasirApp.GUI
 {
-    public partial class AddMember : Form
+    public partial class AddMember : Form,iMember
     {
         Operator op = new Operator();
+        addMemberPresenter _prn;
+        userDataModel _user;
+
+        //InterFaces
+        public string nama { get => txtNama.Text; set => txtNama.Text = value; }
+        public string telpon { get => noHp.Text ; set => noHp.Text = value; }
+        public string email { get => txtEmail.Text; set => txtEmail.Text = value; }
+        public string alamat { get => txtAlamat.Text; set => txtAlamat.Text = value; }
+
         //public readonly Action _getData;
-        public AddMember()
+        public AddMember(userDataModel usr)
         {
             InitializeComponent();
             CenterToParent();
+            _user = usr;
+            _prn = new addMemberPresenter(_user, this);
             //_getData = frm;
         }
 
@@ -27,50 +40,12 @@ namespace KasirApp.GUI
         {
             txtNama.Text = string.Empty;
             txtEmail.Text = string.Empty;
-            txtPassword.Text = string.Empty;
             noHp.Text = string.Empty;
-        }
-
-        public bool cekUnique()
-        {
-            using (MySqlCommand cmd = new MySqlCommand("select nama from members where nama=@nama", op.Conn))
-            {
-                cmd.Parameters.AddWithValue("nama", txtNama.Text);
-                op.KonekDB();
-                using (MySqlDataReader rd = cmd.ExecuteReader())
-                {
-                    rd.Read();
-                    if (rd.HasRows)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                }
-            }
         }
 
         private void btnProses_Click(object sender, EventArgs e)
         {
-            if (cekUnique()==true)
-            {
-                MessageBox.Show("Data Sudah Ada");
-            }
-            else
-            {
-                op.KonekDB();
-                using (MySqlCommand com = new MySqlCommand("insert into members values(null,md5(@nama),@nama,@telepon,@email,@password,null)", op.Conn))
-                {
-                    com.Parameters.AddWithValue("nama", txtNama.Text);
-                    com.Parameters.AddWithValue("telepon", noHp.Text);
-                    com.Parameters.AddWithValue("email",txtEmail.Text);
-                    com.Parameters.AddWithValue("password",txtPassword.Text);
-                    com.ExecuteNonQuery();
-                    clear();
-                }
-            }
+            _prn.Daftar();
         }
 
         private void gunaGradientButton2_Click(object sender, EventArgs e)
