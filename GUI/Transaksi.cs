@@ -18,14 +18,16 @@ namespace KasirApp.GUI
         public TextBox tb;
         Operator op = new Operator();
         MySqlDataReader rd;
+        userDataModel _user;
 
         int i;
-        public Transaksi()
+        public Transaksi(userDataModel user)
         {
             InitializeComponent();
             instance = this;
             tb = textBox1;
             i = 1;
+            _user = user;
         }
 
         public void NumericOnly(object sender, KeyPressEventArgs e)
@@ -161,19 +163,18 @@ namespace KasirApp.GUI
         {
            
         }
-
-            AddMember frm = new AddMember();
+        
         private void btnProses_Click(object sender, EventArgs e)
         {
-            if (frm.IsDisposed)
+            AddMember fra = new AddMember(_user);
+            if (fra.IsDisposed)
             {
-                AddMember fra = new AddMember();
                 fra.Show();
             }
             else
             {
-                frm.Show();
-                frm.BringToFront();
+                fra.Show();
+                fra.BringToFront();
             }
         }
     }
