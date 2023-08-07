@@ -31,27 +31,49 @@ namespace KasirApp.GUI
             _user = user;
         }
 
-        public void addForm(Form form)
+        public void refreshMainPanel()
         {
-            form.TopLevel = false;
-            MainPanel.Controls.Add(form);
-            form.BringToFront();
-            form.Show();
-        }
-        public void FormParent(Form frm, iParentDock dock)
-        {
-            frmParent prn = new frmParent(frm, dock);
-            prn.TopLevel = false;
-            MainPanel.Controls.Add(prn);
-            prn.FormBorderStyle = FormBorderStyle.None;
-            prn.Dock = DockStyle.Fill;
-            prn.Show();
-            prn.BringToFront();
+            MainPanel.Controls.Clear();
         }
 
+        public void addForm(Form form)
+        {
+            if (MainPanel.Controls.Count <= 2)
+            {
+                form.TopLevel = false;
+                MainPanel.Controls.Add(form);
+                form.BringToFront();
+                form.Show();
+            }
+            else 
+            {
+                return;
+            }
+        }
+
+        public void FormParent(Form frm, iParentDock dock)
+        {
+            if (MainPanel.Controls.Count <= 2)
+            {
+                frmParent prn = new frmParent(frm, dock);
+                prn.TopLevel = false;
+                MainPanel.Controls.Add(prn);
+                prn.FormBorderStyle = FormBorderStyle.None;
+                prn.Dock = DockStyle.Fill;
+                prn.BringToFront();
+                prn.Show();
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        //Constructor
         public MasterForm()
         {
             InitializeComponent();
+            //logoutState();
             this.WindowState = FormWindowState.Maximized;
         }
 
@@ -126,7 +148,7 @@ namespace KasirApp.GUI
 
         private void MasterForm_Load(object sender, EventArgs e)
         {
-            logoutState();
+
         }
 
         private void laporanPOSToolStripMenuItem_Click(object sender, EventArgs e)
@@ -201,9 +223,10 @@ namespace KasirApp.GUI
 
         private void stockOpnameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PopUp pop = new PopUp();
-            StockOpname frm = new StockOpname(pop);
+            StockOpname frm = new StockOpname();
             addForm(frm);
         }
+
+       
     }
 }

@@ -35,9 +35,9 @@ namespace KasirApp.GUI
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtStok = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtNama = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -45,7 +45,7 @@ namespace KasirApp.GUI
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtKode = new System.Windows.Forms.TextBox();
             this.txtNomor = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -95,6 +95,7 @@ namespace KasirApp.GUI
             this.textBox7.Location = new System.Drawing.Point(981, 154);
             this.textBox7.Margin = new System.Windows.Forms.Padding(4);
             this.textBox7.Name = "textBox7";
+            this.textBox7.ReadOnly = true;
             this.textBox7.Size = new System.Drawing.Size(41, 26);
             this.textBox7.TabIndex = 3;
             // 
@@ -104,17 +105,19 @@ namespace KasirApp.GUI
             this.textBox5.Location = new System.Drawing.Point(929, 154);
             this.textBox5.Margin = new System.Windows.Forms.Padding(4);
             this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(43, 26);
             this.textBox5.TabIndex = 3;
             // 
-            // textBox6
+            // txtStok
             // 
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(800, 119);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(95, 26);
-            this.textBox6.TabIndex = 3;
+            this.txtStok.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStok.Location = new System.Drawing.Point(800, 119);
+            this.txtStok.Margin = new System.Windows.Forms.Padding(4);
+            this.txtStok.Name = "txtStok";
+            this.txtStok.ReadOnly = true;
+            this.txtStok.Size = new System.Drawing.Size(95, 26);
+            this.txtStok.TabIndex = 3;
             // 
             // textBox4
             // 
@@ -125,20 +128,21 @@ namespace KasirApp.GUI
             this.textBox4.Size = new System.Drawing.Size(91, 26);
             this.textBox4.TabIndex = 3;
             // 
-            // textBox3
+            // txtNama
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(353, 89);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(344, 26);
-            this.textBox3.TabIndex = 3;
+            this.txtNama.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNama.Location = new System.Drawing.Point(353, 89);
+            this.txtNama.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNama.Name = "txtNama";
+            this.txtNama.ReadOnly = true;
+            this.txtNama.Size = new System.Drawing.Size(344, 26);
+            this.txtNama.TabIndex = 3;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(707, 96);
+            this.label6.Location = new System.Drawing.Point(705, 91);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(165, 20);
@@ -211,14 +215,15 @@ namespace KasirApp.GUI
             this.label2.TabIndex = 7;
             this.label2.Text = "Kode ";
             // 
-            // textBox2
+            // txtKode
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(104, 89);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(240, 26);
-            this.textBox2.TabIndex = 4;
+            this.txtKode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKode.Location = new System.Drawing.Point(104, 89);
+            this.txtKode.Margin = new System.Windows.Forms.Padding(4);
+            this.txtKode.Name = "txtKode";
+            this.txtKode.Size = new System.Drawing.Size(240, 26);
+            this.txtKode.TabIndex = 4;
+            this.txtKode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.raiseKeyEvent);
             // 
             // txtNomor
             // 
@@ -228,6 +233,7 @@ namespace KasirApp.GUI
             this.txtNomor.Name = "txtNomor";
             this.txtNomor.Size = new System.Drawing.Size(190, 26);
             this.txtNomor.TabIndex = 5;
+            this.txtNomor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.raiseKeyEvent);
             // 
             // groupBox1
             // 
@@ -239,10 +245,10 @@ namespace KasirApp.GUI
             this.groupBox1.Controls.Add(this.textBox7);
             this.groupBox1.Controls.Add(this.textBox5);
             this.groupBox1.Controls.Add(this.textBox9);
-            this.groupBox1.Controls.Add(this.textBox6);
+            this.groupBox1.Controls.Add(this.txtStok);
             this.groupBox1.Controls.Add(this.textBox8);
             this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.txtNama);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label12);
@@ -258,7 +264,7 @@ namespace KasirApp.GUI
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.textBox11);
             this.groupBox1.Controls.Add(this.textBox10);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.txtKode);
             this.groupBox1.Controls.Add(this.txtNomor);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(7, 6);
@@ -440,9 +446,9 @@ namespace KasirApp.GUI
             this.gunaGradientButton3.Margin = new System.Windows.Forms.Padding(4);
             this.gunaGradientButton3.Name = "gunaGradientButton3";
             this.gunaGradientButton3.OnHoverBaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
-            this.gunaGradientButton3.OnHoverBaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(246)))), ((int)(((byte)(197)))));
+            this.gunaGradientButton3.OnHoverBaseColor2 = System.Drawing.Color.White;
             this.gunaGradientButton3.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.gunaGradientButton3.OnHoverForeColor = System.Drawing.Color.White;
+            this.gunaGradientButton3.OnHoverForeColor = System.Drawing.Color.Black;
             this.gunaGradientButton3.OnHoverImage = null;
             this.gunaGradientButton3.OnPressedColor = System.Drawing.Color.Black;
             this.gunaGradientButton3.Size = new System.Drawing.Size(105, 27);
@@ -479,9 +485,9 @@ namespace KasirApp.GUI
             this.gunaGradientButton2.Margin = new System.Windows.Forms.Padding(4);
             this.gunaGradientButton2.Name = "gunaGradientButton2";
             this.gunaGradientButton2.OnHoverBaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
-            this.gunaGradientButton2.OnHoverBaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(246)))), ((int)(((byte)(197)))));
+            this.gunaGradientButton2.OnHoverBaseColor2 = System.Drawing.Color.White;
             this.gunaGradientButton2.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.gunaGradientButton2.OnHoverForeColor = System.Drawing.Color.White;
+            this.gunaGradientButton2.OnHoverForeColor = System.Drawing.Color.Black;
             this.gunaGradientButton2.OnHoverImage = null;
             this.gunaGradientButton2.OnPressedColor = System.Drawing.Color.Black;
             this.gunaGradientButton2.Size = new System.Drawing.Size(105, 37);
@@ -511,7 +517,7 @@ namespace KasirApp.GUI
             this.gunaGradientButton1.OnHoverBaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
             this.gunaGradientButton1.OnHoverBaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(246)))), ((int)(((byte)(197)))));
             this.gunaGradientButton1.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.gunaGradientButton1.OnHoverForeColor = System.Drawing.Color.White;
+            this.gunaGradientButton1.OnHoverForeColor = System.Drawing.Color.Black;
             this.gunaGradientButton1.OnHoverImage = null;
             this.gunaGradientButton1.OnPressedColor = System.Drawing.Color.Black;
             this.gunaGradientButton1.Size = new System.Drawing.Size(105, 37);
@@ -525,6 +531,7 @@ namespace KasirApp.GUI
             this.textBox9.Location = new System.Drawing.Point(800, 154);
             this.textBox9.Margin = new System.Windows.Forms.Padding(4);
             this.textBox9.Name = "textBox9";
+            this.textBox9.ReadOnly = true;
             this.textBox9.Size = new System.Drawing.Size(95, 26);
             this.textBox9.TabIndex = 3;
             // 
@@ -632,7 +639,6 @@ namespace KasirApp.GUI
             this.Name = "StockOpname";
             this.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.Text = "StockOpname";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.StockOpname_KeyDown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -646,9 +652,9 @@ namespace KasirApp.GUI
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtStok;
         private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtNama;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
@@ -656,7 +662,6 @@ namespace KasirApp.GUI
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox txtNomor;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox textBox8;
@@ -685,5 +690,6 @@ namespace KasirApp.GUI
         private System.Windows.Forms.DataGridViewTextBoxColumn TotQty;
         private System.Windows.Forms.DataGridViewTextBoxColumn Asal;
         private System.Windows.Forms.DataGridViewTextBoxColumn IE;
+        public System.Windows.Forms.TextBox txtKode;
     }
 }

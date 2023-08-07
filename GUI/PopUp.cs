@@ -9,29 +9,54 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using KasirApp.Model;
+using KasirApp.View;
+using KasirApp.Presenter;
 
 namespace KasirApp.GUI
 {
-    public partial class PopUp : Form
+    public partial class PopUp : Form,iPopup
     {
+        //Fields
         Operator op = new Operator();
+        PopUpPresenter _prn;
+        iPopUpRecieve _poprec;
         string select;
-        public PopUp()
+        //Constructor
+        public PopUp(iPopUpRecieve rec)
         {
             InitializeComponent();
+            _poprec = rec;
+            _prn = new PopUpPresenter(this);
         }
 
+        //Method
+        public void DatagridShow(DataTable dt)
+        {
+            DGV.DataSource = dt;
+        }
+
+        public void ShowBarangs()
+        {
+            DGV.DataSource =  _prn.tampilBarangs();
+            this.Show();
+        }
+
+        public void GetBarangs(BarangsModel md)
+        {
+            _poprec.GetPopUpData(md);
+        }
+        
         public void getBarang(string text)
         {
             DGV.DataSource = op.getByQuery("SELECT Nama, Barcode, Categori FROM view_barangs_all WHERE Nama LIKE '%" + text + "%' OR Barcode LIKE '%" + text + "%' ");
-            gunaGradientButton1.Text = "Proses";
+            btnMasukan.Text = "Proses";
             gunaGradientButton3.Visible = false;
         }
 
         public void getMember(string text)
         {
             DGV.DataSource = op.getByQuery("SELECT telepon,nama,email from members where nama LIKE '%" + text + "%'");
-            gunaGradientButton1.Text = "Tambah";
+            btnMasukan.Text = "Tambah";
             gunaGradientButton3.Visible = true;
         }
 
@@ -39,18 +64,12 @@ namespace KasirApp.GUI
         {
             DGV.DataSource = op.getByQuery("select telepon,nama,email from members");
         }
+        
 
         private void gunaGradientButton1_Click(object sender, EventArgs e)
         {
-            if (gunaGradientButton1.Text == "Proses")
-            {
-                Transaksi.instance.tb.Text = select;
-                this.Hide();
-            }
-            else if (gunaGradientButton1.Text == "Tambah")
-            {
-                this.Hide();
-            }
+            _prn.getBarangsData(select);
+            this.Hide();
         }
 
         private void btnProses_Click(object sender, EventArgs e)
@@ -60,7 +79,7 @@ namespace KasirApp.GUI
 
         private void gunaGradientButton3_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         public void PopUp_FormClosed(object sender, FormClosedEventArgs e)
@@ -79,5 +98,7 @@ namespace KasirApp.GUI
                 return;
             }
         }
+
+        
     }
 }

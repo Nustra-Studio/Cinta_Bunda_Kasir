@@ -64,7 +64,7 @@ namespace KasirApp.GUI
                     rd.Read();
                     if (!rd.HasRows)
                     {
-                        PopUp frm = new PopUp();
+                        PopUp frm = new PopUp(null);
                         frm.Show();
                         frm.getBarang(textBox1.Text.ToString());
                     }
