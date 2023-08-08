@@ -22,9 +22,9 @@ namespace KasirApp.Presenter
             _pop = pop;
         }
         
-        public DataTable tampilBarangs()
+        public DataTable tampilBarangs(string text)
         {
-            return _repo.Barangs();
+            return _repo.Barangs(text);
         }
 
         public void getBarangsData(string text)

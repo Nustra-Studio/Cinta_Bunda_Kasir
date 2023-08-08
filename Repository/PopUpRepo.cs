@@ -20,17 +20,32 @@ namespace KasirApp.Repository
 
         }
 
-        public DataTable Barangs()
+        public DataTable Barangs(string text)
         {
             DataTable dt = new DataTable();
-            using (MySqlCommand cmd = new MySqlCommand("SELECT Nama, Barcode, Categori FROM view_barangs_all", op.Conn))
+            if (text == string.Empty)
             {
-                op.KonekDB();
-                using (MySqlDataReader rd = cmd.ExecuteReader())
+                using (MySqlCommand cmd = new MySqlCommand("SELECT Nama, Barcode, Categori FROM view_barangs_all", op.Conn))
                 {
-                    dt.Load(rd);
+                    op.KonekDB();
+                    using (MySqlDataReader rd = cmd.ExecuteReader())
+                    {
+                        dt.Load(rd);
+                    }
+                    op.KonekDB();
                 }
-                op.KonekDB();
+            }
+            else
+            {
+                using (MySqlCommand cmd = new MySqlCommand("SELECT Nama, Barcode, Categori FROM view_barangs_all where Nama LIKE '%" + text + "%'", op.Conn))
+                {
+                    op.KonekDB();
+                    using (MySqlDataReader rd = cmd.ExecuteReader())
+                    {
+                        dt.Load(rd);
+                    }
+                    op.KonekDB();
+                }
             }
             return dt;
         }

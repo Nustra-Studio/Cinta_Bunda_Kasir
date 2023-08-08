@@ -35,9 +35,9 @@ namespace KasirApp.GUI
             DGV.DataSource = dt;
         }
 
-        public void ShowBarangs()
+        public void ShowBarangs(string text)
         {
-            DGV.DataSource =  _prn.tampilBarangs();
+            DGV.DataSource =  _prn.tampilBarangs(text);
             this.Show();
         }
 
@@ -65,7 +65,7 @@ namespace KasirApp.GUI
             DGV.DataSource = op.getByQuery("select telepon,nama,email from members");
         }
         
-
+        //Raise Events
         private void gunaGradientButton1_Click(object sender, EventArgs e)
         {
             _prn.getBarangsData(select);
@@ -87,6 +87,7 @@ namespace KasirApp.GUI
             this.Hide();
         }
 
+        //DGV Events
         private void DGV_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -99,6 +100,13 @@ namespace KasirApp.GUI
             }
         }
 
-        
+        public void RaiseEnterDGV(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                _prn.getBarangsData(select);
+                this.Hide();
+            }
+        }
     }
 }

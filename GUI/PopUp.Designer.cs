@@ -79,7 +79,7 @@ namespace KasirApp.GUI
             this.DGV.EnableHeadersVisualStyles = false;
             this.DGV.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.DGV.Location = new System.Drawing.Point(21, 63);
-            this.DGV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DGV.Margin = new System.Windows.Forms.Padding(4);
             this.DGV.Name = "DGV";
             this.DGV.ReadOnly = true;
             this.DGV.RowHeadersVisible = false;
@@ -110,12 +110,13 @@ namespace KasirApp.GUI
             this.DGV.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.DGV.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.DGV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_CellClick);
+            this.DGV.KeyDown += new System.Windows.Forms.KeyEventHandler(this.RaiseEnterDGV);
             // 
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(115, 21);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(705, 30);
             this.textBox1.TabIndex = 8;
@@ -148,7 +149,7 @@ namespace KasirApp.GUI
             this.btnProses.Image = null;
             this.btnProses.ImageSize = new System.Drawing.Size(20, 20);
             this.btnProses.Location = new System.Drawing.Point(832, 18);
-            this.btnProses.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnProses.Margin = new System.Windows.Forms.Padding(4);
             this.btnProses.Name = "btnProses";
             this.btnProses.OnHoverBaseColor1 = System.Drawing.Color.White;
             this.btnProses.OnHoverBaseColor2 = System.Drawing.Color.Lime;
@@ -179,7 +180,7 @@ namespace KasirApp.GUI
             this.btnMasukan.Image = null;
             this.btnMasukan.ImageSize = new System.Drawing.Size(20, 20);
             this.btnMasukan.Location = new System.Drawing.Point(21, 402);
-            this.btnMasukan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMasukan.Margin = new System.Windows.Forms.Padding(4);
             this.btnMasukan.Name = "btnMasukan";
             this.btnMasukan.OnHoverBaseColor1 = System.Drawing.Color.White;
             this.btnMasukan.OnHoverBaseColor2 = System.Drawing.Color.Lime;
@@ -210,7 +211,7 @@ namespace KasirApp.GUI
             this.gunaGradientButton2.Image = null;
             this.gunaGradientButton2.ImageSize = new System.Drawing.Size(20, 20);
             this.gunaGradientButton2.Location = new System.Drawing.Point(135, 402);
-            this.gunaGradientButton2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gunaGradientButton2.Margin = new System.Windows.Forms.Padding(4);
             this.gunaGradientButton2.Name = "gunaGradientButton2";
             this.gunaGradientButton2.OnHoverBaseColor1 = System.Drawing.Color.White;
             this.gunaGradientButton2.OnHoverBaseColor2 = System.Drawing.Color.Lime;
@@ -240,7 +241,7 @@ namespace KasirApp.GUI
             this.gunaGradientButton3.Image = null;
             this.gunaGradientButton3.ImageSize = new System.Drawing.Size(20, 20);
             this.gunaGradientButton3.Location = new System.Drawing.Point(781, 402);
-            this.gunaGradientButton3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gunaGradientButton3.Margin = new System.Windows.Forms.Padding(4);
             this.gunaGradientButton3.Name = "gunaGradientButton3";
             this.gunaGradientButton3.OnHoverBaseColor1 = System.Drawing.Color.White;
             this.gunaGradientButton3.OnHoverBaseColor2 = System.Drawing.Color.Lime;
@@ -266,7 +267,7 @@ namespace KasirApp.GUI
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.DGV);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "PopUp";
             this.Text = "PopUp";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PopUp_FormClosed);
