@@ -17,7 +17,6 @@ namespace KasirApp.Presenter
     class LoginPresenter : iRole
     {
         MboxOperator mb = new MboxOperator();
-        Koneksi1 con = new Koneksi1();
         Operator op = new Operator();
         iLogin _login;
         iMasterForm _iform;
@@ -100,7 +99,7 @@ namespace KasirApp.Presenter
             }
             else
             {
-                using (var url = new RestClient(con.url))
+                using (var url = new RestClient(op.url))
                 {
                     var request = new RestRequest("login", Method.Post);
                     request.AddParameter("username", _login.Username);

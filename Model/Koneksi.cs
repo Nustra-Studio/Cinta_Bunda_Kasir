@@ -8,16 +8,6 @@ using System.Data;
 
 namespace KasirApp.Model
 {
-    
-    public class Koneksi1
-    {
-        public string connString1 = "server=localhost;user id=root;password=123;port=3306;database=kasirdb";
-        public MySqlConnection Conn = new MySqlConnection("server=localhost;user id=root;password=123;port=3306;database=kasirdb");
-        public string url = "https://inventory.nustrastudio.com/api/";
-        //MySqlDataReader rd;
-        //MySqlDataAdapter da;
-    }
-
     public class Operator
     {
         public string url = "https://inventory.nustrastudio.com/api/";

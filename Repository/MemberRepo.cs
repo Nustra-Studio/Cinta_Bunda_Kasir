@@ -49,7 +49,6 @@ namespace KasirApp.Repository
                     var response = rc.Post(rs);
                     if (response.StatusCode == HttpStatusCode.OK)
                     {
-                        //var nc = rc.Post(rs);
                         mb.InformasiOK("Berhasil Daftar Member");
                     }
                     else if (response.StatusCode == HttpStatusCode.BadRequest)
@@ -58,9 +57,6 @@ namespace KasirApp.Repository
                         apiError err = JsonConvert.DeserializeObject<apiError>(jso);
                         mb.PeringatanOK(err.message.ToString());
                     }
-                    //Mbox Cek Response Error 
-                    //mb.InformasiOK(response.StatusCode.ToString() + response.Content.ToString());
-
                 }
             }
             catch (NullReferenceException ex)

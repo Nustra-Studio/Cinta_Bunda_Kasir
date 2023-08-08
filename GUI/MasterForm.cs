@@ -40,6 +40,7 @@ namespace KasirApp.GUI
         {
             if (MainPanel.Controls.Count <= 2)
             {
+                MainPanel.Controls.Clear();
                 form.TopLevel = false;
                 MainPanel.Controls.Add(form);
                 form.BringToFront();
@@ -227,6 +228,10 @@ namespace KasirApp.GUI
             addForm(frm);
         }
 
-       
+        private void postingStockOpnameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PostingStokOpname frm = new PostingStokOpname();
+            addForm(frm);
+        }
     }
 }
