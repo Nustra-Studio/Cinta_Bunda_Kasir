@@ -8,19 +8,27 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using KasirApp.Model;
+using KasirApp.View;
+using KasirApp.Presenter;
 using MySql.Data.MySqlClient;
 
 namespace KasirApp.GUI
 {
-    public partial class Transaksi : Form
+    public partial class Transaksi : Form,iTransaksi
     {
+        //Fields
         public static Transaksi instance;
         public TextBox tb;
         Operator op = new Operator();
         MySqlDataReader rd;
         userDataModel _user;
-
+        TransaksiPresenter _prn;
         int i;
+
+        //Interface Fields
+        public string randKode { get => txtRandKode.Text; set => txtRandKode.Text = value ; }
+
+        //Constructor
         public Transaksi(userDataModel user)
         {
             InitializeComponent();
@@ -28,6 +36,7 @@ namespace KasirApp.GUI
             tb = textBox1;
             i = 1;
             _user = user;
+            _prn = new TransaksiPresenter(this, _user);
         }
 
         public void NumericOnly(object sender, KeyPressEventArgs e)
@@ -100,6 +109,7 @@ namespace KasirApp.GUI
 
         }
 
+        //Raise KeyEvent
         private void Transaksi_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -116,6 +126,15 @@ namespace KasirApp.GUI
             else if (e.KeyCode == Keys.Y)
             {
                 print();
+            }
+        }
+
+        public void RaiseEnterKode(object sender, KeyEventArgs e)
+        {
+            string RandNumber = txtRandKode.Text;
+            if (e.KeyCode == Keys.Enter)
+            {
+                _prn.GetPoint();
             }
         }
 
