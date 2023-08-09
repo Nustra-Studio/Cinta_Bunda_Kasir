@@ -23,8 +23,9 @@ namespace KasirApp.Repository
         }
 
         //Method
-        public void AmbilPoint(userDataModel model, string kode)
+        public RootMember AmbilPoint(userDataModel model, string kode)
         {
+            RootMember mem = new RootMember();
             using (var client = new RestClient($"{op.urlcloud}cabangmember/"))
             {
                 var rs = new RestRequest("poin", Method.Get);
@@ -34,7 +35,10 @@ namespace KasirApp.Repository
                 var response = client.Get(rs);
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
-                    mb.InformasiOK(response.Content.ToString() + response.StatusCode.ToString());
+                    string json = response.Content.ToString();
+                    mem = JsonConvert.DeserializeObject<RootMember>(json);
+
+                    //mb.InformasiOK(response.Content.ToString() + response.StatusCode.ToString());
                 }
                 else if(response.StatusCode == HttpStatusCode.Unauthorized)
                 {
@@ -43,6 +47,7 @@ namespace KasirApp.Repository
                     mb.PeringatanOK(err.message.ToString());
                 }
             }
+            return mem;
         }
     }
 }

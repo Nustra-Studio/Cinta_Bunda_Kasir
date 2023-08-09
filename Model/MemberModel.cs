@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace KasirApp.Model
 {
+    //Local
     public class MemberModel
     {
         private string token;
@@ -24,4 +25,43 @@ namespace KasirApp.Model
 
         public string Token { get => token; set => token = value; }
     }
+
+    //API MODEL
+    // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
+    public class Member
+    {
+        public int id { get; set; }
+        public string uuid { get; set; }
+        public string name { get; set; }
+        public string email { get; set; }
+        public string password { get; set; }
+        public string phone { get; set; }
+        public string kode_akses { get; set; }
+        public string alamat { get; set; }
+        public string status { get; set; }
+        public string random_kode { get; set; }
+        public string expait_kode { get; set; }
+        public DateTime created_at { get; set; }
+        public DateTime updated_at { get; set; }
+    }
+
+    public class Poin
+    {
+        public int id { get; set; }
+        public string uuid { get; set; }
+        public string id_member { get; set; }
+        public string poin { get; set; }
+        public string status { get; set; }
+        public object expaid { get; set; }
+        public object created_at { get; set; }
+        public object updated_at { get; set; }
+    }
+
+    public class RootMember
+    {
+        public Member member { get; set; }
+        public Poin poin { get; set; }
+    }
+
+
 }

@@ -128,10 +128,10 @@ namespace KasirApp.Repository
                     }
                     else
                     {
+                        op.KonekDB();
                         return false;
                     }
                 }
-                op.KonekDB();
             }
         }
     }

@@ -74,7 +74,7 @@ namespace KasirApp.GUI
         public MasterForm()
         {
             InitializeComponent();
-            //logoutState();
+            logoutState();
             this.WindowState = FormWindowState.Maximized;
         }
 
@@ -93,12 +93,6 @@ namespace KasirApp.GUI
         {
             Transaksi frm = new Transaksi(_user);
             addForm(frm);
-            //Transaksi frm = new Transaksi();
-            //frm.TopLevel = false;
-            //frm.Show();
-            //MainPanel.Controls.Add(frm);
-            //frm.BringToFront();
-            //frm.Show();
         }
 
         private void menuStrip1_Click(object sender, EventArgs e)

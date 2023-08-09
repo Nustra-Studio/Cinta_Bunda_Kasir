@@ -28,7 +28,8 @@ namespace KasirApp.Presenter
         public void GetPoint()
         {
             string rand = _trn.randKode.ToString();
-            _repo.AmbilPoint(_model,rand);
+            _trn.GetMember(_repo.AmbilPoint(_model, rand));
+            
         }
     }
 }

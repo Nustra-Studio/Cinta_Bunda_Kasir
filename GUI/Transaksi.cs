@@ -28,6 +28,12 @@ namespace KasirApp.GUI
         //Interface Fields
         public string randKode { get => txtRandKode.Text; set => txtRandKode.Text = value ; }
 
+        //Intercase Method
+        public void GetMember(RootMember rootmem)
+        {
+            txtPoint.Text = rootmem.poin.poin.ToString();
+        }
+
         //Constructor
         public Transaksi(userDataModel user)
         {
@@ -60,7 +66,7 @@ namespace KasirApp.GUI
         {
             printPreviewDialog1.Document = printDocument1;
             printPreviewDialog1.Show();
-        }
+        }   
     
         public void insert()
         {
@@ -116,7 +122,6 @@ namespace KasirApp.GUI
             {
                 if (isNull() == true)
                 {
-                    //MessageBox.Show("Tolong Lengkapi Data", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     insert();
                 }else
                 {
@@ -196,5 +201,7 @@ namespace KasirApp.GUI
                 fra.BringToFront();
             }
         }
+
+        
     }
 }
