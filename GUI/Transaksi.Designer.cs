@@ -28,30 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Transaksi));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gunaElipsePanel1 = new Guna.UI.WinForms.GunaElipsePanel();
-            this.label19 = new System.Windows.Forms.Label();
+            this.gunaPanel1 = new Guna.UI.WinForms.GunaPanel();
+            this.gunaPanel2 = new Guna.UI.WinForms.GunaPanel();
+            this.gunaPanel3 = new Guna.UI.WinForms.GunaPanel();
+            this.txtNamaUser = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.txtNomorKwitansi = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.textBox8 = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.dgv = new Guna.UI.WinForms.GunaDataGridView();
-            this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Kode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Barang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Harga = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label19 = new System.Windows.Forms.Label();
+            this.lblHeader = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtBarcode = new System.Windows.Forms.TextBox();
+            this.txtHarga = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtQty = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtDiskon = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtRandKode = new System.Windows.Forms.TextBox();
             this.txtPoint = new System.Windows.Forms.TextBox();
@@ -60,7 +60,6 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -73,20 +72,29 @@
             this.label6 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.gunaGradientButton1 = new Guna.UI.WinForms.GunaGradientButton();
+            this.dgv = new Guna.UI.WinForms.GunaDataGridView();
+            this.nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.barcode1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.harga = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label9 = new System.Windows.Forms.Label();
             this.gunaElipsePanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
+            this.gunaPanel1.SuspendLayout();
+            this.gunaPanel2.SuspendLayout();
+            this.gunaPanel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.gunaElipsePanel2.SuspendLayout();
             this.gunaElipsePanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
             // 
             // gunaElipsePanel1
             // 
             this.gunaElipsePanel1.BackColor = System.Drawing.Color.Transparent;
             this.gunaElipsePanel1.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
-            this.gunaElipsePanel1.Controls.Add(this.label19);
-            this.gunaElipsePanel1.Controls.Add(this.textBox8);
-            this.gunaElipsePanel1.Controls.Add(this.label9);
+            this.gunaElipsePanel1.Controls.Add(this.gunaPanel1);
+            this.gunaElipsePanel1.Controls.Add(this.lblHeader);
             this.gunaElipsePanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.gunaElipsePanel1.Location = new System.Drawing.Point(0, 0);
             this.gunaElipsePanel1.Margin = new System.Windows.Forms.Padding(4);
@@ -95,144 +103,118 @@
             this.gunaElipsePanel1.Size = new System.Drawing.Size(1488, 155);
             this.gunaElipsePanel1.TabIndex = 2;
             // 
-            // label19
+            // gunaPanel1
             // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(855, 20);
-            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(63, 17);
-            this.label19.TabIndex = 9;
-            this.label19.Text = "No Struk";
+            this.gunaPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.gunaPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
+            this.gunaPanel1.Controls.Add(this.gunaPanel2);
+            this.gunaPanel1.Location = new System.Drawing.Point(1095, 12);
+            this.gunaPanel1.Name = "gunaPanel1";
+            this.gunaPanel1.Padding = new System.Windows.Forms.Padding(2);
+            this.gunaPanel1.Size = new System.Drawing.Size(381, 96);
+            this.gunaPanel1.TabIndex = 11;
+            // 
+            // gunaPanel2
+            // 
+            this.gunaPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
+            this.gunaPanel2.Controls.Add(this.gunaPanel3);
+            this.gunaPanel2.Controls.Add(this.textBox8);
+            this.gunaPanel2.Controls.Add(this.label19);
+            this.gunaPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gunaPanel2.Location = new System.Drawing.Point(2, 2);
+            this.gunaPanel2.Name = "gunaPanel2";
+            this.gunaPanel2.Size = new System.Drawing.Size(377, 92);
+            this.gunaPanel2.TabIndex = 12;
+            // 
+            // gunaPanel3
+            // 
+            this.gunaPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
+            this.gunaPanel3.Controls.Add(this.txtNamaUser);
+            this.gunaPanel3.Controls.Add(this.label20);
+            this.gunaPanel3.Controls.Add(this.txtNomorKwitansi);
+            this.gunaPanel3.Controls.Add(this.label7);
+            this.gunaPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gunaPanel3.Location = new System.Drawing.Point(0, 0);
+            this.gunaPanel3.Name = "gunaPanel3";
+            this.gunaPanel3.Size = new System.Drawing.Size(377, 92);
+            this.gunaPanel3.TabIndex = 13;
+            // 
+            // txtNamaUser
+            // 
+            this.txtNamaUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNamaUser.Location = new System.Drawing.Point(114, 50);
+            this.txtNamaUser.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNamaUser.Name = "txtNamaUser";
+            this.txtNamaUser.Size = new System.Drawing.Size(246, 30);
+            this.txtNamaUser.TabIndex = 1;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(42, 53);
+            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(64, 25);
+            this.label20.TabIndex = 9;
+            this.label20.Text = "User :";
+            // 
+            // txtNomorKwitansi
+            // 
+            this.txtNomorKwitansi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNomorKwitansi.Location = new System.Drawing.Point(114, 12);
+            this.txtNomorKwitansi.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNomorKwitansi.Name = "txtNomorKwitansi";
+            this.txtNomorKwitansi.Size = new System.Drawing.Size(246, 30);
+            this.txtNomorKwitansi.TabIndex = 0;
+            this.txtNomorKwitansi.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GlobalKeyDown);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(7, 15);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(99, 25);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "No Struk :";
             // 
             // textBox8
             // 
-            this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox8.Location = new System.Drawing.Point(943, 15);
+            this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox8.Location = new System.Drawing.Point(114, 9);
             this.textBox8.Margin = new System.Windows.Forms.Padding(4);
             this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(439, 23);
+            this.textBox8.Size = new System.Drawing.Size(246, 30);
             this.textBox8.TabIndex = 10;
             this.textBox8.Text = "PJC-10000001";
             // 
-            // label9
+            // label19
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(16, 23);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(678, 156);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "Selamat Datang di \r\nCINTA BUNDA KEDUNGWARU\r\n\r\n";
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(18, 12);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(88, 25);
+            this.label19.TabIndex = 9;
+            this.label19.Text = "No Struk";
             // 
-            // dgv
+            // lblHeader
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgv.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
-            this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgv.ColumnHeadersHeight = 30;
-            this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.No,
-            this.Kode,
-            this.Barang,
-            this.Qty,
-            this.Harga,
-            this.Total});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgv.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dgv.EnableHeadersVisualStyles = false;
-            this.dgv.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgv.Location = new System.Drawing.Point(0, 181);
-            this.dgv.Margin = new System.Windows.Forms.Padding(4);
-            this.dgv.Name = "dgv";
-            this.dgv.RowHeadersVisible = false;
-            this.dgv.RowHeadersWidth = 51;
-            this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(1488, 295);
-            this.dgv.TabIndex = 3;
-            this.dgv.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Guna;
-            this.dgv.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.dgv.ThemeStyle.AlternatingRowsStyle.Font = null;
-            this.dgv.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
-            this.dgv.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
-            this.dgv.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.dgv.ThemeStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
-            this.dgv.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgv.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
-            this.dgv.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dgv.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            this.dgv.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.dgv.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.dgv.ThemeStyle.HeaderStyle.Height = 30;
-            this.dgv.ThemeStyle.ReadOnly = false;
-            this.dgv.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.dgv.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgv.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            this.dgv.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dgv.ThemeStyle.RowsStyle.Height = 22;
-            this.dgv.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgv.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            // 
-            // No
-            // 
-            this.No.FillWeight = 30F;
-            this.No.HeaderText = "No";
-            this.No.MinimumWidth = 12;
-            this.No.Name = "No";
-            // 
-            // Kode
-            // 
-            this.Kode.HeaderText = "Kode";
-            this.Kode.MinimumWidth = 6;
-            this.Kode.Name = "Kode";
-            // 
-            // Barang
-            // 
-            this.Barang.HeaderText = "Barang";
-            this.Barang.MinimumWidth = 6;
-            this.Barang.Name = "Barang";
-            // 
-            // Qty
-            // 
-            this.Qty.HeaderText = "Qty";
-            this.Qty.MinimumWidth = 6;
-            this.Qty.Name = "Qty";
-            // 
-            // Harga
-            // 
-            this.Harga.HeaderText = "Harga";
-            this.Harga.MinimumWidth = 6;
-            this.Harga.Name = "Harga";
-            // 
-            // Total
-            // 
-            this.Total.HeaderText = "Total";
-            this.Total.MinimumWidth = 6;
-            this.Total.Name = "Total";
+            this.lblHeader.AutoSize = true;
+            this.lblHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHeader.Location = new System.Drawing.Point(16, 23);
+            this.lblHeader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblHeader.Name = "lblHeader";
+            this.lblHeader.Size = new System.Drawing.Size(678, 156);
+            this.lblHeader.TabIndex = 0;
+            this.lblHeader.Text = "Selamat Datang di \r\nCINTA BUNDA KEDUNGWARU\r\n\r\n";
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(575, 6);
@@ -244,8 +226,10 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 155);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
@@ -254,61 +238,68 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(16, 492);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 25);
+            this.label2.Size = new System.Drawing.Size(85, 25);
             this.label2.TabIndex = 6;
-            this.label2.Text = "PLU";
+            this.label2.Text = "Barcode";
             // 
-            // textBox1
+            // txtBarcode
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(16, 521);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(524, 41);
-            this.textBox1.TabIndex = 7;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Transaksi_KeyDown);
+            this.txtBarcode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBarcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBarcode.Location = new System.Drawing.Point(16, 521);
+            this.txtBarcode.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBarcode.Name = "txtBarcode";
+            this.txtBarcode.Size = new System.Drawing.Size(524, 41);
+            this.txtBarcode.TabIndex = 0;
+            this.txtBarcode.TextChanged += new System.EventHandler(this.RaiseBarcodeChanged);
+            this.txtBarcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GlobalKeyDown);
             // 
-            // textBox2
+            // txtHarga
             // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(548, 521);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(332, 41);
-            this.textBox2.TabIndex = 7;
+            this.txtHarga.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtHarga.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHarga.Location = new System.Drawing.Point(548, 521);
+            this.txtHarga.Margin = new System.Windows.Forms.Padding(4);
+            this.txtHarga.Name = "txtHarga";
+            this.txtHarga.ReadOnly = true;
+            this.txtHarga.Size = new System.Drawing.Size(332, 41);
+            this.txtHarga.TabIndex = 1;
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(543, 492);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 25);
+            this.label3.Size = new System.Drawing.Size(124, 25);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Harga";
+            this.label3.Text = "Harga (HPP)";
             // 
-            // textBox3
+            // txtQty
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(889, 521);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(104, 41);
-            this.textBox3.TabIndex = 7;
-            this.textBox3.Text = "1";
-            this.textBox3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Transaksi_KeyDown);
-            this.textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumericOnly);
+            this.txtQty.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtQty.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQty.Location = new System.Drawing.Point(889, 521);
+            this.txtQty.Margin = new System.Windows.Forms.Padding(4);
+            this.txtQty.Name = "txtQty";
+            this.txtQty.ReadOnly = true;
+            this.txtQty.Size = new System.Drawing.Size(104, 41);
+            this.txtQty.TabIndex = 2;
+            this.txtQty.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GlobalKeyDown);
+            this.txtQty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumericOnly);
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(884, 492);
@@ -318,18 +309,22 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Qty";
             // 
-            // textBox4
+            // txtDiskon
             // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(1003, 521);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(139, 41);
-            this.textBox4.TabIndex = 7;
-            this.textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumericOnly);
+            this.txtDiskon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDiskon.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDiskon.Location = new System.Drawing.Point(1003, 521);
+            this.txtDiskon.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDiskon.Name = "txtDiskon";
+            this.txtDiskon.ReadOnly = true;
+            this.txtDiskon.Size = new System.Drawing.Size(139, 41);
+            this.txtDiskon.TabIndex = 3;
+            this.txtDiskon.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GlobalKeyDown);
+            this.txtDiskon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumericOnly);
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(997, 492);
@@ -341,13 +336,13 @@
             // 
             // txtRandKode
             // 
+            this.txtRandKode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtRandKode.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRandKode.Location = new System.Drawing.Point(1156, 604);
             this.txtRandKode.Margin = new System.Windows.Forms.Padding(4);
             this.txtRandKode.Name = "txtRandKode";
             this.txtRandKode.Size = new System.Drawing.Size(317, 34);
-            this.txtRandKode.TabIndex = 7;
-            this.txtRandKode.Text = "3452123578941678";
+            this.txtRandKode.TabIndex = 5;
             this.txtRandKode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.RaiseEnterKode);
             // 
             // txtPoint
@@ -357,10 +352,11 @@
             this.txtPoint.Margin = new System.Windows.Forms.Padding(4);
             this.txtPoint.Name = "txtPoint";
             this.txtPoint.Size = new System.Drawing.Size(133, 34);
-            this.txtPoint.TabIndex = 7;
+            this.txtPoint.TabIndex = 6;
             // 
             // gunaElipsePanel2
             // 
+            this.gunaElipsePanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.gunaElipsePanel2.BackColor = System.Drawing.Color.Transparent;
             this.gunaElipsePanel2.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
             this.gunaElipsePanel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -369,7 +365,7 @@
             this.gunaElipsePanel2.Margin = new System.Windows.Forms.Padding(4);
             this.gunaElipsePanel2.Name = "gunaElipsePanel2";
             this.gunaElipsePanel2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gunaElipsePanel2.Size = new System.Drawing.Size(1130, 62);
+            this.gunaElipsePanel2.Size = new System.Drawing.Size(1126, 62);
             this.gunaElipsePanel2.TabIndex = 8;
             // 
             // gunaElipsePanel3
@@ -378,9 +374,9 @@
             this.gunaElipsePanel3.BaseColor = System.Drawing.SystemColors.Control;
             this.gunaElipsePanel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.gunaElipsePanel3.Controls.Add(this.label18);
+            this.gunaElipsePanel3.Controls.Add(this.label9);
             this.gunaElipsePanel3.Controls.Add(this.label16);
             this.gunaElipsePanel3.Controls.Add(this.label14);
-            this.gunaElipsePanel3.Controls.Add(this.label17);
             this.gunaElipsePanel3.Controls.Add(this.label15);
             this.gunaElipsePanel3.Controls.Add(this.label12);
             this.gunaElipsePanel3.Controls.Add(this.label13);
@@ -391,13 +387,13 @@
             this.gunaElipsePanel3.Location = new System.Drawing.Point(3, 2);
             this.gunaElipsePanel3.Margin = new System.Windows.Forms.Padding(4);
             this.gunaElipsePanel3.Name = "gunaElipsePanel3";
-            this.gunaElipsePanel3.Size = new System.Drawing.Size(1122, 56);
+            this.gunaElipsePanel3.Size = new System.Drawing.Size(1118, 56);
             this.gunaElipsePanel3.TabIndex = 8;
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(501, 27);
+            this.label18.Location = new System.Drawing.Point(602, 27);
             this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(115, 17);
@@ -407,42 +403,32 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(431, 27);
+            this.label16.Location = new System.Drawing.Point(445, 27);
             this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(62, 17);
+            this.label16.Size = new System.Drawing.Size(142, 17);
             this.label16.TabIndex = 0;
-            this.label16.Text = "F9 - HJ2";
+            this.label16.Text = "F8 - Harga Karyawan";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(281, 27);
+            this.label14.Location = new System.Drawing.Point(295, 27);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(139, 17);
             this.label14.TabIndex = 0;
             this.label14.Text = "F6 - Cek Ulang Struk";
             // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(501, 7);
-            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(136, 17);
-            this.label17.TabIndex = 0;
-            this.label17.Text = "F10 - HJ FREE LINE";
-            // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(431, 7);
+            this.label15.Location = new System.Drawing.Point(445, 7);
             this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(62, 17);
+            this.label15.Size = new System.Drawing.Size(130, 17);
             this.label15.TabIndex = 0;
-            this.label15.Text = "F8 - HJ1";
+            this.label15.Text = "F7 - Harga Reguler";
             // 
             // label12
             // 
@@ -450,14 +436,14 @@
             this.label12.Location = new System.Drawing.Point(148, 27);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(126, 17);
+            this.label12.Size = new System.Drawing.Size(136, 17);
             this.label12.TabIndex = 0;
-            this.label12.Text = "F4 - Daftar Barang";
+            this.label12.Text = "F4 - Tampil Barangs";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(281, 7);
+            this.label13.Location = new System.Drawing.Point(295, 7);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(117, 17);
@@ -510,6 +496,7 @@
             // 
             // btnProses
             // 
+            this.btnProses.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnProses.AnimationHoverSpeed = 0.07F;
             this.btnProses.AnimationSpeed = 0.03F;
             this.btnProses.BaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
@@ -534,13 +521,14 @@
             this.btnProses.OnHoverImage = null;
             this.btnProses.OnPressedColor = System.Drawing.Color.Black;
             this.btnProses.Size = new System.Drawing.Size(319, 37);
-            this.btnProses.TabIndex = 9;
+            this.btnProses.TabIndex = 4;
             this.btnProses.Text = "Tambah Member";
             this.btnProses.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.btnProses.Click += new System.EventHandler(this.btnProses_Click);
+            this.btnProses.Click += new System.EventHandler(this.RaiseAddemember);
             // 
             // label6
             // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(1282, 570);
@@ -552,6 +540,7 @@
             // 
             // checkBox1
             // 
+            this.checkBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBox1.AutoSize = true;
             this.checkBox1.Checked = true;
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -559,12 +548,13 @@
             this.checkBox1.Location = new System.Drawing.Point(1296, 648);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(179, 29);
-            this.checkBox1.TabIndex = 11;
+            this.checkBox1.TabIndex = 7;
             this.checkBox1.Text = "Gunakan Diskon";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // gunaGradientButton1
             // 
+            this.gunaGradientButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.gunaGradientButton1.AnimationHoverSpeed = 0.07F;
             this.gunaGradientButton1.AnimationSpeed = 0.03F;
             this.gunaGradientButton1.BaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
@@ -579,7 +569,7 @@
             this.gunaGradientButton1.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.gunaGradientButton1.Image = null;
             this.gunaGradientButton1.ImageSize = new System.Drawing.Size(20, 20);
-            this.gunaGradientButton1.Location = new System.Drawing.Point(1154, 687);
+            this.gunaGradientButton1.Location = new System.Drawing.Point(1156, 687);
             this.gunaGradientButton1.Margin = new System.Windows.Forms.Padding(4);
             this.gunaGradientButton1.Name = "gunaGradientButton1";
             this.gunaGradientButton1.OnHoverBaseColor1 = System.Drawing.Color.White;
@@ -588,17 +578,144 @@
             this.gunaGradientButton1.OnHoverForeColor = System.Drawing.Color.Black;
             this.gunaGradientButton1.OnHoverImage = null;
             this.gunaGradientButton1.OnPressedColor = System.Drawing.Color.Black;
-            this.gunaGradientButton1.Size = new System.Drawing.Size(319, 37);
-            this.gunaGradientButton1.TabIndex = 9;
+            this.gunaGradientButton1.Size = new System.Drawing.Size(317, 37);
+            this.gunaGradientButton1.TabIndex = 8;
             this.gunaGradientButton1.Text = "Tukarkan Item";
             this.gunaGradientButton1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.gunaGradientButton1.Click += new System.EventHandler(this.btnProses_Click);
+            // 
+            // dgv
+            // 
+            this.dgv.AllowUserToAddRows = false;
+            this.dgv.AllowUserToDeleteRows = false;
+            this.dgv.AllowUserToOrderColumns = true;
+            this.dgv.AllowUserToResizeColumns = false;
+            this.dgv.AllowUserToResizeRows = false;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
+            this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgv.ColumnHeadersHeight = 30;
+            this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.nama,
+            this.barcode1,
+            this.quantity,
+            this.harga,
+            this.total});
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dgv.EnableHeadersVisualStyles = false;
+            this.dgv.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgv.Location = new System.Drawing.Point(0, 183);
+            this.dgv.Margin = new System.Windows.Forms.Padding(4);
+            this.dgv.Name = "dgv";
+            this.dgv.ReadOnly = true;
+            this.dgv.RowHeadersVisible = false;
+            this.dgv.RowHeadersWidth = 51;
+            this.dgv.RowTemplate.Height = 30;
+            this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv.Size = new System.Drawing.Size(1488, 295);
+            this.dgv.TabIndex = 12;
+            this.dgv.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Guna;
+            this.dgv.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgv.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.dgv.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.dgv.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.dgv.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.dgv.ThemeStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
+            this.dgv.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgv.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
+            this.dgv.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgv.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgv.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.dgv.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.dgv.ThemeStyle.HeaderStyle.Height = 30;
+            this.dgv.ThemeStyle.ReadOnly = true;
+            this.dgv.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgv.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgv.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgv.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dgv.ThemeStyle.RowsStyle.Height = 30;
+            this.dgv.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgv.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.RaiseCellClicks);
+            this.dgv.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GlobalKeyDown);
+            // 
+            // nama
+            // 
+            this.nama.DataPropertyName = "nama";
+            this.nama.HeaderText = "Nama";
+            this.nama.MinimumWidth = 6;
+            this.nama.Name = "nama";
+            this.nama.ReadOnly = true;
+            // 
+            // barcode1
+            // 
+            this.barcode1.DataPropertyName = "barcode";
+            this.barcode1.HeaderText = "Barcode";
+            this.barcode1.MinimumWidth = 6;
+            this.barcode1.Name = "barcode1";
+            this.barcode1.ReadOnly = true;
+            // 
+            // quantity
+            // 
+            this.quantity.DataPropertyName = "quantity";
+            this.quantity.HeaderText = "Qty";
+            this.quantity.MinimumWidth = 6;
+            this.quantity.Name = "quantity";
+            this.quantity.ReadOnly = true;
+            // 
+            // harga
+            // 
+            this.harga.DataPropertyName = "harga_jual";
+            this.harga.HeaderText = "Harga Jual";
+            this.harga.MinimumWidth = 6;
+            this.harga.Name = "harga";
+            this.harga.ReadOnly = true;
+            // 
+            // total
+            // 
+            this.total.DataPropertyName = "total";
+            this.total.HeaderText = "Total";
+            this.total.MinimumWidth = 6;
+            this.total.Name = "total";
+            this.total.ReadOnly = true;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(602, 7);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(132, 17);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "F9 - Harga Reseller";
             // 
             // Transaksi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1488, 737);
+            this.Controls.Add(this.dgv);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.gunaGradientButton1);
@@ -606,29 +723,32 @@
             this.Controls.Add(this.gunaElipsePanel2);
             this.Controls.Add(this.txtRandKode);
             this.Controls.Add(this.txtPoint);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtDiskon);
+            this.Controls.Add(this.txtQty);
+            this.Controls.Add(this.txtHarga);
+            this.Controls.Add(this.txtBarcode);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dgv);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.gunaElipsePanel1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Transaksi";
             this.Text = "Cinta Bunda - Transaksi";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Transaksi_KeyDown);
             this.gunaElipsePanel1.ResumeLayout(false);
             this.gunaElipsePanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
+            this.gunaPanel1.ResumeLayout(false);
+            this.gunaPanel2.ResumeLayout(false);
+            this.gunaPanel2.PerformLayout();
+            this.gunaPanel3.ResumeLayout(false);
+            this.gunaPanel3.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.gunaElipsePanel2.ResumeLayout(false);
             this.gunaElipsePanel3.ResumeLayout(false);
             this.gunaElipsePanel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -636,22 +756,21 @@
 
         #endregion
         private Guna.UI.WinForms.GunaElipsePanel gunaElipsePanel1;
-        private Guna.UI.WinForms.GunaDataGridView dgv;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtHarga;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtQty;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtDiskon;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtRandKode;
         private System.Windows.Forms.TextBox txtPoint;
         private Guna.UI.WinForms.GunaElipsePanel gunaElipsePanel2;
         private Guna.UI.WinForms.GunaElipsePanel gunaElipsePanel3;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblHeader;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
@@ -660,21 +779,28 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Label label19;
-        public System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.TextBox txtBarcode;
         private Guna.UI.WinForms.GunaGradientButton btnProses;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn No;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Kode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Barang;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Qty;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Harga;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Total;
         private System.Windows.Forms.CheckBox checkBox1;
         private Guna.UI.WinForms.GunaGradientButton gunaGradientButton1;
+        private Guna.UI.WinForms.GunaPanel gunaPanel1;
+        private Guna.UI.WinForms.GunaPanel gunaPanel2;
+        private Guna.UI.WinForms.GunaPanel gunaPanel3;
+        private System.Windows.Forms.TextBox txtNamaUser;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox txtNomorKwitansi;
+        private System.Windows.Forms.Label label7;
+        private Guna.UI.WinForms.GunaDataGridView dgv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nama;
+        private System.Windows.Forms.DataGridViewTextBoxColumn barcode1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn harga;
+        private System.Windows.Forms.DataGridViewTextBoxColumn total;
+        private System.Windows.Forms.Label label9;
     }
 }

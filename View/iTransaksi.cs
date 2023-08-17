@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,15 @@ namespace KasirApp.View
     public interface iTransaksi
     {
         string randKode { get; set; }
+        string barcode { get; set; }
+        string nomorPJ { get; set; }
+        string state { get; set; }
+        string qty { get; set; }
+        string selection { get; set; }
         void GetMember(RootMember rootmem);
+        void GetDataBarangs(TransaksiModel md);
+        void TampilGrid(DataTable dt);
+        void clear();
+        void ClearAll();
     }
 }
