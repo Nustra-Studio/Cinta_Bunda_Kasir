@@ -24,7 +24,7 @@ namespace KasirApp.Presenter
         {
             _trn = trans;
             _model = model;
-            _repo = new TransaksiRepo();
+            _repo = new TransaksiRepo(model);
             _rec = rec;
         }
 
@@ -33,7 +33,29 @@ namespace KasirApp.Presenter
         public void GetPoint()
         {
             string rand = _trn.randKode.ToString();
-            _trn.GetMember(_repo.AmbilPoint(_model, rand));
+            if (_repo.AmbilPoint(_model, rand)==null)
+            {
+                mb.PeringatanOK("Kode Salah atau Kadaluarsa!");
+            }
+            else
+            {
+                _trn.GetMember(_repo.AmbilPoint(_model, rand));
+            }
+        }
+
+        public void getDataByValue()
+        {
+            var model = new TransaksiModel();
+            model.Barkode = _trn.selection;
+            model.State = _trn.state;
+            model.NomorPJ = _trn.nomorPJ;
+
+            _trn.GetDataBarangs(_repo.getByValue(model));
+        }
+
+        public void setPoint()
+        {
+
         }
 
         public void TampilTable()
@@ -62,6 +84,7 @@ namespace KasirApp.Presenter
             model.Barkode = _trn.barcode;
             model.NomorPJ = _trn.nomorPJ;
             model.State = _trn.state;
+            model.Id_member = _trn.NamaMem;
             if (_repo.CekData(model)==true)
             {
                 _repo.CekRows(model);
@@ -79,9 +102,13 @@ namespace KasirApp.Presenter
 
         public void insertApi(int sum)
         {
+            string rand = _trn.randKode.ToString();
+
             var model = new TransaksiModel();
             model.Barkode = _trn.barcode;
             model.NomorPJ = _trn.nomorPJ;
+            model.Id_member = _trn.noHpMem;
+
             _repo.insertHistori(_model, model, sum);
             _trn.ClearAll();
         }
@@ -108,6 +135,24 @@ namespace KasirApp.Presenter
                 TampilTable();
             }
         }
+        public void ApplyDiskon()
+        {
+            var model = new TransaksiModel();
+            model.NomorPJ = _trn.nomorPJ;
+            model.Barkode = _trn.selection;
+            model.Diskon = _trn.diskonTrans;
+            model.State = _trn.state;
+            
+            if (model.Diskon == null)
+            {
+                mb.PeringatanOK("Masukan Nominal Diskon");
+            }
+            else
+            {
+                _repo.UpdateDiskon(model);
+                TampilTable();
+            }
+        }
 
         public void DeleteItem(TransaksiModel model)
         {
@@ -122,9 +167,5 @@ namespace KasirApp.Presenter
             }
         }
 
-        public void ApplyDiskon(TransaksiModel model)
-        {
-
-        }
     }
 }

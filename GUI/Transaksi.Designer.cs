@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Transaksi));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gunaElipsePanel1 = new Guna.UI.WinForms.GunaElipsePanel();
             this.gunaPanel1 = new Guna.UI.WinForms.GunaPanel();
             this.gunaPanel2 = new Guna.UI.WinForms.GunaPanel();
@@ -58,6 +59,7 @@
             this.gunaElipsePanel2 = new Guna.UI.WinForms.GunaElipsePanel();
             this.gunaElipsePanel3 = new Guna.UI.WinForms.GunaElipsePanel();
             this.label18 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -76,9 +78,9 @@
             this.nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.barcode1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.disko = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.harga = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label9 = new System.Windows.Forms.Label();
             this.gunaElipsePanel1.SuspendLayout();
             this.gunaPanel1.SuspendLayout();
             this.gunaPanel2.SuspendLayout();
@@ -101,7 +103,7 @@
             this.gunaElipsePanel1.Name = "gunaElipsePanel1";
             this.gunaElipsePanel1.Radius = 10;
             this.gunaElipsePanel1.Size = new System.Drawing.Size(1488, 155);
-            this.gunaElipsePanel1.TabIndex = 2;
+            this.gunaElipsePanel1.TabIndex = 0;
             // 
             // gunaPanel1
             // 
@@ -137,7 +139,7 @@
             this.gunaPanel3.Location = new System.Drawing.Point(0, 0);
             this.gunaPanel3.Name = "gunaPanel3";
             this.gunaPanel3.Size = new System.Drawing.Size(377, 92);
-            this.gunaPanel3.TabIndex = 13;
+            this.gunaPanel3.TabIndex = 0;
             // 
             // txtNamaUser
             // 
@@ -257,7 +259,7 @@
             this.txtBarcode.Margin = new System.Windows.Forms.Padding(4);
             this.txtBarcode.Name = "txtBarcode";
             this.txtBarcode.Size = new System.Drawing.Size(524, 41);
-            this.txtBarcode.TabIndex = 0;
+            this.txtBarcode.TabIndex = 2;
             this.txtBarcode.TextChanged += new System.EventHandler(this.RaiseBarcodeChanged);
             this.txtBarcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GlobalKeyDown);
             // 
@@ -270,7 +272,7 @@
             this.txtHarga.Name = "txtHarga";
             this.txtHarga.ReadOnly = true;
             this.txtHarga.Size = new System.Drawing.Size(332, 41);
-            this.txtHarga.TabIndex = 1;
+            this.txtHarga.TabIndex = 3;
             // 
             // label3
             // 
@@ -293,7 +295,7 @@
             this.txtQty.Name = "txtQty";
             this.txtQty.ReadOnly = true;
             this.txtQty.Size = new System.Drawing.Size(104, 41);
-            this.txtQty.TabIndex = 2;
+            this.txtQty.TabIndex = 4;
             this.txtQty.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GlobalKeyDown);
             this.txtQty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumericOnly);
             // 
@@ -318,7 +320,7 @@
             this.txtDiskon.Name = "txtDiskon";
             this.txtDiskon.ReadOnly = true;
             this.txtDiskon.Size = new System.Drawing.Size(139, 41);
-            this.txtDiskon.TabIndex = 3;
+            this.txtDiskon.TabIndex = 5;
             this.txtDiskon.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GlobalKeyDown);
             this.txtDiskon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumericOnly);
             // 
@@ -342,7 +344,7 @@
             this.txtRandKode.Margin = new System.Windows.Forms.Padding(4);
             this.txtRandKode.Name = "txtRandKode";
             this.txtRandKode.Size = new System.Drawing.Size(317, 34);
-            this.txtRandKode.TabIndex = 5;
+            this.txtRandKode.TabIndex = 7;
             this.txtRandKode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.RaiseEnterKode);
             // 
             // txtPoint
@@ -352,7 +354,7 @@
             this.txtPoint.Margin = new System.Windows.Forms.Padding(4);
             this.txtPoint.Name = "txtPoint";
             this.txtPoint.Size = new System.Drawing.Size(133, 34);
-            this.txtPoint.TabIndex = 6;
+            this.txtPoint.TabIndex = 8;
             // 
             // gunaElipsePanel2
             // 
@@ -399,6 +401,16 @@
             this.label18.Size = new System.Drawing.Size(115, 17);
             this.label18.TabIndex = 0;
             this.label18.Text = "Del - Hapus data";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(602, 7);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(132, 17);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "F9 - Harga Reseller";
             // 
             // label16
             // 
@@ -521,7 +533,7 @@
             this.btnProses.OnHoverImage = null;
             this.btnProses.OnPressedColor = System.Drawing.Color.Black;
             this.btnProses.Size = new System.Drawing.Size(319, 37);
-            this.btnProses.TabIndex = 4;
+            this.btnProses.TabIndex = 6;
             this.btnProses.Text = "Tambah Member";
             this.btnProses.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnProses.Click += new System.EventHandler(this.RaiseAddemember);
@@ -548,7 +560,7 @@
             this.checkBox1.Location = new System.Drawing.Point(1296, 648);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(179, 29);
-            this.checkBox1.TabIndex = 7;
+            this.checkBox1.TabIndex = 9;
             this.checkBox1.Text = "Gunakan Diskon";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
@@ -579,7 +591,7 @@
             this.gunaGradientButton1.OnHoverImage = null;
             this.gunaGradientButton1.OnPressedColor = System.Drawing.Color.Black;
             this.gunaGradientButton1.Size = new System.Drawing.Size(317, 37);
-            this.gunaGradientButton1.TabIndex = 8;
+            this.gunaGradientButton1.TabIndex = 10;
             this.gunaGradientButton1.Text = "Tukarkan Item";
             this.gunaGradientButton1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -590,8 +602,8 @@
             this.dgv.AllowUserToOrderColumns = true;
             this.dgv.AllowUserToResizeColumns = false;
             this.dgv.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -600,29 +612,30 @@
             this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv.ColumnHeadersHeight = 30;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nama,
             this.barcode1,
             this.quantity,
+            this.disko,
             this.harga,
             this.total});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgv.EnableHeadersVisualStyles = false;
             this.dgv.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgv.Location = new System.Drawing.Point(0, 183);
@@ -634,7 +647,7 @@
             this.dgv.RowTemplate.Height = 30;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv.Size = new System.Drawing.Size(1488, 295);
-            this.dgv.TabIndex = 12;
+            this.dgv.TabIndex = 1;
             this.dgv.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Guna;
             this.dgv.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgv.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -658,6 +671,7 @@
             this.dgv.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgv.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.RaiseCellClicks);
+            this.dgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.RaiseCellClicks);
             this.dgv.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GlobalKeyDown);
             // 
             // nama
@@ -679,14 +693,26 @@
             // quantity
             // 
             this.quantity.DataPropertyName = "quantity";
+            this.quantity.FillWeight = 75F;
             this.quantity.HeaderText = "Qty";
             this.quantity.MinimumWidth = 6;
             this.quantity.Name = "quantity";
             this.quantity.ReadOnly = true;
             // 
+            // disko
+            // 
+            this.disko.DataPropertyName = "diskon";
+            this.disko.FillWeight = 80F;
+            this.disko.HeaderText = "Diskon";
+            this.disko.MinimumWidth = 6;
+            this.disko.Name = "disko";
+            this.disko.ReadOnly = true;
+            // 
             // harga
             // 
             this.harga.DataPropertyName = "harga_jual";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.harga.DefaultCellStyle = dataGridViewCellStyle3;
             this.harga.HeaderText = "Harga Jual";
             this.harga.MinimumWidth = 6;
             this.harga.Name = "harga";
@@ -699,16 +725,6 @@
             this.total.MinimumWidth = 6;
             this.total.Name = "total";
             this.total.ReadOnly = true;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(602, 7);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(132, 17);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "F9 - Harga Reseller";
             // 
             // Transaksi
             // 
@@ -796,11 +812,12 @@
         private System.Windows.Forms.TextBox txtNomorKwitansi;
         private System.Windows.Forms.Label label7;
         private Guna.UI.WinForms.GunaDataGridView dgv;
+        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DataGridViewTextBoxColumn nama;
         private System.Windows.Forms.DataGridViewTextBoxColumn barcode1;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn disko;
         private System.Windows.Forms.DataGridViewTextBoxColumn harga;
         private System.Windows.Forms.DataGridViewTextBoxColumn total;
-        private System.Windows.Forms.Label label9;
     }
 }

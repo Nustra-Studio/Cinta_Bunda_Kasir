@@ -16,6 +16,10 @@ namespace KasirApp.View
         string state { get; set; }
         string qty { get; set; }
         string selection { get; set; }
+        string noHpMem { get; set; }
+        string NamaMem { get; set; }
+        string diskonTrans { get; set; }
+
         void GetMember(RootMember rootmem);
         void GetDataBarangs(TransaksiModel md);
         void TampilGrid(DataTable dt);

@@ -24,6 +24,9 @@ namespace KasirApp.GUI
         DataTable _Dt;
         string select;
         string pjState;
+        string memPhone;
+        string namaMem;
+        int diskon;
 
         //Interface Fields
         public string randKode { get => txtRandKode.Text; set => txtRandKode.Text = value ; }
@@ -32,15 +35,54 @@ namespace KasirApp.GUI
         public string state { get => pjState; set => pjState = value; }
         public string qty { get => txtQty.Text; set => txtQty.Text = value; }
         public string selection { get => select; set => select = value; }
+        public string noHpMem { get => memPhone; set => memPhone = value; }
+        public string NamaMem { get => namaMem; set => namaMem = value; }
+        public string diskonTrans { get => txtDiskon.Text; set => txtDiskon.Text = value; }
 
         //Interface Method
         public void GetDataBarangs(TransaksiModel md)
         {
-            int harga = Convert.ToInt32(md.Harga_jual);
+            txtQty.Text = md.Quantity;
+            txtDiskon.Text = md.Diskon;
+            string hj = "";
+            string textDiskon = "";
+
+            if (md.Nama == null)
+            {
+                return;
+            }
+            else if (md.Diskon != "0")
+            {
+                if (md.State == "harga_jual")
+                {
+                    hj = md.Harga_jual;
+                }
+                else if (md.State == "hpp")
+                {
+                    hj = md.Harga_pokok;
+                }
+
+                //int diskonan = Convert.ToInt32(md.Diskon);
+                //string diskonp = string.Format("{0:0,0}", diskonan);
+                //txtDiskon = $"- Rp.{diskonp}";
+            }
+            else
+            {
+                if (md.State == "harga_jual")
+                {
+                    hj = md.Harga_jual;
+                }
+                else if (md.State == "hpp")
+                {
+                    hj = md.Harga_pokok;
+                }
+            }
+
+            int harga = Convert.ToInt32(hj);
             //Format String otomatis tambah koma setelah 3 angka 0
             string withkoma = string.Format("{0:0,0}", harga);
+            lblHeader.Text = $"{md.Nama} = Rp.{withkoma} {textDiskon}";
 
-            lblHeader.Text = $"{md.Nama} = Rp.{withkoma}";
         }
 
         public void TampilGrid(DataTable dt)
@@ -52,6 +94,8 @@ namespace KasirApp.GUI
         public void GetMember(RootMember rootmem)
         {
             txtPoint.Text = rootmem.poin.poin.ToString();
+            memPhone = rootmem.member.phone.ToString();
+            namaMem = rootmem.member.name;
         }
 
         public void GetPopUpData(BarangsModel model)
@@ -69,6 +113,10 @@ namespace KasirApp.GUI
             _user = user;
             _prn = new TransaksiPresenter(this, _user, this);
             pjState = "harga_jual";
+            memPhone = "";
+            namaMem = "";
+            diskon = 0;
+            txtNomorKwitansi.Focus();
             //txtNamaUser.Text = user.username.ToString();
         }
 
@@ -87,9 +135,19 @@ namespace KasirApp.GUI
         {
             txtBarcode.Enabled = true;
             txtBarcode.Focus();
+            txtDiskon.ReadOnly = true;
+            txtDiskon.Text = string.Empty;
             txtQty.ReadOnly = true;
             txtQty.Text = string.Empty;
         }
+
+        public void ChangeState()
+        {
+            txtBarcode.Enabled = false;
+            txtDiskon.ReadOnly = true;
+            txtQty.ReadOnly = true;
+        }
+
         public void clear()
         {
             txtBarcode.Text = string.Empty;
@@ -103,6 +161,25 @@ namespace KasirApp.GUI
             _Dt.Clear();
             txtNomorKwitansi.Text = null;
             lblHeader.Text = "Selamat Datang di \n CINTA BUNDA KEDUNGWARU";
+        }
+
+        public int hitungTotal()
+        {
+            int i = 0;
+            int sum = 0;
+
+            foreach (var row in dgv.Rows)
+            {
+                sum += Convert.ToInt32(dgv.Rows[i].Cells[4].Value);
+                i++;
+            }
+            //Format String otomatis tambah koma setelah 3 bilangan 0
+            int withDiskon = sum - diskon;
+            string withkoma = string.Format("{0:0,0}", withDiskon);
+
+            lblHeader.Text = $"Subtotal = Rp.{withkoma}";
+
+            return withDiskon;
         }
 
         //Limitasi Keyboard
@@ -124,12 +201,14 @@ namespace KasirApp.GUI
             }
             else if (e.KeyCode == Keys.F2)
             {
+                ChangeState();
                 txtBarcode.Enabled = false;
                 txtQty.ReadOnly = false;
                 txtQty.Focus();
             }
             else if (e.KeyCode == Keys.F3)
             {
+                ChangeState();
                 txtBarcode.Enabled = false;
                 txtDiskon.ReadOnly = false;
                 txtDiskon.Focus();
@@ -143,19 +222,7 @@ namespace KasirApp.GUI
             //Bayar Keydown
             else if (e.KeyCode == Keys.F5)
             {
-                int i = 0;
-                int sum = 0;
-
-                foreach (var row in dgv.Rows)
-                {
-                    sum += Convert.ToInt32(dgv.Rows[i].Cells[4].Value);
-                    i++;
-                }
-                //Format String otomatis tambah koma setelah 3 bilangan 0
-                string withkoma = string.Format("{0:0,0}", sum);
-
-                lblHeader.Text = $"Subtotal = Rp.{withkoma}";
-                Pembayaran frm = new Pembayaran(this, _user, this, sum);
+                Pembayaran frm = new Pembayaran(this, _user, this, hitungTotal());
                 frm.Show();
             }
             //F6 Cek Struk
@@ -191,6 +258,8 @@ namespace KasirApp.GUI
                 if (txtBarcode.Focused == true)
                 {
                     _prn.AttemptInsertGrid();
+                    txtQty.Text = "";
+                    txtDiskon.Text = "";
                 }
                 //Update Quantity
                 else if (txtQty.Focused == true)
@@ -198,14 +267,10 @@ namespace KasirApp.GUI
                     _prn.ChangeQty();
                     OpenState();
                 }
-                //Diskon Barang
+                //Apply Diskon
                 else if (txtDiskon.Focused == true)
                 {
-                    var discModel = new TransaksiModel();
-                    discModel.Barkode = select;
-                    discModel.NomorPJ = txtNomorKwitansi.Text;
-                    discModel.Diskon = txtDiskon.Text;
-                    _prn.ApplyDiskon(discModel);
+                    _prn.ApplyDiskon();
                     OpenState();
                 }
             }
@@ -213,7 +278,6 @@ namespace KasirApp.GUI
 
         public void RaiseEnterKode(object sender, KeyEventArgs e)
         {
-            string RandNumber = txtRandKode.Text;
             if (e.KeyCode == Keys.Enter)
             {
                 _prn.GetPoint();
@@ -244,6 +308,7 @@ namespace KasirApp.GUI
             {
                 return;
             }
+            _prn.getDataByValue();
         }
 
         //Raise ButtonEvents
