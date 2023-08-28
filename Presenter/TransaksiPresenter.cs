@@ -17,6 +17,7 @@ namespace KasirApp.Presenter
         iPopUpRecieve _rec;
         userDataModel _model;
         TransaksiRepo _repo;
+        Operator op = new Operator();
         MboxOperator mb = new MboxOperator();
         
         //Constructor
@@ -33,7 +34,11 @@ namespace KasirApp.Presenter
         public void GetPoint()
         {
             string rand = _trn.randKode.ToString();
-            if (_repo.AmbilPoint(_model, rand)==null)
+            if (op.CekNetwork()==false)
+            {
+                mb.PeringatanOK("Tidak ada koneksi Internet");
+            }
+            else if (_repo.AmbilPoint(_model, rand)==null)
             {
                 mb.PeringatanOK("Kode Salah atau Kadaluarsa!");
             }
@@ -53,9 +58,13 @@ namespace KasirApp.Presenter
             _trn.GetDataBarangs(_repo.getByValue(model));
         }
 
-        public void setPoint()
+        public void UpdateState(string state)
         {
+            var model = new TransaksiModel();
+            model.NomorPJ = _trn.nomorPJ;
+            _repo.StateChange(state, model);
 
+            TampilTable();
         }
 
         public void TampilTable()
@@ -121,7 +130,7 @@ namespace KasirApp.Presenter
             model.NomorPJ = _trn.nomorPJ;
             model.State = _trn.state;
 
-            if (model.Quantity == null)
+            if (model.Quantity == "")
             {
                 mb.PeringatanOK("Quantity Tidak Boleh Kosong");
             }
@@ -142,8 +151,8 @@ namespace KasirApp.Presenter
             model.Barkode = _trn.selection;
             model.Diskon = _trn.diskonTrans;
             model.State = _trn.state;
-            
-            if (model.Diskon == null)
+
+            if (model.Diskon == "")
             {
                 mb.PeringatanOK("Masukan Nominal Diskon");
             }

@@ -112,6 +112,7 @@ namespace KasirApp.Repository
                     md.Harga_jual = rd["harga_jual"].ToString();
                     md.Harga_pokok = rd["harga_pokok"].ToString();
                     md.Tanggal = DateTime.Now.ToString("yyyy/MM/dd");
+                    md.State = model.State;
 
                     //Logic
                     int qty = Convert.ToInt32(md.Quantity);
@@ -150,6 +151,7 @@ namespace KasirApp.Repository
                             com.ExecuteNonQuery();
                             op.KonekDB();
                         }
+                        cekdiskon(md);
                     }
                     else
                     {
@@ -211,6 +213,95 @@ namespace KasirApp.Repository
                 cmd.ExecuteNonQuery();
                 op.KonekDB();
             }
+            cekdiskon(model);
+        }
+
+        public SettingModel AmbilSetting()
+        {
+            var model = new SettingModel();
+            using (var cmd = new MySqlCommand("Select * from settings", op.Conn))
+            {
+                op.KonekDB();
+                using (var rd = cmd.ExecuteReader())
+                {
+                    rd.Read();
+                    if (rd.HasRows)
+                    {
+                        model.Karyawan = rd["presentase_karyawan"].ToString();
+                        model.Reseller = rd["presentase_reseller"].ToString();
+                        model.Autodiskon = rd["auto_diskon"].ToString();
+                    }
+                }
+            }
+            return model;
+        }
+
+        public void AmbilHpp()
+        {
+
+        }
+
+        int presentase;
+        public void StateChange(string state, TransaksiModel model)
+        {
+            //Ambil Presentase
+            if (state == "karyawan")
+            {
+                presentase = Convert.ToInt32(AmbilSetting().Karyawan);
+            }
+            else if (state == "reseller")
+            {
+                presentase = Convert.ToInt32(AmbilSetting().Reseller);
+            }
+            var ListBarang = new List<TransaksiModel>();
+            using (var cmd = new MySqlCommand("SELECT * FROM histori_penjualan where nomerTrans = '" + model.NomorPJ + "'", op.Conn))
+            {
+                op.KonekDB();
+                using (var rd = cmd.ExecuteReader())
+                {
+                    while (rd.Read())
+                    {
+                        var md = new TransaksiModel();
+                        md.Barkode = rd["barcode"].ToString();
+                        md.Harga_pokok = rd["hpp"].ToString();
+                        md.Harga = rd["hpp"].ToString();
+                        md.Quantity = rd["quantity"].ToString();
+                        ListBarang.Add(md);
+                    }
+                }
+            }
+            
+            foreach (var md in ListBarang)
+            {
+                int hpp = 0;
+                using (var cmd = new MySqlCommand("SELECT harga_pokok from barangs where kode_barang = @barcode", op.Conn))
+                {
+                    cmd.Parameters.AddWithValue("@barcode", md.Barkode);
+                    using (var rd = cmd.ExecuteReader())
+                    {
+                        rd.Read();
+                        if (rd.HasRows)
+                        {
+                            hpp = Convert.ToInt32(rd["harga_pokok"].ToString());
+                        }
+                    }
+                }
+
+                int potongan = hpp * presentase / 100;
+                int hppSatuan = hpp - potongan;
+                int totalHpp = (hpp - potongan) * Convert.ToInt32(md.Quantity);
+                using (var cmd = new MySqlCommand("UPDATE histori_penjualan SET hpp = @hpp,total = @total WHERE barcode = @barcode AND nomerTrans = @nomorPJ", op.Conn))
+                {
+                    cmd.Parameters.AddWithValue("@hpp", hppSatuan.ToString());
+                    cmd.Parameters.AddWithValue("@total", totalHpp.ToString());
+                    cmd.Parameters.AddWithValue("@barcode", md.Barkode);
+                    cmd.Parameters.AddWithValue("@nomorPJ", model.NomorPJ);
+
+                    op.KonekDB();
+                    cmd.ExecuteNonQuery();
+                    op.KonekDB();
+                }
+            }
         }
 
         public void UpdateNumberint()
@@ -256,6 +347,69 @@ namespace KasirApp.Repository
             return dt;
         }
 
+        public void cekdiskon(TransaksiModel model)
+        {
+            var md = new TransaksiModel();
+            using (var cmd = new MySqlCommand("select * from histori_penjualan where barcode LIKE '%BBG%' and nomerTrans = @nomerPJ", op.Conn))
+            {
+                cmd.Parameters.AddWithValue("@nomerPJ", model.NomorPJ);
+                op.KonekDB();
+                using (var rd = cmd.ExecuteReader())
+                {
+                    rd.Read();
+                    if (rd.HasRows)
+                    {
+                        var red = new TransaksiModel();
+                        red.Quantity = rd["quantity"].ToString();
+                        red.Barkode = rd["barcode"].ToString();
+                        red.Diskon = rd["diskon"].ToString();
+                        red.NomorPJ = model.NomorPJ;
+                        md = red;
+                    }
+                }
+            }
+            if (Convert.ToInt32(md.Quantity) == 3)
+            {
+                int finalDiskon = Convert.ToInt32(md.Diskon) + Convert.ToInt32(AmbilSetting().Autodiskon);
+                using (var cmd = new MySqlCommand("UPDATE histori_penjualan SET diskon = @diskon where barcode = @barcode AND nomerTrans = @nomerPJ", op.Conn))
+                {
+                    cmd.Parameters.AddWithValue("@barcode", md.Barkode);
+                    cmd.Parameters.AddWithValue("@nomerPJ", md.NomorPJ);
+                    cmd.Parameters.AddWithValue("@diskon", finalDiskon.ToString());
+
+                    op.KonekDB();
+                    cmd.ExecuteNonQuery();
+                    op.KonekDB();
+                }
+            }
+            else if (Convert.ToInt32(md.Quantity) < 3)
+            {
+                int finalDiskon = Convert.ToInt32(md.Diskon);
+                if (md.Diskon == "0")
+                {
+                    return;
+                }
+                //else if(Convert.ToInt32(md.Diskon) >= 1000)
+                //{
+                //    finalDiskon = Convert.ToInt32(md.Diskon) - 1000;
+                //}
+                using (var cmd = new MySqlCommand("UPDATE histori_penjualan SET diskon = @diskon where barcode = @barcode AND nomerTrans = @nomerPJ", op.Conn))
+                {
+                    cmd.Parameters.AddWithValue("@barcode", md.Barkode);
+                    cmd.Parameters.AddWithValue("@nomerPJ", md.NomorPJ);
+                    cmd.Parameters.AddWithValue("@diskon", finalDiskon.ToString());
+
+                    op.KonekDB();
+                    cmd.ExecuteNonQuery();
+                    op.KonekDB();
+                }
+            }
+            else
+            {
+                return;
+            }
+        }
+
         public void UpdateDiskon(TransaksiModel model)
         {
             using (MySqlCommand cmd = new MySqlCommand("select * from histori_penjualan where nomerTrans = @nomor AND barcode = @barcode", op.Conn))
@@ -267,7 +421,6 @@ namespace KasirApp.Repository
                     rd.Read();
                     if (rd.HasRows)
                     {
-                        mb.InformasiOK($"{rd["quantity"].ToString()} {model.State} {model.Diskon}");
                         int total = Convert.ToInt32(rd["quantity"].ToString()) * Convert.ToInt32(rd[model.State].ToString()) - Convert.ToInt32(model.Diskon);
                         using (MySqlCommand com = new MySqlCommand("UPDATE histori_penjualan SET diskon = @discon,total = @total where nomerTrans = @nomor AND barcode = @kode", op.Conn))
                         {
@@ -313,6 +466,7 @@ namespace KasirApp.Repository
                     }
                 }
             }
+            cekdiskon(model);
         }
 
         public void UpdateHarga(TransaksiModel model)
@@ -365,6 +519,36 @@ namespace KasirApp.Repository
                         com.ExecuteNonQuery();
                         op.KonekDB();
                     }
+                }
+            }
+        }
+
+        public void SubtrakBarangs(List<TransaksiModel> model)
+        {
+            int stok = 0;
+            foreach (var md in model)
+            {
+                using (var cmd = new MySqlCommand("Select stok FROM barangs where kode_barang = @barcode", op.Conn))
+                {
+                    cmd.Parameters.AddWithValue("@barcode", md.Barkode);
+                    using (var rd = cmd.ExecuteReader())
+                    {
+                        rd.Read();
+                        if (rd.HasRows)
+                        {
+                            stok = Convert.ToInt32(rd["stok"].ToString());
+                        }
+                    }
+                }
+                int final = stok - Convert.ToInt32(md.Quantity);
+                using (var cmd = new MySqlCommand("UPDATE barangs SET stok = @final WHERE kode_barang = @kode", op.Conn))
+                {
+                    cmd.Parameters.AddWithValue("@final", final.ToString());
+                    cmd.Parameters.AddWithValue("@kode", md.Barkode);
+
+                    op.KonekDB();
+                    cmd.ExecuteNonQuery();
+                    op.KonekDB();
                 }
             }
         }
@@ -444,7 +628,6 @@ namespace KasirApp.Repository
                             md.Harga_pokok = rd["hpp"].ToString();
                             md.Tanggal = DateTime.Now.ToString("yyyy/MM/dd");
                             md.Id_member = model.Id_member;
-                            mb.PeringatanOK(md.Id_member);
                             //Logic
                             int qty = Convert.ToInt32(md.Quantity);
                             int HJ = Convert.ToInt32(md.Harga_pokok);
@@ -454,6 +637,9 @@ namespace KasirApp.Repository
                             listTrans.Add(md);
                         }
                     }
+
+                    SubtrakBarangs(listTrans);
+
                     using (var client = new RestClient($"{op.urlcloud}cabangmember/"))
                     {
                         var body = new
@@ -468,7 +654,8 @@ namespace KasirApp.Repository
                         rs.AddJsonBody(body);
 
                         var response = client.Execute(rs);
-                        mb.InformasiOK(response.Content.ToString());
+                        //mb.InformasiOK(response.Content.ToString());
+                        mb.InformasiOK("Transaksi Selesai");
                     }
                 }
                 //Update Nomor

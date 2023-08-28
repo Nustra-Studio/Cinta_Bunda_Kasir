@@ -78,8 +78,8 @@
             this.nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.barcode1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.disko = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.harga = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.disko = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gunaElipsePanel1.SuspendLayout();
             this.gunaPanel1.SuspendLayout();
@@ -554,8 +554,6 @@
             // 
             this.checkBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox1.Location = new System.Drawing.Point(1296, 648);
             this.checkBox1.Name = "checkBox1";
@@ -625,8 +623,8 @@
             this.nama,
             this.barcode1,
             this.quantity,
-            this.disko,
             this.harga,
+            this.disko,
             this.total});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
@@ -699,15 +697,6 @@
             this.quantity.Name = "quantity";
             this.quantity.ReadOnly = true;
             // 
-            // disko
-            // 
-            this.disko.DataPropertyName = "diskon";
-            this.disko.FillWeight = 80F;
-            this.disko.HeaderText = "Diskon";
-            this.disko.MinimumWidth = 6;
-            this.disko.Name = "disko";
-            this.disko.ReadOnly = true;
-            // 
             // harga
             // 
             this.harga.DataPropertyName = "harga_jual";
@@ -717,6 +706,15 @@
             this.harga.MinimumWidth = 6;
             this.harga.Name = "harga";
             this.harga.ReadOnly = true;
+            // 
+            // disko
+            // 
+            this.disko.DataPropertyName = "diskon";
+            this.disko.FillWeight = 80F;
+            this.disko.HeaderText = "Diskon";
+            this.disko.MinimumWidth = 6;
+            this.disko.Name = "disko";
+            this.disko.ReadOnly = true;
             // 
             // total
             // 
@@ -816,8 +814,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nama;
         private System.Windows.Forms.DataGridViewTextBoxColumn barcode1;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn disko;
         private System.Windows.Forms.DataGridViewTextBoxColumn harga;
+        private System.Windows.Forms.DataGridViewTextBoxColumn disko;
         private System.Windows.Forms.DataGridViewTextBoxColumn total;
     }
 }

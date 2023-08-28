@@ -20,6 +20,7 @@ namespace KasirApp.GUI
         Operator op = new Operator();
         userDataModel _user;
         TransaksiPresenter _prn;
+        iMasterForm _master;
         BarangsModel _curentBRG;
         DataTable _Dt;
         string select;
@@ -27,6 +28,7 @@ namespace KasirApp.GUI
         string memPhone;
         string namaMem;
         int diskon;
+        int withDiskon;
 
         //Interface Fields
         public string randKode { get => txtRandKode.Text; set => txtRandKode.Text = value ; }
@@ -85,6 +87,20 @@ namespace KasirApp.GUI
 
         }
 
+        public void tampilKembali(int kembali)
+        {
+            if (kembali == 0)
+            {
+                lblHeader.Text = "Uang Pas! Terimakasih sudah berbelanja";
+            }
+            else
+            {
+                //Format String otomatis tambah koma setelah 3 angka 0
+                string withkoma = string.Format("{0:0,0}", kembali);
+                lblHeader.Text = $"Kembali : Rp.{withkoma}";
+            }
+        }
+
         public void TampilGrid(DataTable dt)
         {
             _Dt = dt;
@@ -103,10 +119,43 @@ namespace KasirApp.GUI
             _curentBRG = model;
             txtBarcode.Text = model.Kode;
             txtHarga.Text = model.Harga_pokok;
+            txtQty.Text = "1";
+            txtDiskon.Text = "0";
+        }
+
+        public int hitungTotal(string dsc)
+        {
+            int i = 0;
+            int sum = 0;
+            int diskonmem = 0;
+            diskon = 0;
+            if (txtPoint.Text != "" && txtRandKode.Text != "" && checkBox1.Checked == true)
+            {
+                diskonmem = Convert.ToInt32(txtPoint.Text) * 500;
+            }
+
+            if (dsc != "")
+            {
+                diskon = Convert.ToInt32(dsc);
+            }
+
+            foreach (var row in dgv.Rows)
+            {
+                sum += Convert.ToInt32(dgv.Rows[i].Cells["total"].Value);
+                i++;
+            }
+
+            //Format String otomatis tambah koma setelah 3 bilangan 0
+            withDiskon = sum - diskon - diskonmem;
+            string withkoma = string.Format("{0:0,0}", withDiskon);
+
+            lblHeader.Text = $"Subtotal = Rp.{withkoma}";
+
+            return withDiskon;
         }
 
         //Constructor
-        public Transaksi(userDataModel user)
+        public Transaksi(userDataModel user, iMasterForm form)
         {
             InitializeComponent();
             LoadState();
@@ -117,7 +166,8 @@ namespace KasirApp.GUI
             namaMem = "";
             diskon = 0;
             txtNomorKwitansi.Focus();
-            //txtNamaUser.Text = user.username.ToString();
+            txtNamaUser.Text = user.username.ToString();
+            _master = form;
         }
 
         //Method
@@ -163,24 +213,7 @@ namespace KasirApp.GUI
             lblHeader.Text = "Selamat Datang di \n CINTA BUNDA KEDUNGWARU";
         }
 
-        public int hitungTotal()
-        {
-            int i = 0;
-            int sum = 0;
-
-            foreach (var row in dgv.Rows)
-            {
-                sum += Convert.ToInt32(dgv.Rows[i].Cells[4].Value);
-                i++;
-            }
-            //Format String otomatis tambah koma setelah 3 bilangan 0
-            int withDiskon = sum - diskon;
-            string withkoma = string.Format("{0:0,0}", withDiskon);
-
-            lblHeader.Text = $"Subtotal = Rp.{withkoma}";
-
-            return withDiskon;
-        }
+        
 
         //Limitasi Keyboard
         public void NumericOnly(object sender, KeyPressEventArgs e)
@@ -222,15 +255,25 @@ namespace KasirApp.GUI
             //Bayar Keydown
             else if (e.KeyCode == Keys.F5)
             {
-                Pembayaran frm = new Pembayaran(this, _user, this, hitungTotal());
-                frm.Show();
+                hitungTotal("0");
+                var model = new TransaksiModel();
+                model.NomorPJ = txtNomorKwitansi.Text;
+                model.Total = withDiskon.ToString();
+                model.Harga = "0";
+                if (checkBox1.Checked == true && txtPoint.Text != null)
+                {
+                    model.State = "checked";
+                    model.Harga = txtPoint.Text;
+                }
+                Pembayaran frm = new Pembayaran(this, _user, this, model);
+                _master.subForm(frm);
             }
             //F6 Cek Struk
             else if (e.KeyCode == Keys.F6)
             {
 
             }
-            //F7 Harga Karyawan
+            //F7 Harga Reguler
             else if (e.KeyCode == Keys.F7)
             {
                 dgv.Columns["harga"].DataPropertyName = "harga_jual";
@@ -238,11 +281,22 @@ namespace KasirApp.GUI
                 pjState = "harga_jual";
                 _prn.TampilTable();
             }
+            //F8 Harga Karyawan
             else if (e.KeyCode == Keys.F8)
             {
                 dgv.Columns["harga"].DataPropertyName = "hpp";   
-                dgv.Columns["harga"].HeaderText = "Harga Pokok";
+                dgv.Columns["harga"].HeaderText = "Harga Pokok(Karyawan)";
                 pjState = "hpp";
+                _prn.UpdateState("karyawan");
+                _prn.TampilTable();
+            }
+            //F9 Harga Reseller
+            else if (e.KeyCode == Keys.F9)
+            {
+                dgv.Columns["harga"].DataPropertyName = "hpp";   
+                dgv.Columns["harga"].HeaderText = "Harga Pokok(Reseller)";
+                pjState = "hpp";
+                _prn.UpdateState("reseller");
                 _prn.TampilTable();
             }
             else if(e.KeyCode == Keys.Delete)
@@ -317,11 +371,11 @@ namespace KasirApp.GUI
             AddMember fra = new AddMember(_user);
             if (fra.IsDisposed)
             {
-                fra.Show();
+                _master.subForm(fra);
             }
             else
             {
-                fra.Show();
+                _master.subForm(fra);
                 fra.BringToFront();
             }
         }
@@ -342,7 +396,5 @@ namespace KasirApp.GUI
             printPreviewDialog1.Document = printDocument1;
             printPreviewDialog1.Show();
         }
-
-        
     }
 }

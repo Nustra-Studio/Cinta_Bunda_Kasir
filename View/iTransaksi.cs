@@ -25,5 +25,7 @@ namespace KasirApp.View
         void TampilGrid(DataTable dt);
         void clear();
         void ClearAll();
+        int hitungTotal(string diskon);
+        void tampilKembali(int kembali);
     }
 }
