@@ -18,6 +18,7 @@ namespace KasirApp.Repository
         MboxOperator mb = new MboxOperator();
         Operator op = new Operator();
         userDataModel _user;
+        string stateHJ;
 
         //Constructor
         public TransaksiRepo(userDataModel user)
@@ -128,10 +129,11 @@ namespace KasirApp.Repository
         //Cek Kesamaan pada saat insert
         public void CekRows(TransaksiModel md)
         {
-            using (MySqlCommand cmd = new MySqlCommand("select * from histori_penjualan where nomerTrans = @nomer AND barcode = @kode", op.Conn))
+            using (MySqlCommand cmd = new MySqlCommand("select * from histori_penjualan where nomerTrans = @nomer AND nama = @nama OR nomerTrans = @nomer AND barcode = @barcode", op.Conn))
             {
                 cmd.Parameters.AddWithValue("@nomer", md.NomorPJ);
-                cmd.Parameters.AddWithValue("@kode", md.Barkode);
+                cmd.Parameters.AddWithValue("@nama", md.Nama);
+                cmd.Parameters.AddWithValue("@barcode", md.Barkode);
                 using (MySqlDataReader rd = cmd.ExecuteReader())
                 {
                     rd.Read();
@@ -139,9 +141,10 @@ namespace KasirApp.Repository
                     {
                         int qty =  Convert.ToInt32(rd["quantity"].ToString()) + 1;
                         int total = qty * Convert.ToInt32(rd[md.State].ToString());
-                        using (MySqlCommand com = new MySqlCommand("UPDATE histori_penjualan SET quantity = @Qty,total = @total where nomerTrans = @nomor AND barcode = @kode", op.Conn))
+                        using (MySqlCommand com = new MySqlCommand("UPDATE histori_penjualan SET quantity = @Qty,total = @total where nomerTrans = @nomor AND nama = @nama OR nomerTrans = @nomor AND barcode = @kode", op.Conn))
                         {
                             com.Parameters.AddWithValue("nomor", md.NomorPJ);
+                            com.Parameters.AddWithValue("@nama", md.Nama);
                             com.Parameters.AddWithValue("kode", md.Barkode);
                             com.Parameters.AddWithValue("Qty", qty);
                             com.Parameters.AddWithValue("total", total);
@@ -164,6 +167,15 @@ namespace KasirApp.Repository
 
         public void AmbilValue(TransaksiModel model)
         {
+            
+            if (model.State == "hpp")
+            {
+                stateHJ = "harga_pokok";
+            }
+            else
+            {
+                stateHJ = model.State;
+            }
             var md = new TransaksiModel();
             using (MySqlCommand cmd = new MySqlCommand("select * from barangs where kode_barang = @kode OR name = @kode", op.Conn))
             {
@@ -185,7 +197,7 @@ namespace KasirApp.Repository
 
                     //Logic
                     int qty = Convert.ToInt32(md.Quantity);
-                    int HJ = Convert.ToInt32(rd[model.State].ToString());
+                    int HJ = Convert.ToInt32(rd[stateHJ].ToString());
                     int TotalPCS = qty * HJ;
                     md.Total = TotalPCS.ToString();
                 }
@@ -236,23 +248,9 @@ namespace KasirApp.Repository
             return model;
         }
 
-        public void AmbilHpp()
-        {
-
-        }
-
         int presentase;
         public void StateChange(string state, TransaksiModel model)
         {
-            //Ambil Presentase
-            if (state == "karyawan")
-            {
-                presentase = Convert.ToInt32(AmbilSetting().Karyawan);
-            }
-            else if (state == "reseller")
-            {
-                presentase = Convert.ToInt32(AmbilSetting().Reseller);
-            }
             var ListBarang = new List<TransaksiModel>();
             using (var cmd = new MySqlCommand("SELECT * FROM histori_penjualan where nomerTrans = '" + model.NomorPJ + "'", op.Conn))
             {
@@ -273,8 +271,16 @@ namespace KasirApp.Repository
             
             foreach (var md in ListBarang)
             {
+                if (model.State == "hpp")
+                {
+                    stateHJ = "harga_pokok";
+                }
+                else
+                {
+                    stateHJ = "harga_jual";
+                }
                 int hpp = 0;
-                using (var cmd = new MySqlCommand("SELECT harga_pokok from barangs where kode_barang = @barcode", op.Conn))
+                using (var cmd = new MySqlCommand("SELECT * from barangs where kode_barang = @barcode", op.Conn))
                 {
                     cmd.Parameters.AddWithValue("@barcode", md.Barkode);
                     using (var rd = cmd.ExecuteReader())
@@ -282,17 +288,32 @@ namespace KasirApp.Repository
                         rd.Read();
                         if (rd.HasRows)
                         {
-                            hpp = Convert.ToInt32(rd["harga_pokok"].ToString());
+                            hpp = Convert.ToInt32(rd[stateHJ].ToString());
                         }
                     }
                 }
-
-                int potongan = hpp * presentase / 100;
-                int hppSatuan = hpp - potongan;
-                int totalHpp = (hpp - potongan) * Convert.ToInt32(md.Quantity);
-                using (var cmd = new MySqlCommand("UPDATE histori_penjualan SET hpp = @hpp,total = @total WHERE barcode = @barcode AND nomerTrans = @nomorPJ", op.Conn))
+                int potongan = 0;
+                int totalstate = 0;
+                if (state == "karyawan")
                 {
-                    cmd.Parameters.AddWithValue("@hpp", hppSatuan.ToString());
+                    presentase = Convert.ToInt32(AmbilSetting().Karyawan);
+                    potongan = hpp * presentase / 100;
+                    totalstate = hpp + potongan;
+                }
+                else if (state == "reseller")
+                {
+                    presentase = Convert.ToInt32(AmbilSetting().Reseller);
+                    potongan = hpp * presentase / 100;
+                    totalstate = hpp - potongan;//harga jual - presentase potongan
+                }
+                else if (state == "reguler")
+                {
+                    totalstate = hpp;
+                }
+                int totalHpp = totalstate * Convert.ToInt32(md.Quantity);
+                using (var cmd = new MySqlCommand("UPDATE histori_penjualan SET " + model.State + " = @hpp,total = @total WHERE barcode = @barcode AND nomerTrans = @nomorPJ", op.Conn))
+                {
+                    cmd.Parameters.AddWithValue("@hpp", totalstate.ToString());
                     cmd.Parameters.AddWithValue("@total", totalHpp.ToString());
                     cmd.Parameters.AddWithValue("@barcode", md.Barkode);
                     cmd.Parameters.AddWithValue("@nomorPJ", model.NomorPJ);
@@ -494,6 +515,8 @@ namespace KasirApp.Repository
                         md.Diskon = rd["diskon"].ToString();
                         md.Tanggal = DateTime.Now.ToString("yyyy/MM/dd");
 
+
+
                         //Logic
                         int qty = Convert.ToInt32(md.Quantity);
                         int diskon = Convert.ToInt32(md.Diskon);
@@ -639,6 +662,8 @@ namespace KasirApp.Repository
                     }
 
                     SubtrakBarangs(listTrans);
+                    //Update List Struk
+                    op.masukListStruk("PJC", model.NomorPJ);
 
                     using (var client = new RestClient($"{op.urlcloud}cabangmember/"))
                     {

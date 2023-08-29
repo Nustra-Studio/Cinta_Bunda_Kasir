@@ -17,16 +17,15 @@ namespace KasirApp.GUI
     public partial class Transaksi : Form, iTransaksi, iPopUpRecieve
     {
         //Fields
-        Operator op = new Operator();
         userDataModel _user;
         TransaksiPresenter _prn;
-        iMasterForm _master;
-        BarangsModel _curentBRG;
         DataTable _Dt;
+        iMasterForm _master;
         string select;
         string pjState;
         string memPhone;
         string namaMem;
+        string stateUser;
         int diskon;
         int withDiskon;
 
@@ -40,6 +39,7 @@ namespace KasirApp.GUI
         public string noHpMem { get => memPhone; set => memPhone = value; }
         public string NamaMem { get => namaMem; set => namaMem = value; }
         public string diskonTrans { get => txtDiskon.Text; set => txtDiskon.Text = value; }
+        public string stateDiskon { get => stateUser; set => stateUser = value; }
 
         //Interface Method
         public void GetDataBarangs(TransaksiModel md)
@@ -63,10 +63,6 @@ namespace KasirApp.GUI
                 {
                     hj = md.Harga_pokok;
                 }
-
-                //int diskonan = Convert.ToInt32(md.Diskon);
-                //string diskonp = string.Format("{0:0,0}", diskonan);
-                //txtDiskon = $"- Rp.{diskonp}";
             }
             else
             {
@@ -79,12 +75,10 @@ namespace KasirApp.GUI
                     hj = md.Harga_pokok;
                 }
             }
-
             int harga = Convert.ToInt32(hj);
             //Format String otomatis tambah koma setelah 3 angka 0
             string withkoma = string.Format("{0:0,0}", harga);
             lblHeader.Text = $"{md.Nama} = Rp.{withkoma} {textDiskon}";
-
         }
 
         public void tampilKembali(int kembali)
@@ -116,8 +110,7 @@ namespace KasirApp.GUI
 
         public void GetPopUpData(BarangsModel model)
         {
-            _curentBRG = model;
-            txtBarcode.Text = model.Kode;
+            txtBarcode.Text = model.Nama;
             txtHarga.Text = model.Harga_pokok;
             txtQty.Text = "1";
             txtDiskon.Text = "0";
@@ -162,12 +155,14 @@ namespace KasirApp.GUI
             _user = user;
             _prn = new TransaksiPresenter(this, _user, this);
             pjState = "harga_jual";
+            stateUser = "reguler";
             memPhone = "";
             namaMem = "";
             diskon = 0;
             txtNomorKwitansi.Focus();
             txtNamaUser.Text = user.username.ToString();
             _master = form;
+            _prn.UpdateState("reguler");
         }
 
         //Method
@@ -279,6 +274,8 @@ namespace KasirApp.GUI
                 dgv.Columns["harga"].DataPropertyName = "harga_jual";
                 dgv.Columns["harga"].HeaderText = "Harga Jual";
                 pjState = "harga_jual";
+                stateUser = "reguler";
+                _prn.UpdateState(stateUser);
                 _prn.TampilTable();
             }
             //F8 Harga Karyawan
@@ -287,16 +284,18 @@ namespace KasirApp.GUI
                 dgv.Columns["harga"].DataPropertyName = "hpp";   
                 dgv.Columns["harga"].HeaderText = "Harga Pokok(Karyawan)";
                 pjState = "hpp";
-                _prn.UpdateState("karyawan");
+                stateUser = "karyawan";
+                _prn.UpdateState(stateUser);
                 _prn.TampilTable();
             }
             //F9 Harga Reseller
             else if (e.KeyCode == Keys.F9)
             {
-                dgv.Columns["harga"].DataPropertyName = "hpp";   
-                dgv.Columns["harga"].HeaderText = "Harga Pokok(Reseller)";
-                pjState = "hpp";
-                _prn.UpdateState("reseller");
+                dgv.Columns["harga"].DataPropertyName = "harga_jual";   
+                dgv.Columns["harga"].HeaderText = "Harga Jual(Reseller)";
+                pjState = "harga_jual";
+                stateUser = "reseller";
+                _prn.UpdateState(stateUser);
                 _prn.TampilTable();
             }
             else if(e.KeyCode == Keys.Delete)
@@ -343,7 +342,9 @@ namespace KasirApp.GUI
         {
             if (txtBarcode.TextLength >= 12)
             {
-                
+                _prn.AttemptInsertGrid();
+                txtQty.Text = "";
+                txtDiskon.Text = "";
             }
             else
             {
@@ -378,23 +379,6 @@ namespace KasirApp.GUI
                 _master.subForm(fra);
                 fra.BringToFront();
             }
-        }
-
-        //Print Handler
-        public void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
-        {
-            e.Graphics.DrawString("Cinta Bunda", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(75,10));
-
-            for (int i = 0; i < dgv.Rows.Count; i++)
-            {
-                e.Graphics.DrawString(dgv.Rows[i].Cells[2].Value.ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(80,10));
-            }
-        }
-
-        public void print()
-        {
-            printPreviewDialog1.Document = printDocument1;
-            printPreviewDialog1.Show();
         }
     }
 }

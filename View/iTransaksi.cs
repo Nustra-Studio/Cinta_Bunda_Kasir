@@ -19,6 +19,7 @@ namespace KasirApp.View
         string noHpMem { get; set; }
         string NamaMem { get; set; }
         string diskonTrans { get; set; }
+        string stateDiskon { get; set; }
 
         void GetMember(RootMember rootmem);
         void GetDataBarangs(TransaksiModel md);

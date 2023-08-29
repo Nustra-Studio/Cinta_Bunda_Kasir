@@ -62,6 +62,7 @@ namespace KasirApp.Presenter
         {
             var model = new TransaksiModel();
             model.NomorPJ = _trn.nomorPJ;
+            model.State = _trn.state;
             _repo.StateChange(state, model);
 
             TampilTable();
@@ -92,14 +93,17 @@ namespace KasirApp.Presenter
             var model = new TransaksiModel();
             model.Barkode = _trn.barcode;
             model.NomorPJ = _trn.nomorPJ;
+            model.Nama = _trn.barcode;
             model.State = _trn.state;
             model.Id_member = _trn.NamaMem;
             if (_repo.CekData(model)==true)
             {
                 _repo.CekRows(model);
-                TampilTable();
                 _trn.clear();
                 _trn.GetDataBarangs(_repo.AmbilValueRead(model));
+                _repo.StateChange(_trn.stateDiskon, model);
+
+                TampilTable();
             }
             else
             {
