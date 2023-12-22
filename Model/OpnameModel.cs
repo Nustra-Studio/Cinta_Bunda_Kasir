@@ -9,9 +9,10 @@ namespace KasirApp.Model
     public class OpnameModel
     {
         //Increment Fields
-        private int numeringKwitansi;
+        private long numeringKwitansi;
 
         //Fields
+        private string uuid;
         private string nomor;
         private string barcode;
         private string nama;
@@ -29,6 +30,14 @@ namespace KasirApp.Model
         public string Selisih { get => selisih; set => selisih = value; }
         public int Posted { get => posted; set => posted = value; }
         public string Tanggal { get => tanggal; set => tanggal = value; }
-        public int NumeringKwitansi { get => numeringKwitansi; set => numeringKwitansi = value; }
+        public long NumeringKwitansi { get => numeringKwitansi; set => numeringKwitansi = value; }
+        public string Uuid { get => uuid; set => uuid = value; }
+    }
+
+    public class opnameAPI
+    {
+        public string barcode { get; set; }
+        public string stock { get; set; }
+        public string uuid { get; set; }
     }
 }

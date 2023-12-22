@@ -13,22 +13,33 @@ using KasirApp.Model;
 
 namespace KasirApp.GUI.Master
 {
-    public partial class frmDepartemen : Form,iParentDock,iDepartemen
+    public partial class frmDepartemen : Form,iParentDock,iDepartemen,iPopUpRecieve
     {
         //fields
         DepartemenPresenter _prn;
+        bool editState;
 
         //interfaces Dept
         public string kode { get => txtKode.Text; set => txtNama.Text = value; }
         public string nama { get => txtNama.Text; set => txtNama.Text = value; }
         public bool kenaDiskon { get => cekDiskon.Checked ? true : false; set => cekDiskon.Checked = value; }
+        public bool grosir { get => chkGrosir.Checked ? true : false; set => chkGrosir.Checked = value; }
+
+        public void GetPopUpData(BarangsModel model)
+        {
+            txtKode.Text = model.Nama;
+            _prn.showByList();
+        }
 
         //Constructor
         public frmDepartemen()
         {
             InitializeComponent();
+            CenterToParent();
             startState();
             _prn = new DepartemenPresenter(this, this);
+            Bot();
+            editState = false;
         }
         
         //Method
@@ -37,6 +48,7 @@ namespace KasirApp.GUI.Master
             txtKode.Enabled = false;
             txtNama.Enabled = false;
             cekDiskon.Enabled = false;
+            chkGrosir.Enabled = false;
         }
 
         public void clear()
@@ -44,13 +56,15 @@ namespace KasirApp.GUI.Master
             txtKode.Text = null;
             txtNama.Text = null;
             cekDiskon.Checked = false;
+            chkGrosir.Enabled = false;
         }
 
         public void showRd(DepartemenModel model)
         {
             txtKode.Text = model.Kode;
             txtNama.Text = model.Nama;
-            cekDiskon.Checked = model.KenaDiskon;
+            cekDiskon.Checked = model.KenaDiskon.Equals(1) ? true : false;
+            chkGrosir.Checked = model.IsGrosir.Equals(1) ? true : false;
         }
 
         public void openState()
@@ -58,12 +72,18 @@ namespace KasirApp.GUI.Master
             txtKode.Enabled = true;
             txtNama.Enabled = true;
             cekDiskon.Enabled = true;
+            chkGrosir.Enabled = true;
         }
 
         //Event Args
         public void raiseTombol(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter && editState == true)
+            {
+                _prn.EditData();
+                editState = false;
+            }
+            else if (e.KeyCode == Keys.Enter)
             {
                  _prn.Simpan();
             }
@@ -89,19 +109,24 @@ namespace KasirApp.GUI.Master
         public void top()
         {
             _prn.atas();
+            startState();
         }
         public void next()
         {
             _prn.lanjut();
+            startState();
         }
 
         public void prev()
         {
             _prn.sebelum();
+            startState();
         }
+
         public void Bot()
         {
             _prn.bawah();
+            startState();
         }
 
         public void delete()
@@ -116,7 +141,9 @@ namespace KasirApp.GUI.Master
 
         public void list()
         {
-            return;
+            var pop = new PopUp(this);
+            pop.getDataList2Param("SELECT name AS 'Nama', kode AS 'Kode' FROM category_barangs", "SELECT name AS 'Nama', kode AS 'Kode' FROM category_barangs WHERE Nama LIKE ", "OR kode LIKE");
+            pop.Show();
         }
 
         public void print()
@@ -124,11 +151,11 @@ namespace KasirApp.GUI.Master
             return;
         }
 
-        public void search()
+        public void edit()
         {
-            return;
+            openState();
+            txtKode.Enabled = false;
+            editState = true;
         }
-
-       
     }
 }

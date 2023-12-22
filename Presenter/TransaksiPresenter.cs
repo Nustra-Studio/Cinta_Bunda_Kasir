@@ -17,22 +17,26 @@ namespace KasirApp.Presenter
         iPopUpRecieve _rec;
         userDataModel _model;
         TransaksiRepo _repo;
+        RootMember _mem;
         Operator op = new Operator();
         MboxOperator mb = new MboxOperator();
         
         //Constructor
-        public TransaksiPresenter(iTransaksi trans, userDataModel model, iPopUpRecieve rec)
+        public TransaksiPresenter(iTransaksi trans, userDataModel model, iPopUpRecieve rec, RootMember mem)
         {
             _trn = trans;
             _model = model;
             _repo = new TransaksiRepo(model);
             _rec = rec;
+            _mem = mem;
         }
 
         ///Method TO Repo
         //View and UI Method
         public void GetPoint()
         {
+            var model = new TransaksiModel();
+            model.NomorPJ = _trn.nomorPJ;
             string rand = _trn.randKode.ToString();
             if (op.CekNetwork()==false)
             {
@@ -45,6 +49,8 @@ namespace KasirApp.Presenter
             else
             {
                 _trn.GetMember(_repo.AmbilPoint(_model, rand));
+                _repo.ChangeMember(model, _repo.AmbilPoint(_model, rand));
+                _mem = _repo.AmbilPoint(_model, rand);
             }
         }
 
@@ -77,14 +83,9 @@ namespace KasirApp.Presenter
             _trn.TampilGrid(_repo.SetView(model));
         }
 
-        public int TakeNumber()
+        public long TakeNumber()
         {
             return _repo.AmbilNomor();
-        }
-
-        public void cekState()
-        {
-            
         }
 
         //CRUD Method
@@ -98,10 +99,10 @@ namespace KasirApp.Presenter
             model.Id_member = _trn.NamaMem;
             if (_repo.CekData(model)==true)
             {
-                _repo.CekRows(model);
+                _repo.CekRows(model, _mem);
                 _trn.clear();
-                _trn.GetDataBarangs(_repo.AmbilValueRead(model));
                 _repo.StateChange(_trn.stateDiskon, model);
+                _trn.GetDataBarangs(_repo.AmbilValueRead(model));
 
                 TampilTable();
             }
@@ -116,7 +117,6 @@ namespace KasirApp.Presenter
         public void insertApi(int sum)
         {
             string rand = _trn.randKode.ToString();
-
             var model = new TransaksiModel();
             model.Barkode = _trn.barcode;
             model.NomorPJ = _trn.nomorPJ;
@@ -180,5 +180,32 @@ namespace KasirApp.Presenter
             }
         }
 
+        public void cekStruk(string nomerTrans)
+        {
+            _repo.directPrint(nomerTrans);
+        }
+
+        public void PrintStruk(PembayaranModel model, RootMember _mem, userDataModel _usr)
+        {  
+            if (model.Diskontotal == "")
+            {
+                model.Diskontotal = "0";
+            }
+
+            if (model.Diskonmember == "")
+            {
+                model.Diskonmember = "0";
+            }
+
+            if (model.Bayar == "")
+            {
+                mb.PeringatanOK("Masukan Nominal Bayar ");
+            }
+            else
+            {
+                _repo.MasukanLaporan(model, _usr);
+                _repo.PrintPrinter(model, _mem,_usr);
+            }
+        }
     }
 }

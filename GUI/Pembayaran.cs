@@ -21,10 +21,15 @@ namespace KasirApp.GUI
         iPopUpRecieve _rec;
         userDataModel _model;
         TransaksiModel _trans;
+        RootMember _mem;
+        Operator op = new Operator();
+        int diskonmember;
         int kembali;
-        int totaldiskon;
+        int diskon;
+        int cash;
+        int grandtotal;
 
-        public Pembayaran(iTransaksi trans, userDataModel model, iPopUpRecieve rec, TransaksiModel mod)
+        public Pembayaran(iTransaksi trans, userDataModel model, iPopUpRecieve rec, TransaksiModel mod, RootMember rootmem)
         {
             InitializeComponent();
             CenterToParent();
@@ -32,30 +37,63 @@ namespace KasirApp.GUI
             _rec = rec;
             _model = model;
             _trans = mod;
-            totaldiskon = 0; 
-            if (_trans.State == "checked")
+            _mem = rootmem;
+            diskonmember = 0;
+            txtSubtotal.Text = $"Rp.{string.Format("{0:0,0}", Convert.ToInt32(_trans.Total))}";
+            if (_trans.State == "checked" && rootmem.poin.poin != null && rootmem.poin.poin != "")
             {
-                totaldiskon = Convert.ToInt32(_trans.Harga) * 500;
-                DicMember.Text = $"Rp.{totaldiskon}";//Jumlah Point
+                diskonmember = Convert.ToInt32(_mem.poin.poin) * Convert.ToInt32(op.CabangConfig().Valuepoint);
+                DicMember.Text = $"Rp.{string.Format("0:0,0", diskonmember)}";//Jumlah Point
+            }
+        }
+        public void FokusControler()
+        {
+            txtBayarCash.Focus();
+        }
+
+        public void ThousandSep()
+        {
+            if (txtBayarCash.Text != "" && txtBayarCash.TextLength > 3)
+            {
+                txtBayarCash.Text = string.Format("{0:0,0}", Convert.ToInt32(txtBayarCash.Text));
+            }
+            else if (txtDiscount.Text != "" && txtDiscount.TextLength > 3)
+            {
+                txtDiscount.Text = string.Format("{0:0,0}", Convert.ToInt32(txtDiscount.Text));
             }
         }
 
         private void btnBayar_Click(object sender, EventArgs e)
         {
-            var model = new TransaksiModel();
+            var model = new PembayaranModel();
             model.NomorPJ = _trans.NomorPJ;
-            model.Total = _trans.Total;//Subtotal
-            model.Harga = kembali.ToString();//Kembali Di Harga
-            model.Harga_jual = txtBayarCash.Text;//Bayar di hpp
+            model.Subtotal = _trans.Total;
+            model.Diskontotal = diskon.ToString();
+            model.Diskonmember = diskonmember.ToString();
+            model.Totalbiaya = grandtotal.ToString();
+            model.Bayar = txtBayarCash.Text;
+            model.Kembali = kembali.ToString();
+            model.Status = _trans.State;
 
             _trn.tampilKembali(kembali);
 
-            PrintReport form = new PrintReport(model);
+            var _pres = new TransaksiPresenter(_trn, _model, _rec, _mem);
 
-            var _pres = new TransaksiPresenter(_trn, _model, _rec);
-            _pres.insertApi(Convert.ToInt32(_trans.Total));
-           
-            this.Hide();
+            if (Convert.ToInt32(kembali) < 0)
+            {
+                MessageBox.Show("Uang tidak cukup", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                _pres.PrintStruk(model, _mem, _model);
+
+                _pres.insertApi(Convert.ToInt32(_trans.Total));
+
+                _trn.FinishPayments();
+
+                op.insertHistoriUser(_model, this.Text, "Pembayaran Transaksi");
+                this.Hide();
+            }
         }
 
         private void Numeric(object sender, KeyPressEventArgs e)
@@ -63,18 +101,32 @@ namespace KasirApp.GUI
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
-        private void txtBayarCash_TextChanged(object sender, EventArgs e)
+        public void UpdateDataTextChanged(object sender, EventArgs e)
         {
-            if (txtBayarCash.Text == string.Empty)
+            if (txtBayarCash.Text == "")
             {
                 return;
             }
-            else
+            else if (txtDiscount.Text == "")
             {
-                int cash = Convert.ToInt32(txtBayarCash.Text);
-                kembali = cash - Convert.ToInt32(_trans.Total);
-                txtKembali.Text = $"Rp.{kembali.ToString()}";
+                diskon = 0;
             }
+            else if (DicMember.Text == "")
+            {
+                diskonmember = 0;
+            }
+            
+            if (txtDiscount.Text != "")
+            {
+                diskon = Convert.ToInt32(txtDiscount.Text);
+            }
+
+            //Bayar
+            cash = Convert.ToInt32(txtBayarCash.Text);
+            grandtotal = (Convert.ToInt32(_trans.Total) - diskon - diskonmember);
+            kembali = cash - grandtotal;
+            txtKembali.Text = $"Rp.{string.Format("{0:0,0}", kembali)}";
+            _trn.hitungTotal(diskon.ToString());
         }
 
         private void txtBayarCash_KeyDown(object sender, KeyEventArgs e)
@@ -83,21 +135,10 @@ namespace KasirApp.GUI
             {
                 btnBayar_Click(sender, e);
             }
+
             else if (e.KeyCode == Keys.Escape)
             {
                 this.Hide();
-            }
-        }
-
-        private void txtDiscount_TextChanged(object sender, EventArgs e)
-        {
-            if (txtDiscount.Text == "")
-            {
-                _trn.hitungTotal("0");
-            }
-            else
-            {
-                _trn.hitungTotal(txtDiscount.Text);
             }
         }
     }

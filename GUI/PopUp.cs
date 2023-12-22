@@ -21,12 +21,16 @@ namespace KasirApp.GUI
         PopUpPresenter _prn;
         iPopUpRecieve _poprec;
         string select;
+        string search;
+        string search2;
+        bool state;
         //Constructor
         public PopUp(iPopUpRecieve rec)
         {
             InitializeComponent();
             _poprec = rec;
             _prn = new PopUpPresenter(this);
+            state = false;
         }
 
         //Method
@@ -43,7 +47,16 @@ namespace KasirApp.GUI
 
         public void GetBarangs(BarangsModel md)
         {
-            _poprec.GetPopUpData(md);
+            if (state == false)
+            {
+                _poprec.GetPopUpData(md);
+            }
+            else
+            {
+                var mdo = new BarangsModel();
+                mdo.Nama = select;
+                _poprec.GetPopUpData(mdo);
+            }
         }
         
         public void getBarang(string text)
@@ -53,18 +66,35 @@ namespace KasirApp.GUI
             gunaGradientButton3.Visible = false;
         }
 
-        public void getMember(string text)
+        public void getDataList(string Query, string searchQuery)
         {
-            DGV.DataSource = op.getByQuery("SELECT telepon,nama,email from members where nama LIKE '%" + text + "%'");
-            btnMasukan.Text = "Tambah";
-            gunaGradientButton3.Visible = true;
+            search = searchQuery;
+            DGV.DataSource = op.getByQuery(Query);
+            btnMasukan.Text = "Proses";
+            gunaGradientButton3.Visible = false;
+            state = true;
         }
 
-        public void member()
+        public void getDataList2Param(string Query, string searchQuery, string param2)
         {
-            DGV.DataSource = op.getByQuery("select telepon,nama,email from members");
+            search = searchQuery;
+            search2 = param2;
+            state = true;
+            DGV.DataSource = op.getByQuery(Query);
+            btnMasukan.Text = "Proses";
+            gunaGradientButton3.Visible = false;
         }
-        
+
+        public void SearchDataList2Param()
+        {
+            DGV.DataSource = op.getByQuery($"{search}'%{textBox1.Text}%' OR {search2}'%{textBox1.Text}%'");
+        }
+
+        public void SearchDataList()
+        {
+            DGV.DataSource = op.getByQuery($"{search}'%{textBox1.Text}%'");
+        }
+
         //Raise Events
         private void gunaGradientButton1_Click(object sender, EventArgs e)
         {
@@ -74,7 +104,14 @@ namespace KasirApp.GUI
 
         private void btnProses_Click(object sender, EventArgs e)
         {
-            getBarang(textBox1.Text);
+            if (state == false)
+            {
+                getBarang(textBox1.Text);
+            }
+            else
+            {
+                SearchDataList();
+            }
         }
 
         private void gunaGradientButton3_Click(object sender, EventArgs e)
@@ -84,7 +121,7 @@ namespace KasirApp.GUI
 
         public void PopUp_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.Hide();
+
         }
 
         //DGV Events
@@ -96,7 +133,7 @@ namespace KasirApp.GUI
             }
             catch (Exception)
             {
-                return;
+                //return;
             }
         }
 

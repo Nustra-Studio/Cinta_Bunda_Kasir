@@ -16,7 +16,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>publish\</PublishUrl>
+    <PublishUrl>C:\Users\THINKPAD\Documents\Publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -24,11 +24,17 @@
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
+    <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ProductName>Cinta Bunda Kasir</ProductName>
+    <PublisherName>KediriApp</PublisherName>
+    <SuiteName>NustraStudio</SuiteName>
+    <MinimumRequiredVersion>1.0.0.0</MinimumRequiredVersion>
+    <ApplicationRevision>16</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <UseApplicationTrust>false</UseApplicationTrust>
+    <UseApplicationTrust>true</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -49,9 +55,27 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Logo Cinta Bunda.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>B6016948C22C819C728F19FF33462818A7A73F6F</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>KasirApp_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
@@ -88,19 +112,10 @@
     </Reference>
     <Reference Include="Microsoft.Build.Framework" />
     <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1576.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1357.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1576.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1576.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1576.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.ReportViewer.WinForms.10.0.40219.1\lib\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1357.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Types, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.SqlServer.Types.160.1000.6\lib\net462\Microsoft.SqlServer.Types.dll</HintPath>
@@ -116,6 +131,9 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="RestSharp, Version=110.2.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
       <HintPath>packages\RestSharp.110.2.0\lib\net471\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Salar.DpiAware, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Salar.DpiAware.1.2.1.0\lib\net40\Salar.DpiAware.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -181,6 +199,12 @@
     <Compile Include="GUI\Bayar.Designer.cs">
       <DependentUpon>Bayar.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\DetailStok.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DetailStok.Designer.cs">
+      <DependentUpon>DetailStok.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\frmParent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -217,6 +241,12 @@
     <Compile Include="GUI\Master\frmDepartemen.Designer.cs">
       <DependentUpon>frmDepartemen.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Pembayaran.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Pembayaran.Designer.cs">
+      <DependentUpon>Pembayaran.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\PenyesuaianStok.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -235,23 +265,77 @@
     <Compile Include="GUI\PostingStokOpname.Designer.cs">
       <DependentUpon>PostingStokOpname.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Retur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Retur.Designer.cs">
+      <DependentUpon>Retur.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\StockOpname.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\StockOpname.Designer.cs">
       <DependentUpon>StockOpname.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Supervisor\BatalPosting.cs">
+    <Compile Include="GUI\subKategori.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\Supervisor\BatalPosting.Designer.cs">
-      <DependentUpon>BatalPosting.cs</DependentUpon>
+    <Compile Include="GUI\subKategori.Designer.cs">
+      <DependentUpon>subKategori.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\SubPenyesuaian.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\SubPenyesuaian.Designer.cs">
+      <DependentUpon>SubPenyesuaian.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\subSatuan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\subSatuan.Designer.cs">
+      <DependentUpon>subSatuan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Supervisor\batalOpname.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Supervisor\batalOpname.Designer.cs">
+      <DependentUpon>batalOpname.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Supervisor\batalPenyesuaian.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Supervisor\batalPenyesuaian.Designer.cs">
+      <DependentUpon>batalPenyesuaian.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Supervisor\batalPOS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Supervisor\batalPOS.Designer.cs">
+      <DependentUpon>batalPOS.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\MasterForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\MasterForm.Designer.cs">
       <DependentUpon>MasterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Supervisor\batalRetur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Supervisor\batalRetur.Designer.cs">
+      <DependentUpon>batalRetur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Supervisor\batalTransferGudang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Supervisor\batalTransferGudang.Designer.cs">
+      <DependentUpon>batalTransferGudang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Supervisor\LaporanAktifitas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Supervisor\LaporanAktifitas.Designer.cs">
+      <DependentUpon>LaporanAktifitas.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Supervisor\MasterUser.cs">
       <SubType>Form</SubType>
@@ -270,6 +354,12 @@
     </Compile>
     <Compile Include="GUI\Supervisor\ReturPenjualanPos.Designer.cs">
       <DependentUpon>ReturPenjualanPos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Supervisor\SetGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Supervisor\SetGroup.Designer.cs">
+      <DependentUpon>SetGroup.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Supervisor\Setting.cs">
       <SubType>Form</SubType>
@@ -297,24 +387,54 @@
     </Compile>
     <Compile Include="Model\apiError.cs" />
     <Compile Include="Model\BarangsModel.cs" />
+    <Compile Include="Model\BatalPostModel.cs" />
+    <Compile Include="Model\CabangModel.cs" />
     <Compile Include="Model\DepartemenModel.cs" />
+    <Compile Include="Model\getOpnameModel.cs" />
+    <Compile Include="Model\GroupModel.cs" />
+    <Compile Include="Model\HistoriStokModel.cs" />
     <Compile Include="Model\Koneksi.cs" />
+    <Compile Include="Model\ListTransModel.cs" />
     <Compile Include="Model\MboxOperator.cs" />
     <Compile Include="Model\MemberModel.cs" />
     <Compile Include="Model\NumberingModel.cs" />
     <Compile Include="Model\OpnameModel.cs" />
+    <Compile Include="Model\ParrentButtonModel.cs" />
+    <Compile Include="Model\PembayaranModel.cs" />
+    <Compile Include="Model\PenyesuaianModel.cs" />
+    <Compile Include="Model\ReturModel.cs" />
+    <Compile Include="Model\SettingCabangModel.cs" />
+    <Compile Include="Model\SettingModel.cs" />
+    <Compile Include="Model\TransaksiModel.cs" />
+    <Compile Include="Model\TransferGudangModel.cs" />
     <Compile Include="Model\UserModel.cs" />
     <Compile Include="Model\SuplierModel.cs" />
     <Compile Include="Presenter\addMemberPresenter.cs" />
+    <Compile Include="Presenter\BatalPostPresenter.cs" />
     <Compile Include="Presenter\DepartemenPresenter.cs" />
+    <Compile Include="Presenter\GroupPresenter.cs" />
     <Compile Include="Presenter\LoginPresenter.cs" />
     <Compile Include="Presenter\MasterFormPresenter.cs" />
+    <Compile Include="Presenter\MasterUserPresenter.cs" />
     <Compile Include="Presenter\OpnamePresenter.cs" />
+    <Compile Include="Presenter\ParentButtonPresenter.cs" />
+    <Compile Include="Presenter\PenyesuaianPresenter.cs" />
     <Compile Include="Presenter\PopUpPresenter.cs" />
     <Compile Include="Presenter\PostingOpnamePresenter.cs" />
+    <Compile Include="Presenter\ReturPresenter.cs" />
     <Compile Include="Presenter\TransaksiPresenter.cs" />
+    <Compile Include="Presenter\TransferGudangPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\DsKasir.cs">
+      <DependentUpon>DsKasir.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\DsKasir.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsKasir.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\LocalReportExtensions.cs" />
     <Compile Include="Report\PrintReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -322,28 +442,51 @@
       <DependentUpon>PrintReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Report\Receipt.cs" />
+    <Compile Include="Repository\BatalPostRepo.cs" />
     <Compile Include="Repository\DeptRepo.cs" />
+    <Compile Include="Repository\GroupRepo.cs" />
+    <Compile Include="Repository\MasterUserRepo.cs" />
     <Compile Include="Repository\MemberRepo.cs" />
     <Compile Include="Repository\OpnameRepo.cs" />
+    <Compile Include="Repository\ParentButtonRepo.cs" />
+    <Compile Include="Repository\PenyesuaianRepo.cs" />
     <Compile Include="Repository\PopUpRepo.cs" />
     <Compile Include="Repository\PostingOpnameRepo.cs" />
+    <Compile Include="Repository\PrintRepo.cs" />
+    <Compile Include="Repository\ReturRepo.cs" />
+    <Compile Include="Repository\SettingRepo.cs" />
+    <Compile Include="Repository\subKategoriRepo.cs" />
+    <Compile Include="Repository\subSatuanRepo.cs" />
     <Compile Include="Repository\TransaksiRepo.cs" />
+    <Compile Include="Repository\TransferGudangRepo.cs" />
+    <Compile Include="View\iBatalPost.cs" />
     <Compile Include="View\iDepartemen.cs" />
+    <Compile Include="View\iGroup.cs" />
+    <Compile Include="View\iInsert.cs" />
     <Compile Include="View\iLogin.cs" />
     <Compile Include="View\iMasterForm.cs" />
     <Compile Include="View\iMember.cs" />
     <Compile Include="View\iOpname.cs" />
     <Compile Include="View\iParentDock.cs" />
+    <Compile Include="View\iPenyesuaian.cs" />
     <Compile Include="View\iPopup.cs" />
     <Compile Include="View\iPopUpRecieve.cs" />
     <Compile Include="View\iPostingOpname.cs" />
+    <Compile Include="View\iRetur.cs" />
     <Compile Include="View\iRole.cs" />
+    <Compile Include="View\iSetting.cs" />
+    <Compile Include="View\iSubPenyesuaian.cs" />
     <Compile Include="View\iTransaksi.cs" />
+    <Compile Include="View\iUser.cs" />
+    <None Include="Resources\upload.png" />
     <EmbeddedResource Include="GUI\AddMember.resx">
       <DependentUpon>AddMember.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Bayar.resx">
       <DependentUpon>Bayar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DetailStok.resx">
+      <DependentUpon>DetailStok.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\frmParent.resx">
       <DependentUpon>frmParent.cs</DependentUpon>
@@ -363,6 +506,9 @@
     <EmbeddedResource Include="GUI\Master\frmDepartemen.resx">
       <DependentUpon>frmDepartemen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Pembayaran.resx">
+      <DependentUpon>Pembayaran.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\PenyesuaianStok.resx">
       <DependentUpon>PenyesuaianStok.cs</DependentUpon>
     </EmbeddedResource>
@@ -372,14 +518,41 @@
     <EmbeddedResource Include="GUI\PostingStokOpname.resx">
       <DependentUpon>PostingStokOpname.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Retur.resx">
+      <DependentUpon>Retur.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\StockOpname.resx">
       <DependentUpon>StockOpname.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Supervisor\BatalPosting.resx">
-      <DependentUpon>BatalPosting.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\subKategori.resx">
+      <DependentUpon>subKategori.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\SubPenyesuaian.resx">
+      <DependentUpon>SubPenyesuaian.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\subSatuan.resx">
+      <DependentUpon>subSatuan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Supervisor\batalOpname.resx">
+      <DependentUpon>batalOpname.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Supervisor\batalPenyesuaian.resx">
+      <DependentUpon>batalPenyesuaian.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Supervisor\batalPOS.resx">
+      <DependentUpon>batalPOS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\MasterForm.resx">
       <DependentUpon>MasterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Supervisor\batalRetur.resx">
+      <DependentUpon>batalRetur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Supervisor\batalTransferGudang.resx">
+      <DependentUpon>batalTransferGudang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Supervisor\LaporanAktifitas.resx">
+      <DependentUpon>LaporanAktifitas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Supervisor\MasterUser.resx">
       <DependentUpon>MasterUser.cs</DependentUpon>
@@ -389,6 +562,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Supervisor\ReturPenjualanPos.resx">
       <DependentUpon>ReturPenjualanPos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Supervisor\SetGroup.resx">
+      <DependentUpon>SetGroup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Supervisor\Setting.resx">
       <DependentUpon>Setting.cs</DependentUpon>
@@ -412,11 +588,32 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Content Include="Report\AktifitasUser.rdlc" />
+    <Content Include="Report\Opname.rdlc" />
     <EmbeddedResource Include="Report\PrintReport.resx">
       <DependentUpon>PrintReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Report\Report1.rdlc" />
+    <Content Include="Report\ReportPenyesuaian.rdlc" />
+    <Content Include="Report\ReportPOS\POSharianDetail.rdlc" />
+    <Content Include="Report\ReportPOS\POSharianSummary.rdlc" />
+    <Content Include="Report\ReportPOS\POSperKasirDetail.rdlc" />
+    <Content Include="Report\ReportPOS\POSperKasirSummary.rdlc" />
+    <Content Include="Report\ReportPOS\POSperKategori.rdlc" />
+    <Content Include="Report\ReportPOS\POSperKategoriDetail.rdlc" />
+    <Content Include="Report\ReportPOS\POSperKategoriSummary.rdlc" />
+    <Content Include="Report\ReportPOS\POSperKategoriTerbanyak Detail.rdlc" />
+    <Content Include="Report\ReportPOS\POSperKategoriTerbanyakSummary.rdlc" />
+    <Content Include="Report\ReportPOS\Report1.rdlc" />
+    <Content Include="Report\ReportPOS\ReportDetail.rdlc" />
+    <Content Include="Report\ReturReport.rdlc" />
+    <Content Include="Report\StokDetail.rdlc" />
+    <Content Include="Report\StokMinim.rdlc" />
+    <Content Include="Report\StokMinus.rdlc" />
+    <Content Include="Report\Struk.rdlc" />
+    <Content Include="Report\StrukKupon.rdlc" />
+    <Content Include="Report\TransferGudang.rdlc" />
     <None Include="app.manifest" />
+    <None Include="KasirApp_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\KasirApp.Report.Receipt.datasource" />
     <None Include="Properties\Settings.settings">
@@ -435,6 +632,21 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="Logo Cinta Bunda.ico" />
+    <None Include="Resources\CintaBunda2.ico" />
+    <None Include="Resources\refresh.png" />
+    <None Include="Resources\Cinta bunda.png" />
+    <None Include="Resources\Wallpaper Kasir.png" />
+    <None Include="Report\DsKasir.xsc">
+      <DependentUpon>DsKasir.xsd</DependentUpon>
+    </None>
+    <None Include="Report\DsKasir.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsKasir.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Report\DsKasir.xss">
+      <DependentUpon>DsKasir.xsd</DependentUpon>
+    </None>
     <None Include="Resources\Search.jpg" />
     <None Include="Resources\Print.png" />
     <None Include="Resources\Plus.png" />

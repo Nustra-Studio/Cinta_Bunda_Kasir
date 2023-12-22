@@ -76,7 +76,7 @@ namespace KasirApp.Presenter
                 Ping myPing = new Ping();
                 String host = "google.com";
                 byte[] buffer = new byte[32];
-                int timeout = 5;
+                int timeout = 3;
                 PingOptions pingOptions = new PingOptions();
                 PingReply reply = myPing.Send(host, timeout, buffer, pingOptions);
                 return true;
@@ -104,9 +104,9 @@ namespace KasirApp.Presenter
                     var request = new RestRequest("login", Method.Post);
                     request.AddParameter("username", _login.Username);
                     request.AddParameter("password", _login.Password);
-                    RestResponse res = url.Execute(request);
                     try
                     {
+                        RestResponse res = url.Execute(request);
                         if (res.StatusCode == HttpStatusCode.OK)
                         {
                             var jso = res.Content.ToString();
@@ -120,8 +120,11 @@ namespace KasirApp.Presenter
 
                             var usercl = new userDataModel();
                             usercl.token = _token;
+                            usercl.uuid = fn.user.uuid.ToString();
                             usercl.username = fn.user.username.ToString();
                             usercl.role = _role;
+                            usercl.cabang_id = fn.user.cabang_id;
+                           
 
                             using (MySqlCommand cmd = new MySqlCommand("select * from roles where nama = @nama", op.Conn))
                             {
@@ -146,6 +149,7 @@ namespace KasirApp.Presenter
                                             Token = _token
                                         };
                                         _iform.Role(user, usercl);
+                                        _iform.CloseForm();
                                     }
                                 }
                             }
@@ -157,11 +161,38 @@ namespace KasirApp.Presenter
                             mb.PeringatanOK(fn.message.ToString());
                         }
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        //mb.PeringatanOK(ex.Message);
-                        throw;
+                        mb.PeringatanOK(ex.Message);
                     }
+                }
+                updateKwitansi();
+            }
+        }
+
+        public void updateKwitansi()
+        {
+            string tnggal = DateTime.Now.ToString("yyyy-MM-dd");
+            bool updateTgl = false;
+            using (var cmd = new MySqlCommand($"Select * from numberingkwitansi where tanggal = '{tnggal}'", op.Conn))
+            {
+                op.KonekDB();
+                using (var rd = cmd.ExecuteReader())
+                {
+                    rd.Read();
+                    if (!rd.HasRows)
+                    {
+                        updateTgl = true;
+                    }
+                }
+            }
+            if (updateTgl == true)
+            {
+                string kwitansi = $"{DateTime.Now.ToString("yyMMdd")}0001";
+                using (var cmd = new MySqlCommand($"Update numberingkwitansi SET tanggal = '{tnggal}',PTG = '{kwitansi}', POP = '{kwitansi}', PAD = '{kwitansi}', PJC = '{kwitansi}' ", op.Conn))
+                {
+                    op.KonekDB();
+                    cmd.ExecuteNonQuery();
                 }
             }
         }

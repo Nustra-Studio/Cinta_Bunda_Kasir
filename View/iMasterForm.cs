@@ -12,6 +12,8 @@ namespace KasirApp.View
     {
         void Role(usrRole rl, userDataModel user);
         void addForm(Form frm);
+        void subForm(Form frm);
+        void CloseForm();
         void refreshMainPanel();
     }
 }

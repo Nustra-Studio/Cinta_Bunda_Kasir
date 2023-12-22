@@ -29,205 +29,329 @@ namespace KasirApp.GUI.Supervisor
         /// </summary>
         private void InitializeComponent()
         {
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btnBatal = new Guna.UI.WinForms.GunaGradientButton();
+            this.btnSimpan = new Guna.UI.WinForms.GunaGradientButton();
+            this.gunaTextBox2 = new Guna.UI.WinForms.GunaTextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.txtPassword = new Guna.UI.WinForms.GunaTextBox();
+            this.txtNama = new Guna.UI.WinForms.GunaTextBox();
+            this.txtLogin = new Guna.UI.WinForms.GunaTextBox();
+            this.cboGroup = new Guna.UI.WinForms.GunaComboBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.lblPW = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tableLayoutPanel1
+            // groupBox1
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 295F));
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panel2, 1, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 16);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 248F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 248F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 248F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 248F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 248F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 248F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(681, 248);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this.groupBox1.Controls.Add(this.panel3);
+            this.groupBox1.Controls.Add(this.panel2);
+            this.groupBox1.Controls.Add(this.panel1);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Size = new System.Drawing.Size(757, 288);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
+            this.panel3.Controls.Add(this.btnBatal);
+            this.panel3.Controls.Add(this.btnSimpan);
+            this.panel3.Controls.Add(this.gunaTextBox2);
+            this.panel3.Controls.Add(this.label12);
+            this.panel3.Controls.Add(this.label14);
+            this.panel3.Controls.Add(this.label15);
+            this.panel3.Controls.Add(this.label16);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(465, 173);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(288, 111);
+            this.panel3.TabIndex = 5;
+            // 
+            // btnBatal
+            // 
+            this.btnBatal.AnimationHoverSpeed = 0.07F;
+            this.btnBatal.AnimationSpeed = 0.03F;
+            this.btnBatal.BaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
+            this.btnBatal.BaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(246)))), ((int)(((byte)(197)))));
+            this.btnBatal.BorderColor = System.Drawing.Color.Black;
+            this.btnBatal.BorderSize = 1;
+            this.btnBatal.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBatal.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnBatal.FocusedColor = System.Drawing.Color.Empty;
+            this.btnBatal.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnBatal.ForeColor = System.Drawing.Color.Black;
+            this.btnBatal.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            this.btnBatal.Image = null;
+            this.btnBatal.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnBatal.Location = new System.Drawing.Point(159, 35);
+            this.btnBatal.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBatal.Name = "btnBatal";
+            this.btnBatal.OnHoverBaseColor1 = System.Drawing.Color.White;
+            this.btnBatal.OnHoverBaseColor2 = System.Drawing.Color.Lime;
+            this.btnBatal.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnBatal.OnHoverForeColor = System.Drawing.Color.Black;
+            this.btnBatal.OnHoverImage = null;
+            this.btnBatal.OnPressedColor = System.Drawing.Color.Black;
+            this.btnBatal.Size = new System.Drawing.Size(105, 37);
+            this.btnBatal.TabIndex = 1;
+            this.btnBatal.Text = "Batal";
+            this.btnBatal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnBatal.Click += new System.EventHandler(this.RaiseButton);
+            // 
+            // btnSimpan
+            // 
+            this.btnSimpan.AnimationHoverSpeed = 0.07F;
+            this.btnSimpan.AnimationSpeed = 0.03F;
+            this.btnSimpan.BaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
+            this.btnSimpan.BaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(246)))), ((int)(((byte)(197)))));
+            this.btnSimpan.BorderColor = System.Drawing.Color.Black;
+            this.btnSimpan.BorderSize = 1;
+            this.btnSimpan.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSimpan.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnSimpan.FocusedColor = System.Drawing.Color.Empty;
+            this.btnSimpan.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnSimpan.ForeColor = System.Drawing.Color.Black;
+            this.btnSimpan.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            this.btnSimpan.Image = null;
+            this.btnSimpan.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnSimpan.Location = new System.Drawing.Point(22, 35);
+            this.btnSimpan.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSimpan.Name = "btnSimpan";
+            this.btnSimpan.OnHoverBaseColor1 = System.Drawing.Color.White;
+            this.btnSimpan.OnHoverBaseColor2 = System.Drawing.Color.Lime;
+            this.btnSimpan.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnSimpan.OnHoverForeColor = System.Drawing.Color.Black;
+            this.btnSimpan.OnHoverImage = null;
+            this.btnSimpan.OnPressedColor = System.Drawing.Color.Black;
+            this.btnSimpan.Size = new System.Drawing.Size(105, 37);
+            this.btnSimpan.TabIndex = 0;
+            this.btnSimpan.Text = "Simpan";
+            this.btnSimpan.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnSimpan.Click += new System.EventHandler(this.RaiseButton);
+            // 
+            // gunaTextBox2
+            // 
+            this.gunaTextBox2.BackColor = System.Drawing.SystemColors.Control;
+            this.gunaTextBox2.BaseColor = System.Drawing.Color.White;
+            this.gunaTextBox2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
+            this.gunaTextBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.gunaTextBox2.FocusedBaseColor = System.Drawing.Color.White;
+            this.gunaTextBox2.FocusedBorderColor = System.Drawing.Color.Lime;
+            this.gunaTextBox2.FocusedForeColor = System.Drawing.SystemColors.ControlText;
+            this.gunaTextBox2.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.gunaTextBox2.Location = new System.Drawing.Point(540, 21);
+            this.gunaTextBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.gunaTextBox2.Name = "gunaTextBox2";
+            this.gunaTextBox2.PasswordChar = '\0';
+            this.gunaTextBox2.SelectedText = "";
+            this.gunaTextBox2.Size = new System.Drawing.Size(64, 37);
+            this.gunaTextBox2.TabIndex = 3;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(612, 83);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(112, 20);
+            this.label12.TabIndex = 17;
+            this.label12.Text = "2 - Operator";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(612, 53);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(90, 20);
+            this.label14.TabIndex = 17;
+            this.label14.Text = "1 - Admin";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(612, 24);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(128, 20);
+            this.label15.TabIndex = 17;
+            this.label15.Text = "0 - Supervisor";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(478, 24);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(54, 20);
+            this.label16.TabIndex = 17;
+            this.label16.Text = "Level";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(465, 19);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(288, 146);
+            this.panel2.TabIndex = 4;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.textBox6);
-            this.panel1.Controls.Add(this.textBox7);
-            this.panel1.Controls.Add(this.textBox5);
-            this.panel1.Controls.Add(this.textBox4);
-            this.panel1.Controls.Add(this.textBox3);
-            this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label3);
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
+            this.panel1.Controls.Add(this.txtPassword);
+            this.panel1.Controls.Add(this.txtNama);
+            this.panel1.Controls.Add(this.txtLogin);
+            this.panel1.Controls.Add(this.cboGroup);
+            this.panel1.Controls.Add(this.label17);
             this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.lblPW);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(4, 19);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(380, 242);
-            this.panel1.TabIndex = 1;
+            this.panel1.Size = new System.Drawing.Size(461, 265);
+            this.panel1.TabIndex = 2;
             // 
-            // textBox6
+            // txtPassword
             // 
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(222, 207);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(78, 22);
-            this.textBox6.TabIndex = 9;
+            this.txtPassword.BackColor = System.Drawing.SystemColors.Control;
+            this.txtPassword.BaseColor = System.Drawing.Color.White;
+            this.txtPassword.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
+            this.txtPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtPassword.FocusedBaseColor = System.Drawing.Color.White;
+            this.txtPassword.FocusedBorderColor = System.Drawing.Color.Lime;
+            this.txtPassword.FocusedForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtPassword.Location = new System.Drawing.Point(153, 213);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '\0';
+            this.txtPassword.SelectedText = "";
+            this.txtPassword.Size = new System.Drawing.Size(288, 37);
+            this.txtPassword.TabIndex = 3;
             // 
-            // textBox7
+            // txtNama
             // 
-            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(119, 207);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(78, 22);
-            this.textBox7.TabIndex = 9;
+            this.txtNama.BackColor = System.Drawing.SystemColors.Control;
+            this.txtNama.BaseColor = System.Drawing.Color.White;
+            this.txtNama.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
+            this.txtNama.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtNama.FocusedBaseColor = System.Drawing.Color.White;
+            this.txtNama.FocusedBorderColor = System.Drawing.Color.Lime;
+            this.txtNama.FocusedForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtNama.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtNama.Location = new System.Drawing.Point(153, 125);
+            this.txtNama.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNama.Name = "txtNama";
+            this.txtNama.PasswordChar = '\0';
+            this.txtNama.SelectedText = "";
+            this.txtNama.Size = new System.Drawing.Size(288, 37);
+            this.txtNama.TabIndex = 1;
             // 
-            // textBox5
+            // txtLogin
             // 
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(119, 179);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(134, 22);
-            this.textBox5.TabIndex = 10;
+            this.txtLogin.BackColor = System.Drawing.SystemColors.Control;
+            this.txtLogin.BaseColor = System.Drawing.Color.White;
+            this.txtLogin.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
+            this.txtLogin.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtLogin.FocusedBaseColor = System.Drawing.Color.White;
+            this.txtLogin.FocusedBorderColor = System.Drawing.Color.Lime;
+            this.txtLogin.FocusedForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtLogin.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtLogin.Location = new System.Drawing.Point(153, 80);
+            this.txtLogin.Margin = new System.Windows.Forms.Padding(4);
+            this.txtLogin.Name = "txtLogin";
+            this.txtLogin.PasswordChar = '\0';
+            this.txtLogin.SelectedText = "";
+            this.txtLogin.Size = new System.Drawing.Size(247, 37);
+            this.txtLogin.TabIndex = 0;
             // 
-            // textBox4
+            // cboGroup
             // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(119, 101);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(54, 22);
-            this.textBox4.TabIndex = 11;
+            this.cboGroup.BackColor = System.Drawing.Color.Transparent;
+            this.cboGroup.BaseColor = System.Drawing.Color.White;
+            this.cboGroup.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
+            this.cboGroup.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboGroup.FocusedColor = System.Drawing.Color.Empty;
+            this.cboGroup.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboGroup.ForeColor = System.Drawing.Color.Black;
+            this.cboGroup.FormattingEnabled = true;
+            this.cboGroup.Location = new System.Drawing.Point(153, 170);
+            this.cboGroup.Margin = new System.Windows.Forms.Padding(4);
+            this.cboGroup.Name = "cboGroup";
+            this.cboGroup.OnHoverItemBaseColor = System.Drawing.Color.Lime;
+            this.cboGroup.OnHoverItemForeColor = System.Drawing.Color.Black;
+            this.cboGroup.Size = new System.Drawing.Size(288, 35);
+            this.cboGroup.TabIndex = 2;
             // 
-            // textBox3
+            // label17
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(119, 73);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(116, 22);
-            this.textBox3.TabIndex = 12;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(11, 210);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(62, 16);
-            this.label9.TabIndex = 15;
-            this.label9.Text = "Gudang";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(11, 182);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(36, 16);
-            this.label8.TabIndex = 15;
-            this.label8.Text = "Max";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(183, 149);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(90, 16);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "2 - Operator";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(183, 128);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(72, 16);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "1 - Admin";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(183, 107);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(104, 16);
-            this.label5.TabIndex = 16;
-            this.label5.Text = "0 - Supervisor";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(11, 104);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 16);
-            this.label3.TabIndex = 17;
-            this.label3.Text = "Level";
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(111, 19);
+            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(216, 39);
+            this.label17.TabIndex = 20;
+            this.label17.Text = "Setting User";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(11, 20);
+            this.label1.Location = new System.Drawing.Point(9, 83);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 16);
+            this.label1.Size = new System.Drawing.Size(55, 20);
             this.label1.TabIndex = 20;
             this.label1.Text = "Login";
+            // 
+            // lblPW
+            // 
+            this.lblPW.AutoSize = true;
+            this.lblPW.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPW.Location = new System.Drawing.Point(9, 220);
+            this.lblPW.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPW.Name = "lblPW";
+            this.lblPW.Size = new System.Drawing.Size(91, 20);
+            this.lblPW.TabIndex = 19;
+            this.lblPW.Text = "Password";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(11, 76);
+            this.label4.Location = new System.Drawing.Point(9, 176);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(50, 16);
+            this.label4.Size = new System.Drawing.Size(60, 20);
             this.label4.TabIndex = 18;
             this.label4.Text = "Group";
             // 
@@ -235,202 +359,51 @@ namespace KasirApp.GUI.Supervisor
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(11, 48);
+            this.label2.Location = new System.Drawing.Point(9, 132);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 16);
+            this.label2.Size = new System.Drawing.Size(103, 20);
             this.label2.TabIndex = 19;
             this.label2.Text = "Nama User";
             // 
-            // textBox2
-            // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(119, 45);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(249, 22);
-            this.textBox2.TabIndex = 13;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(119, 17);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(134, 22);
-            this.textBox1.TabIndex = 14;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.textBox10);
-            this.panel2.Controls.Add(this.groupBox2);
-            this.panel2.Controls.Add(this.label13);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(386, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(295, 248);
-            this.panel2.TabIndex = 2;
-            // 
-            // textBox10
-            // 
-            this.textBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox10.Location = new System.Drawing.Point(85, 125);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(50, 22);
-            this.textBox10.TabIndex = 9;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.textBox9);
-            this.groupBox2.Controls.Add(this.textBox8);
-            this.groupBox2.Controls.Add(this.checkBox2);
-            this.groupBox2.Controls.Add(this.checkBox1);
-            this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox2.Location = new System.Drawing.Point(0, 0);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(295, 117);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Setting";
-            // 
-            // textBox9
-            // 
-            this.textBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.Location = new System.Drawing.Point(138, 76);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(50, 22);
-            this.textBox9.TabIndex = 9;
-            // 
-            // textBox8
-            // 
-            this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox8.Location = new System.Drawing.Point(138, 48);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(50, 22);
-            this.textBox8.TabIndex = 9;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(6, 45);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(88, 17);
-            this.checkBox2.TabIndex = 11;
-            this.checkBox2.Text = "Di Ganti Tiap";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(6, 22);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(225, 17);
-            this.checkBox1.TabIndex = 12;
-            this.checkBox1.Text = "Password Tidak Perlu Di Ganti Selamanya";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(194, 79);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(34, 16);
-            this.label12.TabIndex = 15;
-            this.label12.Text = "Kali";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(194, 51);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(37, 16);
-            this.label11.TabIndex = 15;
-            this.label11.Text = "Hari";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(6, 79);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(121, 16);
-            this.label10.TabIndex = 15;
-            this.label10.Text = "Tidak Ganti Pwd";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(6, 128);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(69, 16);
-            this.label13.TabIndex = 15;
-            this.label13.Text = "No. User";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.tableLayoutPanel1);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(687, 267);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            // 
             // MasterUser
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(687, 267);
+            this.ClientSize = new System.Drawing.Size(757, 288);
             this.Controls.Add(this.groupBox1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MasterUser";
             this.Text = "Master User";
-            this.tableLayoutPanel1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label3;
+        private Guna.UI.WinForms.GunaTextBox txtNama;
+        private Guna.UI.WinForms.GunaTextBox txtLogin;
+        private Guna.UI.WinForms.GunaComboBox cboGroup;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Panel panel3;
+        private Guna.UI.WinForms.GunaTextBox gunaTextBox2;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label17;
+        private Guna.UI.WinForms.GunaGradientButton btnBatal;
+        private Guna.UI.WinForms.GunaGradientButton btnSimpan;
+        private Guna.UI.WinForms.GunaTextBox txtPassword;
+        private System.Windows.Forms.Label lblPW;
     }
 }

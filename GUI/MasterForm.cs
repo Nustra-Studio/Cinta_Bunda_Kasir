@@ -12,6 +12,7 @@ using KasirApp.View;
 using KasirApp.Model;
 using KasirApp.GUI.Master;
 using KasirApp.Presenter;
+using KasirApp.Repository;
 
 namespace KasirApp.GUI
 {
@@ -19,14 +20,13 @@ namespace KasirApp.GUI
     {
         //Fields
         userDataModel _user;
+        PrintRepo _print = new PrintRepo();
 
         public void Role(usrRole rl, userDataModel user)
         {
             masterToolStripMenuItem.Visible = rl.Masters.Equals(1) ? true : false;
             gudangToolStripMenuItem.Visible = rl.Gudang.Equals(1) ? true : false;
             penjualanToolStripMenuItem.Visible = rl.Penjualan.Equals(1) ? true : false;
-            kasBankToolStripMenuItem.Visible = rl.Kasbank.Equals(1) ? true : false;
-            akuntaToolStripMenuItem.Visible = rl.Akuntansi.Equals(1) ? true : false;
             supervisorToolStripMenuItem.Visible = rl.Supervisor.Equals(1) ? true : false;
             _user = user;
         }
@@ -34,17 +34,20 @@ namespace KasirApp.GUI
         public void refreshMainPanel()
         {
             MainPanel.Controls.Clear();
+            background.Controls.Clear();
         }
 
         public void addForm(Form form)
         {
             if (MainPanel.Controls.Count <= 2)
             {
-                MainPanel.Controls.Clear();
+                //MainPanel.Controls.Clear();
+                //MainPanel.Controls.Add(form);
                 form.TopLevel = false;
-                MainPanel.Controls.Add(form);
-                form.BringToFront();
+                background.Controls.Clear();
+                background.Controls.Add(form);
                 form.Show();
+                form.BringToFront();
             }
             else 
             {
@@ -52,13 +55,34 @@ namespace KasirApp.GUI
             }
         }
 
+        public void subForm(Form form)
+        {
+            //MainPanel.Controls.Add(form);
+            form.TopLevel = false;
+            background.Controls.Add(form);
+            form.Show();
+            form.BringToFront();
+        }
+
+        public void CloseForm()
+        {
+            background.Controls.Clear();
+            DetailStok frm = new DetailStok();
+            frm.TopLevel = false;
+            background.Controls.Add(frm);
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
+            frm.BringToFront();
+        }
+
         public void FormParent(Form frm, iParentDock dock)
         {
             if (MainPanel.Controls.Count <= 2)
             {
-                frmParent prn = new frmParent(frm, dock);
+                frmParent prn = new frmParent(frm, dock,this);
                 prn.TopLevel = false;
-                MainPanel.Controls.Add(prn);
+                //MainPanel.Controls.Add(prn);
+                background.Controls.Add(prn);
                 prn.FormBorderStyle = FormBorderStyle.None;
                 prn.Dock = DockStyle.Fill;
                 prn.BringToFront();
@@ -83,15 +107,14 @@ namespace KasirApp.GUI
             masterToolStripMenuItem.Visible = false;
             gudangToolStripMenuItem.Visible = false;
             penjualanToolStripMenuItem.Visible = false;
-            kasBankToolStripMenuItem.Visible = false;
-            akuntaToolStripMenuItem.Visible = false;
             supervisorToolStripMenuItem.Visible = false;
+            background.Controls.Clear();
         }
       
 
         public void pOSToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Transaksi frm = new Transaksi(_user);
+            Transaksi frm = new Transaksi(_user, this);
             addForm(frm);
         }
 
@@ -102,37 +125,37 @@ namespace KasirApp.GUI
 
         private void barangToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            MasterBarang frm = new MasterBarang();
+            MasterBarang frm = new MasterBarang(this, _user);
             addForm(frm);
         }
 
         private void laporanKartuStokToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Laporan_Kartu_Stock_Barang frm = new Laporan_Kartu_Stock_Barang();
+            Laporan_Kartu_Stock_Barang frm = new Laporan_Kartu_Stock_Barang(this, _user);
             addForm(frm);
         }
 
         private void pOSSMToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            BatalPosting frm = new BatalPosting();
+            batalPOS frm = new batalPOS(this, _user);
             addForm(frm);
         }
 
         private void resetStokKeNolToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ResetStokKeNol frm = new ResetStokKeNol();
+            ResetStokKeNol frm = new ResetStokKeNol(this);
             addForm(frm);
         }
 
         private void penyesuaianToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PenyesuaianStok frm = new PenyesuaianStok();
+            batalPenyesuaian frm = new batalPenyesuaian(this, _user);
             addForm(frm);
         }
 
         private void settingHargaJualToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Setting frm = new Setting();
+            Setting frm = new Setting(this);
             addForm(frm);
         }
 
@@ -148,32 +171,32 @@ namespace KasirApp.GUI
 
         private void laporanPOSToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new LaporanPOS();
+            var frm = new LaporanPOS(this);
             addForm(frm);
         }
 
         private void laporanKartuStokBarangToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new Laporan_Kartu_Stock_Barang();
+            var frm = new Laporan_Kartu_Stock_Barang(this, _user);
             addForm(frm);
         }
 
         private void transferGudangToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new TransferGudang();
-            addForm(frm);
+            //var frm = new TransferGudang();
+            //addForm(frm);
         }
 
         private void penyesuaianToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            var frm = new PenyesuaianStok();
+            var frm = new PenyesuaianStok(this, _user);
             addForm(frm);
         }
 
         private void tambahUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //var frm = new MasterUser();
-            //FormParent(frm);
+            var frm = new MasterUser(_user);
+            FormParent(frm, frm);
         }
 
         private void returPenjualanPOSToolStripMenuItem_Click(object sender, EventArgs e)
@@ -184,13 +207,13 @@ namespace KasirApp.GUI
 
         private void settingDataToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new Setting();
+            var frm = new Setting(this);
             addForm(frm);
         }
 
         private void MasterForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+
         }
 
         private void loginToolStripMenuItem_Click(object sender, EventArgs e)
@@ -206,25 +229,102 @@ namespace KasirApp.GUI
 
         private void divisiToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmDepartemen frm = new frmDepartemen();
+            var frm = new frmDepartemen();
             FormParent(frm,frm);
         }
 
         private void pOSSMToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Transaksi frm = new Transaksi(_user);
+            Transaksi frm = new Transaksi(_user, this);
             addForm(frm);
         }
 
         private void stockOpnameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            StockOpname frm = new StockOpname();
+            StockOpname frm = new StockOpname(this,_user);
             addForm(frm);
         }
 
         private void postingStockOpnameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PostingStokOpname frm = new PostingStokOpname();
+            PostingStokOpname frm = new PostingStokOpname(this,_user);
+            addForm(frm);
+        }
+
+        private void transferAntarGudangToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            TransferGudang frm = new TransferGudang(_user);
+            FormParent(frm,frm);
+        }
+
+        private void penyesuaianToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            PenyesuaianStok frm = new PenyesuaianStok(this, _user);
+            FormParent(frm,frm);
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            this.Close();
+            this.Dispose();
+        }
+
+        private void returPOSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var pop = new Retur( _user);
+            FormParent(pop, pop);
+        }
+
+        private void kartuStockToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new Laporan_Kartu_Stock_Barang(this, _user);
+            addForm(frm);
+        }
+
+        private void setGroupUserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new SetGroup(this);
+            FormParent(frm, frm);
+        }
+
+        private void penjualanPOSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new LaporanPOS(this);
+            addForm(frm);
+        }
+
+        private void settingAccGlobalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void transferAntarGudangToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new batalTransferGudang(this, _user);
+            addForm(frm);
+        }
+
+        private void opnameToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            var frm = new batalOpname(this, _user);
+            addForm(frm);
+        }
+
+        private void laporanBatalPostingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _print.LaporanBatal();
+        }
+
+        private void returPOSToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            var frn = new batalRetur(this, _user);
+            addForm(frn);
+        }
+
+        private void laporanAktifitasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new LaporanAktifitas(this);
             addForm(frm);
         }
     }

@@ -17,10 +17,13 @@ namespace KasirApp.GUI
     {
         //Fields
         OpnamePresenter _op;
-        int nomorAwal;
+        iMasterForm _master;
+        userDataModel _user;
+        long nomorAwal;
         int beda;
         int status = 0;
         string tgl;
+        string select;
 
         //Fields Interface
         public string nomer { get => txtNomor.Text; set => txtNomor.Text = value; }
@@ -31,21 +34,26 @@ namespace KasirApp.GUI
         public int selisih { get => beda; set => beda = value; }
         public int posted { get => status; set => status = value; }
         public string tanggal { get => tgl; set => tgl = value; }
-        public int numeringKwitansi { get => nomorAwal; set => nomorAwal = value; }
+        public long numeringKwitansi { get => nomorAwal; set => nomorAwal = value; }
+        public string selection { get => select; set => select = value; }
+        public string search { get => txtSearch.Text; set => txtSearch.Text = value; }
 
         //Interfaces Method 
         public void showTable(DataTable dt)
         {
             DGV.Refresh();
+            DGV.AutoGenerateColumns = false;
             DGV.DataSource = dt;
         }
 
         //Constructor
-        public StockOpname()
+        public StockOpname(iMasterForm mas,userDataModel user)
         {
             InitializeComponent();
-            _op = new OpnamePresenter(this);
             tgl = DateTime.Now.ToString("yyyy/MM/dd");
+            _master = mas;
+            _user = user;
+            _op = new OpnamePresenter(this,_user);
             startState();
         }
 
@@ -64,6 +72,11 @@ namespace KasirApp.GUI
             txtStok.Text = model.Stok; 
         }
 
+        public bool cekData()
+        {
+            return _op.cekData();
+        }
+
         //Limitasi Keyboard
         public void NumericOnly(object sender, KeyPressEventArgs e)
         {
@@ -73,11 +86,22 @@ namespace KasirApp.GUI
         //KeyEventArgs
         public void raiseKeyEvent(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.F10)
+            if (txtNomor.Focused == true && e.KeyCode == Keys.F10)
             {
                 _op.ambilNmr();
                 openState();
                 txtKode.Focus();
+            }
+            else if (txtNomor.Focused == true && e.KeyCode == Keys.Enter)
+            {
+                _op.cekTable();
+            }
+            else if (e.KeyCode == Keys.Delete && select != "")
+            {
+                if (_op.DeleteData() == true)
+                {
+                    _op.cekTable();
+                }
             }
         }
 
@@ -91,8 +115,22 @@ namespace KasirApp.GUI
             }
             else if (e.KeyCode == Keys.Enter)
             {
-                PopUp pop = new PopUp(this);
-                pop.ShowBarangs(search);
+                if (cekData() == true && chkDirect.Checked == true)
+                {
+                    _op.insertDirect();
+                }
+                else
+                {
+                    PopUp pop = new PopUp(this);
+                    pop.ShowBarangs(search);
+                }
+            }
+            else if (e.KeyCode == Keys.Delete && select != "")
+            {
+                if (_op.DeleteData()==true)
+                {
+                    _op.cekTable();
+                }
             }
         }
 
@@ -102,6 +140,13 @@ namespace KasirApp.GUI
             {
                 _op.insertOpname();
                 clearTxtBox();
+            }
+            else if (e.KeyCode == Keys.Delete && select != "")
+            {
+                if (_op.DeleteData() == true)
+                {
+                    _op.cekTable();
+                }
             }
         }
 
@@ -147,6 +192,62 @@ namespace KasirApp.GUI
             txtSearch.Text = string.Empty;
             txtSelisih.Text = string.Empty;
             txtStok.Text = string.Empty;
+        }
+
+        private void DGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                select = DGV.Rows[e.RowIndex].Cells[1].Value.ToString();
+            }
+            catch (Exception)
+            {
+                return;
+            }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            if (txtSearch.Text == "")
+            {
+                _op.cekTable();
+            }
+            else
+            {
+                DGV.DataSource = _op.Search();
+            }
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            if (txtKode.Enabled || txtNomor.Text != "")
+            {
+                _op.PrintOP();
+            }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            _master.CloseForm();
+        }
+
+        private void StockOpname_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Hide();
+            _master.CloseForm();
+        }
+
+        private void btnSync_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+            _op.AttemptSyncData();
+            this.Cursor = Cursors.Default;  
+        }
+
+        private void btnCursor_Click(object sender, EventArgs e)
+        {
+            _op.Upload();
         }
     }
 }

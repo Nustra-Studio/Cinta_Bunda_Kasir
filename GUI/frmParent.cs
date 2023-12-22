@@ -14,17 +14,19 @@ namespace KasirApp.GUI
     public partial class frmParent : Form
     {
         iParentDock _dock;
-        public frmParent(Form frm, iParentDock dck)
+        iMasterForm _master;
+        public frmParent(Form frm, iParentDock dck, iMasterForm mst)
         {
             InitializeComponent();
             ShowChild(frm);
             _dock = dck;
+            _master = mst;
         }
 
         public void ShowChild(Form frm)
         {
             frm.TopLevel = false;
-            ParentPanel.Controls.Add(frm);
+            background.Controls.Add(frm);
             frm.Show();
             frm.BringToFront();
         }
@@ -33,6 +35,7 @@ namespace KasirApp.GUI
         {
             this.Hide();
             this.Close();
+            _master.CloseForm();
         }
 
         private void btnTop_Click(object sender, EventArgs e)
@@ -65,9 +68,10 @@ namespace KasirApp.GUI
             _dock.delete();
         }
 
+        //Edit
         private void btnFind_Click(object sender, EventArgs e)
         {
-            _dock.search();
+            _dock.edit();
         }
 
         private void btnList_Click(object sender, EventArgs e)

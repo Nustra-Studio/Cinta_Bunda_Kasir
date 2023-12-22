@@ -46,8 +46,10 @@ namespace KasirApp
 
         private void gunaButton1_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             LoginPresenter lp = new LoginPresenter(this, _frm);
             lp.AttemptLogin();
+            this.Cursor = Cursors.Default;
         }
     }
 }

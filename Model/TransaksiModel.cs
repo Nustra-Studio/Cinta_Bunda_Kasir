@@ -9,6 +9,7 @@ namespace KasirApp.Model
     public class TransaksiModel
     {
         private string nomorPJ;
+        private string idkategori;
         private string nama;
         private string barkode;
         private string quantity;
@@ -21,6 +22,8 @@ namespace KasirApp.Model
         private string total;
         private string diskon;
         private string state;
+        private string satuan;
+        private string nodiskon;
 
         public string NomorPJ { get => nomorPJ; set => nomorPJ = value; }
         public string Nama { get => nama; set => nama = value; }
@@ -35,5 +38,8 @@ namespace KasirApp.Model
         public string Total { get => total; set => total = value; }
         public string Diskon { get => diskon; set => diskon = value; }
         public string State { get => state; set => state = value; }
+        public string Idkategori { get => idkategori; set => idkategori = value; }
+        public string Satuan { get => satuan; set => satuan = value; }
+        public string Nodiskon { get => nodiskon; set => nodiskon = value; }
     }
 }

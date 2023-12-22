@@ -17,11 +17,11 @@ namespace KasirApp.Repository
         int order;
         int batas;
 
-        //Declare Limit
+        //Declare Limit 
         public int limit()
         {
             batas = 0;
-            using (MySqlCommand cmd = new MySqlCommand("select count(*) from departemen",op.Conn))
+            using (MySqlCommand cmd = new MySqlCommand("select count(*) from category_barangs", op.Conn))
             {
                 op.KonekDB();
                 using (MySqlDataReader rd = cmd.ExecuteReader())
@@ -37,26 +37,87 @@ namespace KasirApp.Repository
         }
 
         //Method
-        public void Insert(DepartemenModel md)
+        public bool Insert(DepartemenModel md)
         {
+            bool isExist = false;
+            bool status = false;
             try
             {
-                using (MySqlCommand cmd = new MySqlCommand("insert into departemen values(null,md5(@nama),@kode,@nama,@diskon)",op.Conn))
+                using (var cmd = new MySqlCommand($"SELECT * FROM category_barangs WHERE kode='{md.Kode}'", op.Conn))
                 {
-                    cmd.Parameters.AddWithValue("@nama", md.Nama);
-                    cmd.Parameters.AddWithValue("@kode", md.Kode);
-                    cmd.Parameters.AddWithValue("@diskon", md.KenaDiskon);
+                    op.KonekDB();
+                    using (var rd = cmd.ExecuteReader())
+                    {
+                        rd.Read();
+                        if (rd.HasRows)
+                        {
+                            isExist = true;
+                        }
+                    }
+                }
+                if (isExist == true)
+                {
+                    mb.PeringatanOK("Kode tersebut Sudah Ada");
+                    status = false;
+                }
+                else
+                {
+                    using (MySqlCommand cmd = new MySqlCommand("insert into category_barangs values(null,md5(@nama),@nama,@kode,@diskon,@grosir,@tanggal,@tanggal)", op.Conn))
+                    {
+                        cmd.Parameters.AddWithValue("@nama", md.Nama);
+                        cmd.Parameters.AddWithValue("@kode", md.Kode);
+                        cmd.Parameters.AddWithValue("@diskon", md.KenaDiskon);
+                        cmd.Parameters.AddWithValue("@grosir", md.IsGrosir);
+                        cmd.Parameters.AddWithValue("@tanggal", op.myDatetime);
 
-                    op.KonekDB();
-                    cmd.ExecuteNonQuery();
-                    op.KonekDB();
-                    mb.InformasiOK("Data Disimpan!");
+                        op.KonekDB();
+                        cmd.ExecuteNonQuery();
+                        op.KonekDB();
+                        mb.InformasiOK("Data Disimpan!");
+                    }
+                    status = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                mb.PeringatanOK(ex.Message.ToString());
+            }
+            return status;
+        }
+
+        public bool edit(DepartemenModel md)
+        {
+            bool state = false;
+            try
+            {
+                if (mb.PeringatanYesNo("Edit Data?")==true)
+                {
+                    using (MySqlCommand cmd = new MySqlCommand("UPDATE category_barangs SET name=@nama,diskon=@diskon,grosir=@grosir,updated_at=@tanggal WHERE kode=@kode", op.Conn))
+                    {
+                        cmd.Parameters.AddWithValue("@nama", md.Nama);
+                        cmd.Parameters.AddWithValue("@kode", md.Kode);
+                        cmd.Parameters.AddWithValue("@diskon", md.KenaDiskon);
+                        cmd.Parameters.AddWithValue("@grosir", md.IsGrosir);
+                        cmd.Parameters.AddWithValue("@tanggal", op.myDatetime);
+
+                        op.KonekDB();
+                        cmd.ExecuteNonQuery();
+                        op.KonekDB();
+                        mb.InformasiOK("Data Ter Edit");
+                    }
+                    state = true;
+                }
+                else
+                {
+                    state = false;
                 }
             }
             catch (Exception ex)
             {
                 mb.PeringatanOK(ex.Message.ToString());
             }
+            return state;
         }
 
         public void Delete(DepartemenModel model)
@@ -69,7 +130,7 @@ namespace KasirApp.Repository
                 }
                 else
                 {
-                    using (MySqlCommand cmd = new MySqlCommand("delete from departemen where kode=@kode",op.Conn))
+                    using (MySqlCommand cmd = new MySqlCommand("delete from category_barangs where kode=@kode", op.Conn))
                     {
                         cmd.Parameters.AddWithValue("@kode", model.Kode);
                         op.KonekDB();
@@ -78,17 +139,35 @@ namespace KasirApp.Repository
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
-                throw;
+                System.Windows.Forms.MessageBox.Show(e.ToString());
             }
         }
+
+        public DepartemenModel showBykode(DepartemenModel model)
+        {
+            using (var cmd = new MySqlCommand($"SELECT * FROM category_barangs where kode='{model.Kode}'",op.Conn))
+            {
+                op.KonekDB();
+                using (var rd = cmd.ExecuteReader())
+                {
+                    rd.Read();
+                    var md = new DepartemenModel();
+                    md.Kode = rd["kode"].ToString();
+                    md.Nama = rd["name"].ToString();
+                    md.KenaDiskon = Convert.ToInt32(rd["diskon"].ToString());
+                    md.IsGrosir = Convert.ToInt32(rd["grosir"].ToString());
+                    return md;
+                }
+            }
+        }
+
         public DepartemenModel topValue()
         {
             order = 0;
             var model = new DepartemenModel();
-            using (MySqlCommand cmd = new MySqlCommand("select * from departemen limit @nomer,1", op.Conn))
+            using (MySqlCommand cmd = new MySqlCommand("select * from category_barangs limit @nomer,1", op.Conn))
             {
                 cmd.Parameters.AddWithValue("@nomer", order);
                 op.KonekDB();
@@ -97,8 +176,9 @@ namespace KasirApp.Repository
                     while (rd.Read())
                     {
                         model.Kode = rd["kode"].ToString();
-                        model.Nama = rd["nama"].ToString();
-                        model.KenaDiskon = rd["kenadiskon"].Equals(true) ? true : false;
+                        model.Nama = rd["name"].ToString();
+                        model.KenaDiskon = Convert.ToInt32(rd["diskon"].ToString());
+                        model.IsGrosir = Convert.ToInt32(rd["grosir"].ToString());
                     }
                 }
             }
@@ -116,7 +196,7 @@ namespace KasirApp.Repository
             {
                 order++;
             }
-            using (MySqlCommand cmd = new MySqlCommand("select * from departemen limit @nomer,1", op.Conn))
+            using (MySqlCommand cmd = new MySqlCommand("select * from category_barangs limit @nomer,1", op.Conn))
             {
                 cmd.Parameters.AddWithValue("@nomer", order);
                 op.KonekDB();
@@ -125,8 +205,9 @@ namespace KasirApp.Repository
                     while (rd.Read())
                     {
                         model.Kode = rd["kode"].ToString();
-                        model.Nama = rd["nama"].ToString();
-                        model.KenaDiskon = rd["kenadiskon"].Equals(true) ? true : false;
+                        model.Nama = rd["name"].ToString();
+                        model.KenaDiskon = Convert.ToInt32(rd["diskon"].ToString());
+                        model.IsGrosir = Convert.ToInt32(rd["grosir"].ToString());
                     }
                 }
             }
@@ -138,7 +219,7 @@ namespace KasirApp.Repository
             int _batas = limit() - 1;
             order = _batas;
             var model = new DepartemenModel();
-            using (MySqlCommand cmd = new MySqlCommand("select * from departemen limit @nomer,1", op.Conn))
+            using (MySqlCommand cmd = new MySqlCommand("select * from category_barangs limit @nomer,1", op.Conn))
             {
                 cmd.Parameters.AddWithValue("@nomer", _batas);
                 op.KonekDB();
@@ -147,8 +228,9 @@ namespace KasirApp.Repository
                     while (rd.Read())
                     {
                         model.Kode = rd["kode"].ToString();
-                        model.Nama = rd["nama"].ToString();
-                        model.KenaDiskon = rd["kenadiskon"].Equals(true) ? true : false;
+                        model.Nama = rd["name"].ToString();
+                        model.KenaDiskon = Convert.ToInt32(rd["diskon"].ToString());
+                        model.IsGrosir = Convert.ToInt32(rd["grosir"].ToString());
                     }
                 }
             }
@@ -166,7 +248,7 @@ namespace KasirApp.Repository
                 order--;
             }
             var model = new DepartemenModel();
-            using (MySqlCommand cmd = new MySqlCommand("select * from departemen limit @nomer,1", op.Conn))
+            using (MySqlCommand cmd = new MySqlCommand("select * from category_barangs limit @nomer,1", op.Conn))
             {
                 cmd.Parameters.AddWithValue("@nomer", order);
                 op.KonekDB();
@@ -175,8 +257,9 @@ namespace KasirApp.Repository
                     while (rd.Read())
                     {
                         model.Kode = rd["kode"].ToString();
-                        model.Nama = rd["nama"].ToString();
-                        model.KenaDiskon = rd["kenadiskon"].Equals(true) ? true : false;
+                        model.Nama = rd["name"].ToString();
+                        model.KenaDiskon = Convert.ToInt32(rd["diskon"].ToString());
+                        model.IsGrosir = Convert.ToInt32(rd["grosir"].ToString());
                     }
                 }
             }

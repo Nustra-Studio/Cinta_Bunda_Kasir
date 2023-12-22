@@ -14,7 +14,7 @@ using MySql.Data.MySqlClient;
 
 namespace KasirApp.GUI
 {
-    public partial class AddMember : Form,iMember
+    public partial class AddMember : Form, iMember
     {
         Operator op = new Operator();
         addMemberPresenter _prn;
@@ -22,7 +22,7 @@ namespace KasirApp.GUI
 
         //InterFaces
         public string nama { get => txtNama.Text; set => txtNama.Text = value; }
-        public string telpon { get => noHp.Text ; set => noHp.Text = value; }
+        public string telpon { get => noHp.Text; set => noHp.Text = value; }
         public string email { get => txtEmail.Text; set => txtEmail.Text = value; }
         public string alamat { get => txtAlamat.Text; set => txtAlamat.Text = value; }
 
@@ -45,7 +45,15 @@ namespace KasirApp.GUI
 
         private void btnProses_Click(object sender, EventArgs e)
         {
-            _prn.Daftar();
+            if (txtNama.Text == "" || txtEmail.Text == "" || txtAlamat.Text == "" || noHp.Text == "")
+            {
+                MessageBox.Show("Tolong lengkapi Data", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                _prn.Daftar();
+                op.insertHistoriUser(_user, this.Text, "Tambah Member");
+            }
         }
 
         private void gunaGradientButton2_Click(object sender, EventArgs e)

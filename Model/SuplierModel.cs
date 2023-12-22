@@ -19,8 +19,4 @@ namespace KasirApp.Model
         public object created_at { get; set; }
         public object updated_at { get; set; }
     }
-    public class LoginTOKEN
-    {
-        public string token { get; set; }
-    }
 }

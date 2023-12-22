@@ -21,25 +21,25 @@ namespace Microsoft.Reporting.WinForms
         public static void Print(this LocalReport report, PageSettings pageSettings)
         {
             string deviceInfo =
-                $@"<DeviceInfo>
-                    <OutputFormat>EMF</OutputFormat>
-                    <PageWidth>{pageSettings.PaperSize.Width * 100}in</PageWidth>
-                    <PageHeight>{pageSettings.PaperSize.Height * 100}in</PageHeight>
-                    <MarginTop>{pageSettings.Margins.Top * 100}in</MarginTop>
-                    <MarginLeft>{pageSettings.Margins.Left * 100}in</MarginLeft>
-                    <MarginRight>{pageSettings.Margins.Right * 100}in</MarginRight>
-                    <MarginBottom>{pageSettings.Margins.Bottom * 100}in</MarginBottom>
-                </DeviceInfo>";
+            $@"<DeviceInfo>
+                    <OutputFormat>EMF</OutputFormat>
+                    <PageWidth>{pageSettings.PaperSize.Width * 100}</PageWidth>
+                    <PageHeight>{pageSettings.PaperSize.Height * 100}</PageHeight>
+                    <MarginTop>{pageSettings.Margins.Top * 100}in</MarginTop>
+                    <MarginLeft>{pageSettings.Margins.Left * 100}in</MarginLeft>
+                    <MarginRight>{pageSettings.Margins.Right * 100}in</MarginRight>
+                    <MarginBottom>{pageSettings.Margins.Bottom * 100}in</MarginBottom>
+                </DeviceInfo>";
             Warning[] warnings;
             var streams = new List<Stream>();
             var pageIndex = 0;
             report.Render("Image", deviceInfo,
-                (name, fileNameExtension, encoding, mimeType, willSeek) =>
-                {
-                    MemoryStream stream = new MemoryStream();
-                    streams.Add(stream);
-                    return stream;
-                }, out warnings);
+            (name, fileNameExtension, encoding, mimeType, willSeek) =>
+            {
+                MemoryStream stream = new MemoryStream();
+                streams.Add(stream);
+                return stream;
+            }, out warnings);
             foreach (Stream stream in streams)
                 stream.Position = 0;
             if (streams == null || streams.Count == 0)

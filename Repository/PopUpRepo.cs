@@ -25,7 +25,7 @@ namespace KasirApp.Repository
             DataTable dt = new DataTable();
             if (text == string.Empty)
             {
-                using (MySqlCommand cmd = new MySqlCommand("SELECT Nama, Barcode, Categori FROM view_barangs_all", op.Conn))
+                using (MySqlCommand cmd = new MySqlCommand("SELECT Nama, Barcode, Categori FROM view_barangs_all LIMIT 500", op.Conn))
                 {
                     op.KonekDB();
                     using (MySqlDataReader rd = cmd.ExecuteReader())
@@ -37,7 +37,7 @@ namespace KasirApp.Repository
             }
             else
             {
-                using (MySqlCommand cmd = new MySqlCommand("SELECT Nama, Barcode, Categori FROM view_barangs_all where Nama LIKE '%" + text + "%'", op.Conn))
+                using (MySqlCommand cmd = new MySqlCommand("SELECT Nama, Barcode, Categori FROM view_barangs_all where Nama LIKE '%" + text + "%' OR Barcode LIKE '%" + text + "%'", op.Conn))
                 {
                     op.KonekDB();
                     using (MySqlDataReader rd = cmd.ExecuteReader())
@@ -45,6 +45,19 @@ namespace KasirApp.Repository
                         dt.Load(rd);
                     }
                     op.KonekDB();
+                }
+            }
+            return dt;
+        }
+
+        public DataTable showKwitansi()
+        {
+            var dt = new DataTable();
+            using (var cmd  = new MySqlCommand("select * from view_kwitansi", op.Conn))
+            {
+                using (var rd = cmd.ExecuteReader())
+                {
+                    dt.Load(rd);
                 }
             }
             return dt;
@@ -64,6 +77,7 @@ namespace KasirApp.Repository
                         model.Nama = rd["Nama"].ToString();
                         model.Kode = rd["Barcode"].ToString();
                         model.Stok = rd["Stok"].ToString();
+                        model.Harga_pokok = rd["Harga Pokok"].ToString();
                     }
                 }
             }

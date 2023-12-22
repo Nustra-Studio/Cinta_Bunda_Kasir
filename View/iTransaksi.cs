@@ -28,5 +28,6 @@ namespace KasirApp.View
         void ClearAll();
         int hitungTotal(string diskon);
         void tampilKembali(int kembali);
+        void FinishPayments();
     }
 }

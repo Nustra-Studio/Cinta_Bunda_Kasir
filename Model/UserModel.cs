@@ -63,6 +63,11 @@ namespace KasirApp.Model
             get;
             set;
         }
+        public string nama
+        {
+            get;
+            set;
+        }
         public string password
         {
             get;
@@ -74,6 +79,11 @@ namespace KasirApp.Model
             set;
         }
         public string role
+        {
+            get;
+            set;
+        }
+        public string level
         {
             get;
             set;

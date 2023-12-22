@@ -14,7 +14,7 @@ namespace KasirApp.View
         void Bot();
         void add();
         void delete();
-        void search();
+        void edit();
         void list();
         void print();
         void exit();

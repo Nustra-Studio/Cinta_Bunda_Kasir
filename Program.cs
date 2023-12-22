@@ -21,7 +21,9 @@ namespace KasirApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            //Application.Run(new Transaksi(null, null));
             Application.Run(new MasterForm());
+            //Application.Run(new LaporanPOS(null));
         }
     }
 }

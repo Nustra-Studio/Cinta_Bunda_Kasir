@@ -27,6 +27,11 @@ namespace KasirApp.Presenter
             return _repo.Barangs(text);
         }
 
+        public DataTable tampilKwitansi()
+        {
+            return _repo.showKwitansi();
+        }
+
         public void getBarangsData(string text)
         {
            _pop.GetBarangs(_repo.AmbildataBarang(text));

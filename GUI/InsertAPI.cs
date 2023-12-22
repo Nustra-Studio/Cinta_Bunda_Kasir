@@ -11,20 +11,30 @@ using KasirApp.Model;
 using RestSharp;
 using Newtonsoft.Json;
 using MySql.Data.MySqlClient;
+using KasirApp.View;
 
 namespace KasirApp.GUI
 {
-    public partial class Insert : Form
+    public partial class Insert : Form, iInsert
     {
         Operator op = new Operator();
+        userDataModel _user;
+        iMasterForm _master;
         public readonly Action _getData;
         string aName;
-        public Insert(Action frm)
+        public Insert(Action frm, iMasterForm form, userDataModel user)
         {
             InitializeComponent();
-            fillCombo();
-            clearAll();
             _getData = frm;
+            _master = form;
+            _user = user;
+            clearAll();
+            fillCombo();
+        }
+
+        public void RefreshCombo()
+        {
+            fillCombo();
         }
 
         public void clearAll()
@@ -37,12 +47,13 @@ namespace KasirApp.GUI
             txtMerek.Text = "";
             txtHargaJual.Text = "";
             txtLaba.Text = "0";
-            txtPajak.Text = "11";
+            txtPajak.Text = "0";
             txtGrosir.Text = "";
             txtHargapokok.Text = "";
             txtSTOK.Text = "0";
             txtKeterangan.Text = "";
             btnProses.Text = "Proses";
+            groupBox1.Text = "Insert Data";
         }
 
         public bool isNull()
@@ -96,14 +107,17 @@ namespace KasirApp.GUI
                         txtKeterangan.Text = rd["Keterangan"].ToString();
                         gunaComboBox1.Text = rd["Categori"].ToString();
                         gunaComboBox2.Text = rd["Supplier"].ToString();
+                        cboSatuan.Text = rd["satuan"].ToString();
                         txtHarga.Text = rd["Harga"].ToString();
                         txtHargaJual.Text = rd["Harga Jual"].ToString();
                         txtGrosir.Text = rd["Harga Grosir"].ToString();
                         txtHargapokok.Text = rd["Harga Pokok"].ToString();
                         txtSTOK.Text = rd["Stok"].ToString();
                         txtBarcode.Text = rd["Barcode"].ToString();
+                        chkKecuali.Checked = rd["nodiskon"].ToString().Equals("1") ? true : false;
 
                         btnProses.Text = "Update";
+                        groupBox1.Text = "Edit Data";
                     }
                 }
             }
@@ -113,7 +127,7 @@ namespace KasirApp.GUI
         {
             try
             {
-                using (MySqlCommand cmd = new MySqlCommand("INSERT INTO barangs VALUE(NULL,MD5(RAND()),(select uuid from category_barangs where name=@kategori),(select uuid from supliers where nama=@suplier),@kode,@harga,@hargajual,@hargapokok,@hargagrosir,@stok,@keterangan,@name,@merk,NULL,@tglbuat,@tglupdate)", op.Conn))
+                using (MySqlCommand cmd = new MySqlCommand("INSERT INTO barangs VALUE(NULL,SHA2('@name',256),(select uuid from category_barangs where name=@kategori),(select uuid from supliers where nama=@suplier),@kode,@harga,@hargajual,@hargapokok,@hargagrosir,@stok,@keterangan,@name,@merk,@satuan,@nodiskon,@tglbuat,@tglupdate)", op.Conn))
                 {
                     cmd.Parameters.AddWithValue("kategori", gunaComboBox1.Text);
                     cmd.Parameters.AddWithValue("suplier", gunaComboBox2.Text);
@@ -126,6 +140,8 @@ namespace KasirApp.GUI
                     cmd.Parameters.AddWithValue("keterangan", txtKeterangan.Text);
                     cmd.Parameters.AddWithValue("name", txtBarang.Text);
                     cmd.Parameters.AddWithValue("merk", txtMerek.Text);
+                    cmd.Parameters.AddWithValue("satuan", cboSatuan.Text);
+                    cmd.Parameters.AddWithValue("nodiskon", chkKecuali.Checked);
                     cmd.Parameters.AddWithValue("tglbuat", DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss"));
                     cmd.Parameters.AddWithValue("tglupdate", DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss"));
 
@@ -152,7 +168,7 @@ namespace KasirApp.GUI
                     "                                       ,harga_jual=@hargajual,harga_pokok=@hargapokok,harga_grosir=@hargagrosir" +
                     "                                       ,stok=@stok,keterangan=@keterangan" +
                     "                                       ,merek_barang=@merk" +
-                    "                                       ,updated_at=@tglUpdate WHERE name='" + aName + "'", op.Conn))
+                    "                                       ,satuan = @satuan, nodiskon = @nodiskon, updated_at=@tglUpdate WHERE name='" + aName + "'", op.Conn))
                 {
                     cmd.Parameters.AddWithValue("kategori", gunaComboBox1.Text);
                     cmd.Parameters.AddWithValue("suplier", gunaComboBox2.Text);
@@ -165,6 +181,8 @@ namespace KasirApp.GUI
                     cmd.Parameters.AddWithValue("keterangan", txtKeterangan.Text);
                     cmd.Parameters.AddWithValue("name", txtBarang.Text);
                     cmd.Parameters.AddWithValue("merk", txtMerek.Text);
+                    cmd.Parameters.AddWithValue("satuan", cboSatuan.Text);  
+                    cmd.Parameters.AddWithValue("nodiskon", chkKecuali.Checked);
                     cmd.Parameters.AddWithValue("tglbuat", DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss"));
                     cmd.Parameters.AddWithValue("tglupdate", DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss"));
 
@@ -186,6 +204,9 @@ namespace KasirApp.GUI
 
         public void fillCombo()
         {
+            gunaComboBox1.Items.Clear();
+            gunaComboBox2.Items.Clear();
+            cboSatuan.Items.Clear(); 
             using (MySqlCommand cmd = new MySqlCommand("select * from category_barangs",op.Conn))
             {
                 op.KonekDB();
@@ -197,33 +218,48 @@ namespace KasirApp.GUI
                     }
                 }
                 op.KonekDB();
-            }using (MySqlCommand cmd = new MySqlCommand("select * from supliers",op.Conn))
+            }
+            using (MySqlCommand cmd = new MySqlCommand("select * from satuan",op.Conn))
             {
                 op.KonekDB();
                 using (MySqlDataReader rd = cmd.ExecuteReader())
                 {
                     while (rd.Read())
                     {
-                        gunaComboBox2.Items.Add(rd["nama"].ToString());
+                        cboSatuan.Items.Add(rd["name"].ToString());
                     }
                 }
                 op.KonekDB();
             }
-            //using (var client = new RestClient(op.urlcloud))
-            //{
-            //    var request = new RestRequest("supplier");
-            //    request.AddParameter("token", "FprPbNY8WewfFpKrA8Ppy4clot2Z5xWOiuA6uVGt");
-            //    RestResponse res = client.GetAsync(request).Result;
 
-            //    var jso = res.Content.ToString();
+            using (var client = new RestClient(op.url))
+            {
+                try
+                {
+                    var request = new RestRequest("supplier", Method.Get);
+                    request.AddParameter("token", _user.token);
+                    request.AddParameter("uuid", _user.cabang_id);
 
-            //    List<SuplierModel> dn = JsonConvert.DeserializeObject<List<SuplierModel>>(jso);
+                    var res = client.Execute(request);
 
-            //    foreach (var item in dn)
-            //    {
-            //        gunaComboBox2.Items.Add(item.nama.ToString());
-            //    }
-            //}
+                    var jso = res.Content.ToString();
+
+                    if (res.StatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        List<SuplierModel> dn = JsonConvert.DeserializeObject<List<SuplierModel>>(jso);
+
+                        foreach (var item in dn)
+                        {
+                            gunaComboBox2.Items.Add(item.nama.ToString());
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString(), "Error!");
+                }
+                
+            }
         }
 
         private void Insert_KeyDown(object sender, KeyEventArgs e)
@@ -240,17 +276,22 @@ namespace KasirApp.GUI
             {
                 MessageBox.Show("Tolong Lengkapi Data");
             }
-            else if(cekUnique()==true)
-            {
-                MessageBox.Show("Sudah Ada");
-            }
             else if (btnProses.Text == "Proses")
             {
-                insData();
+                if (cekUnique() == true)
+                {
+                    MessageBox.Show("Sudah Ada");
+                }
+                else 
+                {
+                    insData();
+                    op.insertHistoriUser(_user, "Master Barang", "Tambah Barang");
+                }
             }
             else
             {
                 upData();
+                op.insertHistoriUser(_user, "Master Barang", "Edit Barang");
             }
         }
 
@@ -282,6 +323,23 @@ namespace KasirApp.GUI
                 lblperPCS.Text = "Rp." + perPCS.ToString();
                 lblTotal.Text = "Rp." + total.ToString();
             }
+        }
+
+        private void btnCategori_Click(object sender, EventArgs e)
+        {
+            var form = new subKategori(this);
+            _master.subForm(form);
+        }
+
+        private void btnSatuan_Click(object sender, EventArgs e)
+        {
+            var form = new subSatuan(this, _user);
+            _master.subForm(form);
+        }
+
+        private void btnBatal_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }

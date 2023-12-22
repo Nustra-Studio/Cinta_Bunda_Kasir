@@ -13,13 +13,15 @@ namespace KasirApp.Model
         private string uuid;
         private string kode;
         private string nama;
-        private bool kenaDiskon;
+        private int kenaDiskon;
+        private int isGrosir;
 
         //Properties
         public int Id { get => id; set => id = value; }
         public string Uuid { get => uuid; set => uuid = value; }
         public string Kode { get => kode; set => kode = value; }
         public string Nama { get => nama; set => nama = value; }
-        public bool KenaDiskon { get => kenaDiskon; set => kenaDiskon = value; }
+        public int KenaDiskon { get => kenaDiskon; set => kenaDiskon = value; }
+        public int IsGrosir { get => isGrosir; set => isGrosir = value; }
     }
 }

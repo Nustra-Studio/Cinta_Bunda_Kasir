@@ -11,14 +11,17 @@ using KasirApp.Model;
 using KasirApp.View;
 using KasirApp.Presenter;
 using MySql.Data.MySqlClient;
+using System.Drawing.Printing;
 
 namespace KasirApp.GUI
 {
     public partial class Transaksi : Form, iTransaksi, iPopUpRecieve
     {
         //Fields
+        Operator op = new Operator();
         userDataModel _user;
         TransaksiPresenter _prn;
+        RootMember _mem;
         DataTable _Dt;
         iMasterForm _master;
         string select;
@@ -26,6 +29,8 @@ namespace KasirApp.GUI
         string memPhone;
         string namaMem;
         string stateUser;
+        bool barcodestatus;
+        bool cekstruk;
         int diskon;
         int withDiskon;
 
@@ -86,6 +91,7 @@ namespace KasirApp.GUI
             if (kembali == 0)
             {
                 lblHeader.Text = "Uang Pas! Terimakasih sudah berbelanja";
+                lblHeader.Text = "Uang Pas! Terimakasih sudah berbelanja";
             }
             else
             {
@@ -103,17 +109,42 @@ namespace KasirApp.GUI
 
         public void GetMember(RootMember rootmem)
         {
-            txtPoint.Text = rootmem.poin.poin.ToString();
-            memPhone = rootmem.member.phone.ToString();
-            namaMem = rootmem.member.name;
+            if (rootmem.poin == null )
+            {
+                MessageBox.Show("Kode Salah atau kadaluarsa", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                try
+                {
+                    txtPoint.Text = rootmem.poin.poin.ToString();
+                    memPhone = rootmem.member.phone.ToString();
+                    namaMem = rootmem.member.name;
+                    _mem = rootmem;
+                }
+                catch (NullReferenceException ex)
+                {
+                    MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         public void GetPopUpData(BarangsModel model)
         {
-            txtBarcode.Text = model.Nama;
-            txtHarga.Text = model.Harga_pokok;
-            txtQty.Text = "1";
-            txtDiskon.Text = "0";
+            if (cekstruk == true)
+            {
+                _prn.cekStruk(model.Nama);
+                cekstruk = false;
+                op.insertHistoriUser(_user, this.Text, "Cek Struk");
+            }
+            else
+            {
+                barcodestatus = false;
+                txtBarcode.Text = model.Nama;
+                txtHarga.Text = model.Harga_pokok;
+                txtQty.Text = "1";
+                txtDiskon.Text = "0";
+            }
         }
 
         public int hitungTotal(string dsc)
@@ -142,9 +173,19 @@ namespace KasirApp.GUI
             withDiskon = sum - diskon - diskonmem;
             string withkoma = string.Format("{0:0,0}", withDiskon);
 
-            lblHeader.Text = $"Subtotal = Rp.{withkoma}";
+            lblHeader.Text = $"Total Semua = Rp.{withkoma}";
 
             return withDiskon;
+        }
+
+        public void FinishPayments()
+        {
+            txtNomorKwitansi.Clear();
+            txtBarcode.Enabled = false;
+            txtNomorKwitansi.Focus();
+            txtRandKode.Clear();
+            txtPoint.Clear();
+            _mem = null;
         }
 
         //Constructor
@@ -153,16 +194,19 @@ namespace KasirApp.GUI
             InitializeComponent();
             LoadState();
             _user = user;
-            _prn = new TransaksiPresenter(this, _user, this);
+            _prn = new TransaksiPresenter(this, _user, this, _mem);
             pjState = "harga_jual";
             stateUser = "reguler";
             memPhone = "";
             namaMem = "";
             diskon = 0;
             txtNomorKwitansi.Focus();
+            barcodestatus = true;
+            cekstruk = false;
             txtNamaUser.Text = user.username.ToString();
             _master = form;
             _prn.UpdateState("reguler");
+            ClearAll();
         }
 
         //Method
@@ -201,15 +245,14 @@ namespace KasirApp.GUI
 
         public void ClearAll()
         {
+            var model = op.CabangConfig();
             txtBarcode.Text = string.Empty;
             txtHarga.Text = string.Empty;
             _Dt.Clear();
             txtNomorKwitansi.Text = null;
-            lblHeader.Text = "Selamat Datang di \n CINTA BUNDA KEDUNGWARU";
+            lblHeader.Text = $"Selamat Datang di \n{model.Nama}";
         }
-
         
-
         //Limitasi Keyboard
         public void NumericOnly(object sender, KeyPressEventArgs e)
         {
@@ -221,7 +264,7 @@ namespace KasirApp.GUI
         {
             if (e.KeyCode == Keys.F1)
             {
-                int nomorKwitansi = _prn.TakeNumber();
+                long nomorKwitansi = _prn.TakeNumber();
                 string kwitansi = $"PJC-{nomorKwitansi.ToString()}";
                 txtNomorKwitansi.Text = kwitansi;
                 _prn.TampilTable();
@@ -255,17 +298,25 @@ namespace KasirApp.GUI
                 model.NomorPJ = txtNomorKwitansi.Text;
                 model.Total = withDiskon.ToString();
                 model.Harga = "0";
+                model.State = stateUser;
                 if (checkBox1.Checked == true && txtPoint.Text != null)
                 {
                     model.State = "checked";
                     model.Harga = txtPoint.Text;
                 }
-                Pembayaran frm = new Pembayaran(this, _user, this, model);
+                var frm = new Pembayaran(this, _user, this, model, _mem);
                 _master.subForm(frm);
+                frm.BringToFront();
+                //_master.subForm(frm);
+                frm.FokusControler();
             }
             //F6 Cek Struk
             else if (e.KeyCode == Keys.F6)
             {
+                var pop = new PopUp(this);
+                pop.getDataList($"SELECT totalBiaya AS 'Total', id_penjualan as 'No Struk' FROM report_penjualan", "SELECT totalBiaya AS 'Total', id_penjualan as 'No Struk' FROM report_penjualan WHERE id_penjualan LIKE ");
+                pop.Show();
+                cekstruk = true;
 
             }
             //F7 Harga Reguler
@@ -310,6 +361,8 @@ namespace KasirApp.GUI
                 //Masukan Ke Grid
                 if (txtBarcode.Focused == true)
                 {
+                    cekstruk = false;
+                    barcodestatus = false;
                     _prn.AttemptInsertGrid();
                     txtQty.Text = "";
                     txtDiskon.Text = "";
@@ -319,36 +372,39 @@ namespace KasirApp.GUI
                 {
                     _prn.ChangeQty();
                     OpenState();
+                    cekstruk = false;
                 }
                 //Apply Diskon
                 else if (txtDiskon.Focused == true)
                 {
                     _prn.ApplyDiskon();
                     OpenState();
+                    cekstruk = false;
                 }
-            }
-        }
-
-        public void RaiseEnterKode(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                _prn.GetPoint();
+                else if (txtRandKode.Focused == true)
+                {
+                    _prn.GetPoint();
+                    cekstruk = false;
+                }
             }
         }
 
         //RaiseEvent TextBox
         private void RaiseBarcodeChanged(object sender, EventArgs e)
         {
-            if (txtBarcode.TextLength >= 12)
+            if (barcodestatus == true && txtBarcode.TextLength >= 9)
             {
                 _prn.AttemptInsertGrid();
                 txtQty.Text = "";
                 txtDiskon.Text = "";
             }
+            else if (txtBarcode.Text == "")
+            {
+                barcodestatus = true;
+            }
             else
             {
-                return;
+                barcodestatus = false;
             }
         }
 
@@ -379,6 +435,12 @@ namespace KasirApp.GUI
                 _master.subForm(fra);
                 fra.BringToFront();
             }
+        }
+
+        private void Transaksi_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Hide();
+            _master.CloseForm();
         }
     }
 }

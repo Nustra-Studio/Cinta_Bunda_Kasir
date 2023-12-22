@@ -30,11 +30,34 @@ namespace KasirApp.Presenter
             var model = new DepartemenModel();
             model.Nama = _dept.nama;
             model.Kode = _dept.kode;
-            model.KenaDiskon = _dept.kenaDiskon;
+            model.KenaDiskon = _dept.kenaDiskon.Equals(true) ? 1 : 0;
+            model.IsGrosir = _dept.grosir.Equals(true) ? 1 : 0;
             try
             {
-                _repo.Insert(model);
-                _dept.startState();
+                if (_repo.Insert(model)==true)
+                {
+                    _dept.startState();
+                }
+            }
+            catch (ArgumentNullException)
+            {
+                mb.PeringatanOK("Lengkapi Data");
+            }
+        }
+
+        public void EditData()
+        {
+            var model = new DepartemenModel();
+            model.Nama = _dept.nama;
+            model.Kode = _dept.kode;
+            model.KenaDiskon = _dept.kenaDiskon.Equals(true) ? 1 : 0;
+            model.IsGrosir = _dept.grosir.Equals(true) ? 1 : 0;
+            try
+            {
+                if (_repo.edit(model) == true)
+                {
+                    _dept.startState();
+                }
             }
             catch (ArgumentNullException)
             {
@@ -57,6 +80,12 @@ namespace KasirApp.Presenter
             }
         }
 
+        public void showByList()
+        {
+            var model = new DepartemenModel();
+            model.Kode = _dept.kode;
+            _dept.showRd(_repo.showBykode(model));
+        }
 
         //Direction Method
         public void atas()

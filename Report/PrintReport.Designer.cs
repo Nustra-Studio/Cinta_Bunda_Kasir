@@ -30,6 +30,7 @@ namespace KasirApp.Report
         private void InitializeComponent()
         {
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.SuspendLayout();
             // 
             // reportViewer1
@@ -39,14 +40,18 @@ namespace KasirApp.Report
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(520, 554);
+            this.reportViewer1.Size = new System.Drawing.Size(723, 554);
             this.reportViewer1.TabIndex = 0;
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
             // PrintReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(520, 554);
+            this.ClientSize = new System.Drawing.Size(723, 554);
             this.Controls.Add(this.reportViewer1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "PrintReport";
@@ -60,5 +65,6 @@ namespace KasirApp.Report
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private System.Drawing.Printing.PrintDocument printDocument1;
     }
 }

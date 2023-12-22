@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using KasirApp.Model;
+using RestSharp;
+using Newtonsoft.Json;
 
 namespace KasirApp.Repository
 {
@@ -13,7 +15,7 @@ namespace KasirApp.Repository
         //Fields
         Operator op = new Operator();
         MboxOperator mb = new MboxOperator();
-        int nomor;
+        long nomor;
 
 
         //Constructor
@@ -23,7 +25,7 @@ namespace KasirApp.Repository
         }
 
         //Method
-        public void PostOpname(string tnggal)
+        public void PostOpname(string tnggal, userDataModel user)
         {
             if (CekData(tnggal)==false)
             {
@@ -54,7 +56,44 @@ namespace KasirApp.Repository
                     }
                     op.KonekDB();
                 }
+
+                HapusRequest(listOpname, user);
                 UpdateOpname(listOpname);
+            }
+        }
+
+        private void HapusRequest(List<OpnameModel> listOpname, userDataModel user)
+        {
+            if (op.CekNetwork() == false)
+            {
+                mb.PeringatanOK("Tidak ada Koneksi Internet");
+            }
+            else
+            {
+                foreach (var item in listOpname)
+                {
+                    using (var cmd = new MySqlCommand($"SELECT * FROM barangs WHERE kode_barang='{item.Barcode}'", op.Conn))
+                    {
+                        op.KonekDB();
+                        using (var rd = cmd.ExecuteReader())
+                        {
+                            rd.Read();
+                            item.Uuid = rd["uuid"].ToString();
+                        }
+                    }
+
+                    using (var client = new RestClient($"{op.url}opname"))
+                    {
+                        var body = new
+                        {
+                            token = user.token,
+                            user = user.uuid,
+                            id_barang = item.Uuid
+                        };
+
+                        var rs = new RestRequest("return", Method.Post);
+                    }
+                }
             }
         }
 
@@ -95,12 +134,12 @@ namespace KasirApp.Repository
                 {
                     while (rd.Read())
                     {
-                        nomor = Convert.ToInt32(rd["POP"]);
+                        nomor = Convert.ToInt64(rd["POP"]);
                     }
                 }
                 op.KonekDB();
             }
-            int update = nomor + 1;
+            long update = nomor + 1;
             using (MySqlCommand cmd = new MySqlCommand("UPDATE numberingkwitansi SET POP = @value WHERE POP = @Set", op.Conn))
             {
                 cmd.Parameters.AddWithValue("value", update);

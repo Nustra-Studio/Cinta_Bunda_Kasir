@@ -12,75 +12,76 @@ using KasirApp.Model;
 using KasirApp.Repository;
 using MySql.Data.MySqlClient;
 using System.Drawing.Printing;
+using System.IO;
 
 namespace KasirApp.Report
 {
     public partial class PrintReport : Form
     {
-        TransaksiModel _trans;
         Operator op = new Operator();
-
-        public PrintReport(TransaksiModel model)
+        public PrintReport()
         {
             InitializeComponent();
-            //this.Controls.Add(reportViewer1);
-            //reportViewer1.Dock = DockStyle.Fill;
-            _trans = model;
-            
-            PrintStruk(_trans);
-        }
-
-        public void PrintStruk(TransaksiModel model)
-        {
-            string mbayar = $"Rp.{model.Harga_jual}";
-            string mbali = $"Rp.{model.Harga}";
-            string kabeh = model.Total;
-            op.KonekDB();
-            var da = new MySqlDataAdapter("Select * from histori_penjualan WHERE nomerTrans = '" + model.NomorPJ + "'", op.Conn);
-            DsKasir ds = new DsKasir();
-            var _repo = new PrintRepo();
-            da.Fill(ds, "Dt_Struk");
-
-            ReportDataSource datasource = new ReportDataSource("Struk", ds.Tables[0]);
-
-            var subtotal = new ReportParameter("Subtotal", $"Rp.{kabeh}");//Subtotal
-            var diskon = new ReportParameter("Diskon", $"Rp.0");//Subtotal
-            var kembali = new ReportParameter("Bayar", mbayar);//Subtotal
-            var bayar = new ReportParameter("Kembali", mbali);//Subtotal
-
-            LocalReport struk = new LocalReport();
-            struk.ReportPath = Application.StartupPath + "\\Struk.rdlc";
-            struk.DataSources.Add(datasource);
-            struk.SetParameters(subtotal);
-            struk.SetParameters(bayar);
-            struk.SetParameters(diskon);
-            struk.SetParameters(kembali);
-            struk.PrintToPrinter();
-        }
-
-
-        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
-        {
-            e.Graphics.DrawString("Test", new Font("arial", 12, FontStyle.Regular), Brushes.Black, new Point(10,10));
+            this.reportViewer1.SetDisplayMode(DisplayMode.PrintLayout);
         }
 
         private void PrintReport_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                //printPreviewDialog1.Document = printDocument1;
 
-                //printDocument1.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("pprnm", 285, 600);
-
-                //printPreviewDialog1.ShowDialog();
-            }
         }
 
         private void PrintReport_Load(object sender, EventArgs e)
         {
 
-            this.reportViewer1.RefreshReport();
-            this.reportViewer1.RefreshReport();
         }
+
+        public void LoadReport(string PATH, ReportDataSource source, ReportParameter[] param)
+        {
+            this.reportViewer1.LocalReport.ReportPath = PATH;
+            if (param == null)
+            {
+
+            }
+            else
+            {
+                this.reportViewer1.LocalReport.SetParameters(param);
+            }
+            this.reportViewer1.LocalReport.DataSources.Add(source);
+            this.reportViewer1.RefreshReport();
+
+            this.Show();
+
+            this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
+        {
+
+        }
+
+        public void LoadReport2source(string PATH, ReportDataSource[] source, ReportParameter[] param)
+        {
+            this.reportViewer1.LocalReport.ReportPath = PATH;
+            if (param == null)
+            {
+
+            }
+            else
+            {
+                this.reportViewer1.LocalReport.SetParameters(param);
+            }
+            this.reportViewer1.LocalReport.DataSources.Add(source[1]);
+            this.reportViewer1.LocalReport.DataSources.Add(source[2]);
+            this.reportViewer1.RefreshReport();
+
+            this.Show();
+
+            this.WindowState = FormWindowState.Maximized;
+        }
+
+        //private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
+        //{
+        //    e.Graphics.DrawString(".", new Font("Consolas", 12), new SolidBrush(Color.Black), new Point(12, 453));
+        //}
     }
 }

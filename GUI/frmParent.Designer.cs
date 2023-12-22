@@ -29,54 +29,40 @@ namespace KasirApp.GUI
         /// </summary>
         private void InitializeComponent()
         {
-            this.ParentPanel = new Guna.UI.WinForms.GunaGradient2Panel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.btnTop = new Guna.UI.WinForms.GunaGradientButton();
             this.btnPrevous = new Guna.UI.WinForms.GunaGradientButton();
             this.btnNext = new Guna.UI.WinForms.GunaGradientButton();
             this.btnBottom = new Guna.UI.WinForms.GunaGradientButton();
             this.btnAdd = new Guna.UI.WinForms.GunaGradientButton();
             this.btnDelete = new Guna.UI.WinForms.GunaGradientButton();
-            this.btnFind = new Guna.UI.WinForms.GunaGradientButton();
+            this.btnEdit = new Guna.UI.WinForms.GunaGradientButton();
             this.btnList = new Guna.UI.WinForms.GunaGradientButton();
             this.btnPrint = new Guna.UI.WinForms.GunaGradientButton();
             this.btnExit = new Guna.UI.WinForms.GunaGradientButton();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.background = new Guna.UI.WinForms.GunaPictureBox();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.background)).BeginInit();
             this.SuspendLayout();
             // 
-            // ParentPanel
+            // panel1
             // 
-            this.ParentPanel.BackColor = System.Drawing.Color.Transparent;
-            this.ParentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ParentPanel.GradientColor1 = System.Drawing.SystemColors.Control;
-            this.ParentPanel.GradientColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(243)))), ((int)(((byte)(189)))));
-            this.ParentPanel.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            this.ParentPanel.Location = new System.Drawing.Point(0, 68);
-            this.ParentPanel.Margin = new System.Windows.Forms.Padding(4);
-            this.ParentPanel.Name = "ParentPanel";
-            this.ParentPanel.Size = new System.Drawing.Size(1409, 486);
-            this.ParentPanel.TabIndex = 4;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
-            this.flowLayoutPanel1.Controls.Add(this.btnTop);
-            this.flowLayoutPanel1.Controls.Add(this.btnPrevous);
-            this.flowLayoutPanel1.Controls.Add(this.btnNext);
-            this.flowLayoutPanel1.Controls.Add(this.btnBottom);
-            this.flowLayoutPanel1.Controls.Add(this.btnAdd);
-            this.flowLayoutPanel1.Controls.Add(this.btnDelete);
-            this.flowLayoutPanel1.Controls.Add(this.btnFind);
-            this.flowLayoutPanel1.Controls.Add(this.btnList);
-            this.flowLayoutPanel1.Controls.Add(this.btnPrint);
-            this.flowLayoutPanel1.Controls.Add(this.btnExit);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1409, 68);
-            this.flowLayoutPanel1.TabIndex = 3;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
+            this.panel1.Controls.Add(this.btnTop);
+            this.panel1.Controls.Add(this.btnPrevous);
+            this.panel1.Controls.Add(this.btnNext);
+            this.panel1.Controls.Add(this.btnBottom);
+            this.panel1.Controls.Add(this.btnAdd);
+            this.panel1.Controls.Add(this.btnDelete);
+            this.panel1.Controls.Add(this.btnEdit);
+            this.panel1.Controls.Add(this.btnList);
+            this.panel1.Controls.Add(this.btnPrint);
+            this.panel1.Controls.Add(this.btnExit);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1409, 82);
+            this.panel1.TabIndex = 4;
             // 
             // btnTop
             // 
@@ -95,7 +81,7 @@ namespace KasirApp.GUI
             this.btnTop.Image = global::KasirApp.Properties.Resources.up;
             this.btnTop.ImageOffsetX = -2;
             this.btnTop.ImageSize = new System.Drawing.Size(35, 35);
-            this.btnTop.Location = new System.Drawing.Point(4, 8);
+            this.btnTop.Location = new System.Drawing.Point(13, 13);
             this.btnTop.Margin = new System.Windows.Forms.Padding(4);
             this.btnTop.Name = "btnTop";
             this.btnTop.OnHoverBaseColor1 = System.Drawing.Color.White;
@@ -105,7 +91,7 @@ namespace KasirApp.GUI
             this.btnTop.OnHoverImage = null;
             this.btnTop.OnPressedColor = System.Drawing.Color.Black;
             this.btnTop.Size = new System.Drawing.Size(119, 54);
-            this.btnTop.TabIndex = 10;
+            this.btnTop.TabIndex = 13;
             this.btnTop.Text = "Top";
             this.btnTop.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.btnTop.TextOffsetX = 5;
@@ -128,7 +114,7 @@ namespace KasirApp.GUI
             this.btnPrevous.Image = global::KasirApp.Properties.Resources.left;
             this.btnPrevous.ImageOffsetX = -2;
             this.btnPrevous.ImageSize = new System.Drawing.Size(35, 35);
-            this.btnPrevous.Location = new System.Drawing.Point(131, 8);
+            this.btnPrevous.Location = new System.Drawing.Point(140, 13);
             this.btnPrevous.Margin = new System.Windows.Forms.Padding(4);
             this.btnPrevous.Name = "btnPrevous";
             this.btnPrevous.OnHoverBaseColor1 = System.Drawing.Color.White;
@@ -138,7 +124,7 @@ namespace KasirApp.GUI
             this.btnPrevous.OnHoverImage = null;
             this.btnPrevous.OnPressedColor = System.Drawing.Color.Black;
             this.btnPrevous.Size = new System.Drawing.Size(119, 54);
-            this.btnPrevous.TabIndex = 10;
+            this.btnPrevous.TabIndex = 14;
             this.btnPrevous.Text = "Prev";
             this.btnPrevous.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.btnPrevous.TextOffsetX = 5;
@@ -161,7 +147,7 @@ namespace KasirApp.GUI
             this.btnNext.Image = global::KasirApp.Properties.Resources.right;
             this.btnNext.ImageOffsetX = -2;
             this.btnNext.ImageSize = new System.Drawing.Size(35, 35);
-            this.btnNext.Location = new System.Drawing.Point(258, 8);
+            this.btnNext.Location = new System.Drawing.Point(267, 13);
             this.btnNext.Margin = new System.Windows.Forms.Padding(4);
             this.btnNext.Name = "btnNext";
             this.btnNext.OnHoverBaseColor1 = System.Drawing.Color.White;
@@ -171,7 +157,7 @@ namespace KasirApp.GUI
             this.btnNext.OnHoverImage = null;
             this.btnNext.OnPressedColor = System.Drawing.Color.Black;
             this.btnNext.Size = new System.Drawing.Size(119, 54);
-            this.btnNext.TabIndex = 10;
+            this.btnNext.TabIndex = 15;
             this.btnNext.Text = "Next";
             this.btnNext.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.btnNext.TextOffsetX = 5;
@@ -194,7 +180,7 @@ namespace KasirApp.GUI
             this.btnBottom.Image = global::KasirApp.Properties.Resources.down;
             this.btnBottom.ImageOffsetX = -2;
             this.btnBottom.ImageSize = new System.Drawing.Size(35, 35);
-            this.btnBottom.Location = new System.Drawing.Point(385, 8);
+            this.btnBottom.Location = new System.Drawing.Point(394, 13);
             this.btnBottom.Margin = new System.Windows.Forms.Padding(4);
             this.btnBottom.Name = "btnBottom";
             this.btnBottom.OnHoverBaseColor1 = System.Drawing.Color.White;
@@ -204,7 +190,7 @@ namespace KasirApp.GUI
             this.btnBottom.OnHoverImage = null;
             this.btnBottom.OnPressedColor = System.Drawing.Color.Black;
             this.btnBottom.Size = new System.Drawing.Size(119, 54);
-            this.btnBottom.TabIndex = 10;
+            this.btnBottom.TabIndex = 16;
             this.btnBottom.Text = "Bottom";
             this.btnBottom.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.btnBottom.TextOffsetX = 5;
@@ -227,7 +213,7 @@ namespace KasirApp.GUI
             this.btnAdd.Image = global::KasirApp.Properties.Resources.Plus;
             this.btnAdd.ImageOffsetX = -2;
             this.btnAdd.ImageSize = new System.Drawing.Size(35, 35);
-            this.btnAdd.Location = new System.Drawing.Point(512, 8);
+            this.btnAdd.Location = new System.Drawing.Point(521, 13);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.OnHoverBaseColor1 = System.Drawing.Color.White;
@@ -237,7 +223,7 @@ namespace KasirApp.GUI
             this.btnAdd.OnHoverImage = null;
             this.btnAdd.OnPressedColor = System.Drawing.Color.Black;
             this.btnAdd.Size = new System.Drawing.Size(119, 54);
-            this.btnAdd.TabIndex = 12;
+            this.btnAdd.TabIndex = 22;
             this.btnAdd.Text = "Add";
             this.btnAdd.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.btnAdd.TextOffsetX = 5;
@@ -260,7 +246,7 @@ namespace KasirApp.GUI
             this.btnDelete.Image = global::KasirApp.Properties.Resources.bin;
             this.btnDelete.ImageOffsetX = -2;
             this.btnDelete.ImageSize = new System.Drawing.Size(35, 35);
-            this.btnDelete.Location = new System.Drawing.Point(639, 8);
+            this.btnDelete.Location = new System.Drawing.Point(775, 13);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.OnHoverBaseColor1 = System.Drawing.Color.White;
@@ -270,44 +256,44 @@ namespace KasirApp.GUI
             this.btnDelete.OnHoverImage = null;
             this.btnDelete.OnPressedColor = System.Drawing.Color.Black;
             this.btnDelete.Size = new System.Drawing.Size(119, 54);
-            this.btnDelete.TabIndex = 11;
+            this.btnDelete.TabIndex = 17;
             this.btnDelete.Text = "Delete";
             this.btnDelete.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.btnDelete.TextOffsetX = 5;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // btnFind
+            // btnEdit
             // 
-            this.btnFind.AnimationHoverSpeed = 0.07F;
-            this.btnFind.AnimationSpeed = 0.03F;
-            this.btnFind.BaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
-            this.btnFind.BaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(246)))), ((int)(((byte)(197)))));
-            this.btnFind.BorderColor = System.Drawing.Color.Black;
-            this.btnFind.BorderSize = 1;
-            this.btnFind.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFind.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnFind.FocusedColor = System.Drawing.Color.Empty;
-            this.btnFind.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFind.ForeColor = System.Drawing.Color.Black;
-            this.btnFind.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            this.btnFind.Image = global::KasirApp.Properties.Resources.Search;
-            this.btnFind.ImageOffsetX = -2;
-            this.btnFind.ImageSize = new System.Drawing.Size(35, 35);
-            this.btnFind.Location = new System.Drawing.Point(766, 8);
-            this.btnFind.Margin = new System.Windows.Forms.Padding(4);
-            this.btnFind.Name = "btnFind";
-            this.btnFind.OnHoverBaseColor1 = System.Drawing.Color.White;
-            this.btnFind.OnHoverBaseColor2 = System.Drawing.Color.Lime;
-            this.btnFind.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.btnFind.OnHoverForeColor = System.Drawing.Color.Black;
-            this.btnFind.OnHoverImage = null;
-            this.btnFind.OnPressedColor = System.Drawing.Color.Black;
-            this.btnFind.Size = new System.Drawing.Size(119, 54);
-            this.btnFind.TabIndex = 11;
-            this.btnFind.Text = "Find";
-            this.btnFind.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.btnFind.TextOffsetX = 5;
-            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
+            this.btnEdit.AnimationHoverSpeed = 0.07F;
+            this.btnEdit.AnimationSpeed = 0.03F;
+            this.btnEdit.BaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
+            this.btnEdit.BaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(246)))), ((int)(((byte)(197)))));
+            this.btnEdit.BorderColor = System.Drawing.Color.Black;
+            this.btnEdit.BorderSize = 1;
+            this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEdit.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnEdit.FocusedColor = System.Drawing.Color.Empty;
+            this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.ForeColor = System.Drawing.Color.Black;
+            this.btnEdit.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            this.btnEdit.Image = global::KasirApp.Properties.Resources.Edit;
+            this.btnEdit.ImageOffsetX = -2;
+            this.btnEdit.ImageSize = new System.Drawing.Size(35, 35);
+            this.btnEdit.Location = new System.Drawing.Point(648, 13);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.OnHoverBaseColor1 = System.Drawing.Color.White;
+            this.btnEdit.OnHoverBaseColor2 = System.Drawing.Color.Lime;
+            this.btnEdit.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnEdit.OnHoverForeColor = System.Drawing.Color.Black;
+            this.btnEdit.OnHoverImage = null;
+            this.btnEdit.OnPressedColor = System.Drawing.Color.Black;
+            this.btnEdit.Size = new System.Drawing.Size(119, 54);
+            this.btnEdit.TabIndex = 18;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.btnEdit.TextOffsetX = 5;
+            this.btnEdit.Click += new System.EventHandler(this.btnFind_Click);
             // 
             // btnList
             // 
@@ -326,7 +312,7 @@ namespace KasirApp.GUI
             this.btnList.Image = global::KasirApp.Properties.Resources.List;
             this.btnList.ImageOffsetX = -2;
             this.btnList.ImageSize = new System.Drawing.Size(35, 35);
-            this.btnList.Location = new System.Drawing.Point(893, 8);
+            this.btnList.Location = new System.Drawing.Point(902, 13);
             this.btnList.Margin = new System.Windows.Forms.Padding(4);
             this.btnList.Name = "btnList";
             this.btnList.OnHoverBaseColor1 = System.Drawing.Color.White;
@@ -336,7 +322,7 @@ namespace KasirApp.GUI
             this.btnList.OnHoverImage = null;
             this.btnList.OnPressedColor = System.Drawing.Color.Black;
             this.btnList.Size = new System.Drawing.Size(119, 54);
-            this.btnList.TabIndex = 11;
+            this.btnList.TabIndex = 19;
             this.btnList.Text = "List";
             this.btnList.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.btnList.TextOffsetX = 5;
@@ -359,7 +345,7 @@ namespace KasirApp.GUI
             this.btnPrint.Image = global::KasirApp.Properties.Resources.Print;
             this.btnPrint.ImageOffsetX = -2;
             this.btnPrint.ImageSize = new System.Drawing.Size(35, 35);
-            this.btnPrint.Location = new System.Drawing.Point(1020, 8);
+            this.btnPrint.Location = new System.Drawing.Point(1029, 13);
             this.btnPrint.Margin = new System.Windows.Forms.Padding(4);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.OnHoverBaseColor1 = System.Drawing.Color.White;
@@ -369,7 +355,7 @@ namespace KasirApp.GUI
             this.btnPrint.OnHoverImage = null;
             this.btnPrint.OnPressedColor = System.Drawing.Color.Black;
             this.btnPrint.Size = new System.Drawing.Size(119, 54);
-            this.btnPrint.TabIndex = 11;
+            this.btnPrint.TabIndex = 20;
             this.btnPrint.Text = "Print";
             this.btnPrint.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.btnPrint.TextOffsetX = 5;
@@ -392,7 +378,7 @@ namespace KasirApp.GUI
             this.btnExit.Image = global::KasirApp.Properties.Resources.Exit;
             this.btnExit.ImageOffsetX = -2;
             this.btnExit.ImageSize = new System.Drawing.Size(35, 35);
-            this.btnExit.Location = new System.Drawing.Point(1147, 8);
+            this.btnExit.Location = new System.Drawing.Point(1156, 13);
             this.btnExit.Margin = new System.Windows.Forms.Padding(4);
             this.btnExit.Name = "btnExit";
             this.btnExit.OnHoverBaseColor1 = System.Drawing.Color.White;
@@ -402,40 +388,53 @@ namespace KasirApp.GUI
             this.btnExit.OnHoverImage = null;
             this.btnExit.OnPressedColor = System.Drawing.Color.Black;
             this.btnExit.Size = new System.Drawing.Size(119, 54);
-            this.btnExit.TabIndex = 11;
+            this.btnExit.TabIndex = 21;
             this.btnExit.Text = "Exit";
             this.btnExit.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.btnExit.TextOffsetX = 5;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // background
+            // 
+            this.background.BaseColor = System.Drawing.Color.White;
+            this.background.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.background.Image = global::KasirApp.Properties.Resources.Wallpaper_Kasir;
+            this.background.Location = new System.Drawing.Point(0, 0);
+            this.background.Name = "background";
+            this.background.Size = new System.Drawing.Size(1409, 554);
+            this.background.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.background.TabIndex = 3;
+            this.background.TabStop = false;
             // 
             // frmParent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1409, 554);
-            this.Controls.Add(this.ParentPanel);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.background);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmParent";
             this.Text = "frmParent";
-            this.flowLayoutPanel1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.background)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Guna.UI.WinForms.GunaGradient2Panel ParentPanel;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Panel panel1;
         private Guna.UI.WinForms.GunaGradientButton btnTop;
         private Guna.UI.WinForms.GunaGradientButton btnPrevous;
         private Guna.UI.WinForms.GunaGradientButton btnNext;
         private Guna.UI.WinForms.GunaGradientButton btnBottom;
         private Guna.UI.WinForms.GunaGradientButton btnAdd;
         private Guna.UI.WinForms.GunaGradientButton btnDelete;
-        private Guna.UI.WinForms.GunaGradientButton btnFind;
+        private Guna.UI.WinForms.GunaGradientButton btnEdit;
         private Guna.UI.WinForms.GunaGradientButton btnList;
         private Guna.UI.WinForms.GunaGradientButton btnPrint;
         private Guna.UI.WinForms.GunaGradientButton btnExit;
+        private Guna.UI.WinForms.GunaPictureBox background;
     }
 }

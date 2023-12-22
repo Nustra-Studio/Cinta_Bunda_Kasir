@@ -31,7 +31,7 @@ namespace KasirApp.GUI
         {
             this.tgl = new Guna.UI.WinForms.GunaDateTimePicker();
             this.gunaGradientButton1 = new Guna.UI.WinForms.GunaGradientButton();
-            this.gunaGradientButton3 = new Guna.UI.WinForms.GunaGradientButton();
+            this.btnBatal = new Guna.UI.WinForms.GunaGradientButton();
             this.SuspendLayout();
             // 
             // tgl
@@ -89,46 +89,49 @@ namespace KasirApp.GUI
             this.gunaGradientButton1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.gunaGradientButton1.Click += new System.EventHandler(this.RaiseClickPost);
             // 
-            // gunaGradientButton3
+            // btnBatal
             // 
-            this.gunaGradientButton3.AnimationHoverSpeed = 0.07F;
-            this.gunaGradientButton3.AnimationSpeed = 0.03F;
-            this.gunaGradientButton3.BaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.gunaGradientButton3.BaseColor2 = System.Drawing.Color.Red;
-            this.gunaGradientButton3.BorderColor = System.Drawing.Color.LightGray;
-            this.gunaGradientButton3.BorderSize = 1;
-            this.gunaGradientButton3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.gunaGradientButton3.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.gunaGradientButton3.FocusedColor = System.Drawing.Color.Empty;
-            this.gunaGradientButton3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.gunaGradientButton3.ForeColor = System.Drawing.Color.LightGray;
-            this.gunaGradientButton3.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            this.gunaGradientButton3.Image = null;
-            this.gunaGradientButton3.ImageSize = new System.Drawing.Size(20, 20);
-            this.gunaGradientButton3.Location = new System.Drawing.Point(191, 95);
-            this.gunaGradientButton3.Margin = new System.Windows.Forms.Padding(4);
-            this.gunaGradientButton3.Name = "gunaGradientButton3";
-            this.gunaGradientButton3.OnHoverBaseColor1 = System.Drawing.Color.IndianRed;
-            this.gunaGradientButton3.OnHoverBaseColor2 = System.Drawing.Color.LightCoral;
-            this.gunaGradientButton3.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.gunaGradientButton3.OnHoverForeColor = System.Drawing.Color.White;
-            this.gunaGradientButton3.OnHoverImage = null;
-            this.gunaGradientButton3.OnPressedColor = System.Drawing.Color.Black;
-            this.gunaGradientButton3.Size = new System.Drawing.Size(129, 37);
-            this.gunaGradientButton3.TabIndex = 13;
-            this.gunaGradientButton3.Text = "Batal";
-            this.gunaGradientButton3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnBatal.AnimationHoverSpeed = 0.07F;
+            this.btnBatal.AnimationSpeed = 0.03F;
+            this.btnBatal.BaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnBatal.BaseColor2 = System.Drawing.Color.Red;
+            this.btnBatal.BorderColor = System.Drawing.Color.LightGray;
+            this.btnBatal.BorderSize = 1;
+            this.btnBatal.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBatal.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnBatal.FocusedColor = System.Drawing.Color.Empty;
+            this.btnBatal.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnBatal.ForeColor = System.Drawing.Color.LightGray;
+            this.btnBatal.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            this.btnBatal.Image = null;
+            this.btnBatal.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnBatal.Location = new System.Drawing.Point(191, 95);
+            this.btnBatal.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBatal.Name = "btnBatal";
+            this.btnBatal.OnHoverBaseColor1 = System.Drawing.Color.IndianRed;
+            this.btnBatal.OnHoverBaseColor2 = System.Drawing.Color.LightCoral;
+            this.btnBatal.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnBatal.OnHoverForeColor = System.Drawing.Color.White;
+            this.btnBatal.OnHoverImage = null;
+            this.btnBatal.OnPressedColor = System.Drawing.Color.Black;
+            this.btnBatal.Size = new System.Drawing.Size(129, 37);
+            this.btnBatal.TabIndex = 13;
+            this.btnBatal.Text = "Batal";
+            this.btnBatal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnBatal.Click += new System.EventHandler(this.btnBatal_Click);
             // 
             // PostingStokOpname
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(372, 145);
-            this.Controls.Add(this.gunaGradientButton3);
+            this.Controls.Add(this.btnBatal);
             this.Controls.Add(this.gunaGradientButton1);
             this.Controls.Add(this.tgl);
+            this.MinimumSize = new System.Drawing.Size(390, 192);
             this.Name = "PostingStokOpname";
             this.Text = "Posting - Stok Opname";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PostingStokOpname_FormClosing);
             this.ResumeLayout(false);
 
         }
@@ -137,6 +140,6 @@ namespace KasirApp.GUI
 
         private Guna.UI.WinForms.GunaDateTimePicker tgl;
         private Guna.UI.WinForms.GunaGradientButton gunaGradientButton1;
-        private Guna.UI.WinForms.GunaGradientButton gunaGradientButton3;
+        private Guna.UI.WinForms.GunaGradientButton btnBatal;
     }
 }

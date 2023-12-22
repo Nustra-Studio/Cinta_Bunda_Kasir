@@ -11,6 +11,7 @@ using MySql.Data.MySqlClient;
 using KasirApp.Model;
 using RestSharp;
 using Newtonsoft.Json;
+using KasirApp.View;
 
 namespace KasirApp.GUI
 {
@@ -18,33 +19,23 @@ namespace KasirApp.GUI
     {
         Operator op = new Operator();
         SuplierModel sm = new SuplierModel();
+        userDataModel _user;
         string select = null;
+        iMasterForm _master;
 
-        public MasterBarang()
+        public MasterBarang(iMasterForm form, userDataModel user)
         {
             InitializeComponent();
+            _master = form;
+            _user = user;
             getData();
             fillCombo();
         }
 
         public void fillCombo()
         {
-            //using (var client = new RestClient(op.urlcloud))
-            //{
-            //    FprPbNY8WewfFpKrA8Ppy4clot2Z5xWOiuA6uVGt
-            //    var request = new RestRequest("supplier");
-            //    request.AddParameter("token", _lg.token);
-            //    RestResponse res = client.GetAsync(request).Result;
-
-            //    var jso = res.Content.ToString();
-
-            //    List<SuplierModel> dn = JsonConvert.DeserializeObject<List<SuplierModel>>(jso);
-
-            //    foreach (var item in dn)
-            //    {
-            //        comboBox1.Items.Add(item.nama.ToString());
-            //    }
-            //}
+            comboBox1.Items.Clear();
+            comboBox2.Items.Clear();
             using (MySqlCommand cmd = new MySqlCommand("select * from category_barangs", op.Conn))
             {
                 op.KonekDB();
@@ -57,31 +48,73 @@ namespace KasirApp.GUI
                 }
                 op.KonekDB();
             }
-            using (MySqlCommand cmd = new MySqlCommand("select * from supliers", op.Conn))
+            using (var client = new RestClient(op.url))
             {
-                op.KonekDB();
-                using (MySqlDataReader rd = cmd.ExecuteReader())
+                try
                 {
-                    while (rd.Read())
+                    var req = new RestRequest("supplier", Method.Get);
+                    req.AddParameter("token", _user.token);
+                    req.AddParameter("uuid", _user.cabang_id);
+
+                    var res = client.Execute(req);
+
+                    if (res.StatusCode == System.Net.HttpStatusCode.OK)
                     {
-                        comboBox1.Items.Add(rd["nama"].ToString());
+                        var list = JsonConvert.DeserializeObject<List<SuplierModel>>(res.Content);
+
+                        foreach (var item in list)
+                        {
+                            CekSupplier(item);
+                            comboBox1.Items.Add(item.nama.ToString());
+                        }
                     }
                 }
-                op.KonekDB();
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString(), "Error!");
+                }
             }
         }
+
+        public void CekSupplier(SuplierModel model)
+        {
+            bool isExist = false;
+            using (var cmd = new MySqlCommand($"SELECT * FROM supliers WHERE nama = '{model.nama}'", op.Conn))
+            {
+                op.KonekDB();
+                using (var rd = cmd.ExecuteReader())
+                {
+                    rd.Read();
+                    if (rd.HasRows)
+                    {
+                        isExist = true;
+                    }
+                }
+            }
+
+            if (isExist == false)
+            {
+                using (var cmd = new MySqlCommand($"INSERT INTO supliers VALUES (null,SHA2('{model.nama}', 256), '{model.nama}', '{model.alamat}', '{model.telepon}', '{model.product}', '{model.keterangan}', '{model.category_barang_id}', '{op.myDatetime}', '{op.myDatetime}')", op.Conn))
+                {
+                    op.KonekDB();
+                    cmd.ExecuteNonQuery();
+                    op.KonekDB();
+                }
+            }
+        }
+
 
         public void tombol(KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Insert)
             {
-                Insert frm = new Insert(this.getData);
-                frm.Show();
+                Insert frm = new Insert(this.getData, _master, _user);
+                _master.subForm(frm);
             }
             else if (e.KeyCode == Keys.Enter)
             {
-                Insert frm = new Insert(this.getData);
-                frm.Show();
+                Insert frm = new Insert(this.getData, _master, _user);
+                _master.subForm(frm);
                 frm.assignData(select);
             }
             else if (e.KeyCode == Keys.Delete)
@@ -112,7 +145,7 @@ namespace KasirApp.GUI
         public void getData()
         {
             DGV.Refresh();
-            DGV.DataSource = op.getAll("view_barang");
+            DGV.DataSource = op.getAll("view_barang LIMIT 1000");
             textBox1.Focus();
         }
 
@@ -160,11 +193,11 @@ namespace KasirApp.GUI
             if (textBox1.Text == "" && comboBox1.Text == "" && comboBox2.Text == "")
             {
                 //DGV.DataSource = op.getAll("view_barang where Nama LIKE '%" + a + "%' AND Supplier LIKE '" + b + "' AND Categori LIKE '" + c + "'");
-                DGV.DataSource = op.getAll("view_barang");
+                DGV.DataSource = op.getAll("view_barang LIMIT 1000");
             }
             else
             {
-                DGV.DataSource = op.getAll("view_barang where Nama LIKE '%" + a + "%' AND Supplier LIKE '" + b + "' AND Categori LIKE '" + c + "'");
+                DGV.DataSource = op.getAll("view_barang where Nama LIKE '%" + a + "%' OR Barcode LIKE '%" + a + "%' AND Supplier LIKE '%" + b + "%' AND Categori LIKE '%" + c + "%' LIMIT 1000");
             }
         }
 
@@ -174,6 +207,11 @@ namespace KasirApp.GUI
             string b = comboBox1.Text;
             string c = comboBox2.Text;
             DGV.DataSource = op.getAll("view_barang where Nama LIKE '%" + a + "%' AND Supplier LIKE '%" + b + "%' AND Categori LIKE '%" + c + "%'");
+        }
+
+        private void MasterBarang_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _master.CloseForm();
         }
     }
 }

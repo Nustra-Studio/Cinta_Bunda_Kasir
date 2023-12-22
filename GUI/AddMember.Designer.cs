@@ -110,7 +110,7 @@ namespace KasirApp.GUI
             this.gunaGradientButton2.OnHoverImage = null;
             this.gunaGradientButton2.OnPressedColor = System.Drawing.Color.Black;
             this.gunaGradientButton2.Size = new System.Drawing.Size(105, 37);
-            this.gunaGradientButton2.TabIndex = 12;
+            this.gunaGradientButton2.TabIndex = 5;
             this.gunaGradientButton2.Text = "Batal";
             this.gunaGradientButton2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.gunaGradientButton2.Click += new System.EventHandler(this.gunaGradientButton2_Click);
@@ -141,7 +141,7 @@ namespace KasirApp.GUI
             this.btnProses.OnHoverImage = null;
             this.btnProses.OnPressedColor = System.Drawing.Color.Black;
             this.btnProses.Size = new System.Drawing.Size(105, 37);
-            this.btnProses.TabIndex = 11;
+            this.btnProses.TabIndex = 4;
             this.btnProses.Text = "Proses";
             this.btnProses.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnProses.Click += new System.EventHandler(this.btnProses_Click);
@@ -163,8 +163,7 @@ namespace KasirApp.GUI
             this.txtAlamat.PasswordChar = '\0';
             this.txtAlamat.SelectedText = "";
             this.txtAlamat.Size = new System.Drawing.Size(425, 104);
-            this.txtAlamat.TabIndex = 9;
-            this.txtAlamat.Text = "Candi";
+            this.txtAlamat.TabIndex = 3;
             // 
             // txtEmail
             // 
@@ -182,8 +181,7 @@ namespace KasirApp.GUI
             this.txtEmail.PasswordChar = '\0';
             this.txtEmail.SelectedText = "";
             this.txtEmail.Size = new System.Drawing.Size(425, 46);
-            this.txtEmail.TabIndex = 9;
-            this.txtEmail.Text = "nice@mail.com";
+            this.txtEmail.TabIndex = 2;
             // 
             // noHp
             // 
@@ -201,8 +199,7 @@ namespace KasirApp.GUI
             this.noHp.PasswordChar = '\0';
             this.noHp.SelectedText = "";
             this.noHp.Size = new System.Drawing.Size(425, 46);
-            this.noHp.TabIndex = 9;
-            this.noHp.Text = "08123456789987";
+            this.noHp.TabIndex = 1;
             // 
             // label5
             // 
@@ -219,12 +216,12 @@ namespace KasirApp.GUI
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(212, 180);
+            this.label4.Location = new System.Drawing.Point(137, 182);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(71, 25);
+            this.label4.Size = new System.Drawing.Size(150, 25);
             this.label4.TabIndex = 10;
-            this.label4.Text = "Email :";
+            this.label4.Text = "Identitas(KTP) :";
             // 
             // txtNama
             // 
@@ -242,8 +239,7 @@ namespace KasirApp.GUI
             this.txtNama.PasswordChar = '\0';
             this.txtNama.SelectedText = "";
             this.txtNama.Size = new System.Drawing.Size(425, 46);
-            this.txtNama.TabIndex = 9;
-            this.txtNama.Text = "Novan";
+            this.txtNama.TabIndex = 0;
             // 
             // label3
             // 
@@ -286,6 +282,8 @@ namespace KasirApp.GUI
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximumSize = new System.Drawing.Size(795, 500);
+            this.MinimumSize = new System.Drawing.Size(795, 500);
             this.Name = "AddMember";
             this.Padding = new System.Windows.Forms.Padding(13, 12, 13, 12);
             this.Text = "AddMember";

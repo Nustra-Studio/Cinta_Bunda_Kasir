@@ -70,7 +70,7 @@
             this.btnProses = new Guna.UI.WinForms.GunaGradientButton();
             this.label6 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.gunaGradientButton1 = new Guna.UI.WinForms.GunaGradientButton();
+            this.btnTukar = new Guna.UI.WinForms.GunaGradientButton();
             this.dgv = new Guna.UI.WinForms.GunaDataGridView();
             this.nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.barcode1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -342,7 +342,7 @@
             this.txtRandKode.Name = "txtRandKode";
             this.txtRandKode.Size = new System.Drawing.Size(317, 34);
             this.txtRandKode.TabIndex = 7;
-            this.txtRandKode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.RaiseEnterKode);
+            this.txtRandKode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GlobalKeyDown);
             // 
             // txtPoint
             // 
@@ -352,6 +352,7 @@
             this.txtPoint.Name = "txtPoint";
             this.txtPoint.Size = new System.Drawing.Size(133, 34);
             this.txtPoint.TabIndex = 8;
+            this.txtPoint.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GlobalKeyDown);
             // 
             // gunaElipsePanel2
             // 
@@ -545,36 +546,36 @@
             this.checkBox1.Text = "Gunakan Diskon";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // gunaGradientButton1
+            // btnTukar
             // 
-            this.gunaGradientButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.gunaGradientButton1.AnimationHoverSpeed = 0.07F;
-            this.gunaGradientButton1.AnimationSpeed = 0.03F;
-            this.gunaGradientButton1.BaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
-            this.gunaGradientButton1.BaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.gunaGradientButton1.BorderColor = System.Drawing.Color.Black;
-            this.gunaGradientButton1.BorderSize = 1;
-            this.gunaGradientButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.gunaGradientButton1.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.gunaGradientButton1.FocusedColor = System.Drawing.Color.Empty;
-            this.gunaGradientButton1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.gunaGradientButton1.ForeColor = System.Drawing.Color.Black;
-            this.gunaGradientButton1.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            this.gunaGradientButton1.Image = null;
-            this.gunaGradientButton1.ImageSize = new System.Drawing.Size(20, 20);
-            this.gunaGradientButton1.Location = new System.Drawing.Point(1156, 687);
-            this.gunaGradientButton1.Margin = new System.Windows.Forms.Padding(4);
-            this.gunaGradientButton1.Name = "gunaGradientButton1";
-            this.gunaGradientButton1.OnHoverBaseColor1 = System.Drawing.Color.White;
-            this.gunaGradientButton1.OnHoverBaseColor2 = System.Drawing.Color.Yellow;
-            this.gunaGradientButton1.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.gunaGradientButton1.OnHoverForeColor = System.Drawing.Color.Black;
-            this.gunaGradientButton1.OnHoverImage = null;
-            this.gunaGradientButton1.OnPressedColor = System.Drawing.Color.Black;
-            this.gunaGradientButton1.Size = new System.Drawing.Size(317, 37);
-            this.gunaGradientButton1.TabIndex = 10;
-            this.gunaGradientButton1.Text = "Tukarkan Item";
-            this.gunaGradientButton1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnTukar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTukar.AnimationHoverSpeed = 0.07F;
+            this.btnTukar.AnimationSpeed = 0.03F;
+            this.btnTukar.BaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
+            this.btnTukar.BaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnTukar.BorderColor = System.Drawing.Color.Black;
+            this.btnTukar.BorderSize = 1;
+            this.btnTukar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTukar.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnTukar.FocusedColor = System.Drawing.Color.Empty;
+            this.btnTukar.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnTukar.ForeColor = System.Drawing.Color.Black;
+            this.btnTukar.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            this.btnTukar.Image = null;
+            this.btnTukar.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnTukar.Location = new System.Drawing.Point(1156, 687);
+            this.btnTukar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnTukar.Name = "btnTukar";
+            this.btnTukar.OnHoverBaseColor1 = System.Drawing.Color.White;
+            this.btnTukar.OnHoverBaseColor2 = System.Drawing.Color.Yellow;
+            this.btnTukar.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnTukar.OnHoverForeColor = System.Drawing.Color.Black;
+            this.btnTukar.OnHoverImage = null;
+            this.btnTukar.OnPressedColor = System.Drawing.Color.Black;
+            this.btnTukar.Size = new System.Drawing.Size(317, 37);
+            this.btnTukar.TabIndex = 10;
+            this.btnTukar.Text = "Tukarkan Item";
+            this.btnTukar.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // dgv
             // 
@@ -715,7 +716,7 @@
             this.Controls.Add(this.dgv);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.gunaGradientButton1);
+            this.Controls.Add(this.btnTukar);
             this.Controls.Add(this.btnProses);
             this.Controls.Add(this.gunaElipsePanel2);
             this.Controls.Add(this.txtRandKode);
@@ -733,6 +734,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Transaksi";
             this.Text = "Cinta Bunda - Transaksi";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Transaksi_FormClosing);
             this.gunaElipsePanel1.ResumeLayout(false);
             this.gunaElipsePanel1.PerformLayout();
             this.gunaPanel1.ResumeLayout(false);
@@ -782,7 +784,7 @@
         private Guna.UI.WinForms.GunaGradientButton btnProses;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckBox checkBox1;
-        private Guna.UI.WinForms.GunaGradientButton gunaGradientButton1;
+        private Guna.UI.WinForms.GunaGradientButton btnTukar;
         private Guna.UI.WinForms.GunaPanel gunaPanel1;
         private Guna.UI.WinForms.GunaPanel gunaPanel2;
         private Guna.UI.WinForms.GunaPanel gunaPanel3;

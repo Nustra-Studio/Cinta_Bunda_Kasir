@@ -29,18 +29,13 @@ namespace KasirApp.GUI
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
             this.txtStok = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.txtNama = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -48,22 +43,26 @@ namespace KasirApp.GUI
             this.txtKode = new System.Windows.Forms.TextBox();
             this.txtNomor = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkDirect = new System.Windows.Forms.CheckBox();
+            this.btnSync = new Guna.UI.WinForms.GunaGradientButton();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnCursor = new Guna.UI.WinForms.GunaGradientButton();
             this.DGV = new Guna.UI.WinForms.GunaDataGridView();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.gunaGradientButton3 = new Guna.UI.WinForms.GunaGradientButton();
+            this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Barcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Stok = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Perubahan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Peurbahan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnRefresh = new Guna.UI.WinForms.GunaGradientButton();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.gunaGradientButton2 = new Guna.UI.WinForms.GunaGradientButton();
-            this.gunaGradientButton1 = new Guna.UI.WinForms.GunaGradientButton();
+            this.btnPrint = new Guna.UI.WinForms.GunaGradientButton();
+            this.btnExit = new Guna.UI.WinForms.GunaGradientButton();
             this.txtSelisih = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
             this.txtQuantity = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -80,28 +79,6 @@ namespace KasirApp.GUI
             this.dateTimePicker1.Size = new System.Drawing.Size(111, 26);
             this.dateTimePicker1.TabIndex = 9;
             // 
-            // textBox7
-            // 
-            this.textBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(981, 154);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(41, 26);
-            this.textBox7.TabIndex = 3;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(929, 154);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(43, 26);
-            this.textBox5.TabIndex = 3;
-            // 
             // txtStok
             // 
             this.txtStok.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -112,16 +89,6 @@ namespace KasirApp.GUI
             this.txtStok.ReadOnly = true;
             this.txtStok.Size = new System.Drawing.Size(95, 26);
             this.txtStok.TabIndex = 3;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(607, 54);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(91, 26);
-            this.textBox4.TabIndex = 3;
             // 
             // txtNama
             // 
@@ -145,30 +112,6 @@ namespace KasirApp.GUI
             this.label6.Size = new System.Drawing.Size(165, 20);
             this.label6.TabIndex = 6;
             this.label6.Text = "F12 - Data Barang";
-            // 
-            // label5
-            // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(707, 58);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(32, 20);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "I/E";
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(515, 58);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 20);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Gudang";
             // 
             // label7
             // 
@@ -239,31 +182,25 @@ namespace KasirApp.GUI
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox1.Controls.Add(this.chkDirect);
+            this.groupBox1.Controls.Add(this.btnSync);
+            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Controls.Add(this.gunaGradientButton2);
-            this.groupBox1.Controls.Add(this.gunaGradientButton1);
+            this.groupBox1.Controls.Add(this.btnPrint);
+            this.groupBox1.Controls.Add(this.btnExit);
             this.groupBox1.Controls.Add(this.dateTimePicker1);
-            this.groupBox1.Controls.Add(this.textBox7);
-            this.groupBox1.Controls.Add(this.textBox5);
             this.groupBox1.Controls.Add(this.txtSelisih);
             this.groupBox1.Controls.Add(this.txtStok);
-            this.groupBox1.Controls.Add(this.textBox8);
-            this.groupBox1.Controls.Add(this.textBox4);
             this.groupBox1.Controls.Add(this.txtNama);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.textBox11);
             this.groupBox1.Controls.Add(this.txtQuantity);
             this.groupBox1.Controls.Add(this.txtKode);
             this.groupBox1.Controls.Add(this.txtNomor);
@@ -276,14 +213,69 @@ namespace KasirApp.GUI
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             // 
+            // chkDirect
+            // 
+            this.chkDirect.AutoSize = true;
+            this.chkDirect.Location = new System.Drawing.Point(104, 123);
+            this.chkDirect.Name = "chkDirect";
+            this.chkDirect.Size = new System.Drawing.Size(168, 21);
+            this.chkDirect.TabIndex = 24;
+            this.chkDirect.Text = "Direct Input (barcode)";
+            this.chkDirect.UseVisualStyleBackColor = true;
+            // 
+            // btnSync
+            // 
+            this.btnSync.AnimationHoverSpeed = 0.07F;
+            this.btnSync.AnimationSpeed = 0.03F;
+            this.btnSync.BaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
+            this.btnSync.BaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(246)))), ((int)(((byte)(197)))));
+            this.btnSync.BorderColor = System.Drawing.Color.Black;
+            this.btnSync.BorderSize = 1;
+            this.btnSync.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSync.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnSync.FocusedColor = System.Drawing.Color.Empty;
+            this.btnSync.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSync.ForeColor = System.Drawing.Color.Black;
+            this.btnSync.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            this.btnSync.Image = global::KasirApp.Properties.Resources.refresh;
+            this.btnSync.ImageOffsetX = -2;
+            this.btnSync.ImageSize = new System.Drawing.Size(35, 35);
+            this.btnSync.Location = new System.Drawing.Point(104, 193);
+            this.btnSync.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSync.Name = "btnSync";
+            this.btnSync.OnHoverBaseColor1 = System.Drawing.Color.White;
+            this.btnSync.OnHoverBaseColor2 = System.Drawing.Color.Lime;
+            this.btnSync.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnSync.OnHoverForeColor = System.Drawing.Color.Black;
+            this.btnSync.OnHoverImage = null;
+            this.btnSync.OnPressedColor = System.Drawing.Color.Black;
+            this.btnSync.Size = new System.Drawing.Size(168, 54);
+            this.btnSync.TabIndex = 23;
+            this.btnSync.Text = "Sinkronize Data";
+            this.btnSync.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.btnSync.TextOffsetX = 5;
+            this.btnSync.Click += new System.EventHandler(this.btnSync_Click);
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(705, 193);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(177, 20);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "Del - Hapus Barang";
+            // 
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.btnCursor);
             this.groupBox2.Controls.Add(this.DGV);
-            this.groupBox2.Controls.Add(this.textBox12);
-            this.groupBox2.Controls.Add(this.gunaGradientButton3);
+            this.groupBox2.Controls.Add(this.btnRefresh);
             this.groupBox2.Controls.Add(this.txtSearch);
             this.groupBox2.Location = new System.Drawing.Point(4, 264);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
@@ -293,10 +285,47 @@ namespace KasirApp.GUI
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             // 
+            // btnCursor
+            // 
+            this.btnCursor.AnimationHoverSpeed = 0.07F;
+            this.btnCursor.AnimationSpeed = 0.03F;
+            this.btnCursor.BaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
+            this.btnCursor.BaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(246)))), ((int)(((byte)(197)))));
+            this.btnCursor.BorderColor = System.Drawing.Color.Black;
+            this.btnCursor.BorderSize = 1;
+            this.btnCursor.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCursor.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnCursor.FocusedColor = System.Drawing.Color.Empty;
+            this.btnCursor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCursor.ForeColor = System.Drawing.Color.Black;
+            this.btnCursor.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            this.btnCursor.Image = global::KasirApp.Properties.Resources.upload;
+            this.btnCursor.ImageOffsetX = -2;
+            this.btnCursor.ImageSize = new System.Drawing.Size(15, 15);
+            this.btnCursor.Location = new System.Drawing.Point(778, 27);
+            this.btnCursor.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCursor.Name = "btnCursor";
+            this.btnCursor.OnHoverBaseColor1 = System.Drawing.Color.White;
+            this.btnCursor.OnHoverBaseColor2 = System.Drawing.Color.Lime;
+            this.btnCursor.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnCursor.OnHoverForeColor = System.Drawing.Color.Black;
+            this.btnCursor.OnHoverImage = null;
+            this.btnCursor.OnPressedColor = System.Drawing.Color.Black;
+            this.btnCursor.Size = new System.Drawing.Size(126, 27);
+            this.btnCursor.TabIndex = 25;
+            this.btnCursor.Text = "Upload Data";
+            this.btnCursor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.btnCursor.TextOffsetX = 5;
+            this.btnCursor.Click += new System.EventHandler(this.btnCursor_Click);
+            // 
             // DGV
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.DGV.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.DGV.AllowUserToAddRows = false;
+            this.DGV.AllowUserToDeleteRows = false;
+            this.DGV.AllowUserToResizeColumns = false;
+            this.DGV.AllowUserToResizeRows = false;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            this.DGV.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.DGV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -305,30 +334,38 @@ namespace KasirApp.GUI
             this.DGV.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.DGV.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.DGV.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.DGV.ColumnHeadersHeight = 30;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DGV.DefaultCellStyle = dataGridViewCellStyle3;
+            this.DGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Nama,
+            this.Barcode,
+            this.Stok,
+            this.Perubahan,
+            this.Peurbahan});
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DGV.DefaultCellStyle = dataGridViewCellStyle9;
             this.DGV.EnableHeadersVisualStyles = false;
             this.DGV.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.DGV.Location = new System.Drawing.Point(100, 62);
             this.DGV.Margin = new System.Windows.Forms.Padding(4);
             this.DGV.Name = "DGV";
+            this.DGV.ReadOnly = true;
             this.DGV.RowHeadersVisible = false;
             this.DGV.RowHeadersWidth = 51;
+            this.DGV.RowTemplate.Height = 30;
             this.DGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGV.Size = new System.Drawing.Size(955, 249);
             this.DGV.TabIndex = 11;
@@ -346,53 +383,87 @@ namespace KasirApp.GUI
             this.DGV.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.DGV.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.DGV.ThemeStyle.HeaderStyle.Height = 30;
-            this.DGV.ThemeStyle.ReadOnly = false;
+            this.DGV.ThemeStyle.ReadOnly = true;
             this.DGV.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.DGV.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.DGV.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DGV.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.DGV.ThemeStyle.RowsStyle.Height = 22;
+            this.DGV.ThemeStyle.RowsStyle.Height = 30;
             this.DGV.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.DGV.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.DGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_CellContentClick);
+            this.DGV.KeyDown += new System.Windows.Forms.KeyEventHandler(this.raiseKeyEvent);
             // 
-            // textBox12
+            // Nama
             // 
-            this.textBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox12.Location = new System.Drawing.Point(13, 27);
-            this.textBox12.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(83, 26);
-            this.textBox12.TabIndex = 4;
+            this.Nama.DataPropertyName = "Nama";
+            this.Nama.HeaderText = "Nama";
+            this.Nama.MinimumWidth = 6;
+            this.Nama.Name = "Nama";
+            this.Nama.ReadOnly = true;
             // 
-            // gunaGradientButton3
+            // Barcode
             // 
-            this.gunaGradientButton3.AnimationHoverSpeed = 0.07F;
-            this.gunaGradientButton3.AnimationSpeed = 0.03F;
-            this.gunaGradientButton3.BaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
-            this.gunaGradientButton3.BaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.gunaGradientButton3.BorderColor = System.Drawing.Color.Black;
-            this.gunaGradientButton3.BorderSize = 1;
-            this.gunaGradientButton3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.gunaGradientButton3.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.gunaGradientButton3.FocusedColor = System.Drawing.Color.Empty;
-            this.gunaGradientButton3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.gunaGradientButton3.ForeColor = System.Drawing.Color.Black;
-            this.gunaGradientButton3.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            this.gunaGradientButton3.Image = null;
-            this.gunaGradientButton3.ImageSize = new System.Drawing.Size(20, 20);
-            this.gunaGradientButton3.Location = new System.Drawing.Point(665, 27);
-            this.gunaGradientButton3.Margin = new System.Windows.Forms.Padding(4);
-            this.gunaGradientButton3.Name = "gunaGradientButton3";
-            this.gunaGradientButton3.OnHoverBaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
-            this.gunaGradientButton3.OnHoverBaseColor2 = System.Drawing.Color.White;
-            this.gunaGradientButton3.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.gunaGradientButton3.OnHoverForeColor = System.Drawing.Color.Black;
-            this.gunaGradientButton3.OnHoverImage = null;
-            this.gunaGradientButton3.OnPressedColor = System.Drawing.Color.Black;
-            this.gunaGradientButton3.Size = new System.Drawing.Size(105, 27);
-            this.gunaGradientButton3.TabIndex = 10;
-            this.gunaGradientButton3.Text = "Refresh";
-            this.gunaGradientButton3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Barcode.DataPropertyName = "Barcode";
+            this.Barcode.HeaderText = "Barcode";
+            this.Barcode.MinimumWidth = 6;
+            this.Barcode.Name = "Barcode";
+            this.Barcode.ReadOnly = true;
+            // 
+            // Stok
+            // 
+            this.Stok.DataPropertyName = "Stok";
+            this.Stok.HeaderText = "Stok awal";
+            this.Stok.MinimumWidth = 6;
+            this.Stok.Name = "Stok";
+            this.Stok.ReadOnly = true;
+            // 
+            // Perubahan
+            // 
+            this.Perubahan.DataPropertyName = "Perubahan";
+            this.Perubahan.HeaderText = "Perubahan";
+            this.Perubahan.MinimumWidth = 6;
+            this.Perubahan.Name = "Perubahan";
+            this.Perubahan.ReadOnly = true;
+            // 
+            // Peurbahan
+            // 
+            this.Peurbahan.DataPropertyName = "Selisih";
+            this.Peurbahan.HeaderText = "Selisih";
+            this.Peurbahan.MinimumWidth = 6;
+            this.Peurbahan.Name = "Peurbahan";
+            this.Peurbahan.ReadOnly = true;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.AnimationHoverSpeed = 0.07F;
+            this.btnRefresh.AnimationSpeed = 0.03F;
+            this.btnRefresh.BaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
+            this.btnRefresh.BaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btnRefresh.BorderColor = System.Drawing.Color.Black;
+            this.btnRefresh.BorderSize = 1;
+            this.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRefresh.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnRefresh.FocusedColor = System.Drawing.Color.Empty;
+            this.btnRefresh.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnRefresh.ForeColor = System.Drawing.Color.Black;
+            this.btnRefresh.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            this.btnRefresh.Image = null;
+            this.btnRefresh.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnRefresh.Location = new System.Drawing.Point(665, 27);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.OnHoverBaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
+            this.btnRefresh.OnHoverBaseColor2 = System.Drawing.Color.White;
+            this.btnRefresh.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnRefresh.OnHoverForeColor = System.Drawing.Color.Black;
+            this.btnRefresh.OnHoverImage = null;
+            this.btnRefresh.OnPressedColor = System.Drawing.Color.Black;
+            this.btnRefresh.Size = new System.Drawing.Size(105, 27);
+            this.btnRefresh.TabIndex = 10;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // txtSearch
             // 
@@ -403,67 +474,69 @@ namespace KasirApp.GUI
             this.txtSearch.Size = new System.Drawing.Size(556, 26);
             this.txtSearch.TabIndex = 4;
             // 
-            // gunaGradientButton2
+            // btnPrint
             // 
-            this.gunaGradientButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.gunaGradientButton2.AnimationHoverSpeed = 0.07F;
-            this.gunaGradientButton2.AnimationSpeed = 0.03F;
-            this.gunaGradientButton2.BaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
-            this.gunaGradientButton2.BaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.gunaGradientButton2.BorderColor = System.Drawing.Color.Black;
-            this.gunaGradientButton2.BorderSize = 1;
-            this.gunaGradientButton2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.gunaGradientButton2.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.gunaGradientButton2.FocusedColor = System.Drawing.Color.Empty;
-            this.gunaGradientButton2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.gunaGradientButton2.ForeColor = System.Drawing.Color.Black;
-            this.gunaGradientButton2.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            this.gunaGradientButton2.Image = null;
-            this.gunaGradientButton2.ImageSize = new System.Drawing.Size(20, 20);
-            this.gunaGradientButton2.Location = new System.Drawing.Point(556, 176);
-            this.gunaGradientButton2.Margin = new System.Windows.Forms.Padding(4);
-            this.gunaGradientButton2.Name = "gunaGradientButton2";
-            this.gunaGradientButton2.OnHoverBaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
-            this.gunaGradientButton2.OnHoverBaseColor2 = System.Drawing.Color.White;
-            this.gunaGradientButton2.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.gunaGradientButton2.OnHoverForeColor = System.Drawing.Color.Black;
-            this.gunaGradientButton2.OnHoverImage = null;
-            this.gunaGradientButton2.OnPressedColor = System.Drawing.Color.Black;
-            this.gunaGradientButton2.Size = new System.Drawing.Size(105, 37);
-            this.gunaGradientButton2.TabIndex = 10;
-            this.gunaGradientButton2.Text = "Print";
-            this.gunaGradientButton2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPrint.AnimationHoverSpeed = 0.07F;
+            this.btnPrint.AnimationSpeed = 0.03F;
+            this.btnPrint.BaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
+            this.btnPrint.BaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btnPrint.BorderColor = System.Drawing.Color.Black;
+            this.btnPrint.BorderSize = 1;
+            this.btnPrint.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPrint.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnPrint.FocusedColor = System.Drawing.Color.Empty;
+            this.btnPrint.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnPrint.ForeColor = System.Drawing.Color.Black;
+            this.btnPrint.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            this.btnPrint.Image = null;
+            this.btnPrint.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnPrint.Location = new System.Drawing.Point(556, 176);
+            this.btnPrint.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.OnHoverBaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
+            this.btnPrint.OnHoverBaseColor2 = System.Drawing.Color.White;
+            this.btnPrint.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnPrint.OnHoverForeColor = System.Drawing.Color.Black;
+            this.btnPrint.OnHoverImage = null;
+            this.btnPrint.OnPressedColor = System.Drawing.Color.Black;
+            this.btnPrint.Size = new System.Drawing.Size(105, 37);
+            this.btnPrint.TabIndex = 10;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
-            // gunaGradientButton1
+            // btnExit
             // 
-            this.gunaGradientButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.gunaGradientButton1.AnimationHoverSpeed = 0.07F;
-            this.gunaGradientButton1.AnimationSpeed = 0.03F;
-            this.gunaGradientButton1.BaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
-            this.gunaGradientButton1.BaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(246)))), ((int)(((byte)(197)))));
-            this.gunaGradientButton1.BorderColor = System.Drawing.Color.Black;
-            this.gunaGradientButton1.BorderSize = 1;
-            this.gunaGradientButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.gunaGradientButton1.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.gunaGradientButton1.FocusedColor = System.Drawing.Color.Empty;
-            this.gunaGradientButton1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.gunaGradientButton1.ForeColor = System.Drawing.Color.Black;
-            this.gunaGradientButton1.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            this.gunaGradientButton1.Image = null;
-            this.gunaGradientButton1.ImageSize = new System.Drawing.Size(20, 20);
-            this.gunaGradientButton1.Location = new System.Drawing.Point(443, 176);
-            this.gunaGradientButton1.Margin = new System.Windows.Forms.Padding(4);
-            this.gunaGradientButton1.Name = "gunaGradientButton1";
-            this.gunaGradientButton1.OnHoverBaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
-            this.gunaGradientButton1.OnHoverBaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(246)))), ((int)(((byte)(197)))));
-            this.gunaGradientButton1.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.gunaGradientButton1.OnHoverForeColor = System.Drawing.Color.Black;
-            this.gunaGradientButton1.OnHoverImage = null;
-            this.gunaGradientButton1.OnPressedColor = System.Drawing.Color.Black;
-            this.gunaGradientButton1.Size = new System.Drawing.Size(105, 37);
-            this.gunaGradientButton1.TabIndex = 11;
-            this.gunaGradientButton1.Text = "Exit";
-            this.gunaGradientButton1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExit.AnimationHoverSpeed = 0.07F;
+            this.btnExit.AnimationSpeed = 0.03F;
+            this.btnExit.BaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
+            this.btnExit.BaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(246)))), ((int)(((byte)(197)))));
+            this.btnExit.BorderColor = System.Drawing.Color.Black;
+            this.btnExit.BorderSize = 1;
+            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExit.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnExit.FocusedColor = System.Drawing.Color.Empty;
+            this.btnExit.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnExit.ForeColor = System.Drawing.Color.Black;
+            this.btnExit.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            this.btnExit.Image = null;
+            this.btnExit.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnExit.Location = new System.Drawing.Point(443, 176);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.OnHoverBaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
+            this.btnExit.OnHoverBaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(246)))), ((int)(((byte)(197)))));
+            this.btnExit.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnExit.OnHoverForeColor = System.Drawing.Color.Black;
+            this.btnExit.OnHoverImage = null;
+            this.btnExit.OnPressedColor = System.Drawing.Color.Black;
+            this.btnExit.Size = new System.Drawing.Size(105, 37);
+            this.btnExit.TabIndex = 11;
+            this.btnExit.Text = "Exit";
+            this.btnExit.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // txtSelisih
             // 
@@ -475,16 +548,6 @@ namespace KasirApp.GUI
             this.txtSelisih.ReadOnly = true;
             this.txtSelisih.Size = new System.Drawing.Size(95, 26);
             this.txtSelisih.TabIndex = 3;
-            // 
-            // textBox8
-            // 
-            this.textBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox8.Location = new System.Drawing.Point(753, 54);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(60, 26);
-            this.textBox8.TabIndex = 3;
             // 
             // label12
             // 
@@ -509,30 +572,6 @@ namespace KasirApp.GUI
             this.label9.TabIndex = 6;
             this.label9.Text = "Qty Selisih";
             // 
-            // label13
-            // 
-            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(353, 154);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(15, 20);
-            this.label13.TabIndex = 6;
-            this.label13.Text = "/";
-            // 
-            // label11
-            // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(904, 158);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(15, 20);
-            this.label11.TabIndex = 6;
-            this.label11.Text = "/";
-            // 
             // label10
             // 
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -556,16 +595,6 @@ namespace KasirApp.GUI
             this.label8.Size = new System.Drawing.Size(56, 20);
             this.label8.TabIndex = 6;
             this.label8.Text = "Stock";
-            // 
-            // textBox11
-            // 
-            this.textBox11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox11.Location = new System.Drawing.Point(379, 150);
-            this.textBox11.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(55, 26);
-            this.textBox11.TabIndex = 4;
             // 
             // txtQuantity
             // 
@@ -592,6 +621,7 @@ namespace KasirApp.GUI
             this.Name = "StockOpname";
             this.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.Text = "StockOpname";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StockOpname_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -603,37 +633,36 @@ namespace KasirApp.GUI
 
         #endregion
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox txtStok;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox txtNama;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtNomor;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.TextBox txtSelisih;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.TextBox txtQuantity;
-        private Guna.UI.WinForms.GunaGradientButton gunaGradientButton2;
-        private Guna.UI.WinForms.GunaGradientButton gunaGradientButton1;
+        private Guna.UI.WinForms.GunaGradientButton btnPrint;
+        private Guna.UI.WinForms.GunaGradientButton btnExit;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox12;
         private System.Windows.Forms.TextBox txtSearch;
-        private Guna.UI.WinForms.GunaGradientButton gunaGradientButton3;
+        private Guna.UI.WinForms.GunaGradientButton btnRefresh;
         private Guna.UI.WinForms.GunaDataGridView DGV;
         public System.Windows.Forms.TextBox txtKode;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nama;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Barcode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Stok;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Perubahan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Peurbahan;
+        private Guna.UI.WinForms.GunaGradientButton btnSync;
+        private System.Windows.Forms.CheckBox chkDirect;
+        private Guna.UI.WinForms.GunaGradientButton btnCursor;
     }
 }

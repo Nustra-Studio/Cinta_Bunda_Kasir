@@ -7,6 +7,7 @@ using System.Net;
 using KasirApp.Model;
 using RestSharp;
 using Newtonsoft.Json;
+using System.Windows.Forms;
 
 namespace KasirApp.Repository
 {
@@ -21,13 +22,13 @@ namespace KasirApp.Repository
         {
 
         }
-
+       
         //method
         public void Regist(MemberModel  model)
         {
             try
             {
-                using (RestClient rc = new RestClient($"{con.urlcloud}/cabangmember/"))
+                using (RestClient rc = new RestClient($"{con.url}cabangmember/"))
                 {
                     var body = new
                     {
@@ -46,7 +47,7 @@ namespace KasirApp.Repository
                     rs.AddHeader("Content-Type", "application/json");
                     rs.AddJsonBody(body);
 
-                    var response = rc.Post(rs);
+                    var response = rc.Execute(rs);
                     if (response.StatusCode == HttpStatusCode.OK)
                     {
                         mb.InformasiOK("Berhasil Daftar Member");

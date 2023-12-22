@@ -34,6 +34,8 @@ namespace KasirApp.GUI.Master
             this.txtKode = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.chkGrosir = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // cekDiskon
@@ -79,33 +81,60 @@ namespace KasirApp.GUI.Master
             this.label1.Location = new System.Drawing.Point(130, 77);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 25);
+            this.label1.Size = new System.Drawing.Size(75, 25);
             this.label1.TabIndex = 11;
-            this.label1.Text = "Nama : ";
+            this.label1.Text = "Nama :";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(28, 26);
+            this.label3.Location = new System.Drawing.Point(57, 23);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(182, 25);
+            this.label3.Size = new System.Drawing.Size(148, 25);
             this.label3.TabIndex = 12;
-            this.label3.Text = "Kode Departemen :";
+            this.label3.Text = "Kode Kategori :";
+            // 
+            // chkGrosir
+            // 
+            this.chkGrosir.AutoSize = true;
+            this.chkGrosir.Enabled = false;
+            this.chkGrosir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkGrosir.Location = new System.Drawing.Point(366, 112);
+            this.chkGrosir.Margin = new System.Windows.Forms.Padding(4);
+            this.chkGrosir.Name = "chkGrosir";
+            this.chkGrosir.Size = new System.Drawing.Size(86, 29);
+            this.chkGrosir.TabIndex = 13;
+            this.chkGrosir.Text = "Grosir";
+            this.chkGrosir.UseVisualStyleBackColor = true;
+            this.chkGrosir.KeyDown += new System.Windows.Forms.KeyEventHandler(this.raiseTombol);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(13, 130);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(162, 20);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Enter - Simpan Data";
             // 
             // frmDepartemen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(564, 163);
+            this.ClientSize = new System.Drawing.Size(564, 164);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.chkGrosir);
             this.Controls.Add(this.cekDiskon);
             this.Controls.Add(this.txtNama);
             this.Controls.Add(this.txtKode);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label3);
             this.Name = "frmDepartemen";
-            this.Text = "frmDepartemen";
+            this.Text = "Form Kategori";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmDepartemen_FormClosing);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.raiseTombol);
             this.ResumeLayout(false);
@@ -120,5 +149,7 @@ namespace KasirApp.GUI.Master
         private System.Windows.Forms.TextBox txtKode;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox chkGrosir;
+        private System.Windows.Forms.Label label2;
     }
 }

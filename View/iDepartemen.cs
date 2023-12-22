@@ -12,6 +12,7 @@ namespace KasirApp.View
         string kode { get; set; }
         string nama { get; set; }
         bool kenaDiskon { get; set; }
+        bool grosir { get; set; }
         void startState();
         void clear();
         void showRd(DepartemenModel model);

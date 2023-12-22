@@ -39,6 +39,7 @@ namespace KasirApp.GUI
             this.btnMasukan = new Guna.UI.WinForms.GunaGradientButton();
             this.gunaGradientButton2 = new Guna.UI.WinForms.GunaGradientButton();
             this.gunaGradientButton3 = new Guna.UI.WinForms.GunaGradientButton();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,6 +85,7 @@ namespace KasirApp.GUI
             this.DGV.ReadOnly = true;
             this.DGV.RowHeadersVisible = false;
             this.DGV.RowHeadersWidth = 51;
+            this.DGV.RowTemplate.Height = 30;
             this.DGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGV.Size = new System.Drawing.Size(916, 332);
             this.DGV.TabIndex = 7;
@@ -106,7 +108,7 @@ namespace KasirApp.GUI
             this.DGV.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.DGV.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DGV.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.DGV.ThemeStyle.RowsStyle.Height = 22;
+            this.DGV.ThemeStyle.RowsStyle.Height = 30;
             this.DGV.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.DGV.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.DGV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_CellClick);
@@ -255,11 +257,21 @@ namespace KasirApp.GUI
             this.gunaGradientButton3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.gunaGradientButton3.Click += new System.EventHandler(this.gunaGradientButton3_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(247, 412);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(217, 17);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "*nb Klik 2x jika tidak muncul apa2";
+            // 
             // PopUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(953, 443);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.gunaGradientButton3);
             this.Controls.Add(this.gunaGradientButton2);
             this.Controls.Add(this.btnMasukan);
@@ -286,5 +298,6 @@ namespace KasirApp.GUI
         private Guna.UI.WinForms.GunaGradientButton btnMasukan;
         private Guna.UI.WinForms.GunaGradientButton gunaGradientButton2;
         private Guna.UI.WinForms.GunaGradientButton gunaGradientButton3;
+        private System.Windows.Forms.Label label2;
     }
 }
