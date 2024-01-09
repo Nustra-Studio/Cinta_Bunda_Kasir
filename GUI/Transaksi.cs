@@ -317,7 +317,6 @@ namespace KasirApp.GUI
                 pop.getDataList($"SELECT totalBiaya AS 'Total', id_penjualan as 'No Struk' FROM report_penjualan", "SELECT totalBiaya AS 'Total', id_penjualan as 'No Struk' FROM report_penjualan WHERE id_penjualan LIKE ");
                 pop.Show();
                 cekstruk = true;
-
             }
             //F7 Harga Reguler
             else if (e.KeyCode == Keys.F7)

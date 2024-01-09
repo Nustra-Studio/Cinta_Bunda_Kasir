@@ -182,7 +182,8 @@ namespace KasirApp.Presenter
 
         public void cekStruk(string nomerTrans)
         {
-            _repo.directPrint(nomerTrans);
+            //_repo.directPrint(nomerTrans);
+            _repo.directPrint2(nomerTrans);
         }
 
         public void PrintStruk(PembayaranModel model, RootMember _mem, userDataModel _usr)

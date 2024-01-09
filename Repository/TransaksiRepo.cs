@@ -1100,6 +1100,12 @@ namespace KasirApp.Repository
             PrintStruk();
         }
 
+        internal void directPrint2(string nomerTrans)
+        {
+            nomerTransgb = nomerTrans;
+            printStruk2();
+        }
+
         public void PrintPrinter(PembayaranModel model, RootMember mem, userDataModel user)
         {
             usr = mem;
@@ -1115,9 +1121,19 @@ namespace KasirApp.Repository
             }
         }
 
+        public void printStruk2()
+        {
+            PrintDocument pd = new PrintDocument();
+            pd.PrinterSettings.PrinterName = new PrinterSettings().PrinterName;
+            pd.PrintPage += new PrintPageEventHandler(this.onPrintpage);
+            pd.DefaultPageSettings.PaperSize = new PaperSize("CustomSize", 453, Convert.ToInt32(pageHeight) - 200);
+            pd.Print();
+        }
+
         public void PrintStruk()
         {
             PrintDocument pd = new PrintDocument();
+            pd.PrinterSettings.PrinterName = new PrinterSettings().PrinterName;
             pd.PrintPage += new PrintPageEventHandler(this.onPrintpage);
             pd.Print();
         }
