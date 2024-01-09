@@ -205,6 +205,11 @@ namespace KasirApp.GUI
 
                     foreach (var md in listBarang)
                     {
+                        if (md.harga_grosir == null)
+                        {
+                            md.harga_grosir = "0";
+                        }
+
                         dta.Rows.Add(md.kode_barang, md.kode_barang, md.name, md.stok, md.merek_barang, md.harga, md.harga_pokok, md.harga_jual,md.harga_grosir);
                     }
                     _pres.Sementara(listBarang, txtNomorPTG.Text);

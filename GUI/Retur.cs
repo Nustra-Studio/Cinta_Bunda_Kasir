@@ -152,9 +152,9 @@ namespace KasirApp.GUI
         {
             InitializeComponent();
             CenterToScreen();
-            _pres = new ReturPresenter(this);
-            tanggal.Value = DateTime.Now;
             _user = user;
+            _pres = new ReturPresenter(this, _user);
+            tanggal.Value = DateTime.Now;
             Bot();
         }
 

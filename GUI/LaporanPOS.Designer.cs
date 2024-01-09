@@ -30,6 +30,10 @@ namespace KasirApp.GUI
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cboUser = new Guna.UI.WinForms.GunaComboBox();
+            this.cboKategori = new Guna.UI.WinForms.GunaComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.tgl2 = new Guna.UI.WinForms.GunaDateTimePicker();
             this.tgl1 = new Guna.UI.WinForms.GunaDateTimePicker();
             this.btnBatal = new Guna.UI.WinForms.GunaGradientButton();
@@ -37,10 +41,6 @@ namespace KasirApp.GUI
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cboKategori = new Guna.UI.WinForms.GunaComboBox();
-            this.cboUser = new Guna.UI.WinForms.GunaComboBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,6 +67,66 @@ namespace KasirApp.GUI
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "  ";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(40, 421);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(64, 25);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "User :";
+            // 
+            // cboUser
+            // 
+            this.cboUser.BackColor = System.Drawing.Color.Transparent;
+            this.cboUser.BaseColor = System.Drawing.Color.White;
+            this.cboUser.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
+            this.cboUser.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboUser.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboUser.FocusedColor = System.Drawing.Color.Empty;
+            this.cboUser.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboUser.ForeColor = System.Drawing.Color.Black;
+            this.cboUser.FormattingEnabled = true;
+            this.cboUser.Location = new System.Drawing.Point(112, 416);
+            this.cboUser.Margin = new System.Windows.Forms.Padding(4);
+            this.cboUser.Name = "cboUser";
+            this.cboUser.OnHoverItemBaseColor = System.Drawing.Color.Lime;
+            this.cboUser.OnHoverItemForeColor = System.Drawing.Color.Black;
+            this.cboUser.Size = new System.Drawing.Size(429, 37);
+            this.cboUser.TabIndex = 10;
+            // 
+            // cboKategori
+            // 
+            this.cboKategori.BackColor = System.Drawing.Color.Transparent;
+            this.cboKategori.BaseColor = System.Drawing.Color.White;
+            this.cboKategori.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
+            this.cboKategori.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboKategori.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboKategori.FocusedColor = System.Drawing.Color.Empty;
+            this.cboKategori.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboKategori.ForeColor = System.Drawing.Color.Black;
+            this.cboKategori.FormattingEnabled = true;
+            this.cboKategori.Location = new System.Drawing.Point(112, 371);
+            this.cboKategori.Margin = new System.Windows.Forms.Padding(4);
+            this.cboKategori.Name = "cboKategori";
+            this.cboKategori.OnHoverItemBaseColor = System.Drawing.Color.Lime;
+            this.cboKategori.OnHoverItemForeColor = System.Drawing.Color.Black;
+            this.cboKategori.Size = new System.Drawing.Size(429, 37);
+            this.cboKategori.TabIndex = 9;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(8, 373);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(96, 25);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Kategori :";
             // 
             // tgl2
             // 
@@ -221,66 +281,6 @@ namespace KasirApp.GUI
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(537, 254);
             this.listBox1.TabIndex = 1;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(8, 373);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 25);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Kategori :";
-            // 
-            // cboKategori
-            // 
-            this.cboKategori.BackColor = System.Drawing.Color.Transparent;
-            this.cboKategori.BaseColor = System.Drawing.Color.White;
-            this.cboKategori.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
-            this.cboKategori.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cboKategori.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboKategori.FocusedColor = System.Drawing.Color.Empty;
-            this.cboKategori.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboKategori.ForeColor = System.Drawing.Color.Black;
-            this.cboKategori.FormattingEnabled = true;
-            this.cboKategori.Location = new System.Drawing.Point(112, 371);
-            this.cboKategori.Margin = new System.Windows.Forms.Padding(4);
-            this.cboKategori.Name = "cboKategori";
-            this.cboKategori.OnHoverItemBaseColor = System.Drawing.Color.Lime;
-            this.cboKategori.OnHoverItemForeColor = System.Drawing.Color.Black;
-            this.cboKategori.Size = new System.Drawing.Size(429, 37);
-            this.cboKategori.TabIndex = 9;
-            // 
-            // cboUser
-            // 
-            this.cboUser.BackColor = System.Drawing.Color.Transparent;
-            this.cboUser.BaseColor = System.Drawing.Color.White;
-            this.cboUser.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
-            this.cboUser.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cboUser.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboUser.FocusedColor = System.Drawing.Color.Empty;
-            this.cboUser.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboUser.ForeColor = System.Drawing.Color.Black;
-            this.cboUser.FormattingEnabled = true;
-            this.cboUser.Location = new System.Drawing.Point(112, 416);
-            this.cboUser.Margin = new System.Windows.Forms.Padding(4);
-            this.cboUser.Name = "cboUser";
-            this.cboUser.OnHoverItemBaseColor = System.Drawing.Color.Lime;
-            this.cboUser.OnHoverItemForeColor = System.Drawing.Color.Black;
-            this.cboUser.Size = new System.Drawing.Size(429, 37);
-            this.cboUser.TabIndex = 10;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(40, 421);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 25);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "User :";
             // 
             // LaporanPOS
             // 

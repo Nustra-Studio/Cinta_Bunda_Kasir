@@ -62,11 +62,11 @@ namespace KasirApp.GUI
 
             if (listBox1.SelectedIndex.ToString() == "0")
             {
-                showReport("DetailPOS", "ReportDetail.rdlc", $"SELECT * FROM view_report_penjualan where tanggalTrans BETWEEN '{tanggal1}' AND '{tanggal2}' {vrpquery}"); 
+                showReport("DetailPOS", "ReportDetail.rdlc", $"SELECT * FROM view_report_penjualan where tanggalTrans BETWEEN '{tanggal1}' AND '{tanggal2}' {rpquery}"); 
             }
             else if (listBox1.SelectedIndex.ToString() == "1")
             {
-                showReport("POSdetailHarian", "POSharianDetail.rdlc", $"SELECT DATE(tanggalTrans) as 'tanggalTrans', id_penjualan as 'nomerTrans', totalBiaya ,user as 'User' FROM report_penjualan where tanggalTrans BETWEEN '{tanggal1}' AND '{tanggal2}' {rpquery}");
+                showReport("POSdetailHarian", "POSharianDetail.rdlc", $"SELECT nomerTrans, subtotal, barcode, nama, qtyretur, total, status, user, DATE(created_at) as 'created_at' FROM report_penjualan_retur WHERE created_at BETWEEN '{tanggal1}' AND '{tanggal2}'");
             }
             else if (listBox1.SelectedIndex.ToString() == "2")
             {
@@ -74,7 +74,7 @@ namespace KasirApp.GUI
             }
             else if (listBox1.SelectedIndex.ToString() == "3")
             {
-                showReport("POSperKategori", "POSperKategori.rdlc", $"SELECT kategori, SUM(quantity) AS 'quantity', SUM(totalBiaya) AS 'harga_jual',SUM(qtyretur) AS 'qtyretur', SUM(diskonItem) AS 'diskonTotal' , SUM(hargaRetur) AS 'hargaRetur', tanggalTrans FROM view_report_penjualan_retur  where tanggalTrans BETWEEN '{tanggal1}' AND '{tanggal2}' {vrpquery} GROUP BY kategori");
+                showReport("POSperKategori", "POSperKategori.rdlc", $"SELECT kategori, SUM(quantity) AS 'quantity', SUM(harga_jual * quantity) AS 'harga_jual',SUM(qtyretur) AS 'qtyretur', SUM(diskonItem) AS 'diskonTotal' , SUM(hargaRetur) AS 'hargaRetur', tanggalTrans FROM view_report_penjualan_retur  where tanggalTrans BETWEEN '{tanggal1}' AND '{tanggal2}' {vrpquery} GROUP BY kategori");
             }
             else if (listBox1.SelectedIndex.ToString() == "4")
             {
@@ -82,7 +82,7 @@ namespace KasirApp.GUI
             }
             else if (listBox1.SelectedIndex.ToString() == "5")
             {
-                showReport("POSperKasirSummary", "POSperKasirSummary.rdlc", $"SELECT SUM(totalBiaya) AS 'totalBiaya', COUNT(id_penjualan) AS 'nomerTrans' , USER AS 'User' FROM report_penjualan where tanggalTrans BETWEEN '{tanggal1}' AND '{tanggal2}' {rpquery} group by User");
+                showReport2source("POSperKasirSummary","POSretur", "POSperKasirSummary.rdlc", $"SELECT SUM(totalBiaya) AS 'totalBiaya', COUNT(id_penjualan) AS 'nomerTrans' , USER AS 'User' FROM report_penjualan where tanggalTrans BETWEEN '{tanggal1}' AND '{tanggal2}' {rpquery} group by User", $"SELECT User, Count(*) AS 'quantity',SUM(total) as 'total' FROM report_retur_pos where updated_at BETWEEN '{tanggal1}' AND '{tanggal2}' {rpquery}");
             }
             else if (listBox1.SelectedIndex.ToString() == "6")
             {
@@ -217,12 +217,13 @@ namespace KasirApp.GUI
                     }
                 }
             }
+
             //Ambil setting cabang
             var md = op.CabangConfig();
 
             var param2 = new ReportDataSource[2];
             param2[0] = new ReportDataSource(sourcename, dt);
-            param2[1] = new ReportDataSource(sourcename2, dt);
+            param2[1] = new ReportDataSource(sourcename2, dt2);
             
             var param = new ReportParameter[5];
             param[0] = new ReportParameter("Cabang", md.Nama);

@@ -118,6 +118,7 @@ namespace KasirApp.GUI
                 if (cekData() == true && chkDirect.Checked == true)
                 {
                     _op.insertDirect();
+                    txtKode.Clear();
                 }
                 else
                 {
