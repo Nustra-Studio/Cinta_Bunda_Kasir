@@ -12,6 +12,7 @@ namespace KasirApp.Model
         string idkategori;
         string nama;
         string barcode;
+        string diskon;
         string qty;
         string harga;
         string total;
@@ -29,5 +30,6 @@ namespace KasirApp.Model
         public string Status { get => status; set => status = value; }
         public string Maxqty { get => maxqty; set => maxqty = value; }
         public string Idkategori { get => idkategori; set => idkategori = value; }
+        public string Diskon { get => diskon; set => diskon = value; }
     }
 }

@@ -14,11 +14,13 @@ namespace KasirApp.Presenter
     {
         ReturRepo _repo = new ReturRepo();
         iRetur _ret;
+        userDataModel _user;
 
         //Constructor
-        public ReturPresenter(iRetur ret)
+        public ReturPresenter(iRetur ret, userDataModel user)
         {
             _ret = ret;
+            _user = user;
         }
 
         public ReturModel tampilData()
@@ -98,7 +100,7 @@ namespace KasirApp.Presenter
             model.Harga = _ret.harga;   
             model.Total = _ret.total;
             model.Maxqty = _ret.maxqty;
-            return _repo.saveRetur(model);
+            return _repo.saveRetur(model, _user);
         }
 
         public void printData()

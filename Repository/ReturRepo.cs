@@ -164,7 +164,7 @@ namespace KasirApp.Repository
             return md;  
         }
 
-        public bool saveRetur(ReturModel model)
+        public bool saveRetur(ReturModel model, userDataModel user)
         {
             string qtysebelum = "";
             bool state = false;
@@ -184,6 +184,7 @@ namespace KasirApp.Repository
                     string qtydalamstruk = "";
                     string hargabrg = "";
                     string totalbrg = "";
+
                     //Ambil data quantitas
                     using (var cmd = new MySqlCommand($"SELECT * FROM barangs WHERE kode_barang='{model.Barcode}'", op.Conn))
                     {
@@ -194,20 +195,25 @@ namespace KasirApp.Repository
                             qtysebelum = rd["stok"].ToString();
                         }
                     }
+
                     //Ambil data dari Struk
+                    string status = "";
                     using (var cmd = new MySqlCommand($"SELECT * FROM histori_penjualan WHERE nomerTrans='{model.NomerTrans}' AND barcode='{model.Barcode}'", op.Conn))
                     {
                         op.KonekDB();
                         using (var rd = cmd.ExecuteReader())
                         {
                             rd.Read();
+                            status = rd["status"].ToString();
                             model.Idkategori = rd["id_category"].ToString();
-                            model.Harga = rd["harga_jual"].ToString();
+                            model.Harga = rd[status].ToString();
+                            model.Diskon = rd["diskon"].ToString();
                             qtydalamstruk = rd["quantity"].ToString();
                             hargabrg = rd["harga_jual"].ToString();
                             totalbrg = rd["total"].ToString();
                         }
                     }
+
                     //Total Perubahan Quantitas
                     int total = Convert.ToInt32(qtysebelum) + Convert.ToInt32(model.Qty);   
 
@@ -215,13 +221,22 @@ namespace KasirApp.Repository
                     using (var cmd = new MySqlCommand($"" +
                     $"INSERT INTO report_retur_pos VALUES(null,MD5(RAND()), '{model.Idkategori}','{model.NomerTrans}'," +
                     $"'{model.Nama}','{model.Barcode}','{model.Qty}','{qtydalamstruk}','{total}','{model.Harga}'," +
-                    $"'{model.Total}','posted','{op.myDatetime}','{op.myDatetime}')", op.Conn))
+                    $"'{model.Total}','posted','{user.username}','{op.myDatetime}','{op.myDatetime}')", op.Conn))
                     {
                         op.KonekDB();
                         cmd.ExecuteNonQuery();
                         op.KonekDB();
                     }
 
+                    using (var cmd = new MySqlCommand("" +
+                        $"INSERT INTO report_penjualan_retur VALUES(null,md5(rand()),'{model.NomerTrans}', '0','{model.Barcode}'," +
+                        $"'{model.Nama}', '{model.Qty}', '{model.Total}', 'retur', '{user.username}', '{op.myDatetime}', '{op.myDatetime}')", op.Conn))
+                    {
+                        op.KonekDB();
+                        cmd.ExecuteNonQuery();
+                        op.KonekDB();
+                    }
+                        
                     //update quantitas barangs
                     using (var cmd = new MySqlCommand($"UPDATE barangs SET stok='{total.ToString()}', updated_at='{op.myDatetime}' WHERE kode_barang='{model.Barcode}'", op.Conn))
                     {
@@ -230,8 +245,35 @@ namespace KasirApp.Repository
                         op.KonekDB();
                     }
 
+                    //Ubah totalBiaya Report
+                    int totalbiaya = 0;
+                    using (var cmd = new MySqlCommand($"Select * from report_penjualan where id_penjualan = '{model.NomerTrans}'", op.Conn))
+                    {
+                        op.KonekDB();
+                        using (var rd = cmd.ExecuteReader())
+                        {
+                            rd.Read();
+                            totalbiaya = Convert.ToInt32(rd["totalbiaya"].ToString());
+                        }
+                    }
+
+                    int totalAll = totalbiaya - (Convert.ToInt32(model.Harga) * Convert.ToInt32(model.Qty)) + Convert.ToInt32(model.Diskon);
+                    using (var cmd = new MySqlCommand($"UPDATE report_penjualan SET totalBiaya = '{totalAll.ToString()}' WHERE id_penjualan = '{model.NomerTrans}'", op.Conn))
+                    {
+                        op.KonekDB();
+                        cmd.ExecuteNonQuery();
+                        op.KonekDB();
+                    }
+
+                    using (var cmd = new MySqlCommand($"UPDATE report_penjualan_retur SET subtotal = '{totalAll.ToString()}' WHERE nomerTrans = '{model.NomerTrans}' AND status = 'penjualan'", op.Conn))
+                    {
+                        op.KonekDB();
+                        cmd.ExecuteNonQuery();
+                        op.KonekDB();
+                    }
+
                     //Edit atau Hapus dari histori transaksi
-                    int totalqty = Convert.ToInt32(qtydalamstruk) - Convert.ToInt32(model.Qty); 
+                    int totalqty = Convert.ToInt32(qtydalamstruk) - Convert.ToInt32(model.Qty);     
                     if (totalqty != 0)
                     {
                         int totalsmua = totalqty * Convert.ToInt32(hargabrg);

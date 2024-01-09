@@ -308,6 +308,7 @@ namespace KasirApp.Repository
             var dt = new DataTable();
             string tanggal = "";
             string status = "Void";
+            bool isExist = false;
             using (var cmd = new MySqlCommand($"SELECT * FROM opnames WHERE nomerTrans ='{model.Nomor}'", op.Conn))
             {
                 op.KonekDB();
@@ -320,6 +321,7 @@ namespace KasirApp.Repository
                         if (rd["Posted"].ToString() == "1")
                         {
                             status = "Posted";
+                            isExist = true;
                         }
                     }
                 }
@@ -329,17 +331,24 @@ namespace KasirApp.Repository
                 }
             }
 
-            var src = new ReportDataSource("Opname", dt);
+            if (isExist == false)
+            {
+                mb.PeringatanOK("Tidak ada Data");
+            }
+            else
+            {
+                var src = new ReportDataSource("Opname", dt);
 
-            var set = op.CabangConfig();
-            var param = new ReportParameter[4];
-            param[0] = new ReportParameter("Cabang", set.Nama);
-            param[1] = new ReportParameter("Alamat", set.Alamat);
-            param[2] = new ReportParameter("Tanggal", tanggal);
-            param[3] = new ReportParameter("Status", status);
+                var set = op.CabangConfig();
+                var param = new ReportParameter[4];
+                param[0] = new ReportParameter("Cabang", set.Nama);
+                param[1] = new ReportParameter("Alamat", set.Alamat);
+                param[2] = new ReportParameter("Tanggal", tanggal);
+                param[3] = new ReportParameter("Status", status);
 
-            var report = new PrintReport();
-            report.LoadReport(op.pathReport("Opname.rdlc"), src, param);
+                var report = new PrintReport();
+                report.LoadReport(op.pathReport("Opname.rdlc"), src, param);
+            }
         }
 
         public bool Cek(OpnameModel model)
