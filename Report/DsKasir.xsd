@@ -112,6 +112,7 @@
               <xs:element name="total" msprop:Generator_ColumnVarNameInTable="columntotal" msprop:Generator_ColumnPropNameInRow="total" msprop:Generator_ColumnPropNameInTable="totalColumn" msprop:Generator_UserColumnName="total" type="xs:string" minOccurs="0" />
               <xs:element name="status" msprop:Generator_ColumnVarNameInTable="columnstatus" msprop:Generator_ColumnPropNameInRow="status" msprop:Generator_ColumnPropNameInTable="statusColumn" msprop:Generator_UserColumnName="status" type="xs:string" minOccurs="0" />
               <xs:element name="saldo" msprop:Generator_ColumnVarNameInTable="columnsaldo" msprop:Generator_ColumnPropNameInRow="saldo" msprop:Generator_ColumnPropNameInTable="saldoColumn" msprop:Generator_UserColumnName="saldo" type="xs:string" minOccurs="0" />
+              <xs:element name="User" msprop:Generator_ColumnVarNameInTable="columnUser" msprop:Generator_ColumnPropNameInRow="User" msprop:Generator_ColumnPropNameInTable="UserColumn" msprop:Generator_UserColumnName="User" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -149,6 +150,21 @@
               <xs:element name="waktu" msprop:Generator_ColumnVarNameInTable="columnwaktu" msprop:Generator_ColumnPropNameInRow="waktu" msprop:Generator_ColumnPropNameInTable="waktuColumn" msprop:Generator_UserColumnName="waktu" type="xs:string" minOccurs="0" />
               <xs:element name="form" msprop:Generator_ColumnVarNameInTable="columnform" msprop:Generator_ColumnPropNameInRow="form" msprop:Generator_ColumnPropNameInTable="formColumn" msprop:Generator_UserColumnName="form" type="xs:string" minOccurs="0" />
               <xs:element name="aktifitas" msprop:Generator_ColumnVarNameInTable="columnaktifitas" msprop:Generator_ColumnPropNameInRow="aktifitas" msprop:Generator_ColumnPropNameInTable="aktifitasColumn" msprop:Generator_UserColumnName="aktifitas" type="xs:string" minOccurs="0" />
+              <xs:element name="created_at" msprop:Generator_ColumnVarNameInTable="columncreated_at" msprop:Generator_ColumnPropNameInRow="created_at" msprop:Generator_ColumnPropNameInTable="created_atColumn" msprop:Generator_UserColumnName="created_at" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Dt_harian_Detail" msprop:Generator_TableClassName="Dt_harian_DetailDataTable" msprop:Generator_TableVarName="tableDt_harian_Detail" msprop:Generator_TablePropName="Dt_harian_Detail" msprop:Generator_RowDeletingName="Dt_harian_DetailRowDeleting" msprop:Generator_RowChangingName="Dt_harian_DetailRowChanging" msprop:Generator_RowEvHandlerName="Dt_harian_DetailRowChangeEventHandler" msprop:Generator_RowDeletedName="Dt_harian_DetailRowDeleted" msprop:Generator_UserTableName="Dt_harian_Detail" msprop:Generator_RowChangedName="Dt_harian_DetailRowChanged" msprop:Generator_RowEvArgName="Dt_harian_DetailRowChangeEvent" msprop:Generator_RowClassName="Dt_harian_DetailRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nomerTrans" msprop:Generator_ColumnVarNameInTable="columnnomerTrans" msprop:Generator_ColumnPropNameInRow="nomerTrans" msprop:Generator_ColumnPropNameInTable="nomerTransColumn" msprop:Generator_UserColumnName="nomerTrans" type="xs:string" minOccurs="0" />
+              <xs:element name="subtotal" msprop:Generator_ColumnVarNameInTable="columnsubtotal" msprop:Generator_ColumnPropNameInRow="subtotal" msprop:Generator_ColumnPropNameInTable="subtotalColumn" msprop:Generator_UserColumnName="subtotal" type="xs:string" minOccurs="0" />
+              <xs:element name="barcode" msprop:Generator_ColumnVarNameInTable="columnbarcode" msprop:Generator_ColumnPropNameInRow="barcode" msprop:Generator_ColumnPropNameInTable="barcodeColumn" msprop:Generator_UserColumnName="barcode" type="xs:string" minOccurs="0" />
+              <xs:element name="nama" msprop:Generator_ColumnVarNameInTable="columnnama" msprop:Generator_ColumnPropNameInRow="nama" msprop:Generator_ColumnPropNameInTable="namaColumn" msprop:Generator_UserColumnName="nama" type="xs:string" minOccurs="0" />
+              <xs:element name="qtyretur" msprop:Generator_ColumnVarNameInTable="columnqtyretur" msprop:Generator_ColumnPropNameInRow="qtyretur" msprop:Generator_ColumnPropNameInTable="qtyreturColumn" msprop:Generator_UserColumnName="qtyretur" type="xs:string" minOccurs="0" />
+              <xs:element name="total" msprop:Generator_ColumnVarNameInTable="columntotal" msprop:Generator_ColumnPropNameInRow="total" msprop:Generator_ColumnPropNameInTable="totalColumn" msprop:Generator_UserColumnName="total" type="xs:string" minOccurs="0" />
+              <xs:element name="status" msprop:Generator_ColumnVarNameInTable="columnstatus" msprop:Generator_ColumnPropNameInRow="status" msprop:Generator_ColumnPropNameInTable="statusColumn" msprop:Generator_UserColumnName="status" type="xs:string" minOccurs="0" />
+              <xs:element name="user" msprop:Generator_ColumnVarNameInTable="columnuser" msprop:Generator_ColumnPropNameInRow="user" msprop:Generator_ColumnPropNameInTable="userColumn" msprop:Generator_UserColumnName="user" type="xs:string" minOccurs="0" />
               <xs:element name="created_at" msprop:Generator_ColumnVarNameInTable="columncreated_at" msprop:Generator_ColumnPropNameInRow="created_at" msprop:Generator_ColumnPropNameInTable="created_atColumn" msprop:Generator_UserColumnName="created_at" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>

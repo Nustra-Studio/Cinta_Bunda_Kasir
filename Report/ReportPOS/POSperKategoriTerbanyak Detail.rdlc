@@ -720,7 +720,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Format(Cdbl(Fields!harga_jual.Value), "###,###,###")</Value>
+                                  <Value>=Format(Cdbl(Fields!harga_jual.Value * Fields!quantity.Value), "###,###,###")</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -752,7 +752,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Format(Cdbl(Fields!hpp.Value), "###,###,###")</Value>
+                                  <Value>=Format(Cdbl(Fields!hpp.Value * Fields!quantity.Value), "###,###,###")</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -822,7 +822,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>Total :</Value>
-                                  <Style />
+                                  <Style>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -836,6 +838,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>Gray</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -857,7 +860,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Sum(Cdec(Fields!quantity.Value))</Value>
-                                  <Style />
+                                  <Style>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -871,6 +876,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>Gray</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -888,8 +894,10 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
-                                  <Style />
+                                  <Value>=Format(Cdbl(Sum(Cdec(Fields!harga_jual.Value * Fields!quantity.Value))), "###,###,###")</Value>
+                                  <Style>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -903,6 +911,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>Gray</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -920,8 +929,10 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
-                                  <Style />
+                                  <Value>=Format(Cdbl(Sum(Cdec(Fields!hpp.Value * Fields!quantity.Value))), "###,###,###")</Value>
+                                  <Style>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -935,6 +946,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>Gray</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -953,7 +965,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Format(Cdbl(Sum(Cdec(Fields!total.Value))), "###,###,###")</Value>
-                                  <Style />
+                                  <Style>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -967,6 +981,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>Gray</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1171,6 +1186,7 @@
       </CellDefinitions>
     </GridLayoutDefinition>
   </ReportParametersLayout>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>e24f0098-8b84-4c4f-a6b0-969d4e9ccd27</rd:ReportID>
 </Report>

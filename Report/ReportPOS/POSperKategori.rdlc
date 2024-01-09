@@ -1292,6 +1292,7 @@
       </CellDefinitions>
     </GridLayoutDefinition>
   </ReportParametersLayout>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>d3714e1f-12b4-4d87-a323-ebf9546aaffc</rd:ReportID>
 </Report>

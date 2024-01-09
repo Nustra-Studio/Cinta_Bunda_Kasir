@@ -70,8 +70,9 @@ namespace KasirApp.Report
             {
                 this.reportViewer1.LocalReport.SetParameters(param);
             }
+
+            this.reportViewer1.LocalReport.DataSources.Add(source[0]);
             this.reportViewer1.LocalReport.DataSources.Add(source[1]);
-            this.reportViewer1.LocalReport.DataSources.Add(source[2]);
             this.reportViewer1.RefreshReport();
 
             this.Show();

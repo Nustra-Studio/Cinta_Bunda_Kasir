@@ -684,7 +684,7 @@
                                                                 <Paragraph>
                                                                   <TextRuns>
                                                                     <TextRun>
-                                                                      <Value>=Format(Cdbl(Fields!harga_jual.Value), "###,###,###")</Value>
+                                                                      <Value>=Format(Cdbl(Fields!harga_jual.Value * Fields!quantity.Value), "###,###,###")</Value>
                                                                       <Style />
                                                                     </TextRun>
                                                                   </TextRuns>
@@ -716,7 +716,7 @@
                                                                 <Paragraph>
                                                                   <TextRuns>
                                                                     <TextRun>
-                                                                      <Value>=Format(Cdbl(Fields!hpp.Value), "###,###,###")</Value>
+                                                                      <Value>=Format(Cdbl(Fields!hpp.Value * Fields!quantity.Value), "###,###,###")</Value>
                                                                       <Style />
                                                                     </TextRun>
                                                                   </TextRuns>
@@ -1361,6 +1361,7 @@
       </CellDefinitions>
     </GridLayoutDefinition>
   </ReportParametersLayout>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>0903be72-cd5d-4593-a9ba-230bfa7d9419</rd:ReportID>
 </Report>

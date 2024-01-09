@@ -827,6 +827,7 @@
       </CellDefinitions>
     </GridLayoutDefinition>
   </ReportParametersLayout>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>dbc5c260-602e-4f2f-aaa2-585252fc6bc8</rd:ReportID>
 </Report>

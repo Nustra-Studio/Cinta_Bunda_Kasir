@@ -672,12 +672,12 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>27.5cm</Height>
+        <Height>29.7cm</Height>
         <Style />
       </Body>
       <Width>21cm</Width>
       <Page>
-        <PageHeight>27.5cm</PageHeight>
+        <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
         <LeftMargin>0cm</LeftMargin>
         <RightMargin>0cm</RightMargin>
@@ -743,6 +743,7 @@
       </CellDefinitions>
     </GridLayoutDefinition>
   </ReportParametersLayout>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>718483e3-12ba-400f-9367-23cfafbced18</rd:ReportID>
 </Report>

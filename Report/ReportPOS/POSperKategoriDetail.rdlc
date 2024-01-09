@@ -319,7 +319,7 @@
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>3.71734cm</Height>
+                  <Height>4.18301cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -1352,7 +1352,7 @@
             <DataSetName>POSperKategoriDetail</DataSetName>
             <Top>3.14537cm</Top>
             <Left>0.247cm</Left>
-            <Height>3.71734cm</Height>
+            <Height>4.18301cm</Height>
             <Width>20.50601cm</Width>
             <ZIndex>5</ZIndex>
             <Style>
@@ -1445,6 +1445,7 @@
       </CellDefinitions>
     </GridLayoutDefinition>
   </ReportParametersLayout>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>187d85a2-309a-45ea-ae8d-f7256c5d0dd5</rd:ReportID>
 </Report>
