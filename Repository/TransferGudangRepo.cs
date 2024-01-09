@@ -237,7 +237,9 @@ namespace KasirApp.Repository
                 var rs = new RestRequest("barang", Method.Get);
                 rs.AddParameter("token", model.token);
                 rs.AddParameter("uuid", model.uuid);
-                
+
+                System.Windows.Forms.MessageBox.Show($"{model.token} {model.uuid}");
+
                 var response = client.Execute(rs);
 
                 if (response.StatusCode == HttpStatusCode.OK)

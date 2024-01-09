@@ -15,7 +15,6 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.IO;
 using System.Drawing.Printing;
-
 namespace KasirApp.Repository
 {
     class TransaksiRepo
@@ -85,8 +84,7 @@ namespace KasirApp.Repository
                 op.KonekDB();
                 using (MySqlDataReader rd = cmd.ExecuteReader())
                 {
-
-
+                    rd.Read();
                     if (rd.HasRows)
                     {
                         md.Nama = rd["nama"].ToString();
@@ -235,6 +233,7 @@ namespace KasirApp.Repository
                     md.Satuan = rd["satuan"].ToString();
                     md.Tanggal = DateTime.Now.ToString("yyyy/MM/dd");
                     md.Id_member = model.Id_member;
+                    md.State = model.State;
 
                     //Logic
                     int qty = Convert.ToInt32(md.Quantity);
@@ -257,7 +256,7 @@ namespace KasirApp.Repository
             {
                 namaMember = mem.member.name;
             }
-            using (MySqlCommand cmd = new MySqlCommand("INSERT INTO histori_penjualan VALUES (null,md5(RAND()),@idkategori, @nomorPJ, @nama, @barcode, @quantity, @satuan, @HJ, @HPP, @Diskon, @Total, @user, @id_member, @tanggal)", op.Conn))
+            using (MySqlCommand cmd = new MySqlCommand("INSERT INTO histori_penjualan VALUES (null,md5(RAND()),@idkategori, @nomorPJ, @nama, @barcode, @quantity, @satuan, @HJ, @HPP, @Diskon, @Total, @user, @id_member,@status, @tanggal)", op.Conn))
             {
                 cmd.Parameters.AddWithValue("@nomorPJ", model.NomorPJ);
                 cmd.Parameters.AddWithValue("@@idkategori", model.Idkategori);
@@ -270,6 +269,7 @@ namespace KasirApp.Repository
                 cmd.Parameters.AddWithValue("@Total", 1 * Convert.ToInt32(model.Total));
                 cmd.Parameters.AddWithValue("@tanggal", op.myDatetime);
                 cmd.Parameters.AddWithValue("@Diskon", "0");// Set Diskon ke 0
+                cmd.Parameters.AddWithValue("@status", model.State);// Set Diskon ke 0
                 cmd.Parameters.AddWithValue("@id_member", namaMember);
                 cmd.Parameters.AddWithValue("@user", _user.username);
 
@@ -448,12 +448,13 @@ namespace KasirApp.Repository
                     }
                     int rounded = Convert.ToInt32(CekRound(totalstate.ToString()));
                     int totalHpp = rounded * Convert.ToInt32(md.Quantity) - Convert.ToInt32(md.Diskon);
-                    using (var cmd = new MySqlCommand("UPDATE histori_penjualan SET " + model.State + " = @hpp,total = @total WHERE barcode = @barcode AND nomerTrans = @nomorPJ", op.Conn))
+                    using (var cmd = new MySqlCommand("UPDATE histori_penjualan SET " + model.State + " = @hpp,total = @total, status=@state WHERE barcode = @barcode AND nomerTrans = @nomorPJ", op.Conn))
                     {
                         cmd.Parameters.AddWithValue("@hpp", rounded.ToString());
                         cmd.Parameters.AddWithValue("@total", totalHpp.ToString());
                         cmd.Parameters.AddWithValue("@barcode", md.Barkode);
                         cmd.Parameters.AddWithValue("@nomorPJ", model.NomorPJ);
+                        cmd.Parameters.AddWithValue("@state", model.State);
 
                         op.KonekDB();
                         cmd.ExecuteNonQuery();
@@ -683,14 +684,16 @@ namespace KasirApp.Repository
                         model.Harga = rd[model.State].ToString();
                         model.Idkategori = rd["id_category"].ToString();
                         int finaldiskon = Convert.ToInt32(rd["diskon"].ToString()) + diskon;
-                        int total = Convert.ToInt32(model.Quantity) * Convert.ToInt32(rd[model.State].ToString()) - finaldiskon;
+                        model.Diskon = finaldiskon.ToString();
+                        int total1 = Convert.ToInt32(model.Quantity) * Convert.ToInt32(rd[model.State].ToString());
+                        int total = total1 - finaldiskon;
                         using (MySqlCommand com = new MySqlCommand("UPDATE histori_penjualan SET quantity = @Qty, diskon=@diskon, total = @total where nomerTrans = @nomor AND barcode = @kode", op.Conn))
                         {
                             com.Parameters.AddWithValue("nomor", model.NomorPJ);
                             com.Parameters.AddWithValue("kode", model.Barkode);
                             com.Parameters.AddWithValue("diskon", finaldiskon.ToString());
                             com.Parameters.AddWithValue("Qty", model.Quantity);
-                            com.Parameters.AddWithValue("total", total);
+                            com.Parameters.AddWithValue("total", total.ToString());
 
                             op.KonekDB();
                             rd.Close();
@@ -869,6 +872,25 @@ namespace KasirApp.Repository
                 cmd.Parameters.AddWithValue("@totalbayar", model.Totalbiaya);
                 cmd.Parameters.AddWithValue("@tanggal", op.myDatetime);
                 
+                op.KonekDB();
+                cmd.ExecuteNonQuery();
+                op.KonekDB();
+            }
+
+            using (var cmd = new MySqlCommand("" +
+                "INSERT INTO report_penjualan_retur VALUES (null,md5(rand()), @nomer, @subtotal, @barcode, @nama, @qtyretur," +
+                "@total, @status, @user, @datetime, @datetime)", op.Conn))
+            {
+                cmd.Parameters.AddWithValue("@nomer", model.NomorPJ);
+                cmd.Parameters.AddWithValue("@subtotal", model.Totalbiaya);
+                cmd.Parameters.AddWithValue("@barcode", "0");
+                cmd.Parameters.AddWithValue("@nama", "0");
+                cmd.Parameters.AddWithValue("@qtyretur", "0");
+                cmd.Parameters.AddWithValue("@total", "0");
+                cmd.Parameters.AddWithValue("@status", "penjualan");
+                cmd.Parameters.AddWithValue("@user", user.username);
+                cmd.Parameters.AddWithValue("@datetime", op.myDatetime);
+
                 op.KonekDB();
                 cmd.ExecuteNonQuery();
                 op.KonekDB();
@@ -1097,10 +1119,6 @@ namespace KasirApp.Repository
         {
             PrintDocument pd = new PrintDocument();
             pd.PrintPage += new PrintPageEventHandler(this.onPrintpage);
-
-            pd.PrinterSettings.PrinterName = new PrinterSettings().PrinterName;
-
-            pd.DefaultPageSettings.PaperSize = new PaperSize("CustomSize", 453, Convert.ToInt32(pageHeight));
             pd.Print();
         }
 
@@ -1203,27 +1221,27 @@ namespace KasirApp.Repository
             g.DrawLine(blackPen, new PointF(320, 170f + yta), new PointF(410F, 170f + yta));
             //Jarak Y = 40
             g.DrawString("Subtotal :", font, brush, CusRec(163, 180 + yta, 150, 100), right);
-            g.DrawString("Diskon :", font, brush, CusRec(163, 220 + yta, 150, 100), right);
-            g.DrawString("Diskon Member :", font, brush, CusRec(163, 260 + yta, 150, 100), right);
-            g.DrawString("Total Biaya :", font, brush, CusRec(163, 300 + yta, 150, 100), right);
-            g.DrawString("Bayar :", font, brush, CusRec(163, 340 + yta, 150, 100), right);
-            g.DrawString("Kembali :", font, brush, CusRec(163, 380 + yta, 150, 100), right);
+            g.DrawString("Diskon :", font, brush, CusRec(163, 200 + yta, 150, 100), right);
+            g.DrawString("Diskon Member :", font, brush, CusRec(163, 220 + yta, 150, 100), right);
+            g.DrawString("Total Biaya :", font, brush, CusRec(163, 240 + yta, 150, 100), right);
+            g.DrawString("Bayar :", font, brush, CusRec(163, 260 + yta, 150, 100), right);
+            g.DrawString("Kembali :", font, brush, CusRec(163, 280 + yta, 150, 100), right);
 
             g.DrawString($"Rp.{Convert.ToInt32(subtotal):n0}", uang, brush, CusRec(320, 180 + yta, 110, 100), left);
-            g.DrawString($"Rp.{Convert.ToInt32(diskontotal):n0}", uang, brush, CusRec(320, 220 + yta, 110, 100), left);
-            g.DrawString($"Rp.{Convert.ToInt32(diskonmem):n0}", uang, brush, CusRec(320, 260 + yta, 110, 100), left);
-            g.DrawString($"Rp.{Convert.ToInt32(totalbiaya):n0}", uang, brush, CusRec(320, 300 + yta, 110, 100), left);
-            g.DrawString($"Rp.{Convert.ToInt32(bayar):n0}", uang, brush, CusRec(320, 340 + yta, 110, 100), left);
-            g.DrawString($"Rp.{Convert.ToInt32(kembali):n0}", uang, brush, CusRec(320, 380 + yta, 110, 100), left);
+            g.DrawString($"Rp.{Convert.ToInt32(diskontotal):n0}", uang, brush, CusRec(320, 200 + yta, 110, 100), left);
+            g.DrawString($"Rp.{Convert.ToInt32(diskonmem):n0}", uang, brush, CusRec(320, 220 + yta, 110, 100), left);
+            g.DrawString($"Rp.{Convert.ToInt32(totalbiaya):n0}", uang, brush, CusRec(320, 240 + yta, 110, 100), left);
+            g.DrawString($"Rp.{Convert.ToInt32(bayar):n0}", uang, brush, CusRec(320, 260 + yta, 110, 100), left);
+            g.DrawString($"Rp.{Convert.ToInt32(kembali):n0}", uang, brush, CusRec(320, 280 + yta, 110, 100), left);
 
-            g.DrawLine(blackPen, new PointF(320f, 410f + yta), new PointF(410F, 410f + yta));
+            g.DrawLine(blackPen, new PointF(320f, 310f + yta), new PointF(410F, 310f + yta));
 
-            g.DrawLine(blackPen, new PointF(0, 430 + yta), new PointF(width, 430 + yta));
-            g.DrawString(config.Baris1, font, brush, CusRec(0, 440 + yta, width, 100f), mid);
-            g.DrawString(config.Baris2, alamat1, brush, CusRec(0, 460 + yta, width, 100f), mid);
-            g.DrawString(config.Baris3, alamat1, brush, CusRec(0, 475 + yta, width, 100f), mid);
+            g.DrawLine(blackPen, new PointF(0, 350 + yta), new PointF(width, 350 + yta));
+            g.DrawString(config.Baris1, font, brush, CusRec(0, 370 + yta, width, 100f), mid);
+            g.DrawString(config.Baris2, alamat1, brush, CusRec(0, 390 + yta, width, 100f), mid);
+            g.DrawString(config.Baris3, alamat1, brush, CusRec(0, 410 + yta, width, 50f), mid);
 
-            pageHeight = 475 + yta;
+            pageHeight = 410 + yta;
             // Indicate that there are no more pages to print
             e.HasMorePages = false;
         }
@@ -1231,11 +1249,9 @@ namespace KasirApp.Repository
         public void PrintStrukKupon()
         {
             PrintDocument pd = new PrintDocument();
-            pd.PrintPage += new PrintPageEventHandler(this.onPrintpageKupon);
-
             pd.PrinterSettings.PrinterName = new PrinterSettings().PrinterName;
-
-            pd.DefaultPageSettings.PaperSize = new PaperSize("CustomSize", 453, Convert.ToInt32(pageHeight));
+            pd.PrintPage += new PrintPageEventHandler(this.onPrintpageKupon);
+            pd.DefaultPageSettings.PaperSize = new PaperSize("CustomSize", 453, Convert.ToInt32(pageHeight)- 100);
             pd.Print();
         }
 
@@ -1249,7 +1265,7 @@ namespace KasirApp.Repository
             string kembali = "";
             string tanggal = "";
             string usernama = "";
-
+             
             var config = op.CabangConfig();
             var listmodel = new List<TransaksiModel>();
 
@@ -1365,7 +1381,7 @@ namespace KasirApp.Repository
             g.DrawString(usr.member.email, font, brush, CusRec(125, 550 + yta, 310, 100), left);
             g.DrawString(usr.member.phone, font, brush, CusRec(125, 570 + yta, 310, 100), left);
 
-            pageHeight = 475 + yta;
+            pageHeight = 570 + yta;
 
             // Indicate that there are no more pages to print
             e.HasMorePages = false;
