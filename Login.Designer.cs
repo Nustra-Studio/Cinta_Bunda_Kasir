@@ -64,7 +64,7 @@
             this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconPictureBox1.IconSize = 105;
             this.iconPictureBox1.Location = new System.Drawing.Point(113, 15);
-            this.iconPictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.iconPictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.iconPictureBox1.Name = "iconPictureBox1";
             this.iconPictureBox1.Size = new System.Drawing.Size(136, 105);
             this.iconPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -80,7 +80,7 @@
             this.iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconPictureBox2.IconSize = 26;
             this.iconPictureBox2.Location = new System.Drawing.Point(25, 196);
-            this.iconPictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.iconPictureBox2.Margin = new System.Windows.Forms.Padding(4);
             this.iconPictureBox2.Name = "iconPictureBox2";
             this.iconPictureBox2.Size = new System.Drawing.Size(33, 26);
             this.iconPictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -96,7 +96,7 @@
             this.iconPictureBox3.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconPictureBox3.IconSize = 26;
             this.iconPictureBox3.Location = new System.Drawing.Point(25, 251);
-            this.iconPictureBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.iconPictureBox3.Margin = new System.Windows.Forms.Padding(4);
             this.iconPictureBox3.Name = "iconPictureBox3";
             this.iconPictureBox3.Size = new System.Drawing.Size(33, 26);
             this.iconPictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -107,7 +107,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
             this.panel1.Location = new System.Drawing.Point(35, 138);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(93, 1);
             this.panel1.TabIndex = 4;
@@ -116,7 +116,7 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
             this.panel2.Location = new System.Drawing.Point(229, 138);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(93, 1);
             this.panel2.TabIndex = 4;
@@ -132,13 +132,13 @@
             this.txtUser.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUser.ForeColor = System.Drawing.Color.Silver;
             this.txtUser.Location = new System.Drawing.Point(20, 188);
-            this.txtUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtUser.Margin = new System.Windows.Forms.Padding(4);
             this.txtUser.Name = "txtUser";
             this.txtUser.PasswordChar = '\0';
             this.txtUser.SelectedText = "";
             this.txtUser.Size = new System.Drawing.Size(328, 46);
             this.txtUser.TabIndex = 11;
-            this.txtUser.Text = "bambang";
+            this.txtUser.Text = "supervisor_CB_1_Kedungwaru";
             this.txtUser.TextOffsetX = 35;
             // 
             // txtPass
@@ -152,13 +152,13 @@
             this.txtPass.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPass.ForeColor = System.Drawing.Color.Silver;
             this.txtPass.Location = new System.Drawing.Point(20, 242);
-            this.txtPass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPass.Margin = new System.Windows.Forms.Padding(4);
             this.txtPass.Name = "txtPass";
             this.txtPass.PasswordChar = '●';
             this.txtPass.SelectedText = "";
             this.txtPass.Size = new System.Drawing.Size(328, 46);
             this.txtPass.TabIndex = 11;
-            this.txtPass.Text = "admin123";
+            this.txtPass.Text = "cintabunda123";
             this.txtPass.TextOffsetX = 35;
             this.txtPass.UseSystemPasswordChar = true;
             // 
@@ -177,7 +177,7 @@
             this.gunaButton1.Image = null;
             this.gunaButton1.ImageSize = new System.Drawing.Size(20, 20);
             this.gunaButton1.Location = new System.Drawing.Point(77, 303);
-            this.gunaButton1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gunaButton1.Margin = new System.Windows.Forms.Padding(4);
             this.gunaButton1.Name = "gunaButton1";
             this.gunaButton1.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.gunaButton1.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -208,7 +208,7 @@
             this.Controls.Add(this.txtUser);
             this.Controls.Add(this.txtPass);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Login";
             this.Text = "Cinta Bunda - Login ";
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
