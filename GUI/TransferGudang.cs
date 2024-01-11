@@ -33,7 +33,16 @@ namespace KasirApp.GUI
             getList();
             closedState();
             Bot();
-            dta = dgv.DataSource as DataTable;
+            dta = new DataTable();
+            //dta.Columns.Add("Barcode");
+            //dta.Columns.Add("Nama");
+            //dta.Columns.Add("Qty");
+            //dta.Columns.Add("Merek");
+            //dta.Columns.Add("Harga");
+            //dta.Columns.Add("Harga Pokok");
+            //dta.Columns.Add("Harga Jual");
+            //dta.Columns.Add("Harga Grosir");
+            //dta = dgv.DataSource as DataTable;
         }
 
         //Interface Method
@@ -174,6 +183,7 @@ namespace KasirApp.GUI
         {
             txtNomorPTG.Focus();
             txtNomorPTG.Text = "";
+            txtNomorPTG.Enabled = true;
             txtKeterangan.Text = "";
             txtKeterangan.ReadOnly = true;
             chkPosted.Checked = false;
@@ -189,7 +199,7 @@ namespace KasirApp.GUI
 
         public void RaiseKeydown(object sender, KeyEventArgs e)
         {
-            var listBarang = new List<TransferGudangModel>();
+            var listBarang = new List<TfGudangAPI>();
             if (e.KeyCode == Keys.F1)
             {
                 this.Cursor = Cursors.WaitCursor;
@@ -210,10 +220,11 @@ namespace KasirApp.GUI
                             md.harga_grosir = "0";
                         }
 
-                        dta.Rows.Add(md.kode_barang, md.kode_barang, md.name, md.stok, md.merek_barang, md.harga, md.harga_pokok, md.harga_jual,md.harga_grosir);
+                        dta.Rows.Add(md.kode_barang, md.name, md.stok, md.merek_barang, md.harga, md.harga_pokok, md.harga_jual, md.harga_grosir);
                     }
                     _pres.Sementara(listBarang, txtNomorPTG.Text);
                     WriteState();
+                    dgv.DataSource = dta;
                 }
                 this.Cursor = Cursors.Default;
             }

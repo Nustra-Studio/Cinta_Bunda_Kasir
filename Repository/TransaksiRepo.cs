@@ -1094,12 +1094,6 @@ namespace KasirApp.Repository
             return finalInt.ToString();
         }
 
-        public void directPrint(string nomerTrans)
-        {
-            nomerTransgb = nomerTrans;
-            PrintStruk();
-        }
-
         internal void directPrint2(string nomerTrans)
         {
             nomerTransgb = nomerTrans;
@@ -1257,7 +1251,6 @@ namespace KasirApp.Repository
             g.DrawString(config.Baris2, alamat1, brush, CusRec(0, 390 + yta, width, 100f), mid);
             g.DrawString(config.Baris3, alamat1, brush, CusRec(0, 410 + yta, width, 50f), mid);
 
-            pageHeight = 410 + yta;
             // Indicate that there are no more pages to print
             e.HasMorePages = false;
         }

@@ -21,7 +21,7 @@ namespace KasirApp.Model
         public MySqlConnection Conn1 = new MySqlConnection("server=localhost;user id=root;password =123;port=3306;database=kasirdb_deploy");
         public string myDatetime = DateTime.Now.ToString("yyyy-MM-dd hh-mm-ss");
         public string simpleDate = DateTime.Now.ToString("dd/MMM/yy");
-            
+        
         public void KonekDB()
         {
             if (Conn.State == ConnectionState.Open)
@@ -86,8 +86,8 @@ namespace KasirApp.Model
         public string pathReportPOS(string filename)
         {
             string path = Path.GetDirectoryName(Application.ExecutablePath);
-            string filePath = Path.GetDirectoryName(Application.ExecutablePath).Remove(path.Length - 10) + $@"\Report\ReportPOS\{filename}";
-            //string filePath = Path.GetDirectoryName(Application.ExecutablePath) + $@"\Report\ReportPOS\{filename}";
+            //string filePath = Path.GetDirectoryName(Application.ExecutablePath).Remove(path.Length - 10) + $@"\Report\ReportPOS\{filename}";
+            string filePath = Path.GetDirectoryName(Application.ExecutablePath) + $@"\Report\ReportPOS\{filename}";
 
             return filePath;
         }

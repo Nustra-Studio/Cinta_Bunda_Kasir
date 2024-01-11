@@ -30,7 +30,7 @@
     <PublisherName>KediriApp</PublisherName>
     <SuiteName>NustraStudio</SuiteName>
     <MinimumRequiredVersion>1.0.0.0</MinimumRequiredVersion>
-    <ApplicationRevision>21</ApplicationRevision>
+    <ApplicationRevision>24</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -514,7 +514,7 @@
     <Compile Include="View\iSubPenyesuaian.cs" />
     <Compile Include="View\iTransaksi.cs" />
     <Compile Include="View\iUser.cs" />
-    <EmbeddedResource Include="Report\ReportPOS\POSharianDetail.rdlc" />
+    <Content Include="Report\ReportPOS\POSharianDetail.rdlc" />
     <None Include="Resources\upload.png" />
     <EmbeddedResource Include="GUI\AddMember.resx">
       <DependentUpon>AddMember.cs</DependentUpon>

@@ -91,7 +91,7 @@ namespace KasirApp.Repository
                     rd.Read();
                     if (rd.HasRows)
                     {
-                        md.nomerTrans = rd["nomerTrans"].ToString();
+                        md.nomerTrans = rd["id_transfer"].ToString();
                         md.keterangan = rd["keterangan"].ToString();
                         md.status = rd["status"].ToString();
                     }
@@ -229,23 +229,23 @@ namespace KasirApp.Repository
             return dt;
         }
 
-        public List<TransferGudangModel> GetData(userDataModel model)
+        public List<TfGudangAPI> GetData(userDataModel model)
         {
-            List<TransferGudangModel> listmodel = new List<TransferGudangModel>();
+            List<TfGudangAPI> listmodel = new List<TfGudangAPI>();
             using (var client = new RestClient($"{op.url}"))
             {
                 var rs = new RestRequest("barang", Method.Get);
                 rs.AddParameter("token", model.token);
                 rs.AddParameter("uuid", model.uuid);
 
-                System.Windows.Forms.MessageBox.Show($"{model.token} {model.uuid}");
-
                 var response = client.Execute(rs);
+
+                System.Windows.Forms.MessageBox.Show(response.Content.ToString());
 
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
                     var jso = response.Content.ToString();
-                    List<TransferGudangModel> fn = JsonConvert.DeserializeObject<List<TransferGudangModel>>(jso);
+                    List<TfGudangAPI> fn = JsonConvert.DeserializeObject<List<TfGudangAPI>>(jso);
                     listmodel = fn;
                 }
                 else 

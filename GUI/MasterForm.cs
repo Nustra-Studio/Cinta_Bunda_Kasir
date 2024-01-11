@@ -98,7 +98,7 @@ namespace KasirApp.GUI
         public MasterForm()
         {
             InitializeComponent();
-            //logoutState();
+            logoutState();
             this.WindowState = FormWindowState.Maximized;
         }
 
