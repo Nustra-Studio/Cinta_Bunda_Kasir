@@ -11,6 +11,8 @@ using Microsoft.Reporting.WinForms;
 using RestSharp;
 using System.Net;
 using Newtonsoft.Json;
+using System.Windows.Forms;
+using System.Drawing;
 
 namespace KasirApp.Repository
 {
@@ -54,35 +56,6 @@ namespace KasirApp.Repository
                 {
                     rd.Read();
                     model.Uuid = rd["uuid"].ToString();
-                }
-            }
-
-            //Send ke WEB
-            using (var client = new RestClient($"{op.url}opname/"))
-            {
-                try
-                {
-                    var body = new
-                    {
-                        token = user.token,
-                        uuid = user.uuid,
-                        data = new
-                        {
-                            barcode = model.Barcode,
-                            stock = model.Perubahan,
-                            uuid = model.Uuid
-                        }
-                    };
-
-                    var rs = new RestRequest("push", Method.Post);
-                    rs.AddJsonBody(body);
-
-                    var response = client.Execute(rs);
-
-                }
-                catch (Exception ex)
-                {
-                    mb.PeringatanOK(ex.Message);
                 }
             }
 
@@ -133,37 +106,56 @@ namespace KasirApp.Repository
 
         internal void UploadData(OpnameModel model, userDataModel user)
         {
-            using (var cmd = new MySqlCommand($"SELECT * FROM opnames where nomerTrans = '{model.Nomor}'", op.Conn))
+            bool status = true;
+            using (var cmd = new MySqlCommand($"SELECT * FROM barangs where kode_barang LIKE '%ACC%' LIMIT 200", op.Conn))
             {
                 op.KonekDB();
                 using (var rd = cmd.ExecuteReader())
                 {
+                    NotifyIcon notify1 = new NotifyIcon();
+                    notify1.BalloonTipText = "Sedang Upload Data";
+                    notify1.BalloonTipTitle = "Proses Upload";
+                    notify1.Icon = SystemIcons.Information;
+                    notify1.Visible = true;
+                    notify1.ShowBalloonTip(100);
                     while (rd.Read())
                     {
-                        using (var client = new RestClient($"{op.url}opname/"))
+                        try
                         {
-                            var body = new
+                            using (var client = new RestClient($"{op.url}opname/"))
                             {
-                                token = user.token,
-                                id_toko = user.cabang_id,
-                                data = new
+                                var body = new
                                 {
-                                    barcode = rd["Barcode"].ToString(),
-                                    stock = rd["stok"].ToString(),
-                                    uuid = rd["uuid"].ToString()
-                                }
-                            };
+                                    token = user.token,
+                                    id_toko = user.cabang_id,
+                                    data = new
+                                    {
+                                        barcode = rd["kode_barang"].ToString(),
+                                        stock = rd["stok"].ToString(),
+                                        uuid = rd["uuid"].ToString()
+                                    }
+                                };
 
-                            var req = new RestRequest("push", Method.Post);
-                            req.AddJsonBody(body);
+                                var req = new RestRequest("push", Method.Post);
+                                req.AddJsonBody(body);
 
-                            var res = client.Execute(req);
-
+                                var res = client.Execute(req);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            mb.PeringatanOK($"ERROR! : {ex.ToString()}");
+                            status = false;
+                            break;
                         }
                     }
                 }
             }
-            mb.InformasiOK("Data ter Upload");
+
+            if (status == true)
+            {
+                mb.InformasiOK("Data ter Upload");
+            }
         }
 
         internal void directInsert(OpnameModel model, userDataModel user)
@@ -182,33 +174,6 @@ namespace KasirApp.Repository
                         md.Perubahan = rd["stok"].ToString();
                         md.Selisih = "0";
                     }
-                }
-            }
-
-            using (var client = new RestClient($"{op.url}opname/"))
-            {
-                try
-                {
-                    var body = new
-                    {
-                        token = user.token,
-                        uuid = user.uuid,
-                        data = new
-                        {
-                            barcode = model.Barcode,
-                            stock = model.Perubahan,
-                            uuid = model.Uuid
-                        }
-                    };
-
-                    var rs = new RestRequest("push", Method.Post);
-                    rs.AddJsonBody(body);
-
-                    var response = client.Execute(rs);
-                }
-                catch (Exception ex)
-                {
-                    mb.PeringatanOK(ex.Message);
                 }
             }
 
@@ -408,7 +373,8 @@ namespace KasirApp.Repository
                         }
                         else
                         {
-                            var oplist = JsonConvert.DeserializeObject<List<OpnameAPI>>(jso);
+                            var opnameget = JsonConvert.DeserializeObject<getOpname>(res.Content.ToString());
+                            var oplist = opnameget.data;
                             foreach (var item in oplist)
                             {
                                 bool isExist = false;
@@ -427,7 +393,7 @@ namespace KasirApp.Repository
 
                                 if (isExist == true)
                                 {
-                                    using (var cmd = new MySqlCommand($"UPDATE opnames SET Perubahan='{item.perubahan}' WHERE Barcode='{item.barcode}' AND nomerTrans='{model.Nomor}'", op.Conn))
+                                    using (var cmd = new MySqlCommand($"UPDATE opnames SET Perubahan='{item.perubahan}', Created_at = '{op.myDatetime}' WHERE Barcode='{item.barcode}' AND nomerTrans='{model.Nomor}'", op.Conn))
                                     {
                                         op.KonekDB();
                                         cmd.ExecuteNonQuery();
@@ -446,7 +412,7 @@ namespace KasirApp.Repository
                                         cmd.Parameters.AddWithValue("perubahan", item.perubahan);
                                         cmd.Parameters.AddWithValue("selisih", selisih.ToString());
                                         cmd.Parameters.AddWithValue("posted", "0");
-                                        cmd.Parameters.AddWithValue("tanggal", item.updated_at);
+                                        cmd.Parameters.AddWithValue("tanggal", op.myDatetime);
 
                                         op.KonekDB();
                                         cmd.ExecuteNonQuery();

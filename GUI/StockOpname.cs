@@ -248,7 +248,9 @@ namespace KasirApp.GUI
 
         private void btnCursor_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             _op.Upload();
+            this.Cursor = Cursors.Default;
         }
     }
 }

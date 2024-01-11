@@ -34,7 +34,7 @@ namespace KasirApp.Repository
             else
             {
                 List<OpnameModel> listOpname = new List<OpnameModel>();    
-                using (MySqlCommand cmd = new MySqlCommand("Select * from opnames Where Created_at = '" + tnggal +"' AND Posted = 0", op.Conn))
+                using (MySqlCommand cmd = new MySqlCommand("Select * from opnames Where Created_at BETWEEN '" + tnggal + " 00:00:00' AND '" + tnggal + " 23:00:00'  AND Posted = 0", op.Conn))
                 {
                     op.KonekDB();
                     using (MySqlDataReader rd = cmd.ExecuteReader())

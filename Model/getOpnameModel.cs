@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace KasirApp.Model
 {
-    public class OpnameAPI
+    public class getOpname
+    {
+        public string status {get; set;}
+        public List<opnameAPIget> data { get; set; }
+    }
+
+    public class opnameAPIget
     {
         public int id { get; set; }
         public string uuid { get; set; }
