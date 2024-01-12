@@ -33,16 +33,12 @@ namespace KasirApp.GUI
             getList();
             closedState();
             Bot();
+            dgv.AutoGenerateColumns = false;
             dta = new DataTable();
-            //dta.Columns.Add("Barcode");
-            //dta.Columns.Add("Nama");
-            //dta.Columns.Add("Qty");
-            //dta.Columns.Add("Merek");
-            //dta.Columns.Add("Harga");
-            //dta.Columns.Add("Harga Pokok");
-            //dta.Columns.Add("Harga Jual");
-            //dta.Columns.Add("Harga Grosir");
-            //dta = dgv.DataSource as DataTable;
+            foreach (DataGridViewColumn item in dgv.Columns)
+            {
+                dta.Columns.Add(item.Name);
+            }
         }
 
         //Interface Method

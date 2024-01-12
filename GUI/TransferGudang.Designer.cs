@@ -43,19 +43,18 @@ namespace KasirApp.GUI
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgv = new Guna.UI.WinForms.GunaDataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Merek = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Harga_Pokok = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Harga_Jual = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Harga_Grosir = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomerTrans = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.guna2ShadowPanel2 = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.kode_barang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stok = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.merek_barang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.harga = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Harga_Pokok = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Harga_Jual = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Harga_Grosir = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -211,15 +210,14 @@ namespace KasirApp.GUI
             this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv.ColumnHeadersHeight = 35;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.Nama,
-            this.Qty,
-            this.Merek,
-            this.dataGridViewTextBoxColumn2,
+            this.kode_barang,
+            this.name,
+            this.stok,
+            this.merek_barang,
+            this.harga,
             this.Harga_Pokok,
             this.Harga_Jual,
-            this.Harga_Grosir,
-            this.nomerTrans});
+            this.Harga_Grosir});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -236,6 +234,7 @@ namespace KasirApp.GUI
             this.dgv.ReadOnly = true;
             this.dgv.RowHeadersVisible = false;
             this.dgv.RowHeadersWidth = 51;
+            this.dgv.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv.Size = new System.Drawing.Size(1273, 327);
             this.dgv.TabIndex = 5;
@@ -261,79 +260,6 @@ namespace KasirApp.GUI
             this.dgv.ThemeStyle.RowsStyle.Height = 22;
             this.dgv.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgv.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "barkode";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Barcode";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // Nama
-            // 
-            this.Nama.DataPropertyName = "name";
-            this.Nama.HeaderText = "Nama";
-            this.Nama.MinimumWidth = 6;
-            this.Nama.Name = "Nama";
-            this.Nama.ReadOnly = true;
-            // 
-            // Qty
-            // 
-            this.Qty.DataPropertyName = "stok";
-            this.Qty.HeaderText = "Qty";
-            this.Qty.MinimumWidth = 6;
-            this.Qty.Name = "Qty";
-            this.Qty.ReadOnly = true;
-            // 
-            // Merek
-            // 
-            this.Merek.DataPropertyName = "merk";
-            this.Merek.HeaderText = "Merek";
-            this.Merek.MinimumWidth = 6;
-            this.Merek.Name = "Merek";
-            this.Merek.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "harga";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Harga";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // Harga_Pokok
-            // 
-            this.Harga_Pokok.DataPropertyName = "harga_pokok";
-            this.Harga_Pokok.HeaderText = "Harga Pokok";
-            this.Harga_Pokok.MinimumWidth = 6;
-            this.Harga_Pokok.Name = "Harga_Pokok";
-            this.Harga_Pokok.ReadOnly = true;
-            // 
-            // Harga_Jual
-            // 
-            this.Harga_Jual.DataPropertyName = "harga_jual";
-            this.Harga_Jual.HeaderText = "Harga Jual";
-            this.Harga_Jual.MinimumWidth = 6;
-            this.Harga_Jual.Name = "Harga_Jual";
-            this.Harga_Jual.ReadOnly = true;
-            // 
-            // Harga_Grosir
-            // 
-            this.Harga_Grosir.DataPropertyName = "harga_grosir";
-            this.Harga_Grosir.HeaderText = "Harga Grosir";
-            this.Harga_Grosir.MinimumWidth = 6;
-            this.Harga_Grosir.Name = "Harga_Grosir";
-            this.Harga_Grosir.ReadOnly = true;
-            // 
-            // nomerTrans
-            // 
-            this.nomerTrans.DataPropertyName = "nomerTrans";
-            this.nomerTrans.HeaderText = "Column1";
-            this.nomerTrans.MinimumWidth = 6;
-            this.nomerTrans.Name = "nomerTrans";
-            this.nomerTrans.ReadOnly = true;
-            this.nomerTrans.Visible = false;
             // 
             // guna2ShadowPanel2
             // 
@@ -385,6 +311,70 @@ namespace KasirApp.GUI
             this.label8.TabIndex = 22;
             this.label8.Text = "F3 - Selesai Isi Detail";
             // 
+            // kode_barang
+            // 
+            this.kode_barang.DataPropertyName = "kode_barang";
+            this.kode_barang.HeaderText = "Barcode";
+            this.kode_barang.MinimumWidth = 6;
+            this.kode_barang.Name = "kode_barang";
+            this.kode_barang.ReadOnly = true;
+            // 
+            // name
+            // 
+            this.name.DataPropertyName = "name";
+            this.name.HeaderText = "Nama";
+            this.name.MinimumWidth = 6;
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            // 
+            // stok
+            // 
+            this.stok.DataPropertyName = "stok";
+            this.stok.HeaderText = "Qty";
+            this.stok.MinimumWidth = 6;
+            this.stok.Name = "stok";
+            this.stok.ReadOnly = true;
+            // 
+            // merek_barang
+            // 
+            this.merek_barang.DataPropertyName = "merek_barang";
+            this.merek_barang.HeaderText = "Merek";
+            this.merek_barang.MinimumWidth = 6;
+            this.merek_barang.Name = "merek_barang";
+            this.merek_barang.ReadOnly = true;
+            // 
+            // harga
+            // 
+            this.harga.DataPropertyName = "harga";
+            this.harga.HeaderText = "Harga";
+            this.harga.MinimumWidth = 6;
+            this.harga.Name = "harga";
+            this.harga.ReadOnly = true;
+            // 
+            // Harga_Pokok
+            // 
+            this.Harga_Pokok.DataPropertyName = "harga_pokok";
+            this.Harga_Pokok.HeaderText = "Harga Pokok";
+            this.Harga_Pokok.MinimumWidth = 6;
+            this.Harga_Pokok.Name = "Harga_Pokok";
+            this.Harga_Pokok.ReadOnly = true;
+            // 
+            // Harga_Jual
+            // 
+            this.Harga_Jual.DataPropertyName = "harga_jual";
+            this.Harga_Jual.HeaderText = "Harga Jual";
+            this.Harga_Jual.MinimumWidth = 6;
+            this.Harga_Jual.Name = "Harga_Jual";
+            this.Harga_Jual.ReadOnly = true;
+            // 
+            // Harga_Grosir
+            // 
+            this.Harga_Grosir.DataPropertyName = "harga_grosir";
+            this.Harga_Grosir.HeaderText = "Harga Grosir";
+            this.Harga_Grosir.MinimumWidth = 6;
+            this.Harga_Grosir.Name = "Harga_Grosir";
+            this.Harga_Grosir.ReadOnly = true;
+            // 
             // TransferGudang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -422,14 +412,13 @@ namespace KasirApp.GUI
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nama;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Qty;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Merek;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn kode_barang;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stok;
+        private System.Windows.Forms.DataGridViewTextBoxColumn merek_barang;
+        private System.Windows.Forms.DataGridViewTextBoxColumn harga;
         private System.Windows.Forms.DataGridViewTextBoxColumn Harga_Pokok;
         private System.Windows.Forms.DataGridViewTextBoxColumn Harga_Jual;
         private System.Windows.Forms.DataGridViewTextBoxColumn Harga_Grosir;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nomerTrans;
     }
 }

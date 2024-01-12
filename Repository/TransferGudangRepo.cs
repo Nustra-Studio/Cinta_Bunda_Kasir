@@ -240,15 +240,13 @@ namespace KasirApp.Repository
 
                 var response = client.Execute(rs);
 
-                System.Windows.Forms.MessageBox.Show(response.Content.ToString());
-
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
                     var jso = response.Content.ToString();
                     List<TfGudangAPI> fn = JsonConvert.DeserializeObject<List<TfGudangAPI>>(jso);
                     listmodel = fn;
                 }
-                else 
+                else
                 {
                     mb.PeringatanOK(response.StatusCode.ToString());
                 }
@@ -466,34 +464,34 @@ namespace KasirApp.Repository
 
         private void deleteRecent(userDataModel user)
         {
-            using (var client = new RestClient(op.url))
-            {
-                var req = new RestRequest("deletetransaction", Method.Post);
-                var body = new
-                {
-                    token = user.token,
-                    uuid = user.uuid
-                };
-                req.AddJsonBody(body);
+            //using (var client = new RestClient(op.url))
+            //{
+            //    var req = new RestRequest("deletetransaction", Method.Post);
+            //    var body = new
+            //    {
+            //        token = user.token,
+            //        uuid = user.uuid
+            //    };
+            //    req.AddJsonBody(body);
 
-                var response = client.Execute(req);
-                try
-                {
-                    if (response.StatusCode == HttpStatusCode.OK)
-                    {
-                        mb.InformasiOK("Success");
-                    }
-                    else
-                    {
-                        mb.PeringatanOK("Terjadi Kesalahan saat memperbarui data inventori");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    mb.PeringatanOK(ex.Message);
-                }
+            //    var response = client.Execute(req);
+            //    try
+            //    {
+            //        if (response.StatusCode == HttpStatusCode.OK)
+            //        {
+            //            mb.InformasiOK("Success");
+            //        }
+            //        else
+            //        {
+            //            mb.PeringatanOK("Terjadi Kesalahan saat memperbarui data inventori");
+            //        }
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        mb.PeringatanOK(ex.Message);
+            //    }
 
-            }
+            //}
         }
 
 
