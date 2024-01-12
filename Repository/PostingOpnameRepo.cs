@@ -33,8 +33,10 @@ namespace KasirApp.Repository
             }
             else
             {
+                string tgl = $"{tnggal.Trim()} 00:00:00";
+                string tgl2 = $"{tnggal.Trim()} 23:00:00";
                 List<OpnameModel> listOpname = new List<OpnameModel>();    
-                using (MySqlCommand cmd = new MySqlCommand("Select * from opnames Where Created_at BETWEEN '" + tnggal + " 00:00:00' AND '" + tnggal + " 23:00:00'  AND Posted = 0", op.Conn))
+                using (MySqlCommand cmd = new MySqlCommand("Select * from opnames Where Created_at BETWEEN '" + tgl + "' AND '" + tgl2 + "'  AND Posted = '0'", op.Conn))
                 {
                     op.KonekDB();
                     using (MySqlDataReader rd = cmd.ExecuteReader())
@@ -72,13 +74,16 @@ namespace KasirApp.Repository
             {
                 foreach (var item in listOpname)
                 {
-                    using (var cmd = new MySqlCommand($"SELECT * FROM barangs WHERE kode_barang='{item.Barcode}'", op.Conn))
+                    using (var cmd = new MySqlCommand($"SELECT * FROM barangs WHERE kode_barang = '{item.Barcode}'", op.Conn))
                     {
                         op.KonekDB();
                         using (var rd = cmd.ExecuteReader())
                         {
                             rd.Read();
-                            item.Uuid = rd["uuid"].ToString();
+                            if (rd.HasRows)
+                            {
+                                item.Uuid = rd["uuid"].ToString();
+                            }
                         }
                     }
 
@@ -92,6 +97,10 @@ namespace KasirApp.Repository
                         };
 
                         var rs = new RestRequest("return", Method.Post);
+                        rs.AddJsonBody(body);
+
+                        var res = client.Execute(rs);
+
                     }
                 }
             }
@@ -101,14 +110,30 @@ namespace KasirApp.Repository
         {
             foreach (var model in md)
             {
-                using (MySqlCommand cmd = new MySqlCommand("UPDATE barangs SET stok = @stok WHERE kode_barang = @barcode",op.Conn))
+                bool isExist = false;
+                using (var cmd = new MySqlCommand($"SELECT * FROM barangs WHERE kode_barang = '{model.Barcode}'", op.Conn))
                 {
-                    cmd.Parameters.AddWithValue("stok", model.Perubahan);
-                    cmd.Parameters.AddWithValue("barcode", model.Barcode);
+                    op.KonekDB();
+                    using (var rd = cmd.ExecuteReader())
+                    {
+                        rd.Read();
+                        if (rd.HasRows)
+                        {
+                            isExist = true;
+                        }
+                    }
+                }
+                if (isExist == true)
+                {
+                    using (MySqlCommand cmd = new MySqlCommand("UPDATE barangs SET stok = @stok WHERE kode_barang = @barcode", op.Conn))
+                    {
+                        cmd.Parameters.AddWithValue("stok", model.Perubahan);
+                        cmd.Parameters.AddWithValue("barcode", model.Barcode);
 
-                    op.KonekDB();
-                    cmd.ExecuteNonQuery();
-                    op.KonekDB();
+                        op.KonekDB();
+                        cmd.ExecuteNonQuery();
+                        op.KonekDB();
+                    }
                 }
             }
             UpNumberingStatus(md);
@@ -155,7 +180,9 @@ namespace KasirApp.Repository
         //CekData
         public bool CekData(string tnggal)
         {
-            using (MySqlCommand cmd = new MySqlCommand("Select * from opnames Where Created_at = '" + tnggal + "' AND Posted = 0", op.Conn))
+            string tgl = $"{tnggal.Trim()} 00:00:00";
+            string tgl2 = $"{tnggal.Trim()} 23:00:00";
+            using (MySqlCommand cmd = new MySqlCommand($"Select * from opnames Where Created_at BETWEEN '{tgl}' AND '{tgl2}' AND Posted = 0", op.Conn))
             {
                 op.KonekDB();
                 using (MySqlDataReader rd = cmd.ExecuteReader())
