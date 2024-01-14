@@ -15,6 +15,11 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.IO;
 using System.Drawing.Printing;
+using ESCPOS_NET;
+using ESCPOS_NET.Emitters;
+using ESCPOS_NET.Utilities;
+using System.Runtime.InteropServices;
+
 namespace KasirApp.Repository
 {
     class TransaksiRepo
@@ -1117,19 +1122,44 @@ namespace KasirApp.Repository
 
         public void printStruk2()
         {
+
             PrintDocument pd = new PrintDocument();
+            var paper = new PaperSize("roll", 470, 500);
+            pd.DefaultPageSettings.PaperSize = paper;
             pd.PrinterSettings.PrinterName = new PrinterSettings().PrinterName;
             pd.PrintPage += new PrintPageEventHandler(this.onPrintpage);
-            pd.DefaultPageSettings.PaperSize = new PaperSize("CustomSize", 453, Convert.ToInt32(pageHeight) - 200);
+
+            pageHeight = takeheight(nomerTransgb);
+
+            pd.DefaultPageSettings.PaperSize.Height = Convert.ToInt32(pageHeight);
+
             pd.Print();
         }
 
         public void PrintStruk()
         {
             PrintDocument pd = new PrintDocument();
-            pd.PrinterSettings.PrinterName = new PrinterSettings().PrinterName;
+            //pd.PrinterSettings.PrinterName = new PrinterSettings().PrinterName;
+            pd.PrinterSettings.PrinterName = "EPSON LX-310";
             pd.PrintPage += new PrintPageEventHandler(this.onPrintpage);
+
             pd.Print();
+        }
+
+        //ESC POS printing 
+        public int takeheight(string nomerTrans)
+        {
+            int heightreturn = 0;
+            using (var cmd = new MySqlCommand($"SELECT * FROM view_report_penjualan WHERE nomerTrans='{nomerTransgb}'", op.Conn))
+            {
+                op.KonekDB();
+                using (var rd = cmd.ExecuteReader())
+                {
+                    rd.Read();
+                    heightreturn = Convert.ToInt32(rd.FieldCount) * 40;
+                }
+            }
+            return 410 + heightreturn;
         }
 
         //Printing
@@ -1183,8 +1213,8 @@ namespace KasirApp.Repository
             Font header = new Font("Cambria", 16);
             Font alamat = new Font("Cambria", 8);
             Font alamat1 = new Font("Cambria", 10);
-            SolidBrush brush = new SolidBrush(Color.Black);
-            Pen blackPen = new Pen(Color.Black, 1);
+            SolidBrush brush = new SolidBrush(System.Drawing.Color.Black);
+            Pen blackPen = new Pen(System.Drawing.Color.Black, 1);
 
             var right = new StringFormat() { Alignment = StringAlignment.Far };
             var mid = new StringFormat() { Alignment = StringAlignment.Center };
@@ -1251,8 +1281,50 @@ namespace KasirApp.Repository
             g.DrawString(config.Baris2, alamat1, brush, CusRec(0, 390 + yta, width, 100f), mid);
             g.DrawString(config.Baris3, alamat1, brush, CusRec(0, 410 + yta, width, 50f), mid);
 
+            pageHeight = 410 + yta;
+
+            SendStopRollingCommand("EPSON LX-310");
+
             // Indicate that there are no more pages to print
             e.HasMorePages = false;
+        }
+
+        public class RawPrinterHelper
+        {
+
+            [System.Runtime.InteropServices.DllImport("winspool.Drv", EntryPoint = "WritePrinter", SetLastError = true)]
+            public static extern bool WritePrinter(IntPtr hPrinter, IntPtr pBytes, int dwCount, out int dwWritten);
+
+            public static bool SendStringToPrinter(string szPrinterName, string szString)
+            {
+                IntPtr pBytes;
+                IntPtr pname;
+                int dwCount;
+
+                dwCount = szString.Length;
+
+                pname = Marshal.StringToCoTaskMemAnsi(szPrinterName);
+                pBytes = Marshal.StringToCoTaskMemAnsi(szString);
+                WritePrinter(pname, pBytes, dwCount, out _);
+                Marshal.FreeCoTaskMem(pBytes);
+
+                return true;
+            }
+        }
+
+        private static void SendStopRollingCommand(string printerName)
+        {
+            try
+            {
+                // ESC C: Cancel paper feed
+                string stopRollingCommand = "\x1B" + "C";
+
+                RawPrinterHelper.SendStringToPrinter(printerName, stopRollingCommand);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error sending stop rolling command: " + ex.Message);
+            }
         }
 
         public void PrintStrukKupon()
@@ -1309,11 +1381,11 @@ namespace KasirApp.Repository
             Font header = new Font("Cambria", 16);
             Font alamat = new Font("Cambria", 8);
             Font alamat1 = new Font("Cambria", 10);
-            SolidBrush brush = new SolidBrush(Color.Black);
-            Pen blackPen = new Pen(Color.Black, 1);
+            SolidBrush brush = new SolidBrush(System.Drawing.Color.Black);
+            Pen blackPen = new Pen(System.Drawing.Color.Black, 1);
 
             float[] dashValues = { 5, 2, 15, 4 };
-            Pen DashedPen = new Pen(Color.Black, 1);
+            Pen DashedPen = new Pen(System.Drawing.Color.Black, 1);
             DashedPen.DashPattern = dashValues;
 
             var right = new StringFormat() { Alignment = StringAlignment.Far };
