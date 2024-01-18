@@ -107,7 +107,8 @@ namespace KasirApp.Repository
         internal void UploadData(OpnameModel model, userDataModel user)
         {
             bool status = true;
-            using (var cmd = new MySqlCommand($"SELECT * FROM barangs where kode_barang LIKE '%ACC%' LIMIT 200", op.Conn))
+            var listbarang = new List<barangOpname>();
+            using (var cmd = new MySqlCommand($"SELECT uuid,kode_barang,stok FROM barangs", op.Conn))
             {
                 op.KonekDB();
                 using (var rd = cmd.ExecuteReader())
@@ -118,9 +119,19 @@ namespace KasirApp.Repository
                     notify1.Icon = SystemIcons.Information;
                     notify1.Visible = true;
                     notify1.ShowBalloonTip(100);
+
                     while (rd.Read())
                     {
-                        try
+                        var brg = new barangOpname();
+                        brg.barcode = rd["kode_barang"].ToString();
+                        brg.stok = rd["stok"].ToString();
+                        brg.uuid = rd["uuid"].ToString();
+                        listbarang.Add(brg);
+                    }
+
+                    try
+                    {
+                        foreach (var item in listbarang)
                         {
                             using (var client = new RestClient($"{op.url}opname/"))
                             {
@@ -130,9 +141,9 @@ namespace KasirApp.Repository
                                     id_toko = user.cabang_id,
                                     data = new
                                     {
-                                        barcode = rd["kode_barang"].ToString(),
-                                        stock = rd["stok"].ToString(),
-                                        uuid = rd["uuid"].ToString()
+                                        barcode = item.barcode,
+                                        stock = item.stok,
+                                        uuid = item.uuid
                                     }
                                 };
 
@@ -140,14 +151,21 @@ namespace KasirApp.Repository
                                 req.AddJsonBody(body);
 
                                 var res = client.Execute(req);
+
+                                if (res.StatusCode != HttpStatusCode.OK)
+                                {
+                                    Console.WriteLine(res.Content.ToString());
+                                    mb.PeringatanOK($"Terjadi Kesalahan");
+                                    status = false;
+                                    break;
+                                }
                             }
                         }
-                        catch (Exception ex)
-                        {
-                            mb.PeringatanOK($"ERROR! : {ex.ToString()}");
-                            status = false;
-                            break;
-                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        mb.PeringatanOK($"ERROR! : {ex.ToString()}");
+                        status = false;
                     }
                 }
             }
@@ -438,4 +456,13 @@ namespace KasirApp.Repository
             return status;
         }
     }
+
+    public class barangOpname
+    {
+        public string uuid { get; set; }
+        public string barcode { get; set; }
+        public string stok { get; set; }
+    }
 }
+
+
