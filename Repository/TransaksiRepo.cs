@@ -1140,7 +1140,7 @@ namespace KasirApp.Repository
         {
             PrintDocument pd = new PrintDocument();
             //pd.PrinterSettings.PrinterName = new PrinterSettings().PrinterName;
-            pd.PrinterSettings.PrinterName = "EPSON LX-310";
+            pd.PrinterSettings.PrinterName = "EPSON LX-310 ESC/P";
             pd.PrintPage += new PrintPageEventHandler(this.onPrintpage);
 
             pd.Print();
@@ -1283,7 +1283,7 @@ namespace KasirApp.Repository
 
             pageHeight = 410 + yta;
 
-            SendStopRollingCommand("EPSON LX-310");
+            SendStopRollingCommand("EPSON LX-310 ESC/P");
 
             // Indicate that there are no more pages to print
             e.HasMorePages = false;
