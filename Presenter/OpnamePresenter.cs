@@ -141,5 +141,10 @@ namespace KasirApp.Presenter
                 _repo.UploadData(model, _user);
             }
         }
+
+        internal void Export()
+        {
+            _repo.ExportData();
+        }
     }
 }

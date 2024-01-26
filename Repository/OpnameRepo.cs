@@ -13,6 +13,7 @@ using System.Net;
 using Newtonsoft.Json;
 using System.Windows.Forms;
 using System.Drawing;
+using Microsoft.Office.Interop.Excel;
 
 namespace KasirApp.Repository
 {
@@ -176,6 +177,71 @@ namespace KasirApp.Repository
             }
         }
 
+        internal void ExportData()
+        {
+            var listbarang = new List<barangOpname>();
+            using (var cmd = new MySqlCommand("SELECT * FROM barangs", op.Conn))
+            {
+                cmd.CommandTimeout = 360;
+                var col = 1;
+                var row = 1;
+                op.KonekDB();
+                using (var rd = cmd.ExecuteReader())
+                {
+                    Microsoft.Office.Interop.Excel.Application excelapp = new Microsoft.Office.Interop.Excel.Application();
+                    Workbook excelWorkbook = excelapp.Workbooks.Add();
+                    Worksheet excelworksheet = excelWorkbook.Worksheets[1];
+
+                    while (rd.Read())
+                    {
+                        var brg = new barangOpname();
+                        brg.barcode = rd["kode_barang"].ToString();
+                        brg.stok = rd["stok"].ToString();
+                        brg.uuid = rd["uuid"].ToString();
+                        listbarang.Add(brg);
+                    }
+
+                    //while (rd.Read())
+                    //{
+                    //    col = 1;
+                    //    for (int i = 0; i < rd.FieldCount; i++)
+                    //    {
+                    //        excelworksheet.Cells[row, col].Value2 = rd[i];
+                    //        col++;
+                    //    }
+                    //    row++;
+                    //}
+
+                    foreach (var item in listbarang)
+                    {
+                        string insert = "";
+                        col = 1;
+                        for (int i = 0; i < 3; i++)
+                        {
+                            if (i == 0)
+                            {
+                                insert = item.uuid;
+                            }
+                            else if (i == 1)
+                            {
+                                insert = item.barcode;
+                            }
+                            else if (i == 2)
+                            {
+                                insert = item.stok;
+                            }
+                            excelworksheet.Cells[row, col].Value2 = insert;
+                            col++;
+                        }
+                        row++;
+                    }
+                    excelworksheet.SaveAs(@"C:\Ussage\Excel.xls");
+                    excelWorkbook.Close();
+                    excelapp.Quit();
+                }
+            }
+        }
+
         internal void directInsert(OpnameModel model, userDataModel user)
         {
             var md = new OpnameModel();
@@ -222,9 +288,9 @@ namespace KasirApp.Repository
             }
         }
 
-        public DataTable showtable(OpnameModel model)
+        public System.Data.DataTable showtable(OpnameModel model)
         {
-            DataTable dt = new DataTable();
+            System.Data.DataTable dt = new System.Data.DataTable();
             using (MySqlCommand cmd = new MySqlCommand("select * from view_opname where nomerTrans=@nomor",op.Conn))
             {
                 cmd.Parameters.AddWithValue("nomor", model.Nomor);
@@ -263,9 +329,9 @@ namespace KasirApp.Repository
             }
         }
 
-        public DataTable doSearch(OpnameModel model)
+        public System.Data.DataTable doSearch(OpnameModel model)
         {
-            DataTable dt = new DataTable();
+            System.Data.DataTable dt = new System.Data.DataTable();
             using (MySqlCommand cmd = new MySqlCommand($"select * from view_opname where nomerTrans=@nomor AND Nama LIKE '%{model.Nama}%'", op.Conn))
             {
                 cmd.Parameters.AddWithValue("nomor", model.Nomor);
@@ -288,7 +354,7 @@ namespace KasirApp.Repository
 
         public void printPage(OpnameModel model)
         {
-            var dt = new DataTable();
+            var dt = new System.Data.DataTable();
             string tanggal = "";
             string status = "Void";
             bool isExist = false;

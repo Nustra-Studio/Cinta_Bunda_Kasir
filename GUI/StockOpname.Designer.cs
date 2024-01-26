@@ -47,6 +47,7 @@ namespace KasirApp.GUI
             this.btnSync = new Guna.UI.WinForms.GunaGradientButton();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnExport = new Guna.UI.WinForms.GunaGradientButton();
             this.btnCursor = new Guna.UI.WinForms.GunaGradientButton();
             this.DGV = new Guna.UI.WinForms.GunaDataGridView();
             this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -273,6 +274,7 @@ namespace KasirApp.GUI
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.btnExport);
             this.groupBox2.Controls.Add(this.btnCursor);
             this.groupBox2.Controls.Add(this.DGV);
             this.groupBox2.Controls.Add(this.btnRefresh);
@@ -284,6 +286,39 @@ namespace KasirApp.GUI
             this.groupBox2.Size = new System.Drawing.Size(1066, 318);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
+            // 
+            // btnExport
+            // 
+            this.btnExport.AnimationHoverSpeed = 0.07F;
+            this.btnExport.AnimationSpeed = 0.03F;
+            this.btnExport.BaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
+            this.btnExport.BaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(246)))), ((int)(((byte)(197)))));
+            this.btnExport.BorderColor = System.Drawing.Color.Black;
+            this.btnExport.BorderSize = 1;
+            this.btnExport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExport.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnExport.FocusedColor = System.Drawing.Color.Empty;
+            this.btnExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExport.ForeColor = System.Drawing.Color.Black;
+            this.btnExport.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            this.btnExport.Image = global::KasirApp.Properties.Resources.excel__1_;
+            this.btnExport.ImageOffsetX = -2;
+            this.btnExport.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnExport.Location = new System.Drawing.Point(912, 27);
+            this.btnExport.Margin = new System.Windows.Forms.Padding(4);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.OnHoverBaseColor1 = System.Drawing.Color.White;
+            this.btnExport.OnHoverBaseColor2 = System.Drawing.Color.Lime;
+            this.btnExport.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnExport.OnHoverForeColor = System.Drawing.Color.Black;
+            this.btnExport.OnHoverImage = null;
+            this.btnExport.OnPressedColor = System.Drawing.Color.Black;
+            this.btnExport.Size = new System.Drawing.Size(126, 27);
+            this.btnExport.TabIndex = 26;
+            this.btnExport.Text = "Upload Data";
+            this.btnExport.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.btnExport.TextOffsetX = 5;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // btnCursor
             // 
@@ -664,5 +699,6 @@ namespace KasirApp.GUI
         private Guna.UI.WinForms.GunaGradientButton btnSync;
         private System.Windows.Forms.CheckBox chkDirect;
         private Guna.UI.WinForms.GunaGradientButton btnCursor;
+        private Guna.UI.WinForms.GunaGradientButton btnExport;
     }
 }

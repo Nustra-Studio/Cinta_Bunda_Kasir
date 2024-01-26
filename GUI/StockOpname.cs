@@ -252,5 +252,12 @@ namespace KasirApp.GUI
             _op.Upload();
             this.Cursor = Cursors.Default;
         }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+            _op.Export();
+            this.Cursor = Cursors.Default;
+        }
     }
 }
