@@ -63,8 +63,10 @@ namespace KasirApp.GUI.Supervisor
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.txtBaris2 = new Guna.UI.WinForms.GunaTextBox();
             this.txtBaris1 = new Guna.UI.WinForms.GunaTextBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.gunaLineTextBox1 = new Guna.UI.WinForms.GunaLineTextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.txtHeader = new Guna.UI.WinForms.GunaTextBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -78,8 +80,12 @@ namespace KasirApp.GUI.Supervisor
             this.label18 = new System.Windows.Forms.Label();
             this.txtValuePoint = new Guna.UI.WinForms.GunaTextBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.gunaLineTextBox1 = new Guna.UI.WinForms.GunaLineTextBox();
-            this.txtBaris2 = new Guna.UI.WinForms.GunaTextBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtBackup = new Guna.UI.WinForms.GunaTextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.btnFolder = new Guna.UI.WinForms.GunaGradientButton();
             this.groupBox3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -90,6 +96,8 @@ namespace KasirApp.GUI.Supervisor
             this.panel4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // label6
@@ -563,6 +571,25 @@ namespace KasirApp.GUI.Supervisor
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Setting Footer Kwitansi";
             // 
+            // txtBaris2
+            // 
+            this.txtBaris2.BackColor = System.Drawing.SystemColors.Control;
+            this.txtBaris2.BaseColor = System.Drawing.Color.White;
+            this.txtBaris2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
+            this.txtBaris2.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtBaris2.FocusedBaseColor = System.Drawing.Color.White;
+            this.txtBaris2.FocusedBorderColor = System.Drawing.Color.Lime;
+            this.txtBaris2.FocusedForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtBaris2.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtBaris2.Location = new System.Drawing.Point(109, 103);
+            this.txtBaris2.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBaris2.Multiline = true;
+            this.txtBaris2.Name = "txtBaris2";
+            this.txtBaris2.PasswordChar = '\0';
+            this.txtBaris2.SelectedText = "";
+            this.txtBaris2.Size = new System.Drawing.Size(614, 100);
+            this.txtBaris2.TabIndex = 14;
+            // 
             // txtBaris1
             // 
             this.txtBaris1.BackColor = System.Drawing.SystemColors.Control;
@@ -594,6 +621,21 @@ namespace KasirApp.GUI.Supervisor
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(733, 257);
             this.panel4.TabIndex = 17;
+            // 
+            // gunaLineTextBox1
+            // 
+            this.gunaLineTextBox1.BackColor = System.Drawing.Color.White;
+            this.gunaLineTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.gunaLineTextBox1.FocusedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.gunaLineTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.gunaLineTextBox1.LineColor = System.Drawing.Color.Gainsboro;
+            this.gunaLineTextBox1.Location = new System.Drawing.Point(369, 154);
+            this.gunaLineTextBox1.Name = "gunaLineTextBox1";
+            this.gunaLineTextBox1.PasswordChar = '\0';
+            this.gunaLineTextBox1.SelectedText = "";
+            this.gunaLineTextBox1.Size = new System.Drawing.Size(160, 30);
+            this.gunaLineTextBox1.TabIndex = 17;
+            this.gunaLineTextBox1.Text = "gunaLineTextBox1";
             // 
             // label17
             // 
@@ -662,7 +704,7 @@ namespace KasirApp.GUI.Supervisor
             this.btnBatal.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.btnBatal.Image = null;
             this.btnBatal.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnBatal.Location = new System.Drawing.Point(970, 567);
+            this.btnBatal.Location = new System.Drawing.Point(978, 803);
             this.btnBatal.Margin = new System.Windows.Forms.Padding(4);
             this.btnBatal.Name = "btnBatal";
             this.btnBatal.OnHoverBaseColor1 = System.Drawing.Color.White;
@@ -693,7 +735,7 @@ namespace KasirApp.GUI.Supervisor
             this.btnSimpan.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.btnSimpan.Image = null;
             this.btnSimpan.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnSimpan.Location = new System.Drawing.Point(814, 567);
+            this.btnSimpan.Location = new System.Drawing.Point(822, 803);
             this.btnSimpan.Margin = new System.Windows.Forms.Padding(4);
             this.btnSimpan.Name = "btnSimpan";
             this.btnSimpan.OnHoverBaseColor1 = System.Drawing.Color.White;
@@ -806,45 +848,109 @@ namespace KasirApp.GUI.Supervisor
             this.label19.TabIndex = 6;
             this.label19.Text = "Minimal Kupon :";
             // 
-            // gunaLineTextBox1
+            // groupBox6
             // 
-            this.gunaLineTextBox1.BackColor = System.Drawing.Color.White;
-            this.gunaLineTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.gunaLineTextBox1.FocusedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.gunaLineTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.gunaLineTextBox1.LineColor = System.Drawing.Color.Gainsboro;
-            this.gunaLineTextBox1.Location = new System.Drawing.Point(369, 154);
-            this.gunaLineTextBox1.Name = "gunaLineTextBox1";
-            this.gunaLineTextBox1.PasswordChar = '\0';
-            this.gunaLineTextBox1.SelectedText = "";
-            this.gunaLineTextBox1.Size = new System.Drawing.Size(160, 30);
-            this.gunaLineTextBox1.TabIndex = 17;
-            this.gunaLineTextBox1.Text = "gunaLineTextBox1";
+            this.groupBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
+            this.groupBox6.Controls.Add(this.panel6);
+            this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox6.Location = new System.Drawing.Point(762, 527);
+            this.groupBox6.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox6.Size = new System.Drawing.Size(368, 252);
+            this.groupBox6.TabIndex = 18;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Setting Notifikasi";
             // 
-            // txtBaris2
+            // panel6
             // 
-            this.txtBaris2.BackColor = System.Drawing.SystemColors.Control;
-            this.txtBaris2.BaseColor = System.Drawing.Color.White;
-            this.txtBaris2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
-            this.txtBaris2.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtBaris2.FocusedBaseColor = System.Drawing.Color.White;
-            this.txtBaris2.FocusedBorderColor = System.Drawing.Color.Lime;
-            this.txtBaris2.FocusedForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtBaris2.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txtBaris2.Location = new System.Drawing.Point(109, 103);
-            this.txtBaris2.Margin = new System.Windows.Forms.Padding(4);
-            this.txtBaris2.Multiline = true;
-            this.txtBaris2.Name = "txtBaris2";
-            this.txtBaris2.PasswordChar = '\0';
-            this.txtBaris2.SelectedText = "";
-            this.txtBaris2.Size = new System.Drawing.Size(614, 100);
-            this.txtBaris2.TabIndex = 14;
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
+            this.panel6.Controls.Add(this.btnFolder);
+            this.panel6.Controls.Add(this.label14);
+            this.panel6.Controls.Add(this.txtBackup);
+            this.panel6.Controls.Add(this.label24);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.Location = new System.Drawing.Point(4, 20);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(360, 228);
+            this.panel6.TabIndex = 17;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(70, 29);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(229, 25);
+            this.label14.TabIndex = 11;
+            this.label14.Text = "Lokasi Backup Database";
+            // 
+            // txtBackup
+            // 
+            this.txtBackup.BackColor = System.Drawing.SystemColors.Control;
+            this.txtBackup.BaseColor = System.Drawing.Color.White;
+            this.txtBackup.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
+            this.txtBackup.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtBackup.FocusedBaseColor = System.Drawing.Color.White;
+            this.txtBackup.FocusedBorderColor = System.Drawing.Color.Lime;
+            this.txtBackup.FocusedForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtBackup.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtBackup.Location = new System.Drawing.Point(13, 94);
+            this.txtBackup.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBackup.Name = "txtBackup";
+            this.txtBackup.PasswordChar = '\0';
+            this.txtBackup.SelectedText = "";
+            this.txtBackup.Size = new System.Drawing.Size(339, 46);
+            this.txtBackup.TabIndex = 6;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(150, 65);
+            this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(78, 25);
+            this.label24.TabIndex = 6;
+            this.label24.Text = "Folder :";
+            // 
+            // btnFolder
+            // 
+            this.btnFolder.AnimationHoverSpeed = 0.07F;
+            this.btnFolder.AnimationSpeed = 0.03F;
+            this.btnFolder.BaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
+            this.btnFolder.BaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(246)))), ((int)(((byte)(197)))));
+            this.btnFolder.BorderColor = System.Drawing.Color.Black;
+            this.btnFolder.BorderSize = 1;
+            this.btnFolder.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFolder.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnFolder.FocusedColor = System.Drawing.Color.Empty;
+            this.btnFolder.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnFolder.ForeColor = System.Drawing.Color.Black;
+            this.btnFolder.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            this.btnFolder.Image = null;
+            this.btnFolder.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnFolder.Location = new System.Drawing.Point(89, 148);
+            this.btnFolder.Margin = new System.Windows.Forms.Padding(4);
+            this.btnFolder.Name = "btnFolder";
+            this.btnFolder.OnHoverBaseColor1 = System.Drawing.Color.White;
+            this.btnFolder.OnHoverBaseColor2 = System.Drawing.Color.Lime;
+            this.btnFolder.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnFolder.OnHoverForeColor = System.Drawing.Color.White;
+            this.btnFolder.OnHoverImage = null;
+            this.btnFolder.OnPressedColor = System.Drawing.Color.Black;
+            this.btnFolder.Size = new System.Drawing.Size(196, 39);
+            this.btnFolder.TabIndex = 19;
+            this.btnFolder.Text = "Pilih Folder";
+            this.btnFolder.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnFolder.Click += new System.EventHandler(this.btnFolder_Click);
             // 
             // Setting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1150, 885);
+            this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.btnBatal);
             this.Controls.Add(this.groupBox4);
@@ -872,6 +978,9 @@ namespace KasirApp.GUI.Supervisor
             this.groupBox5.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -928,5 +1037,11 @@ namespace KasirApp.GUI.Supervisor
         private System.Windows.Forms.Label label23;
         private Guna.UI.WinForms.GunaTextBox txtBaris2;
         private Guna.UI.WinForms.GunaLineTextBox gunaLineTextBox1;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Label label14;
+        private Guna.UI.WinForms.GunaTextBox txtBackup;
+        private System.Windows.Forms.Label label24;
+        private Guna.UI.WinForms.GunaGradientButton btnFolder;
     }
 }

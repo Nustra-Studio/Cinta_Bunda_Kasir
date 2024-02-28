@@ -23,6 +23,7 @@ namespace KasirApp.Model
         string header;
         string valuepoint;
         string minimalcash;
+        string backup;
 
         public string Karyawan { get => karyawan; set => karyawan = value; }
         public string Reseller { get => reseller; set => reseller = value; }
@@ -39,5 +40,6 @@ namespace KasirApp.Model
         public string Minimalcash { get => minimalcash; set => minimalcash = value; }
         public string Karyawanacc { get => karyawanacc; set => karyawanacc = value; }
         public string Reselleracc { get => reselleracc; set => reselleracc = value; }
+        public string Backup { get => backup; set => backup = value; }
     }
 }

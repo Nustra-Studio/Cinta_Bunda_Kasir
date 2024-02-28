@@ -41,6 +41,7 @@ namespace KasirApp.GUI.Supervisor
             txtMinimal.Text = model.Minimalcash;
             txtACCkaryawan.Text = model.Karyawanacc;
             txtACCReseller.Text = model.Reselleracc;
+            txtBackup.Text = model.Backup;
         }
 
         public void Numeric(object sender, KeyPressEventArgs e)
@@ -65,6 +66,7 @@ namespace KasirApp.GUI.Supervisor
             model.Minimalcash = txtMinimal.Text;
             model.Karyawanacc = txtACCkaryawan.Text;
             model.Reselleracc = txtACCReseller.Text;
+            model.Backup = txtBackup.Text;
 
             var _repo = new SettingRepo(this);
             _repo.UpdateSetting(model);
@@ -81,6 +83,17 @@ namespace KasirApp.GUI.Supervisor
             this.Hide();
             this.Close();
             _master.CloseForm();
+        }
+
+        private void btnFolder_Click(object sender, EventArgs e)
+        {
+            var fbd = new FolderBrowserDialog();
+            fbd.Description = "Pilih Folder";
+
+            if (fbd.ShowDialog() == DialogResult.OK)
+            {
+                txtBackup.Text = fbd.SelectedPath;
+            }
         }
     }
 }
