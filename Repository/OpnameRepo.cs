@@ -177,12 +177,11 @@ namespace KasirApp.Repository
             }
         }
 
-        internal void ExportData()
+        internal void ExportData(userDataModel user)
         {
             var listbarang = new List<barangOpname>();
             using (var cmd = new MySqlCommand("SELECT * FROM barangs", op.Conn))
             {
-                cmd.CommandTimeout = 360;
                 var col = 1;
                 var row = 1;
                 op.KonekDB();
@@ -201,43 +200,46 @@ namespace KasirApp.Repository
                         listbarang.Add(brg);
                     }
 
-                    //while (rd.Read())
-                    //{
-                    //    col = 1;
-                    //    for (int i = 0; i < rd.FieldCount; i++)
-                    //    {
-                    //        excelworksheet.Cells[row, col].Value2 = rd[i];
-                    //        col++;
-                    //    }
-                    //    row++;
-                    //}
+                    var fbd = new FolderBrowserDialog();
+                    string filePath = "";
+                    fbd.Description = "Pilih Folder";
 
-                    foreach (var item in listbarang)
+                    if (fbd.ShowDialog() == DialogResult.OK)
                     {
-                        string insert = "";
-                        col = 1;
-                        for (int i = 0; i < 3; i++)
+                        filePath = fbd.SelectedPath;
+
+                        foreach (var item in listbarang)
                         {
-                            if (i == 0)
+                            string insert = "";
+                            col = 1;
+                            for (int i = 0; i < 4; i++)
                             {
-                                insert = item.uuid;
+                                if (i == 0)
+                                {
+                                    insert = item.uuid;
+                                }
+                                else if (i == 1)
+                                {
+                                    insert = item.barcode;
+                                }
+                                else if (i == 2)
+                                {
+                                    insert = item.stok;
+                                }
+                                else if (i == 3)
+                                {
+                                    insert = user.cabang_id;
+                                }
+                                excelworksheet.Cells[row, col].Value2 = insert;
+                                col++;
                             }
-                            else if (i == 1)
-                            {
-                                insert = item.barcode;
-                            }
-                            else if (i == 2)
-                            {
-                                insert = item.stok;
-                            }
-                            excelworksheet.Cells[row, col].Value2 = insert;
-                            col++;
+                            row++;
                         }
-                        row++;
+
+                        excelworksheet.SaveAs($@"{filePath}\ExcelOpname_{DateTime.Now.ToString("ss;mm;HH")}_{DateTime.Now.ToString("dd-MM-yyyy")}.xlsx");
+                        excelWorkbook.Close();
+                        excelapp.Quit();
                     }
-                    excelworksheet.SaveAs(@"C:\Ussage\Excel.xls");
-                    excelWorkbook.Close();
-                    excelapp.Quit();
                 }
             }
         }
@@ -370,8 +372,12 @@ namespace KasirApp.Repository
                         if (rd["Posted"].ToString() == "1")
                         {
                             status = "Posted";
-                            isExist = true;
                         }
+                        isExist = true;
+                    }
+                    else
+                    {
+                        isExist = false;
                     }
                 }
                 using (var rd1 = cmd.ExecuteReader())
@@ -379,6 +385,7 @@ namespace KasirApp.Repository
                     dt.Load(rd1);
                 }
             }
+
 
             if (isExist == false)
             {

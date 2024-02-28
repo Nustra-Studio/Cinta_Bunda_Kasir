@@ -144,7 +144,7 @@ namespace KasirApp.Presenter
 
         internal void Export()
         {
-            _repo.ExportData();
+            _repo.ExportData(_user);
         }
     }
 }
