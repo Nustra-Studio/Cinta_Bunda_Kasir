@@ -13,6 +13,10 @@ using KasirApp.Model;
 using KasirApp.GUI.Master;
 using KasirApp.Presenter;
 using KasirApp.Repository;
+using Quartz.Impl;
+using Quartz;
+using System.Diagnostics;
+using MySql.Data.MySqlClient;
 
 namespace KasirApp.GUI
 {
@@ -100,6 +104,7 @@ namespace KasirApp.GUI
             InitializeComponent();
             logoutState();
             this.WindowState = FormWindowState.Maximized;
+            timer1.Start();
         }
 
         public void logoutState()
@@ -326,6 +331,58 @@ namespace KasirApp.GUI
         {
             var frm = new LaporanAktifitas(this);
             addForm(frm);
+        }
+
+        private BackgroundWorker bw;
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            string date = DateTime.Now.ToString("HH:mm").Trim();
+            if (date == "20:00")
+            {
+                initializeBW();
+            }
+        }
+
+        public void initializeBW()
+        {
+            bw = new BackgroundWorker();
+            bw.WorkerReportsProgress = true;
+            bw.WorkerSupportsCancellation = true;
+            bw.DoWork += initializeBackup;
+            bw.RunWorkerCompleted += doneBackup;
+
+            bw.RunWorkerAsync();
+        }
+
+        Operator op = new Operator();
+        public void initializeBackup(object sender, DoWorkEventArgs e)
+        {
+            string file = $@"{op.CabangConfig().Backup}\backupDBkasir_{DateTime.Now.ToString("HH;mm;ss")}-{DateTime.Now.ToString("dd-MM-yyyy")}.sql";
+            using (op.Conn)
+            {
+                using (MySqlCommand cmd = new MySqlCommand())
+                {
+                    using (MySqlBackup mb = new MySqlBackup(cmd))
+                    {
+                        cmd.Connection = op.Conn;
+                        op.KonekDB();
+                        mb.ExportToFile(file);
+                        op.KonekDB();
+                    }
+                }
+            }
+        }
+
+        public void doneBackup(object sender, RunWorkerCompletedEventArgs e)
+        {
+            NotifyIcon notify1 = new NotifyIcon();
+            notify1.BalloonTipText = "Selesai Backup Database";
+            notify1.BalloonTipTitle = "Backup Done";
+            notify1.Icon = SystemIcons.Information;
+            notify1.Visible = true;
+            notify1.ShowBalloonTip(500);
+
+            bw.CancelAsync();
         }
     }
 }
