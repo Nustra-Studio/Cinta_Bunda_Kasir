@@ -76,7 +76,7 @@ namespace KasirApp.GUI
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(1281, 139);
+            this.groupBox2.Size = new System.Drawing.Size(1457, 139);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             // 
@@ -87,7 +87,7 @@ namespace KasirApp.GUI
             this.chkVoid.Checked = true;
             this.chkVoid.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkVoid.Enabled = false;
-            this.chkVoid.Location = new System.Drawing.Point(1198, 51);
+            this.chkVoid.Location = new System.Drawing.Point(1374, 51);
             this.chkVoid.Margin = new System.Windows.Forms.Padding(4);
             this.chkVoid.Name = "chkVoid";
             this.chkVoid.Size = new System.Drawing.Size(58, 21);
@@ -111,7 +111,7 @@ namespace KasirApp.GUI
             this.chkPosted.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chkPosted.AutoSize = true;
             this.chkPosted.Enabled = false;
-            this.chkPosted.Location = new System.Drawing.Point(1198, 22);
+            this.chkPosted.Location = new System.Drawing.Point(1374, 22);
             this.chkPosted.Margin = new System.Windows.Forms.Padding(4);
             this.chkPosted.Name = "chkPosted";
             this.chkPosted.Size = new System.Drawing.Size(74, 21);
@@ -180,7 +180,7 @@ namespace KasirApp.GUI
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(1281, 404);
+            this.groupBox1.Size = new System.Drawing.Size(1457, 721);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             // 
@@ -235,8 +235,9 @@ namespace KasirApp.GUI
             this.dgv.RowHeadersVisible = false;
             this.dgv.RowHeadersWidth = 51;
             this.dgv.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgv.RowTemplate.Height = 35;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(1273, 327);
+            this.dgv.Size = new System.Drawing.Size(1449, 644);
             this.dgv.TabIndex = 5;
             this.dgv.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Guna;
             this.dgv.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -257,7 +258,7 @@ namespace KasirApp.GUI
             this.dgv.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgv.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgv.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dgv.ThemeStyle.RowsStyle.Height = 22;
+            this.dgv.ThemeStyle.RowsStyle.Height = 35;
             this.dgv.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgv.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
@@ -273,7 +274,7 @@ namespace KasirApp.GUI
             this.guna2ShadowPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.guna2ShadowPanel2.Name = "guna2ShadowPanel2";
             this.guna2ShadowPanel2.ShadowColor = System.Drawing.Color.Black;
-            this.guna2ShadowPanel2.Size = new System.Drawing.Size(1273, 41);
+            this.guna2ShadowPanel2.Size = new System.Drawing.Size(1449, 41);
             this.guna2ShadowPanel2.TabIndex = 0;
             // 
             // label6
@@ -281,7 +282,7 @@ namespace KasirApp.GUI
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(1075, 10);
+            this.label6.Location = new System.Drawing.Point(1251, 10);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(177, 20);
@@ -304,7 +305,7 @@ namespace KasirApp.GUI
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(572, 10);
+            this.label8.Location = new System.Drawing.Point(748, 10);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(193, 20);
@@ -330,6 +331,7 @@ namespace KasirApp.GUI
             // stok
             // 
             this.stok.DataPropertyName = "stok";
+            this.stok.FillWeight = 70F;
             this.stok.HeaderText = "Qty";
             this.stok.MinimumWidth = 6;
             this.stok.Name = "stok";
@@ -379,7 +381,7 @@ namespace KasirApp.GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1281, 543);
+            this.ClientSize = new System.Drawing.Size(1457, 860);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Margin = new System.Windows.Forms.Padding(4);

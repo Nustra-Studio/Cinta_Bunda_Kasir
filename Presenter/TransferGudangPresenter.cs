@@ -132,7 +132,7 @@ namespace KasirApp.Presenter
             _repo.PrintPage(nomerTrans);
         }
 
-        internal DataTable MuatDGV(object text)
+        internal List<TransferGudangModel> MuatDGV(object text)
         {
             return _repo.RefreshData(text);
         }

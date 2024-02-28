@@ -63,21 +63,16 @@ namespace KasirApp.Repository
         public int takeLimit()
         {
             int nomor = 0;
-            using (var cmd = new MySqlCommand("SELECT COUNT(*) FROM histori_transfergudang", op.Conn))
+            using (var cmd = new MySqlCommand("SELECT COUNT(*) FROM report_transfergudang", op.Conn))
             {
                 op.KonekDB();
                 using (var rd = cmd.ExecuteReader())
                 {
                     rd.Read();
                     nomor = Convert.ToInt32(rd["COUNT(*)"].ToString());
-                    if (nomor == 0)
-                    {
-                        nomor++;
-                    }
                 }
             }
-            nomor--;
-            return nomor;
+            return nomor - 1;
         }
 
         public TransferGudangModel showByOrder(int urutan)
@@ -209,24 +204,32 @@ namespace KasirApp.Repository
             return dt;
         }
 
-        internal DataTable RefreshData(object text)
+        internal List<TransferGudangModel> RefreshData(object text)
         {
-            DataTable dt = new DataTable();
+            var listf = new List<TransferGudangModel>();
 
             using (var cmd = new MySqlCommand($"SELECT * FROM histori_transfergudang WHERE nomerTrans = '{text}'", op.Conn))
             {
                 op.KonekDB();
                 using (var rd = cmd.ExecuteReader())
                 {
-                    rd.Read();
-                    if (rd.HasRows)
+                    while (rd.Read())
                     {
-                        dt.Load(rd);
+                        var tf = new TransferGudangModel();
+                        tf.kode_barang = rd["barcode"].ToString();
+                        tf.name = rd["name"].ToString();
+                        tf.stok = Convert.ToInt32(rd["stok"].ToString());
+                        tf.merek_barang = rd["merk"].ToString();
+                        tf.harga = rd["harga"].ToString();
+                        tf.harga_pokok = rd["harga_pokok"].ToString();
+                        tf.harga_grosir = rd["harga_grosir"].ToString();
+                        tf.harga_jual = rd["harga_jual"].ToString();
+                        listf.Add(tf);
                     }
                 }
             }
 
-            return dt;
+            return listf;
         }
 
         public List<TfGudangAPI> GetData(userDataModel model)
@@ -386,7 +389,7 @@ namespace KasirApp.Repository
                         $"INSERT INTO barangs VALUES (null,MD5(RAND()),'{item.category_id}'," +
                         $"'{item.id_supplier}','{item.kode_barang}','{item.harga}','{item.harga_jual}'," +
                         $"'{item.harga_pokok}','{item.harga_grosir}',{item.stok},'{item.keterangan}'," +
-                        $"'{item.name}','{item.merek_barang}','PCS','{DateTime.Now.ToString("yyyy-MM-dd hh-mm-ss")}'," +
+                        $"'{item.name}','{item.merek_barang}','PCS', 0,'{DateTime.Now.ToString("yyyy-MM-dd hh-mm-ss")}'," +
                         $"'{DateTime.Now.ToString("yyyy-MM-dd hh-mm-ss")}')", op.Conn))
                     {
                         cmd.ExecuteNonQuery();
@@ -464,34 +467,34 @@ namespace KasirApp.Repository
 
         private void deleteRecent(userDataModel user)
         {
-            //using (var client = new RestClient(op.url))
-            //{
-            //    var req = new RestRequest("deletetransaction", Method.Post);
-            //    var body = new
-            //    {
-            //        token = user.token,
-            //        uuid = user.uuid
-            //    };
-            //    req.AddJsonBody(body);
+            using (var client = new RestClient(op.url))
+            {
+                var req = new RestRequest("deletetransaction", Method.Post);
+                var body = new
+                {
+                    token = user.token,
+                    uuid = user.uuid
+                };
+                req.AddJsonBody(body);
 
-            //    var response = client.Execute(req);
-            //    try
-            //    {
-            //        if (response.StatusCode == HttpStatusCode.OK)
-            //        {
-            //            mb.InformasiOK("Success");
-            //        }
-            //        else
-            //        {
-            //            mb.PeringatanOK("Terjadi Kesalahan saat memperbarui data inventori");
-            //        }
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        mb.PeringatanOK(ex.Message);
-            //    }
+                var response = client.Execute(req);
+                try
+                {
+                    if (response.StatusCode == HttpStatusCode.OK)
+                    {
+                        mb.InformasiOK("Success");
+                    }
+                    else
+                    {
+                        mb.PeringatanOK("Terjadi Kesalahan saat memperbarui data inventori");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    mb.PeringatanOK(ex.Message);
+                }
 
-            //}
+            }
         }
 
 

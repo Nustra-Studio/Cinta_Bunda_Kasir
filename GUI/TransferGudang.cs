@@ -28,17 +28,18 @@ namespace KasirApp.GUI
         {
             InitializeComponent();
             CenterToParent();
+            dgv.AutoGenerateColumns = false;
             _model = model;
             dateTimePicker1.Text = DateTime.Now.ToString();
             getList();
             closedState();
-            Bot();
             dgv.AutoGenerateColumns = false;
             dta = new DataTable();
             foreach (DataGridViewColumn item in dgv.Columns)
             {
                 dta.Columns.Add(item.Name);
             }
+            Bot();
         }
 
         //Interface Method
@@ -80,7 +81,6 @@ namespace KasirApp.GUI
         public void next()
         {
             ChangeOrder(_pres.lanjut());
-
         }
 
         public void prev()
@@ -117,14 +117,15 @@ namespace KasirApp.GUI
 
         public void ChangeOrder(TransferGudangModel model)
         {
+            txtNomorPTG.Enabled = false;
+            txtKeterangan.Enabled = false;
             if (model == null)
             {
                 return;
             }
             else
             {
-                txtNomorPTG.Enabled = false;
-                txtKeterangan.Enabled = false;
+                setHeader(model);
                 txtNomorPTG.Text = model.nomerTrans;
                 txtKeterangan.Text = model.keterangan;
                 RefreshDGV();
@@ -133,13 +134,26 @@ namespace KasirApp.GUI
             }
         }
 
+
         public void RefreshDGV()
         {
-            dta = _pres.MuatDGV(txtNomorPTG.Text);
+            if (dta != null)
+            {
+                dta.Rows.Clear();
+            }
+            dgv.Refresh();
+
+            var list = _pres.MuatDGV(txtNomorPTG.Text);
+
+            foreach (var item in list)
+            {
+                dta.Rows.Add(item.kode_barang, item.name, item.stok, item.merek_barang, item.harga, item.harga_pokok, item.harga_grosir);
+            }
+
             dgv.DataSource = dta;
         }
 
-        public void setHeader()
+        public void setHeader(TransferGudangModel model)
         {
             if (dgv.Rows.Count == 0)
             {
@@ -149,11 +163,9 @@ namespace KasirApp.GUI
             {
                 dgv.Refresh();
             }
-            var model = new ParrentButtonModel();
-            model = _parpres.headerData(table);
-            txtNomorPTG.Text = model.NomerTrans;
-            txtKeterangan.Text = model.Keterangan;
-            if (model.Status1 == "posted")
+            txtNomorPTG.Text = model.nomerTrans;
+            txtKeterangan.Text = model.keterangan;
+            if (model.status == "posted")
             {
                 chkPosted.Checked = true;
                 chkVoid.Checked = false;
@@ -180,6 +192,7 @@ namespace KasirApp.GUI
             txtNomorPTG.Focus();
             txtNomorPTG.Text = "";
             txtNomorPTG.Enabled = true;
+            txtNomorPTG.ReadOnly = false;
             txtKeterangan.Text = "";
             txtKeterangan.ReadOnly = true;
             chkPosted.Checked = false;
@@ -200,6 +213,8 @@ namespace KasirApp.GUI
             {
                 this.Cursor = Cursors.WaitCursor;
                 listBarang = _pres.ambilData(_model);
+                txtKeterangan.ReadOnly = false;
+                txtKeterangan.Enabled = true;
                 if (listBarang.Count == 0)
                 {
                     MessageBox.Show("Tidak ada Barang yang dikirim", "informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -211,10 +226,10 @@ namespace KasirApp.GUI
 
                     foreach (var md in listBarang)
                     {
-                        if (md.harga_grosir == null)
-                        {
-                            md.harga_grosir = "0";
-                        }
+                        md.harga_grosir = md.harga_grosir ?? "0";
+                        md.harga = md.harga ?? "0";
+                        md.harga_pokok = md.harga_pokok ?? "0";
+                        md.harga_jual = md.harga_jual ?? "0";
 
                         dta.Rows.Add(md.kode_barang, md.name, md.stok, md.merek_barang, md.harga, md.harga_pokok, md.harga_jual, md.harga_grosir);
                     }
