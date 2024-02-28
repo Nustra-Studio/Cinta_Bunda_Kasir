@@ -19,6 +19,8 @@ using ESCPOS_NET;
 using ESCPOS_NET.Emitters;
 using ESCPOS_NET.Utilities;
 using System.Runtime.InteropServices;
+using System.Xml;
+using System.Globalization;
 
 namespace KasirApp.Repository
 {
@@ -165,7 +167,7 @@ namespace KasirApp.Repository
                 {
                     rd.Read();
                     if (rd.HasRows)
-                    {
+                    {   
                         qty =  Convert.ToInt32(rd["quantity"].ToString()) + 1;
                         md.Idkategori = rd["id_category"].ToString();
                         md.Diskon = rd["diskon"].ToString();
@@ -1102,7 +1104,113 @@ namespace KasirApp.Repository
         internal void directPrint2(string nomerTrans)
         {
             nomerTransgb = nomerTrans;
-            printStruk2();
+            //printStruk2();
+            PrintRdlc();
+            //PrinterESC();
+        }
+
+        internal void rdlcPrint(string nomerTrans)
+        {
+            nomerTransgb = nomerTrans;
+            PrintRdlc();
+        }
+
+        private void PrintRdlc()
+        {
+            double RowCount = 0;
+
+            //Take Row count to Height
+            using (var cmd = new MySqlCommand($"SELECT COUNT(*) FROM histori_penjualan where nomerTrans = '{nomerTransgb}'", op.Conn))
+            {
+                op.KonekDB();
+                using (MySqlDataReader rd = cmd.ExecuteReader())
+                {
+                    rd.Read();
+                    RowCount = Convert.ToDouble(rd["COUNT(*)"].ToString());
+                }
+            }
+
+            double stHeigtBd = 7.4;
+            double stHeight = 19.5;
+
+            double incremental = 0.8;
+            
+            double totalBody = stHeigtBd + (incremental * RowCount);
+            double TotalHgt = stHeight + (incremental * RowCount);
+
+            var doc = new XmlDocument();
+            var namesps = new XmlNamespaceManager(doc.NameTable);
+            namesps.AddNamespace("ns1", "http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition");
+            namesps.AddNamespace("ns2", "http://schemas.microsoft.com/SQLServer/reporting/reportdesigner");
+
+            doc.Load($"{op.pathReport("Struk.rdlc")}");
+            
+            XmlNode bodyNode = doc.SelectSingleNode("ns1:Report/ns1:ReportSections/ns1:ReportSection/ns1:Body/ns1:Height", namesps);
+            var heightNode = doc.SelectSingleNode("ns1:Report/ns1:ReportSections/ns1:ReportSection/ns1:Page/ns1:PageHeight", namesps);
+
+            NumberFormatInfo nfi = new NumberFormatInfo();
+            nfi.NumberDecimalSeparator = ".";
+
+            bodyNode.InnerText = $"{totalBody.ToString(nfi)}cm";
+            heightNode.InnerText = $"{TotalHgt.ToString(nfi)}cm";
+
+            doc.Save($"{op.pathReport("Struk.rdlc")}");
+
+            PopulateRDLC();
+        }
+
+        public void PopulateRDLC()
+        {
+            //rows list
+            DataTable dt = new DataTable();
+            string tanggal = "";
+            string user = "";
+            string nomerTrans = "";
+
+            using (var cmd = new MySqlCommand($"SELECT * FROM view_report_penjualan WHERE nomerTrans = '{nomerTransgb}'", op.Conn))
+            {
+                op.KonekDB();
+                using (var rd = cmd.ExecuteReader())
+                {
+                    dt.Load(rd);
+                }
+                using (var rd = cmd.ExecuteReader())
+                {
+                    rd.Read();
+                    tanggal = rd["tanggalnota"].ToString();
+                    user = rd["User"].ToString();
+                    nomerTrans = rd["nomerTrans"].ToString();
+                }
+            }
+
+            var config = op.CabangConfig();
+
+            var param = new ReportParameter[8];
+            param[0] = new ReportParameter("Cabang", config.Nama);
+            param[1] = new ReportParameter("Alamat", config.Alamat);
+            param[2] = new ReportParameter("Baris1", config.Baris1);
+            param[3] = new ReportParameter("Baris2", config.Baris2);
+            param[4] = new ReportParameter("Tanggal", op.convertDate(tanggal));
+            param[5] = new ReportParameter("Waktu", op.convertDateHours(tanggal));
+            param[6] = new ReportParameter("User", user);
+            param[7] = new ReportParameter("NomerTrans", nomerTrans);
+
+            var source = new ReportDataSource("Struk", dt);
+
+            PrintOutRdlc($"{op.pathReport("Struk.rdlc")}", source, param);
+        }
+
+        private void PrintOutRdlc(string path, ReportDataSource source, ReportParameter[] param)
+        {
+            ReportViewer InvoiceReport = new ReportViewer();
+            InvoiceReport.LocalReport.ReportPath = path;
+
+            InvoiceReport.LocalReport.DataSources.Add(source);
+            InvoiceReport.LocalReport.SetParameters(param);
+
+            LocalReport lr = InvoiceReport.LocalReport;
+            lr.PrintToPrinter();
+            InvoiceReport.Clear();
         }
 
         public void PrintPrinter(PembayaranModel model, RootMember mem, userDataModel user)
@@ -1112,39 +1220,111 @@ namespace KasirApp.Repository
             //Cek apakah menggunakan Member
             if (mem == null || Convert.ToInt32(model.Subtotal) < Convert.ToInt32(op.CabangConfig().Minimalcash))
             {
-                PrintStruk();
+                PrintRdlc();
             }
             else if (mem != null && Convert.ToInt32(model.Subtotal) >= Convert.ToInt32(op.CabangConfig().Minimalcash))
             {
-                PrintStrukKupon();
+                PrintRDLCKupon();
             }
+        }
+
+        private void PrintRDLCKupon()
+        {
+            double RowCount = 0;
+
+            //Take Row count to Height
+            using (var cmd = new MySqlCommand($"SELECT COUNT(*) FROM histori_penjualan where nomerTrans = '{nomerTransgb}'", op.Conn))
+            {
+                op.KonekDB();
+                using (MySqlDataReader rd = cmd.ExecuteReader())
+                {
+                    rd.Read();
+                    RowCount = Convert.ToDouble(rd["COUNT(*)"].ToString());
+                }
+            }
+
+            double stHeigtBd = 7.4;
+            double stHeight = 23.4;
+
+            double incremental = 0.8;
+
+            double totalBody = stHeigtBd + (incremental * RowCount);
+            double TotalHgt = stHeight + (incremental * RowCount);
+
+            var doc = new XmlDocument();
+            var namesps = new XmlNamespaceManager(doc.NameTable);
+            namesps.AddNamespace("ns1", "http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition");
+            namesps.AddNamespace("ns2", "http://schemas.microsoft.com/SQLServer/reporting/reportdesigner");
+
+            doc.Load($"{op.pathReport("StrukKupon.rdlc")}");
+
+            XmlNode bodyNode = doc.SelectSingleNode("ns1:Report/ns1:ReportSections/ns1:ReportSection/ns1:Body/ns1:Height", namesps);
+            var heightNode = doc.SelectSingleNode("ns1:Report/ns1:ReportSections/ns1:ReportSection/ns1:Page/ns1:PageHeight", namesps);
+
+            NumberFormatInfo nfi = new NumberFormatInfo();
+            nfi.NumberDecimalSeparator = ".";
+
+            bodyNode.InnerText = $"{totalBody.ToString(nfi)}cm";
+            heightNode.InnerText = $"{TotalHgt.ToString(nfi)}cm";
+
+            doc.Save($"{op.pathReport("StrukKupon.rdlc")}");
+
+            PopulateRDLCkupon();
+        }
+
+        private void PopulateRDLCkupon()
+        {
+            //rows list
+            DataTable dt = new DataTable();
+            string tanggal = "";
+            string user = "";
+            string nomerTrans = "";
+
+            using (var cmd = new MySqlCommand($"SELECT * FROM view_report_penjualan WHERE nomerTrans = '{nomerTransgb}'", op.Conn))
+            {
+                op.KonekDB();
+                using (var rd = cmd.ExecuteReader())
+                {
+                    dt.Load(rd);
+                }
+                using (var rd = cmd.ExecuteReader())
+                {
+                    rd.Read();
+                    tanggal = rd["tanggalnota"].ToString();
+                    user = rd["User"].ToString();
+                    nomerTrans = rd["nomerTrans"].ToString();
+                }
+            }
+
+            var config = op.CabangConfig();
+
+            var param = new ReportParameter[11];
+            param[0] = new ReportParameter("Cabang", config.Nama);
+            param[1] = new ReportParameter("Alamat", config.Alamat);
+            param[2] = new ReportParameter("Baris1", config.Baris1);
+            param[3] = new ReportParameter("Baris2", config.Baris2);
+            param[4] = new ReportParameter("Tanggal", op.convertDate(tanggal));
+            param[5] = new ReportParameter("Waktu", op.convertDateHours(tanggal));
+            param[6] = new ReportParameter("User", user);
+            param[7] = new ReportParameter("NomerTrans", nomerTrans);
+            param[8] = new ReportParameter("NamaMem", usr.member.name);
+            param[9] = new ReportParameter("NoMem", usr.member.phone);
+            param[10] = new ReportParameter("IdentitasMem", usr.member.email);
+
+            var source = new ReportDataSource("Struk", dt);
+
+            PrintOutRdlc($"{op.pathReport("StrukKupon.rdlc")}", source, param);
         }
 
         public void printStruk2()
         {
-
             PrintDocument pd = new PrintDocument();
-            var paper = new PaperSize("roll", 470, 500);
-            pd.DefaultPageSettings.PaperSize = paper;
             pd.PrinterSettings.PrinterName = new PrinterSettings().PrinterName;
             pd.PrintPage += new PrintPageEventHandler(this.onPrintpage);
 
-            pageHeight = takeheight(nomerTransgb);
-
-            pd.DefaultPageSettings.PaperSize.Height = Convert.ToInt32(pageHeight);
-
             pd.Print();
         }
 
-        public void PrintStruk()
-        {
-            PrintDocument pd = new PrintDocument();
-            //pd.PrinterSettings.PrinterName = new PrinterSettings().PrinterName;
-            pd.PrinterSettings.PrinterName = "EPSON LX-310 ESC/P";
-            pd.PrintPage += new PrintPageEventHandler(this.onPrintpage);
-
-            pd.Print();
-        }
 
         //ESC POS printing 
         public int takeheight(string nomerTrans)
@@ -1214,6 +1394,7 @@ namespace KasirApp.Repository
             Font alamat = new Font("Cambria", 8);
             Font alamat1 = new Font("Cambria", 10);
             SolidBrush brush = new SolidBrush(System.Drawing.Color.Black);
+            Brush bg = new SolidBrush(System.Drawing.Color.White);
             Pen blackPen = new Pen(System.Drawing.Color.Black, 1);
 
             var right = new StringFormat() { Alignment = StringAlignment.Far };
@@ -1226,7 +1407,7 @@ namespace KasirApp.Repository
             var rect = new RectangleF(0, 0, width, 300f);
 
             PointF point1 = new PointF(0f, 50f);
-            //Garis 11,5cm
+            //line 11,5cm
             //PointF point2 = new PointF(453f, 50f);
             PointF point2 = new PointF(433f, 50f);
 
@@ -1234,7 +1415,7 @@ namespace KasirApp.Repository
             g.DrawString(config.Nama, header, brush, CusRec(0, 0, width, 100f), mid);
             g.DrawString(config.Alamat, alamat, brush, CusRec(0, 25, width, 100f), mid);
             g.DrawLine(blackPen, point1, point2);
-            g.DrawString(usernama, font, brush, CusRec(213, 55, halfWidth, 100f), right);
+            g.DrawString(usernama, font, brush, CusRec(143, 55, halfWidth + 70, 100f), right);
             g.DrawString(nomerTransgb, font, brush, CusRec(0, 55, halfWidth, 100f), left);
             g.DrawString(op.convertDateHours(tanggal), font, brush, CusRec(213, 80, halfWidth, 100f), right);
             g.DrawString(op.convertDate(tanggal), font, brush, CusRec(0, 80, halfWidth, 100f), left);
@@ -1262,7 +1443,7 @@ namespace KasirApp.Repository
             //Jarak Y = 40
             g.DrawString("Subtotal :", font, brush, CusRec(163, 180 + yta, 150, 100), right);
             g.DrawString("Diskon :", font, brush, CusRec(163, 200 + yta, 150, 100), right);
-            g.DrawString("Diskon Member :", font, brush, CusRec(163, 220 + yta, 150, 100), right);
+            g.DrawString("Diskon Member :", font, brush, CusRec(133, 220 + yta, 150 + 30, 100), right);
             g.DrawString("Total Biaya :", font, brush, CusRec(163, 240 + yta, 150, 100), right);
             g.DrawString("Bayar :", font, brush, CusRec(163, 260 + yta, 150, 100), right);
             g.DrawString("Kembali :", font, brush, CusRec(163, 280 + yta, 150, 100), right);
@@ -1281,50 +1462,7 @@ namespace KasirApp.Repository
             g.DrawString(config.Baris2, alamat1, brush, CusRec(0, 390 + yta, width, 100f), mid);
             g.DrawString(config.Baris3, alamat1, brush, CusRec(0, 410 + yta, width, 50f), mid);
 
-            pageHeight = 410 + yta;
-
-            SendStopRollingCommand("EPSON LX-310 ESC/P");
-
-            // Indicate that there are no more pages to print
             e.HasMorePages = false;
-        }
-
-        public class RawPrinterHelper
-        {
-
-            [System.Runtime.InteropServices.DllImport("winspool.Drv", EntryPoint = "WritePrinter", SetLastError = true)]
-            public static extern bool WritePrinter(IntPtr hPrinter, IntPtr pBytes, int dwCount, out int dwWritten);
-
-            public static bool SendStringToPrinter(string szPrinterName, string szString)
-            {
-                IntPtr pBytes;
-                IntPtr pname;
-                int dwCount;
-
-                dwCount = szString.Length;
-
-                pname = Marshal.StringToCoTaskMemAnsi(szPrinterName);
-                pBytes = Marshal.StringToCoTaskMemAnsi(szString);
-                WritePrinter(pname, pBytes, dwCount, out _);
-                Marshal.FreeCoTaskMem(pBytes);
-
-                return true;
-            }
-        }
-
-        private static void SendStopRollingCommand(string printerName)
-        {
-            try
-            {
-                // ESC C: Cancel paper feed
-                string stopRollingCommand = "\x1B" + "C";
-
-                RawPrinterHelper.SendStringToPrinter(printerName, stopRollingCommand);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error sending stop rolling command: " + ex.Message);
-            }
         }
 
         public void PrintStrukKupon()
@@ -1334,6 +1472,7 @@ namespace KasirApp.Repository
             pd.PrintPage += new PrintPageEventHandler(this.onPrintpageKupon);
             pd.DefaultPageSettings.PaperSize = new PaperSize("CustomSize", 453, Convert.ToInt32(pageHeight)- 100);
             pd.Print();
+            pd.Dispose();
         }
 
         public void onPrintpageKupon(object sender, PrintPageEventArgs e)
@@ -1405,7 +1544,7 @@ namespace KasirApp.Repository
             g.DrawString(config.Nama, header, brush, CusRec(0, 0, width, 100f), mid);
             g.DrawString(config.Alamat, alamat, brush, CusRec(0, 25, width, 100f), mid);
             g.DrawLine(blackPen, point1, point2);
-            g.DrawString(usernama, font, brush, CusRec(213, 55, halfWidth, 100f), right);
+            g.DrawString(usernama, font, brush, CusRec(143, 55, halfWidth + 70, 100f), right);
             g.DrawString(nomerTransgb, font, brush, CusRec(0, 55, halfWidth, 100f), left);
             g.DrawString(op.convertDateHours(tanggal), font, brush, CusRec(213, 80, halfWidth, 100f), right);
             g.DrawString(op.convertDate(tanggal), font, brush, CusRec(0, 80, halfWidth, 100f), left);
@@ -1473,6 +1612,44 @@ namespace KasirApp.Repository
         {
             var rc = new RectangleF(x, y, w, h);
             return rc;
+        }
+
+        public class RawPrinterHelper
+        {
+
+            [System.Runtime.InteropServices.DllImport("winspool.Drv", EntryPoint = "WritePrinter", SetLastError = true)]
+            public static extern bool WritePrinter(IntPtr hPrinter, IntPtr pBytes, int dwCount, out int dwWritten);
+
+            public static bool SendStringToPrinter(string szPrinterName, string szString)
+            {
+                IntPtr pBytes;
+                IntPtr pname;
+                int dwCount;
+
+                dwCount = szString.Length;
+
+                pname = Marshal.StringToCoTaskMemAnsi(szPrinterName);
+                pBytes = Marshal.StringToCoTaskMemAnsi(szString);
+                WritePrinter(pname, pBytes, dwCount, out _);
+                Marshal.FreeCoTaskMem(pBytes);
+
+                return true;
+            }
+        }
+
+        private static void SendStopRollingCommand(string printerName)
+        {
+            try
+            {
+                // ESC C: Cancel paper feed
+                string stopRollingCommand = "\x1B" + "C";
+
+                RawPrinterHelper.SendStringToPrinter(printerName, stopRollingCommand);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error sending stop rolling command: " + ex.Message);
+            }
         }
     }
 }

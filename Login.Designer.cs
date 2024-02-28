@@ -138,7 +138,6 @@
             this.txtUser.SelectedText = "";
             this.txtUser.Size = new System.Drawing.Size(328, 46);
             this.txtUser.TabIndex = 11;
-            this.txtUser.Text = "supervisor_CB_1_Kedungwaru";
             this.txtUser.TextOffsetX = 35;
             // 
             // txtPass
@@ -158,7 +157,6 @@
             this.txtPass.SelectedText = "";
             this.txtPass.Size = new System.Drawing.Size(328, 46);
             this.txtPass.TabIndex = 11;
-            this.txtPass.Text = "cintabunda123";
             this.txtPass.TextOffsetX = 35;
             this.txtPass.UseSystemPasswordChar = true;
             // 

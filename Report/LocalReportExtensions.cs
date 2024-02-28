@@ -23,8 +23,8 @@ namespace Microsoft.Reporting.WinForms
             string deviceInfo =
             $@"<DeviceInfo>
                     <OutputFormat>EMF</OutputFormat>
-                    <PageWidth>{pageSettings.PaperSize.Width * 100}</PageWidth>
-                    <PageHeight>{pageSettings.PaperSize.Height * 100}</PageHeight>
+                    <PageWidth>{pageSettings.PaperSize.Width * 100}in</PageWidth>
+                    <PageHeight>{pageSettings.PaperSize.Height * 100}in</PageHeight>
                     <MarginTop>{pageSettings.Margins.Top * 100}in</MarginTop>
                     <MarginLeft>{pageSettings.Margins.Left * 100}in</MarginLeft>
                     <MarginRight>{pageSettings.Margins.Right * 100}in</MarginRight>

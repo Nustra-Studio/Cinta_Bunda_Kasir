@@ -17,8 +17,9 @@ namespace KasirApp.Model
 
         public string url = "https://inventory.cinta-bunda.com/api/";
         public string urlcinta = "https://inventory.cinta-bunda.com";
-        public MySqlConnection Conn = new MySqlConnection("server=localhost;user id=root;password =123;port=3306;database=kasirdb_deploy");
-        public MySqlConnection Conn1 = new MySqlConnection("server=localhost;user id=root;password =123;port=3306;database=kasirdb_deploy");
+        //3306 ORI 3307 TOYS2
+        public MySqlConnection Conn = new MySqlConnection("server=localhost;user id=root;password =123;port=3306;database=kasirdb_deploy;Connection Timeout=3600;");
+        public MySqlConnection Conn1 = new MySqlConnection("server=localhost;user id=root;password =123;port=3306;database=kasirdb_deploy;Connection Timeout=3600;");
         public string myDatetime = DateTime.Now.ToString("yyyy-MM-dd hh-mm-ss");
         public string simpleDate = DateTime.Now.ToString("dd/MMM/yy");
         
@@ -191,6 +192,7 @@ namespace KasirApp.Model
                     model.Valuepoint = rd["nilaipoint"].ToString();
                     model.Minimalcash = rd["minimumkupon"].ToString();
                     model.StokMinimum = rd["stokMinimum"].ToString();
+                    model.Backup = rd["backup"].ToString();
                 }
             }
             return model;
@@ -226,14 +228,6 @@ namespace KasirApp.Model
                 KonekDB();
                 cmd.ExecuteNonQuery();
                 KonekDB();
-            }
-        }
-
-        public void hapusHistoriBarangs(HistoriStokModel model)
-        {
-            using (var cmd = new MySqlCommand(""))
-            {
-
             }
         }
 

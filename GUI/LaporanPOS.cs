@@ -158,6 +158,7 @@ namespace KasirApp.GUI
                     }
                 }
             }
+
             //Ambil setting cabang
             var md = op.CabangConfig();
 

@@ -314,7 +314,7 @@ namespace KasirApp.GUI
             else if (e.KeyCode == Keys.F6)
             {
                 var pop = new PopUp(this);
-                pop.getDataList($"SELECT totalBiaya AS 'Total', id_penjualan as 'No Struk' FROM report_penjualan", "SELECT totalBiaya AS 'Total', id_penjualan as 'No Struk' FROM report_penjualan WHERE id_penjualan LIKE ");
+                pop.getDataList($"SELECT totalBiaya AS 'Total', id_penjualan as 'No Struk' FROM report_penjualan ORDER BY id_penjualan DESC", "SELECT totalBiaya AS 'Total', id_penjualan as 'No Struk' FROM report_penjualan WHERE id_penjualan LIKE ");
                 pop.Show();
                 cekstruk = true;
             }
