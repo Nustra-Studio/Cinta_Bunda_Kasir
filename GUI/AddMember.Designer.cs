@@ -32,6 +32,7 @@ namespace KasirApp.GUI
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddMember));
             this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnReset = new Guna.UI.WinForms.GunaGradientButton();
             this.gunaGradientButton2 = new Guna.UI.WinForms.GunaGradientButton();
             this.btnProses = new Guna.UI.WinForms.GunaGradientButton();
             this.txtAlamat = new Guna.UI.WinForms.GunaTextBox();
@@ -65,6 +66,7 @@ namespace KasirApp.GUI
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
+            this.panel1.Controls.Add(this.btnReset);
             this.panel1.Controls.Add(this.gunaGradientButton2);
             this.panel1.Controls.Add(this.btnProses);
             this.panel1.Controls.Add(this.txtAlamat);
@@ -83,6 +85,37 @@ namespace KasirApp.GUI
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(751, 429);
             this.panel1.TabIndex = 9;
+            // 
+            // btnReset
+            // 
+            this.btnReset.AnimationHoverSpeed = 0.07F;
+            this.btnReset.AnimationSpeed = 0.03F;
+            this.btnReset.BaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
+            this.btnReset.BaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btnReset.BorderColor = System.Drawing.Color.Black;
+            this.btnReset.BorderSize = 1;
+            this.btnReset.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReset.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnReset.FocusedColor = System.Drawing.Color.Empty;
+            this.btnReset.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnReset.ForeColor = System.Drawing.Color.Black;
+            this.btnReset.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            this.btnReset.Image = null;
+            this.btnReset.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnReset.Location = new System.Drawing.Point(580, 339);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(4);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.OnHoverBaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
+            this.btnReset.OnHoverBaseColor2 = System.Drawing.Color.White;
+            this.btnReset.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnReset.OnHoverForeColor = System.Drawing.Color.Black;
+            this.btnReset.OnHoverImage = null;
+            this.btnReset.OnPressedColor = System.Drawing.Color.Black;
+            this.btnReset.Size = new System.Drawing.Size(140, 37);
+            this.btnReset.TabIndex = 11;
+            this.btnReset.Text = "Reset Password";
+            this.btnReset.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // gunaGradientButton2
             // 
@@ -287,6 +320,7 @@ namespace KasirApp.GUI
             this.Name = "AddMember";
             this.Padding = new System.Windows.Forms.Padding(13, 12, 13, 12);
             this.Text = "AddMember";
+            this.Load += new System.EventHandler(this.AddMember_Load);
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -309,5 +343,6 @@ namespace KasirApp.GUI
         private System.Windows.Forms.Label label4;
         private Guna.UI.WinForms.GunaTextBox txtAlamat;
         private System.Windows.Forms.Label label5;
+        private Guna.UI.WinForms.GunaGradientButton btnReset;
     }
 }

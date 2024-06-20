@@ -19,6 +19,7 @@ namespace KasirApp.GUI
         Operator op = new Operator();
         addMemberPresenter _prn;
         userDataModel _user;
+        iMasterForm _master;
 
         //InterFaces
         public string nama { get => txtNama.Text; set => txtNama.Text = value; }
@@ -27,12 +28,13 @@ namespace KasirApp.GUI
         public string alamat { get => txtAlamat.Text; set => txtAlamat.Text = value; }
 
         //public readonly Action _getData;
-        public AddMember(userDataModel usr)
+        public AddMember(userDataModel usr, iMasterForm form)
         {
             InitializeComponent();
             CenterToParent();
             _user = usr;
             _prn = new addMemberPresenter(_user, this);
+            _master = form;
             //_getData = frm;
         }
 
@@ -59,6 +61,17 @@ namespace KasirApp.GUI
         private void gunaGradientButton2_Click(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            var form = new PasswordReset(_user,this);
+            _master.subForm(form);
+        }
+
+        private void AddMember_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

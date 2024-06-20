@@ -35,5 +35,15 @@ namespace KasirApp.Presenter
 
             _repo.Regist(model);
         }
+
+        internal bool AttemptReset()
+        {
+            var model = new MemberModel();
+            model.Token = _user.token.ToString();
+            model.Email = _mem.email.ToString();
+            model.Phone = _mem.telpon.ToString();
+            model.Password = "12345678";
+            return _repo.ResetPassword(model);
+        }
     }
 }

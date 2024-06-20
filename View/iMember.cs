@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KasirApp.View
 {
-    interface iMember
+    public interface iMember
     {
         string nama { get; set; }
         string telpon { get; set; }
