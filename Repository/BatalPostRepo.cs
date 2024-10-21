@@ -147,6 +147,13 @@ namespace KasirApp.Repository
                     op.KonekDB();
                 }
 
+                using (var cmd = new MySqlCommand($"DELETE FROM report_penjualan_retur where nomerTrans='{model.NomerTrans}'", op.Conn))
+                {
+                    op.KonekDB();
+                    cmd.ExecuteNonQuery();
+                    op.KonekDB();
+                }
+
                 masukanLaporan(model);
                 mb.InformasiOK("Batal Posting Selesai");
                 op.insertHistoriUser(_user, "Cinta Bunda - batalPOS", "btl Posting POS");
@@ -457,6 +464,13 @@ namespace KasirApp.Repository
 
                 //Penghapusan Records
                 using (var cmd = new MySqlCommand($"DELETE FROM report_retur_pos where nomerTrans='{model.NomerTrans}'", op.Conn))
+                {
+                    op.KonekDB();
+                    cmd.ExecuteNonQuery();
+                    op.KonekDB();
+                }
+
+                using (var cmd = new MySqlCommand($"DELETE FROM report_penjualan_retur where nomerTrans = '{model.NomerTrans}' AND status='retur'", op.Conn))
                 {
                     op.KonekDB();
                     cmd.ExecuteNonQuery();

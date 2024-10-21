@@ -55,11 +55,10 @@ namespace KasirApp.GUI
             this.iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.UserAlt;
             this.iconPictureBox2.IconColor = System.Drawing.Color.Lime;
             this.iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox2.IconSize = 124;
-            this.iconPictureBox2.Location = new System.Drawing.Point(44, 147);
-            this.iconPictureBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.iconPictureBox2.IconSize = 99;
+            this.iconPictureBox2.Location = new System.Drawing.Point(33, 119);
             this.iconPictureBox2.Name = "iconPictureBox2";
-            this.iconPictureBox2.Size = new System.Drawing.Size(132, 124);
+            this.iconPictureBox2.Size = new System.Drawing.Size(99, 101);
             this.iconPictureBox2.TabIndex = 8;
             this.iconPictureBox2.TabStop = false;
             // 
@@ -80,10 +79,9 @@ namespace KasirApp.GUI
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.iconPictureBox2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(13, 12);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Location = new System.Drawing.Point(10, 10);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(751, 429);
+            this.panel1.Size = new System.Drawing.Size(564, 355);
             this.panel1.TabIndex = 9;
             // 
             // btnReset
@@ -102,8 +100,7 @@ namespace KasirApp.GUI
             this.btnReset.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.btnReset.Image = null;
             this.btnReset.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnReset.Location = new System.Drawing.Point(580, 339);
-            this.btnReset.Margin = new System.Windows.Forms.Padding(4);
+            this.btnReset.Location = new System.Drawing.Point(435, 290);
             this.btnReset.Name = "btnReset";
             this.btnReset.OnHoverBaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
             this.btnReset.OnHoverBaseColor2 = System.Drawing.Color.White;
@@ -111,7 +108,7 @@ namespace KasirApp.GUI
             this.btnReset.OnHoverForeColor = System.Drawing.Color.Black;
             this.btnReset.OnHoverImage = null;
             this.btnReset.OnPressedColor = System.Drawing.Color.Black;
-            this.btnReset.Size = new System.Drawing.Size(140, 37);
+            this.btnReset.Size = new System.Drawing.Size(105, 30);
             this.btnReset.TabIndex = 11;
             this.btnReset.Text = "Reset Password";
             this.btnReset.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -133,8 +130,7 @@ namespace KasirApp.GUI
             this.gunaGradientButton2.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.gunaGradientButton2.Image = null;
             this.gunaGradientButton2.ImageSize = new System.Drawing.Size(20, 20);
-            this.gunaGradientButton2.Location = new System.Drawing.Point(415, 339);
-            this.gunaGradientButton2.Margin = new System.Windows.Forms.Padding(4);
+            this.gunaGradientButton2.Location = new System.Drawing.Point(311, 290);
             this.gunaGradientButton2.Name = "gunaGradientButton2";
             this.gunaGradientButton2.OnHoverBaseColor1 = System.Drawing.Color.White;
             this.gunaGradientButton2.OnHoverBaseColor2 = System.Drawing.Color.LightGreen;
@@ -142,7 +138,7 @@ namespace KasirApp.GUI
             this.gunaGradientButton2.OnHoverForeColor = System.Drawing.Color.Black;
             this.gunaGradientButton2.OnHoverImage = null;
             this.gunaGradientButton2.OnPressedColor = System.Drawing.Color.Black;
-            this.gunaGradientButton2.Size = new System.Drawing.Size(105, 37);
+            this.gunaGradientButton2.Size = new System.Drawing.Size(79, 30);
             this.gunaGradientButton2.TabIndex = 5;
             this.gunaGradientButton2.Text = "Batal";
             this.gunaGradientButton2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -164,8 +160,7 @@ namespace KasirApp.GUI
             this.btnProses.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.btnProses.Image = null;
             this.btnProses.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnProses.Location = new System.Drawing.Point(295, 339);
-            this.btnProses.Margin = new System.Windows.Forms.Padding(4);
+            this.btnProses.Location = new System.Drawing.Point(221, 290);
             this.btnProses.Name = "btnProses";
             this.btnProses.OnHoverBaseColor1 = System.Drawing.Color.White;
             this.btnProses.OnHoverBaseColor2 = System.Drawing.Color.LightGreen;
@@ -173,7 +168,7 @@ namespace KasirApp.GUI
             this.btnProses.OnHoverForeColor = System.Drawing.Color.Black;
             this.btnProses.OnHoverImage = null;
             this.btnProses.OnPressedColor = System.Drawing.Color.Black;
-            this.btnProses.Size = new System.Drawing.Size(105, 37);
+            this.btnProses.Size = new System.Drawing.Size(79, 30);
             this.btnProses.TabIndex = 4;
             this.btnProses.Text = "Proses";
             this.btnProses.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -189,13 +184,12 @@ namespace KasirApp.GUI
             this.txtAlamat.FocusedBorderColor = System.Drawing.Color.Lime;
             this.txtAlamat.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.txtAlamat.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txtAlamat.Location = new System.Drawing.Point(295, 227);
-            this.txtAlamat.Margin = new System.Windows.Forms.Padding(4);
+            this.txtAlamat.Location = new System.Drawing.Point(221, 184);
             this.txtAlamat.Multiline = true;
             this.txtAlamat.Name = "txtAlamat";
             this.txtAlamat.PasswordChar = '\0';
             this.txtAlamat.SelectedText = "";
-            this.txtAlamat.Size = new System.Drawing.Size(425, 104);
+            this.txtAlamat.Size = new System.Drawing.Size(319, 100);
             this.txtAlamat.TabIndex = 3;
             // 
             // txtEmail
@@ -208,12 +202,11 @@ namespace KasirApp.GUI
             this.txtEmail.FocusedBorderColor = System.Drawing.Color.Lime;
             this.txtEmail.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txtEmail.Location = new System.Drawing.Point(295, 173);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
+            this.txtEmail.Location = new System.Drawing.Point(221, 141);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.PasswordChar = '\0';
             this.txtEmail.SelectedText = "";
-            this.txtEmail.Size = new System.Drawing.Size(425, 46);
+            this.txtEmail.Size = new System.Drawing.Size(319, 37);
             this.txtEmail.TabIndex = 2;
             // 
             // noHp
@@ -226,22 +219,20 @@ namespace KasirApp.GUI
             this.noHp.FocusedBorderColor = System.Drawing.Color.Lime;
             this.noHp.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.noHp.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.noHp.Location = new System.Drawing.Point(295, 117);
-            this.noHp.Margin = new System.Windows.Forms.Padding(4);
+            this.noHp.Location = new System.Drawing.Point(221, 95);
             this.noHp.Name = "noHp";
             this.noHp.PasswordChar = '\0';
             this.noHp.SelectedText = "";
-            this.noHp.Size = new System.Drawing.Size(425, 46);
+            this.noHp.Size = new System.Drawing.Size(319, 37);
             this.noHp.TabIndex = 1;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(199, 227);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(149, 184);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(84, 25);
+            this.label5.Size = new System.Drawing.Size(67, 20);
             this.label5.TabIndex = 10;
             this.label5.Text = "Alamat :";
             // 
@@ -249,10 +240,9 @@ namespace KasirApp.GUI
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(137, 182);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(103, 148);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(150, 25);
+            this.label4.Size = new System.Drawing.Size(118, 20);
             this.label4.TabIndex = 10;
             this.label4.Text = "Identitas(KTP) :";
             // 
@@ -266,22 +256,20 @@ namespace KasirApp.GUI
             this.txtNama.FocusedBorderColor = System.Drawing.Color.Lime;
             this.txtNama.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.txtNama.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txtNama.Location = new System.Drawing.Point(295, 63);
-            this.txtNama.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNama.Location = new System.Drawing.Point(221, 51);
             this.txtNama.Name = "txtNama";
             this.txtNama.PasswordChar = '\0';
             this.txtNama.SelectedText = "";
-            this.txtNama.Size = new System.Drawing.Size(425, 46);
+            this.txtNama.Size = new System.Drawing.Size(319, 37);
             this.txtNama.TabIndex = 0;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(203, 125);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(152, 102);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 25);
+            this.label3.Size = new System.Drawing.Size(63, 20);
             this.label3.TabIndex = 10;
             this.label3.Text = "No HP :";
             // 
@@ -289,10 +277,9 @@ namespace KasirApp.GUI
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(208, 71);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(156, 58);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 25);
+            this.label1.Size = new System.Drawing.Size(59, 20);
             this.label1.TabIndex = 10;
             this.label1.Text = "Nama :";
             // 
@@ -300,25 +287,23 @@ namespace KasirApp.GUI
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(57, 118);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(43, 96);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 25);
+            this.label2.Size = new System.Drawing.Size(76, 20);
             this.label2.TabIndex = 10;
             this.label2.Text = "Add User";
             // 
             // AddMember
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(777, 453);
+            this.ClientSize = new System.Drawing.Size(584, 375);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.MaximumSize = new System.Drawing.Size(795, 500);
-            this.MinimumSize = new System.Drawing.Size(795, 500);
+            this.MaximumSize = new System.Drawing.Size(600, 414);
+            this.MinimumSize = new System.Drawing.Size(600, 414);
             this.Name = "AddMember";
-            this.Padding = new System.Windows.Forms.Padding(13, 12, 13, 12);
+            this.Padding = new System.Windows.Forms.Padding(10);
             this.Text = "AddMember";
             this.Load += new System.EventHandler(this.AddMember_Load);
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();

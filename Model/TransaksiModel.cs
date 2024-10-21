@@ -9,6 +9,7 @@ namespace KasirApp.Model
     public class TransaksiModel
     {
         private string nomorPJ;
+        private string uuid;
         private string idkategori;
         private string nama;
         private string barkode;
@@ -41,5 +42,6 @@ namespace KasirApp.Model
         public string Idkategori { get => idkategori; set => idkategori = value; }
         public string Satuan { get => satuan; set => satuan = value; }
         public string Nodiskon { get => nodiskon; set => nodiskon = value; }
+        public string Uuid { get => uuid; set => uuid = value; }
     }
 }

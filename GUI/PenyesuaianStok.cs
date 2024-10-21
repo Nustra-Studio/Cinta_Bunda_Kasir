@@ -180,7 +180,10 @@ namespace KasirApp.GUI
         //Local Method
         public void clearDGV()
         {
+            if (_dt != null)
+            {
             _dt.Clear();
+            }
             DGV.DataSource = _dt;
             txtNomer.Clear();
             txtKeterangan.Clear();

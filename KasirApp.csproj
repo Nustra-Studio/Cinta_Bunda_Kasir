@@ -27,11 +27,12 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
+    <UpdateUrl>http://localhost/KasirApp/</UpdateUrl>
     <ProductName>Cinta Bunda Kasir</ProductName>
     <PublisherName>KediriApp</PublisherName>
     <SuiteName>NustraStudio</SuiteName>
     <MinimumRequiredVersion>1.0.0.0</MinimumRequiredVersion>
-    <ApplicationRevision>45</ApplicationRevision>
+    <ApplicationRevision>107</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -252,6 +253,12 @@
     <Compile Include="GUI\AddMember.Designer.cs">
       <DependentUpon>AddMember.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\BackupUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\BackupUI.Designer.cs">
+      <DependentUpon>BackupUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Bayar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -299,6 +306,12 @@
     </Compile>
     <Compile Include="GUI\Master\frmDepartemen.Designer.cs">
       <DependentUpon>frmDepartemen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\PasswordReset.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\PasswordReset.Designer.cs">
+      <DependentUpon>PasswordReset.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Pembayaran.cs">
       <SubType>Form</SubType>
@@ -353,6 +366,12 @@
     </Compile>
     <Compile Include="GUI\subSatuan.Designer.cs">
       <DependentUpon>subSatuan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\SuperAdmin\SettingKoneksi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\SuperAdmin\SettingKoneksi.Designer.cs">
+      <DependentUpon>SettingKoneksi.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Supervisor\batalOpname.cs">
       <SubType>Form</SubType>
@@ -462,6 +481,7 @@
     <Compile Include="Model\PembayaranModel.cs" />
     <Compile Include="Model\PenyesuaianModel.cs" />
     <Compile Include="Model\ReturModel.cs" />
+    <Compile Include="Model\SendTransaksi.cs" />
     <Compile Include="Model\SettingCabangModel.cs" />
     <Compile Include="Model\SettingModel.cs" />
     <Compile Include="Model\TransaksiModel.cs" />
@@ -550,9 +570,18 @@
     <Compile Include="View\iUser.cs" />
     <Content Include="Report\ReportPOS\POSharianDetail.rdlc" />
     <Content Include="Resources\excel %281%29.png" />
+    <Content Include="Model\config.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Report\Struk.rdlc" />
+    <Content Include="Report\ReportOpname.rdlc" />
+    <EmbeddedResource Include="Report\Struk - Copy.rdlc" />
     <None Include="Resources\upload.png" />
     <EmbeddedResource Include="GUI\AddMember.resx">
       <DependentUpon>AddMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\BackupUI.resx">
+      <DependentUpon>BackupUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Bayar.resx">
       <DependentUpon>Bayar.cs</DependentUpon>
@@ -577,6 +606,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Master\frmDepartemen.resx">
       <DependentUpon>frmDepartemen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\PasswordReset.resx">
+      <DependentUpon>PasswordReset.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Pembayaran.resx">
       <DependentUpon>Pembayaran.cs</DependentUpon>
@@ -604,6 +636,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\subSatuan.resx">
       <DependentUpon>subSatuan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\SuperAdmin\SettingKoneksi.resx">
+      <DependentUpon>SettingKoneksi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Supervisor\batalOpname.resx">
       <DependentUpon>batalOpname.cs</DependentUpon>
@@ -675,7 +710,7 @@
     <Content Include="Report\StokDetail.rdlc" />
     <Content Include="Report\StokMinim.rdlc" />
     <Content Include="Report\StokMinus.rdlc" />
-    <Content Include="Report\Struk.rdlc" />
+    <Content Include="Report\Struk1.rdlc" />
     <Content Include="Report\StrukKupon.rdlc" />
     <Content Include="Report\TransferGudang.rdlc" />
     <None Include="app.manifest" />

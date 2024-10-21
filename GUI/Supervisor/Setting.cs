@@ -42,6 +42,7 @@ namespace KasirApp.GUI.Supervisor
             txtACCkaryawan.Text = model.Karyawanacc;
             txtACCReseller.Text = model.Reselleracc;
             txtBackup.Text = model.Backup;
+            txtJeda.Text = model.Jeda;
         }
 
         public void Numeric(object sender, KeyPressEventArgs e)
@@ -67,6 +68,7 @@ namespace KasirApp.GUI.Supervisor
             model.Karyawanacc = txtACCkaryawan.Text;
             model.Reselleracc = txtACCReseller.Text;
             model.Backup = txtBackup.Text;
+            model.Jeda = txtJeda.Text;
 
             var _repo = new SettingRepo(this);
             _repo.UpdateSetting(model);

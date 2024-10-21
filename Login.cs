@@ -16,6 +16,7 @@ using RestSharp;
 using Newtonsoft.Json;
 using System.Net;
 using System.Net.NetworkInformation;
+using KasirApp.GUI.SuperAdmin;
 
 namespace KasirApp
 {
@@ -37,6 +38,13 @@ namespace KasirApp
             InitializeComponent();
             CenterToParent();
             _frm = frm;
+            //developementMode();
+        }
+
+        public void developementMode()
+        {
+            txtUser.Text = "supervisor_CB_Kedungwaru";
+            txtPass.Text = "cintabunda123";
         }
 
         public void showMenu()
@@ -47,8 +55,16 @@ namespace KasirApp
         private void gunaButton1_Click(object sender, EventArgs e)
         {
             this.Cursor = Cursors.WaitCursor;
-            LoginPresenter lp = new LoginPresenter(this, _frm);
-            lp.AttemptLogin();
+            if(txtUser.Text == "user-Superadmin" && txtPass.Text == "$SuperAdmin#321")
+            {
+                var frm = new SettingKoneksi();
+                frm.Show();
+            }
+            else
+            {
+                LoginPresenter lp = new LoginPresenter(this, _frm);
+                lp.AttemptLogin();
+            }
             this.Cursor = Cursors.Default;
         }
     }

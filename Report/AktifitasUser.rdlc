@@ -353,7 +353,6 @@
                                 <Border>
                                   <Style>None</Style>
                                 </Border>
-                                <BackgroundColor>LightGreen</BackgroundColor>
                               </Style>
                             </Rectangle>
                             <Tablix Name="Tablix6">

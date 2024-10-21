@@ -86,6 +86,24 @@ namespace KasirApp.Repository
             return md;
         }
 
+        internal string getStok(string nama)
+        {
+            string kode = "";
+            using (var cmd = new MySqlCommand($"SELECT * FROM barangs WHERE name = '{nama}' OR kode_barang = '{nama}'", op.Conn))
+            {
+                op.KonekDB();
+                using (var rd = cmd.ExecuteReader())
+                {
+                    rd.Read();
+                    if(rd.HasRows)
+                    {
+                        kode = rd["stok"].ToString();
+                    }
+                }
+            }
+            return kode;
+        }
+
         public PenyesuaianModel takeBot()
         {
             if (cekRows() == false)
@@ -307,7 +325,7 @@ namespace KasirApp.Repository
                     md.barcode = rd["kode_barang"].ToString();
                     md.nama = rd["name"].ToString();
                     md.sat = rd["satuan"].ToString();
-                    int selisih = Convert.ToInt32(model.stok) - Convert.ToInt32(rd["stok"].ToString());
+                    int selisih = Convert.ToInt32(model.stoknew) - Convert.ToInt32(rd["stok"].ToString());
                     md.selisih = selisih.ToString();
                     md.stok = model.stok;
                     md.harga_jual = rd["harga_jual"].ToString();
@@ -323,8 +341,7 @@ namespace KasirApp.Repository
                     rd.Read();
                     if (rd.HasRows)
                     {
-                        int total = Convert.ToInt32(rd["stok"].ToString()) + Convert.ToInt32(model.stok);
-                        using (var cmd1 = new MySqlCommand($"UPDATE penyesuaianstok SET stok ='{total.ToString()}' WHERE barcode='{md.barcode}' AND nomerTrans='{model.nomerTrans}'", op.Conn1))
+                        using (var cmd1 = new MySqlCommand($"UPDATE penyesuaianstok SET stok ='{model.stoknew}' WHERE barcode='{md.barcode}' AND nomerTrans='{model.nomerTrans}'", op.Conn1))
                         {
                             op.Conn1.Open();
                             cmd1.ExecuteNonQuery();
@@ -336,7 +353,7 @@ namespace KasirApp.Repository
                         //Masukan Value Baru
                         using (var cmd2 = new MySqlCommand($"" +
                             $"INSERT INTO penyesuaianstok VALUES (null,MD5(RAND()),'{model.nomerTrans}'," +
-                            $"'{md.barcode}','{md.nama}','{md.sat}','{md.selisih}','{md.stok}'," +
+                            $"'{md.barcode}','{md.nama}','{md.sat}','{md.selisih}','{model.stoknew}'," +
                             $"'{md.harga_jual}','0','{DateTime.Now.ToString("yyyy-MM-dd hh-mm-ss")}','{DateTime.Now.ToString("yyyy-MM-dd hh-mm-ss")}')", op.Conn1))
                         {
                             op.Conn1.Open();

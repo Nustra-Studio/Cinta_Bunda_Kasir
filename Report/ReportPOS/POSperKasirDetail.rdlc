@@ -396,7 +396,6 @@
                                 <Border>
                                   <Style>None</Style>
                                 </Border>
-                                <BackgroundColor>LightGreen</BackgroundColor>
                               </Style>
                             </Rectangle>
                             <Tablix Name="Tablix8">
@@ -850,9 +849,7 @@
                                                                   <TextRuns>
                                                                     <TextRun>
                                                                       <Value>Total Per No Struk :</Value>
-                                                                      <Style>
-                                                                        <Color>White</Color>
-                                                                      </Style>
+                                                                      <Style />
                                                                     </TextRun>
                                                                   </TextRuns>
                                                                   <Style>
@@ -866,7 +863,6 @@
                                                                   <Color>LightGrey</Color>
                                                                   <Style>Solid</Style>
                                                                 </Border>
-                                                                <BackgroundColor>Gray</BackgroundColor>
                                                                 <PaddingLeft>2pt</PaddingLeft>
                                                                 <PaddingRight>2pt</PaddingRight>
                                                                 <PaddingTop>2pt</PaddingTop>
@@ -890,9 +886,7 @@
                                                                   <TextRuns>
                                                                     <TextRun>
                                                                       <Value>=Format(Cdbl(Fields!totalBiaya.Value), "###,###,###")</Value>
-                                                                      <Style>
-                                                                        <Color>White</Color>
-                                                                      </Style>
+                                                                      <Style />
                                                                     </TextRun>
                                                                   </TextRuns>
                                                                   <Style>
@@ -906,7 +900,6 @@
                                                                   <Color>LightGrey</Color>
                                                                   <Style>Solid</Style>
                                                                 </Border>
-                                                                <BackgroundColor>Gray</BackgroundColor>
                                                                 <PaddingLeft>2pt</PaddingLeft>
                                                                 <PaddingRight>2pt</PaddingRight>
                                                                 <PaddingTop>2pt</PaddingTop>
@@ -1048,14 +1041,12 @@
                                                         <Value>Tanggal : </Value>
                                                         <Style>
                                                           <FontWeight>Medium</FontWeight>
-                                                          <Color>White</Color>
                                                         </Style>
                                                       </TextRun>
                                                       <TextRun>
                                                         <Value>=CDate(First(Fields!tanggalTrans.Value)).ToString("dd/MMM/yyyy")</Value>
                                                         <Style>
                                                           <FontWeight>Medium</FontWeight>
-                                                          <Color>White</Color>
                                                         </Style>
                                                       </TextRun>
                                                     </TextRuns>
@@ -1070,7 +1061,6 @@
                                                   <Border>
                                                     <Style>None</Style>
                                                   </Border>
-                                                  <BackgroundColor>Gray</BackgroundColor>
                                                   <PaddingLeft>2pt</PaddingLeft>
                                                   <PaddingRight>2pt</PaddingRight>
                                                   <PaddingTop>2pt</PaddingTop>
@@ -1199,7 +1189,6 @@
                                   <Style>
                                     <FontSize>12pt</FontSize>
                                     <FontWeight>Medium</FontWeight>
-                                    <Color>White</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1214,13 +1203,13 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>Gray</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -1232,11 +1221,10 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Format(Cdbl(Sum(Cdec(Fields!totalBiaya.Value))), "###,###,###")</Value>
+                                  <Value>=Format(Cdbl(Sum(Cdec(Fields!total.Value))), "###,###,###")</Value>
                                   <Style>
                                     <FontSize>12pt</FontSize>
                                     <FontWeight>Medium</FontWeight>
-                                    <Color>White</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1251,13 +1239,13 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>Gray</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>
@@ -1285,7 +1273,6 @@
               <Border>
                 <Style>None</Style>
               </Border>
-              <BackgroundColor>Gray</BackgroundColor>
               <Color>White</Color>
             </Style>
           </Tablix>

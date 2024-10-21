@@ -337,14 +337,12 @@
                                           <Value>Kategori : </Value>
                                           <Style>
                                             <FontWeight>Medium</FontWeight>
-                                            <Color>White</Color>
                                           </Style>
                                         </TextRun>
                                         <TextRun>
                                           <Value>=First(Fields!kategori.Value)</Value>
                                           <Style>
                                             <FontWeight>Medium</FontWeight>
-                                            <Color>White</Color>
                                           </Style>
                                         </TextRun>
                                       </TextRuns>
@@ -373,7 +371,6 @@
                                 <Border>
                                   <Style>None</Style>
                                 </Border>
-                                <BackgroundColor>Gray</BackgroundColor>
                               </Style>
                             </Rectangle>
                             <Tablix Name="Tablix2">

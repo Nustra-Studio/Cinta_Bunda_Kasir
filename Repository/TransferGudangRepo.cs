@@ -95,6 +95,26 @@ namespace KasirApp.Repository
             return md;
         }
 
+        public TransferGudangModel showByNomer(string nomerTrans)
+        {
+            var md = new TransferGudangModel();
+            using (var cmd = new MySqlCommand($"SELECT * FROM report_transfergudang where id_transfer = '{nomerTrans}'", op.Conn))
+            {
+                op.KonekDB();
+                using (var rd = cmd.ExecuteReader())
+                {
+                    rd.Read();
+                    if (rd.HasRows)
+                    {
+                        md.nomerTrans = rd["id_transfer"].ToString();
+                        md.keterangan = rd["keterangan"].ToString();
+                        md.status = rd["status"].ToString();
+                    }
+                }
+            }
+            return md;
+        }
+
         public TransferGudangModel Next()
         {
             if (cekRows() == false)
@@ -182,6 +202,16 @@ namespace KasirApp.Repository
             return limit;
         }
 
+        internal void deleteData(string select, string nomerTrans)
+        {
+            using (var cmd = new MySqlCommand($"DELETE FROM histori_transfergudang where nomerTrans = '{nomerTrans}' AND barcode = '{select}'", op.Conn))
+            {
+                op.KonekDB();
+                cmd.ExecuteNonQuery();
+                op.KonekDB();
+            }
+        }
+            
         public DataTable GetListTransfer()
         {
             var dt = new DataTable();
@@ -232,7 +262,7 @@ namespace KasirApp.Repository
             return listf;
         }
 
-        public List<TfGudangAPI> GetData(userDataModel model)
+        public List<TfGudangAPI> GetData(userDataModel model, string tanggal)
         {
             List<TfGudangAPI> listmodel = new List<TfGudangAPI>();
             using (var client = new RestClient($"{op.url}"))
@@ -240,6 +270,7 @@ namespace KasirApp.Repository
                 var rs = new RestRequest("barang", Method.Get);
                 rs.AddParameter("token", model.token);
                 rs.AddParameter("uuid", model.uuid);
+                rs.AddParameter("tanggal", tanggal);
 
                 var response = client.Execute(rs);
 
@@ -247,6 +278,7 @@ namespace KasirApp.Repository
                 {
                     var jso = response.Content.ToString();
                     List<TfGudangAPI> fn = JsonConvert.DeserializeObject<List<TfGudangAPI>>(jso);
+
                     listmodel = fn;
                 }
                 else
@@ -258,16 +290,18 @@ namespace KasirApp.Repository
             return listmodel;
         }
 
-        public void hapusKiriman(userDataModel user)
+        public void hapusKiriman(userDataModel user, string nomerTrans)
         {
             if (mb.PeringatanYesNo("Hapus semua data dikirim dari gudang?") == true)
             {
-                deleteRecent(user);
+                deleteRecent(user, nomerTrans);
             }
         }
 
-        public void simpanSementara(List<TransferGudangModel> listmodel, string nomerTrans)
+        public DataTable simpanSementara(List<TransferGudangModel> listmodel, string nomerTrans)
         {
+            var dt = new DataTable();
+
             op.KonekDB();
             foreach (var item in listmodel)
             {
@@ -298,6 +332,20 @@ namespace KasirApp.Repository
                 }
                 CekAvail(item, nomerTrans, "", total);
             }
+
+            using (var cmd = new MySqlCommand($"select * from histori_transfergudang where nomerTrans = '{nomerTrans}'", op.Conn))
+            {
+                op.KonekDB();
+                using (var rd = cmd.ExecuteReader())
+                {
+                    if(rd.Read())
+                    {
+                        dt.Load(rd);
+                    }
+                }
+            }
+
+            return dt;
         }
 
         public void CekAvail(TransferGudangModel item, string nomerTrans, string keterangan,int total)
@@ -305,6 +353,7 @@ namespace KasirApp.Repository
             op.KonekDB();
             bool ada1 = false;
             bool ada2 = false;
+            string keteranganFinal = (keterangan != "") ? keterangan : "Tidak ada Keterangan";
             using (var cmd = new MySqlCommand($"SELECT * FROM histori_transfergudang WHERE nomerTrans='{nomerTrans}' AND barcode='{item.kode_barang}'", op.Conn))
             {
                 op.KonekDB();
@@ -320,7 +369,7 @@ namespace KasirApp.Repository
             if (ada1 == true)
             {
                 using (var cmd = new MySqlCommand($"" +
-                $"INSERT INTO histori_transfergudang VALUES (null,MD5(RAND()),'{nomerTrans}','{item.category_id}'," +
+                    $"INSERT INTO histori_transfergudang VALUES (null,MD5(RAND()),'{nomerTrans}','{item.category_id}'," +
                     $"'{item.id_supplier}','{item.kode_barang}','{item.harga}','{item.harga_jual}'," +
                     $"'{item.harga_pokok}','{item.harga_grosir}',{item.stok},'{item.keterangan}'," +
                     $"'{item.name}','{item.merek_barang}','{item.type_barang_id}'," +
@@ -345,7 +394,7 @@ namespace KasirApp.Repository
             }
             if (ada2 == true)
             {
-                using (var cmd = new MySqlCommand($"INSERT INTO report_transfergudang VALUES (null,md5(rand()),'{nomerTrans}','{keterangan}','void','{op.myDatetime}','{op.myDatetime}')", op.Conn))
+                using (var cmd = new MySqlCommand($"INSERT INTO report_transfergudang VALUES (null,md5(rand()),'{nomerTrans}','{keteranganFinal}','void','{op.myDatetime}','{op.myDatetime}')", op.Conn))
                 {
                     op.KonekDB();
                     cmd.ExecuteNonQuery();
@@ -353,9 +402,32 @@ namespace KasirApp.Repository
             }
         }
 
-        public void masukanItem(List<TransferGudangModel> listmodel, string nomerTrans)
+        public void masukanItem(string nomerTrans)
         {
             op.KonekDB();
+            List<TransferGudangModel> listmodel = new List<TransferGudangModel>();
+
+            using (var cmd = new MySqlCommand($"SELECT * FROM histori_transfergudang where nomerTrans = '{nomerTrans}'", op.Conn))
+            {
+                op.KonekDB();
+                using (var rd = cmd.ExecuteReader())
+                {
+                    while (rd.Read())
+                    {
+                        var tf = new TransferGudangModel();
+                        tf.kode_barang = rd["barcode"].ToString().Trim();
+                        tf.name = rd["name"].ToString();
+                        tf.stok = Convert.ToInt32(rd["stok"].ToString());
+                        tf.merek_barang = rd["merk"].ToString();
+                        tf.harga = rd["harga_pokok"].ToString();
+                        tf.harga_pokok = rd["harga_pokok"].ToString();
+                        tf.harga_grosir = rd["harga_jual"].ToString();
+                        tf.harga_jual = rd["harga_jual"].ToString();
+                        listmodel.Add(tf);
+                    }
+                }
+            }
+
             foreach (var item in listmodel)
             {
                 bool Exist = false;
@@ -373,11 +445,12 @@ namespace KasirApp.Repository
                         }
                     }
                 }
+
                 //jika barang dengan barcode tersebut ada
                 if (Exist == true)
-                {
+                {   
                     total = stokAwal + item.stok;
-                    using (var cmd = new MySqlCommand($"UPDATE barangs SET stok = '{total.ToString()}' where kode_barang = '{item.kode_barang}'", op.Conn))
+                    using (var cmd = new MySqlCommand($"UPDATE barangs SET stok = '{total.ToString()}', harga_grosir = '{item.harga_jual}', harga_jual = '{item.harga_jual}', harga = '{item.harga_pokok}', harga_pokok = '{item.harga_pokok}' where kode_barang = '{item.kode_barang}'", op.Conn))
                     {
                         cmd.ExecuteNonQuery();
                     }
@@ -386,9 +459,9 @@ namespace KasirApp.Repository
                 else
                 {
                     using (var cmd = new MySqlCommand($"" +
-                        $"INSERT INTO barangs VALUES (null,MD5(RAND()),'{item.category_id}'," +
-                        $"'{item.id_supplier}','{item.kode_barang}','{item.harga}','{item.harga_jual}'," +
-                        $"'{item.harga_pokok}','{item.harga_grosir}',{item.stok},'{item.keterangan}'," +
+                        $"INSERT INTO barangs VALUES (null,MD5(RAND()),'{takeCategory(item.kode_barang.Trim())}'," +
+                        $"'{item.id_supplier}','{item.kode_barang.Trim()}','{item.harga_pokok}','{item.harga_jual}'," +
+                        $"'{item.harga_pokok}','{item.harga_jual}',{item.stok},'{item.keterangan}'," +
                         $"'{item.name}','{item.merek_barang}','PCS', 0,'{DateTime.Now.ToString("yyyy-MM-dd hh-mm-ss")}'," +
                         $"'{DateTime.Now.ToString("yyyy-MM-dd hh-mm-ss")}')", op.Conn))
                     {
@@ -396,6 +469,7 @@ namespace KasirApp.Repository
                         total = item.stok;
                     }
                 }
+
                 var mdb = new HistoriStokModel();
                 mdb.Barcode = item.kode_barang;
                 mdb.NomerTrans = nomerTrans;
@@ -408,10 +482,13 @@ namespace KasirApp.Repository
             }
         }
 
-        public void masukanLaporan(List<TransferGudangModel> listtrans, string nomerTrans, string keterangan, userDataModel user)
+        public void masukanLaporan(string nomerTrans, string keterangan, userDataModel user)
         {
             bool ada1 = false;
             bool ada2 = false;
+            List<TransferGudangModel> listtrans = new List<TransferGudangModel>();
+            string keteranganFinal = (keterangan != "") ? keterangan : "Tidak ada Keterangan";
+
             op.KonekDB();
             foreach (var item in listtrans)
             {
@@ -429,16 +506,17 @@ namespace KasirApp.Repository
                 }
                 if (ada1 == true)
                 {
-                    using (var cmd = new MySqlCommand($"" +
-                        $"INSERT INTO histori_transfergudang VALUES (null,MD5(RAND()),'{nomerTrans}','{item.category_id}'," +
-                            $"'{item.id_supplier}','{item.kode_barang}','{item.harga}','{item.harga_jual}'," +
-                            $"'{item.harga_pokok}','{item.harga_grosir}',{item.stok},'{item.keterangan}'," +
-                            $"'{item.name}','{item.merek_barang}','{item.type_barang_id}'," +
-                            $"'{DateTime.Now.ToString("yyyy-MM-dd hh-mm-ss")}'," +
-                            $"'{DateTime.Now.ToString("yyyy-MM-dd hh-mm-ss")}')", op.Conn))
-                    {
-                        cmd.ExecuteNonQuery();
-                    }
+
+                    //using (var cmd = new MySqlCommand($"" +
+                    //    $"INSERT INTO histori_transfergudang VALUES (null,MD5(RAND()),'{nomerTrans}','{item.category_id}'," +
+                    //        $"'{item.id_supplier}','{item.kode_barang}','{item.harga}','{item.harga_jual}'," +
+                    //        $"'{item.harga_pokok}','{item.harga_grosir}',{item.stok},'{item.keterangan}'," +
+                    //        $"'{item.name}','{item.merek_barang}','{item.type_barang_id}'," +
+                    //        $"'{DateTime.Now.ToString("yyyy-MM-dd hh-mm-ss")}'," +
+                    //        $"'{DateTime.Now.ToString("yyyy-MM-dd hh-mm-ss")}')", op.Conn))
+                    //{
+                    //    cmd.ExecuteNonQuery();
+                    //}
                 }
             }
             using (var cmd = new MySqlCommand($"SELECT * FROM report_transfergudang WHERE id_transfer='{nomerTrans}'", op.Conn))
@@ -455,27 +533,50 @@ namespace KasirApp.Repository
             }
             if (ada2 == true)
             {
-                using (var cmd = new MySqlCommand($"UPDATE report_transfergudang SET keterangan='{keterangan}', status='posted', updated_at='{op.myDatetime}' WHERE id_transfer='{nomerTrans}'", op.Conn))
+                using (var cmd = new MySqlCommand($"UPDATE report_transfergudang SET keterangan='{keteranganFinal}', status='posted', updated_at='{op.myDatetime}' WHERE id_transfer='{nomerTrans}'", op.Conn))
                 {
                     op.KonekDB();
                     cmd.ExecuteNonQuery();
                 }
             }
             updateNumbering();
-            deleteRecent(user);
+            deleteRecent(user, nomerTrans);
         }
 
-        private void deleteRecent(userDataModel user)
+        private void deleteRecent(userDataModel user, string nomerTrans)
         {
+            var listData = new List<TransferGudangModel>();
+
+            using (var cmd = new MySqlCommand($"SELECT * FROM histori_transfergudang where nomerTrans='{nomerTrans}'", op.Conn))
+            {
+                op.KonekDB();
+                using (var rd = cmd.ExecuteReader())
+                {
+                    while (rd.Read())
+                    {
+                        var model = new TransferGudangModel();
+
+                        model.kode_barang = rd["barcode"].ToString();
+                        model.uuid = rd["uuid"].ToString();
+
+                        listData.Add(model);
+                    }
+                }
+            }
+
             using (var client = new RestClient(op.url))
             {
                 var req = new RestRequest("deletetransaction", Method.Post);
                 var body = new
                 {
                     token = user.token,
-                    uuid = user.uuid
+                    uuid = user.uuid,
+                    data = listData,
                 };
-                req.AddJsonBody(body);
+
+                var jso = JsonConvert.SerializeObject(body);
+
+                req.AddJsonBody(jso);
 
                 var response = client.Execute(req);
                 try
@@ -486,17 +587,67 @@ namespace KasirApp.Repository
                     }
                     else
                     {
-                        mb.PeringatanOK("Terjadi Kesalahan saat memperbarui data inventori");
+                        mb.PeringatanOK("Terjadi Kesalahan saat memperbarui data inventori" + response.Content.ToString());
                     }
                 }
                 catch (Exception ex)
                 {
                     mb.PeringatanOK(ex.Message);
                 }
-
             }
+
+
+            //if (nomerTrans != "")
+            //{
+            //    using (var cmd = new MySqlCommand($"DELETE FROM histori_transfergudang where nomerTrans = '{nomerTrans}'", op.Conn))
+            //    {
+            //        op.KonekDB();
+            //        cmd.ExecuteNonQuery();
+            //        op.KonekDB();
+            //    }
+
+            //    using (var cmd = new MySqlCommand($"DELETE FROM report_transfergudang where id_transfer = '{nomerTrans}'", op.Conn))
+            //    {
+            //        op.KonekDB();
+            //        cmd.ExecuteNonQuery();
+            //        op.KonekDB();
+            //    }
+            //}
         }
 
+        public string takeCategory(string barcode)
+        {
+            string letter = barcode.Substring(0, 3);
+            string uuid = "";
+
+            //Null Value
+            using (var cmd = new MySqlCommand("select * from category_barangs where name = 'Tanpa Kategori' ", op.Conn))
+            {
+                op.KonekDB();
+                using (var rd = cmd.ExecuteReader())
+                {
+                    if(rd.Read())
+                    {
+                        uuid = rd["uuid"].ToString();
+                    }
+                }
+            }
+
+            //Exist Value
+            using (var cmd = new MySqlCommand($"select * from category_barangs where name = '{letter}'", op.Conn))
+            {
+                op.KonekDB();
+                using (var rd = cmd.ExecuteReader())
+                {
+                    if (rd.Read())
+                    {
+                        uuid = rd["uuid"].ToString();
+                    }
+                }
+            }
+
+            return uuid;
+        }
 
         public void updateNumbering()
         {
@@ -545,6 +696,11 @@ namespace KasirApp.Repository
                     }
                 }
                 var md = op.CabangConfig();
+
+                if(Keterangan == "")
+                {
+                    Keterangan = "Tidak Ada Keterangan";
+                }
 
                 param[0] = new ReportParameter("Tanggal", tanggal);
                 param[1] = new ReportParameter("Status", status);

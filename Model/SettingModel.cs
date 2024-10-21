@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace KasirApp.Model
 {
@@ -24,6 +26,14 @@ namespace KasirApp.Model
         string valuepoint;
         string minimalcash;
         string backup;
+        string server;
+        string database;
+        string port;
+        string user;
+        string password;
+        string endpoint;
+        string cabang;
+        string jeda;
 
         public string Karyawan { get => karyawan; set => karyawan = value; }
         public string Reseller { get => reseller; set => reseller = value; }
@@ -41,5 +51,20 @@ namespace KasirApp.Model
         public string Karyawanacc { get => karyawanacc; set => karyawanacc = value; }
         public string Reselleracc { get => reselleracc; set => reselleracc = value; }
         public string Backup { get => backup; set => backup = value; }
+
+        [JsonPropertyName("server")]
+        public string Server { get => server; set => server = value; }
+        [JsonPropertyName("database")]
+        public string Database { get => database; set => database = value; }
+        [JsonPropertyName("port")]
+        public string Port { get => port; set => port = value; }
+        [JsonPropertyName("user")]
+        public string User { get => user; set => user = value; }
+        [JsonPropertyName("password")]
+        public string Password { get => password; set => password = value; }
+        [JsonPropertyName("endpoint")]
+        public string Endpoint { get => endpoint; set => endpoint = value; }
+        public string Cabang { get => cabang; set => cabang = value; }
+        public string Jeda { get => jeda; set => jeda = value; }
     }
 }

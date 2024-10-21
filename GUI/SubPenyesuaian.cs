@@ -19,12 +19,13 @@ namespace KasirApp.GUI
         public string nomerTrans { get => strukPAD; set => strukPAD = value; }
         public string barcode { get => txtBarang.Text; set => txtBarang.Text = value; }
         public string nama { get => txtBarang.Text; set => txtBarang.Text = value; }
-        public string stok { get => txtStok.Text; set => txtStok.Text = value; }
+        public string stok { get => txtStokNow.Text; set => txtStokNow.Text = value; }
+        public string stoknew { get => txtStok.Text; set => txtStok.Text = value; }
 
         //Interface Method
         public void GetPopUpData(BarangsModel model)
         {
-            txtBarang.Text = model.Nama;
+            txtBarang.Text = model.Kode;
         }
 
         //Fields
@@ -50,7 +51,7 @@ namespace KasirApp.GUI
         public void clearAll()
         {
             txtBarang.Clear();
-            txtStok.Clear();
+            txtStokNow.Clear();
         }
 
         private void btnProses_Click(object sender, EventArgs e)
@@ -75,7 +76,7 @@ namespace KasirApp.GUI
             {
                 if (cekItem() == true)
                 {
-                    return;
+                    txtStokNow.Text =  _pres.getData(nama);
                 }
                 else
                 {

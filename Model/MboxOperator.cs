@@ -46,6 +46,11 @@ namespace KasirApp.Model
                 return false;
             }
         }
+         
+        public void peringatanError(string body)
+        {
+            MessageBox.Show(body, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
 
     }
 }

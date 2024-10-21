@@ -92,11 +92,9 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(13, 12);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Location = new System.Drawing.Point(10, 10);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(1367, 795);
+            this.groupBox1.Size = new System.Drawing.Size(1025, 645);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Daftar Barang";
@@ -105,10 +103,9 @@
             // 
             this.comboBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(889, 53);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBox2.Location = new System.Drawing.Point(667, 43);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(160, 33);
+            this.comboBox2.Size = new System.Drawing.Size(121, 28);
             this.comboBox2.TabIndex = 9;
             this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -116,10 +113,9 @@
             // 
             this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(651, 53);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBox1.Location = new System.Drawing.Point(488, 43);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(229, 33);
+            this.comboBox1.Size = new System.Drawing.Size(173, 28);
             this.comboBox1.TabIndex = 9;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -169,8 +165,7 @@
             this.DGV.DefaultCellStyle = dataGridViewCellStyle3;
             this.DGV.EnableHeadersVisualStyles = false;
             this.DGV.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.DGV.Location = new System.Drawing.Point(13, 145);
-            this.DGV.Margin = new System.Windows.Forms.Padding(4);
+            this.DGV.Location = new System.Drawing.Point(10, 118);
             this.DGV.Name = "DGV";
             this.DGV.ReadOnly = true;
             this.DGV.RowHeadersVisible = false;
@@ -178,7 +173,7 @@
             this.DGV.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.DGV.RowTemplate.Height = 30;
             this.DGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGV.Size = new System.Drawing.Size(1345, 366);
+            this.DGV.Size = new System.Drawing.Size(1009, 296);
             this.DGV.TabIndex = 6;
             this.DGV.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Guna;
             this.DGV.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -209,11 +204,10 @@
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.panel1);
-            this.groupBox3.Location = new System.Drawing.Point(618, 519);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Location = new System.Drawing.Point(464, 421);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(7, 4, 7, 6);
-            this.groupBox3.Size = new System.Drawing.Size(741, 268);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(5, 3, 5, 5);
+            this.groupBox3.Size = new System.Drawing.Size(556, 218);
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Data Harga Jual";
@@ -230,10 +224,9 @@
             this.panel1.Controls.Add(this.label19);
             this.panel1.Controls.Add(this.label13);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(7, 27);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Location = new System.Drawing.Point(5, 22);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(727, 235);
+            this.panel1.Size = new System.Drawing.Size(546, 191);
             this.panel1.TabIndex = 1;
             // 
             // gunaTextBox6
@@ -246,13 +239,12 @@
             this.gunaTextBox6.FocusedBorderColor = System.Drawing.Color.Lime;
             this.gunaTextBox6.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.gunaTextBox6.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.gunaTextBox6.Location = new System.Drawing.Point(309, 52);
-            this.gunaTextBox6.Margin = new System.Windows.Forms.Padding(4);
+            this.gunaTextBox6.Location = new System.Drawing.Point(232, 42);
             this.gunaTextBox6.Name = "gunaTextBox6";
             this.gunaTextBox6.PasswordChar = '\0';
             this.gunaTextBox6.ReadOnly = true;
             this.gunaTextBox6.SelectedText = "";
-            this.gunaTextBox6.Size = new System.Drawing.Size(281, 46);
+            this.gunaTextBox6.Size = new System.Drawing.Size(211, 37);
             this.gunaTextBox6.TabIndex = 1;
             this.gunaTextBox6.Text = "nama";
             this.gunaTextBox6.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MasterBarang_KeyDown);
@@ -261,10 +253,9 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(361, 5);
-            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label18.Location = new System.Drawing.Point(271, 4);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(117, 31);
+            this.label18.Size = new System.Drawing.Size(94, 26);
             this.label18.TabIndex = 0;
             this.label18.Text = "Rp.0000";
             // 
@@ -278,13 +269,12 @@
             this.gunaTextBox5.FocusedBorderColor = System.Drawing.Color.Lime;
             this.gunaTextBox5.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.gunaTextBox5.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.gunaTextBox5.Location = new System.Drawing.Point(309, 160);
-            this.gunaTextBox5.Margin = new System.Windows.Forms.Padding(4);
+            this.gunaTextBox5.Location = new System.Drawing.Point(232, 130);
             this.gunaTextBox5.Name = "gunaTextBox5";
             this.gunaTextBox5.PasswordChar = '\0';
             this.gunaTextBox5.ReadOnly = true;
             this.gunaTextBox5.SelectedText = "";
-            this.gunaTextBox5.Size = new System.Drawing.Size(281, 46);
+            this.gunaTextBox5.Size = new System.Drawing.Size(211, 37);
             this.gunaTextBox5.TabIndex = 1;
             this.gunaTextBox5.Text = "tipe";
             this.gunaTextBox5.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MasterBarang_KeyDown);
@@ -299,13 +289,12 @@
             this.gunaTextBox4.FocusedBorderColor = System.Drawing.Color.Lime;
             this.gunaTextBox4.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.gunaTextBox4.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.gunaTextBox4.Location = new System.Drawing.Point(309, 106);
-            this.gunaTextBox4.Margin = new System.Windows.Forms.Padding(4);
+            this.gunaTextBox4.Location = new System.Drawing.Point(232, 86);
             this.gunaTextBox4.Name = "gunaTextBox4";
             this.gunaTextBox4.PasswordChar = '\0';
             this.gunaTextBox4.ReadOnly = true;
             this.gunaTextBox4.SelectedText = "";
-            this.gunaTextBox4.Size = new System.Drawing.Size(281, 46);
+            this.gunaTextBox4.Size = new System.Drawing.Size(211, 37);
             this.gunaTextBox4.TabIndex = 1;
             this.gunaTextBox4.Text = "barcode";
             this.gunaTextBox4.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MasterBarang_KeyDown);
@@ -315,40 +304,36 @@
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.Lime;
-            this.label16.Location = new System.Drawing.Point(233, 4);
-            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Location = new System.Drawing.Point(175, 3);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(110, 31);
+            this.label16.Size = new System.Drawing.Size(90, 26);
             this.label16.TabIndex = 0;
             this.label16.Text = "Harga :";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(171, 175);
-            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Location = new System.Drawing.Point(128, 142);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(130, 25);
+            this.label15.Size = new System.Drawing.Size(106, 20);
             this.label15.TabIndex = 0;
             this.label15.Text = "Harga Jual :";
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(156, 115);
-            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label19.Location = new System.Drawing.Point(117, 93);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(147, 25);
+            this.label19.Size = new System.Drawing.Size(122, 20);
             this.label19.TabIndex = 0;
             this.label19.Text = "Harga Grosir :";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(154, 64);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Location = new System.Drawing.Point(116, 52);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(149, 25);
+            this.label13.Size = new System.Drawing.Size(122, 20);
             this.label13.TabIndex = 0;
             this.label13.Text = "Harga Pokok :";
             // 
@@ -356,11 +341,10 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox2.Controls.Add(this.panel2);
-            this.groupBox2.Location = new System.Drawing.Point(14, 519);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Location = new System.Drawing.Point(10, 421);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(7, 4, 7, 6);
-            this.groupBox2.Size = new System.Drawing.Size(596, 268);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(5, 3, 5, 5);
+            this.groupBox2.Size = new System.Drawing.Size(447, 218);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Data Barcode";
@@ -375,10 +359,9 @@
             this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(7, 27);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4);
+            this.panel2.Location = new System.Drawing.Point(5, 22);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(582, 235);
+            this.panel2.Size = new System.Drawing.Size(437, 191);
             this.panel2.TabIndex = 2;
             // 
             // gunaTextBox3
@@ -391,13 +374,12 @@
             this.gunaTextBox3.FocusedBorderColor = System.Drawing.Color.Lime;
             this.gunaTextBox3.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.gunaTextBox3.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.gunaTextBox3.Location = new System.Drawing.Point(194, 163);
-            this.gunaTextBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.gunaTextBox3.Location = new System.Drawing.Point(146, 132);
             this.gunaTextBox3.Name = "gunaTextBox3";
             this.gunaTextBox3.PasswordChar = '\0';
             this.gunaTextBox3.ReadOnly = true;
             this.gunaTextBox3.SelectedText = "";
-            this.gunaTextBox3.Size = new System.Drawing.Size(213, 46);
+            this.gunaTextBox3.Size = new System.Drawing.Size(160, 37);
             this.gunaTextBox3.TabIndex = 1;
             this.gunaTextBox3.Text = "nama";
             this.gunaTextBox3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MasterBarang_KeyDown);
@@ -412,13 +394,12 @@
             this.gunaTextBox2.FocusedBorderColor = System.Drawing.Color.Lime;
             this.gunaTextBox2.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.gunaTextBox2.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.gunaTextBox2.Location = new System.Drawing.Point(194, 91);
-            this.gunaTextBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.gunaTextBox2.Location = new System.Drawing.Point(146, 74);
             this.gunaTextBox2.Name = "gunaTextBox2";
             this.gunaTextBox2.PasswordChar = '\0';
             this.gunaTextBox2.ReadOnly = true;
             this.gunaTextBox2.SelectedText = "";
-            this.gunaTextBox2.Size = new System.Drawing.Size(127, 46);
+            this.gunaTextBox2.Size = new System.Drawing.Size(95, 37);
             this.gunaTextBox2.TabIndex = 1;
             this.gunaTextBox2.Text = "tipe";
             this.gunaTextBox2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MasterBarang_KeyDown);
@@ -433,13 +414,12 @@
             this.gunaTextBox1.FocusedBorderColor = System.Drawing.Color.Lime;
             this.gunaTextBox1.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.gunaTextBox1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.gunaTextBox1.Location = new System.Drawing.Point(194, 19);
-            this.gunaTextBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.gunaTextBox1.Location = new System.Drawing.Point(146, 15);
             this.gunaTextBox1.Name = "gunaTextBox1";
             this.gunaTextBox1.PasswordChar = '\0';
             this.gunaTextBox1.ReadOnly = true;
             this.gunaTextBox1.SelectedText = "";
-            this.gunaTextBox1.Size = new System.Drawing.Size(213, 46);
+            this.gunaTextBox1.Size = new System.Drawing.Size(160, 37);
             this.gunaTextBox1.TabIndex = 1;
             this.gunaTextBox1.Text = "barcode";
             this.gunaTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MasterBarang_KeyDown);
@@ -447,30 +427,27 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(80, 103);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Location = new System.Drawing.Point(60, 84);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(106, 25);
+            this.label9.Size = new System.Drawing.Size(86, 20);
             this.label9.TabIndex = 0;
             this.label9.Text = "Kategori :";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(24, 29);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Location = new System.Drawing.Point(18, 24);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(162, 25);
+            this.label11.Size = new System.Drawing.Size(132, 20);
             this.label11.TabIndex = 0;
             this.label11.Text = "Kode Barcode :";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(105, 173);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(79, 141);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(81, 25);
+            this.label7.Size = new System.Drawing.Size(65, 20);
             this.label7.TabIndex = 0;
             this.label7.Text = "Nama :";
             // 
@@ -481,11 +458,10 @@
             this.gunaShadowPanel1.BackColor = System.Drawing.Color.Transparent;
             this.gunaShadowPanel1.BaseColor = System.Drawing.SystemColors.Control;
             this.gunaShadowPanel1.Controls.Add(this.label6);
-            this.gunaShadowPanel1.Location = new System.Drawing.Point(13, 95);
-            this.gunaShadowPanel1.Margin = new System.Windows.Forms.Padding(4);
+            this.gunaShadowPanel1.Location = new System.Drawing.Point(10, 77);
             this.gunaShadowPanel1.Name = "gunaShadowPanel1";
             this.gunaShadowPanel1.ShadowColor = System.Drawing.Color.Black;
-            this.gunaShadowPanel1.Size = new System.Drawing.Size(1345, 43);
+            this.gunaShadowPanel1.Size = new System.Drawing.Size(1009, 35);
             this.gunaShadowPanel1.TabIndex = 5;
             // 
             // label6
@@ -493,21 +469,19 @@
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(295, 7);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(221, 6);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(679, 25);
+            this.label6.Size = new System.Drawing.Size(537, 20);
             this.label6.TabIndex = 0;
-            this.label6.Text = "Tekan Tombol - >  Insert : Tambah Data, Enter : Koreksi, Del : Hapus\r\n";
+            this.label6.Text = "Tekan Tombol - >  +/= : Tambah Data, Enter : Koreksi, Del : Hapus\r\n";
             // 
             // textBox1
             // 
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(13, 53);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox1.Location = new System.Drawing.Point(10, 43);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(628, 30);
+            this.textBox1.Size = new System.Drawing.Size(472, 26);
             this.textBox1.TabIndex = 1;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MasterBarang_KeyDown);
@@ -517,10 +491,9 @@
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(884, 27);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(663, 22);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(93, 25);
+            this.label5.Size = new System.Drawing.Size(76, 20);
             this.label5.TabIndex = 0;
             this.label5.Text = "Kategori";
             // 
@@ -529,10 +502,9 @@
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(645, 27);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(484, 22);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(92, 25);
+            this.label4.Size = new System.Drawing.Size(75, 20);
             this.label4.TabIndex = 0;
             this.label4.Text = "Supplier";
             // 
@@ -540,10 +512,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(8, 27);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(6, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(143, 25);
+            this.label1.Size = new System.Drawing.Size(118, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Nama Barang";
             // 
@@ -576,7 +547,7 @@
             // 
             this.merk.DataPropertyName = "Merk";
             this.merk.FillWeight = 70F;
-            this.merk.HeaderText = "Merek";
+            this.merk.HeaderText = "Merk";
             this.merk.MinimumWidth = 6;
             this.merk.Name = "merk";
             this.merk.ReadOnly = true;
@@ -625,15 +596,14 @@
             // 
             // MasterBarang
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
-            this.ClientSize = new System.Drawing.Size(1393, 819);
+            this.ClientSize = new System.Drawing.Size(1045, 665);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.MaximumSize = new System.Drawing.Size(1411, 866);
+            this.MaximumSize = new System.Drawing.Size(1062, 711);
             this.Name = "MasterBarang";
-            this.Padding = new System.Windows.Forms.Padding(13, 12, 13, 12);
+            this.Padding = new System.Windows.Forms.Padding(10, 10, 10, 10);
             this.Text = "Form Master Barang";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MasterBarang_FormClosing);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MasterBarang_KeyDown);

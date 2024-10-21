@@ -94,8 +94,14 @@ namespace KasirApp.Presenter
             model.nomerTrans = _peny.nomerPAD;
             model.nama = _sub.nama;
             model.stok = _sub.stok;
+            model.stoknew = _sub.stoknew;
             model.keterangan = _peny.keterangan;
             _repo.addPenyesuaian(model);
+        }
+
+        internal string getData(string nama)
+        {
+            return _repo.getStok(nama);
         }
 
         public bool SaveStok()

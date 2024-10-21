@@ -95,6 +95,8 @@ namespace KasirApp.GUI
             else if (txtNomor.Focused == true && e.KeyCode == Keys.Enter)
             {
                 _op.cekTable();
+                openState();
+                txtKode.Focus();
             }
             else if (e.KeyCode == Keys.Delete && select != "")
             {

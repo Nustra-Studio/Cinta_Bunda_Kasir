@@ -19,6 +19,7 @@ namespace KasirApp.GUI
     {
         string tanggal1;
         string tanggal2;
+        string status;
         MboxOperator mb = new MboxOperator();
         Operator op = new Operator();
         userDataModel _user;
@@ -40,14 +41,72 @@ namespace KasirApp.GUI
             {
 
             }
-            else
+            else if(status == "opname")
+            {
+                string bcode = model.Nama;
+                Console.WriteLine(bcode);
+                tanggal1 = tgl1.Value.ToString("dd-MM-yyyy");
+                tanggal2 = tgl2.Value.ToString("dd-MM-yyyy");
+                showReport2("ReportOpname", "ReportOpname.rdlc", $"SELECT * FROM view_report_opnames WHERE nomerTrans ='{bcode}'");
+                op.insertHistoriUser(_user, this.Text, "Cek Report Opname");
+            }
+            else if(status == "barang")
             {
                 string bcode = model.Kode;
+                Console.WriteLine(bcode);
                 tanggal1 = tgl1.Value.ToString("yyyy-MM-dd 00:00:00");
                 tanggal2 = tgl2.Value.ToString("yyyy-MM-dd 23:59:00");
                 showReport("StockDetail", "StokDetail.rdlc", $"SELECT * FROM report_stock_detail WHERE barcode='{bcode}' AND updated_at BETWEEN '{tanggal1}' AND '{tanggal2}'");
                 op.insertHistoriUser(_user, this.Text, "Cek Report Stok");
             }
+        }
+
+        public void showReport2(string sourcename, string filename, string Query)
+        {
+            tanggal1 = tgl1.Value.ToString("yyyy-MM-dd 00:00:00");
+            tanggal2 = tgl2.Value.ToString("yyyy-MM-dd 23:59:00");
+            //simple tanggal
+            string tgal1 = tgl1.Value.ToString("dd/MMM/yy");
+            string tgal2 = tgl2.Value.ToString("dd/MMM/yy");
+            
+            var dt = new DataTable();
+            //ambil data Detail
+            using (var cmd = new MySqlCommand(Query, op.Conn))
+            {
+                op.KonekDB();
+                using (var rd = cmd.ExecuteReader())
+                {
+                    if (!rd.Read())
+                    {
+                        mb.PeringatanOK("Tidak ada Data");
+                        return;
+                    }
+                    else
+                    {
+                        dt.Load(rd);
+                    }
+                }
+            }
+
+            var param = new ReportParameter[3];
+
+            using (var cmd = new MySqlCommand(Query, op.Conn))
+            {
+                op.KonekDB();
+                using (var rd = cmd.ExecuteReader())
+                {
+                    if (rd.Read())
+                    {
+                        param[0] = new ReportParameter("Tanggal", rd["updated_at"].ToString());
+                        param[1] = new ReportParameter("NomerTrans", rd["nomerTrans"].ToString());
+                        param[2] = new ReportParameter("Status", rd["Posted"].ToString() == "1" ? "Posted" : "Void");
+                    }
+                }
+            }
+
+            var print = new PrintReport();
+            var source = new ReportDataSource(sourcename, dt);
+            print.LoadReport(op.pathReport(filename), source, param);
         }
 
         public void showReport(string sourcename, string filename, string Query)
@@ -57,7 +116,7 @@ namespace KasirApp.GUI
             //simple tanggal
             string tgal1 = tgl1.Value.ToString("dd/MMM/yy");
             string tgal2 = tgl2.Value.ToString("dd/MMM/yy");
-            
+
             var dt = new DataTable();
             //ambil data Detail
             using (var cmd = new MySqlCommand(Query, op.Conn))
@@ -97,6 +156,7 @@ namespace KasirApp.GUI
                 var pp = new PopUp(this);
                 pp.Show();
                 pp.getBarang("");
+                status = "barang";
             }
             else if (listBox1.SelectedIndex == 1)
             {
@@ -107,6 +167,13 @@ namespace KasirApp.GUI
             {
                 showReport("Minimum", "StokMinus.rdlc", $"SELECT * FROM barangs where updated_at BETWEEN '{tanggal1}' AND '{tanggal2}' And stok <= 0");
                 op.insertHistoriUser(_user, this.Text, "Cek Report Stok");
+            }
+            else if (listBox1.SelectedIndex == 3)
+            {
+                var pop = new PopUp(this); 
+                pop.getDataList("select updated_at as 'Tanggal', nomerTrans,Barcode from view_report_opnames group by nomerTrans", $"select updated_at as 'Tanggal', nomerTrans from view_report_opnames WHERE nomerTrans LIKE ");
+                pop.Show();
+                status = "opname";
             }
         }
 

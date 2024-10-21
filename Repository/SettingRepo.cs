@@ -58,7 +58,7 @@ namespace KasirApp.Repository
             {
                 mb.PeringatanOK("Lengkapi Data");
             }
-            using (var cmd = new MySqlCommand("UPDATE settings SET presentase_karyawan = @karyawan, karyawanacc = @acck, reselleracc = @accr, presentase_reseller = @reseller, auto_diskon = @diskon, stokMinimum = @stok,nama = @nama,alamat = @alamat, telp = @telp, baris1 = @baris1, baris2 = @baris2, baris3 = @baris3,header = @header,nilaipoint = @value,minimumkupon = @minim, backup = @backup where id = 1", op.Conn))
+            using (var cmd = new MySqlCommand("UPDATE settings SET presentase_karyawan = @karyawan, karyawanacc = @acck, reselleracc = @accr, presentase_reseller = @reseller, auto_diskon = @diskon, stokMinimum = @stok,nama = @nama,alamat = @alamat, telp = @telp, baris1 = @baris1, baris2 = @baris2, baris3 = @baris3,header = @header,nilaipoint = @value,minimumkupon = @minim, backup = @backup, jeda_kertas = @jeda where id = 1", op.Conn))
             {
                 cmd.Parameters.AddWithValue("@karyawan", model.Karyawan);
                 cmd.Parameters.AddWithValue("@acck", model.Karyawanacc);
@@ -76,6 +76,7 @@ namespace KasirApp.Repository
                 cmd.Parameters.AddWithValue("@value", model.Valuepoint);
                 cmd.Parameters.AddWithValue("@minim", model.Minimalcash);
                 cmd.Parameters.AddWithValue("@backup", model.Backup);
+                cmd.Parameters.AddWithValue("@jeda", model.Jeda);
 
                 op.KonekDB();
                 cmd.ExecuteNonQuery();

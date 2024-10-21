@@ -66,6 +66,45 @@ namespace KasirApp.Repository
                 throw;
             }
         }
+
+        internal bool ResetPassword(MemberModel model)
+        {
+            bool isSuccess = false; 
+            using (var client = new RestClient($"{con.url}cabangmember/"))
+            {
+                var body = new
+                {
+                    token = model.Token,
+                    nik = model.Email,
+                    phone = model.Phone,
+                    password = model.Password
+                };
+
+                var rq = new RestRequest("resetmember", Method.Post);
+                rq.AddJsonBody(body);
+
+                try
+                {
+                    var rs = client.Execute(rq);
+
+                    if (rs.StatusCode == HttpStatusCode.OK)
+                    {
+                        mb.InformasiOK("Berhasil Reset Password");
+                        isSuccess = true;
+                    }
+                    else if (rs.StatusCode == HttpStatusCode.NotFound)
+                    {
+                        mb.PeringatanOK("Data tidak ada");
+                    }
+                    Console.WriteLine(rs.Content.ToString());
+                }
+                catch (Exception ex)
+                {
+                    mb.PeringatanOK(ex.ToString());
+                }
+            }
+            return isSuccess;
+        }
     }
 }
 

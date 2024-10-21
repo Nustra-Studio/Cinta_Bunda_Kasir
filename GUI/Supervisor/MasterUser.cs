@@ -15,6 +15,7 @@ namespace KasirApp.GUI.Supervisor
 {
     public partial class MasterUser : Form,iParentDock,iUser,iPopUpRecieve
     {
+        Operator op = new Operator();
         MasterUserPresenter _pres;
         userDataModel _userdata;
         public string login { get => txtLogin.Text; set => txtLogin.Text = value; }
@@ -163,6 +164,7 @@ namespace KasirApp.GUI.Supervisor
                         clear();
                         closedState();
                         Bot();
+                        op.insertHistoriUser(_userdata, this.Text, "Add user");
                     }
                     else
                     {
@@ -175,6 +177,7 @@ namespace KasirApp.GUI.Supervisor
                     {
                         clear();
                         Bot();
+                        op.insertHistoriUser(_userdata, this.Text, "Edit user");
                     }
                     else
                     {

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,8 @@ using Quartz.Impl;
 using Quartz;
 using System.Diagnostics;
 using MySql.Data.MySqlClient;
+using RestSharp;
+using Newtonsoft.Json;
 
 namespace KasirApp.GUI
 {
@@ -148,7 +151,7 @@ namespace KasirApp.GUI
 
         private void resetStokKeNolToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ResetStokKeNol frm = new ResetStokKeNol(this);
+            ResetStokKeNol frm = new ResetStokKeNol(this, _user);
             addForm(frm);
         }
 
@@ -337,7 +340,7 @@ namespace KasirApp.GUI
         private void timer1_Tick(object sender, EventArgs e)
         {
             string date = DateTime.Now.ToString("HH:mm").Trim();
-            if (date == "20:00")
+            if (date == "23:04")
             {
                 initializeBW();
             }
@@ -358,6 +361,7 @@ namespace KasirApp.GUI
         public void initializeBackup(object sender, DoWorkEventArgs e)
         {
             string file = $@"{op.CabangConfig().Backup}\backupDBkasir_{DateTime.Now.ToString("HH;mm;ss")}-{DateTime.Now.ToString("dd-MM-yyyy")}.sql";
+            //Backup File Ke Lokal
             using (op.Conn)
             {
                 using (MySqlCommand cmd = new MySqlCommand())
@@ -368,9 +372,40 @@ namespace KasirApp.GUI
                         op.KonekDB();
                         mb.ExportToFile(file);
                         op.KonekDB();
+
+                        //Upload Backup Ke server
+                        using (var client = new RestClient(op.url + "backup/"))
+                        {
+                            try
+                            {
+                                //Console.WriteLine(JsonConvert.SerializeObject(body, Formatting.Indented));
+                                var request = new RestRequest("cabang", Method.Post);
+
+                                request.AddQueryParameter("token", _user.token);
+                                request.AddQueryParameter("uuid", _user.uuid);
+
+                                request.AddFile("file", file, "multipart/form-data");
+
+                                var response = client.Execute(request);
+                                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                                {
+                                    Console.WriteLine(response.Content.ToString());
+                                }
+                                else
+                                {
+                                    Console.WriteLine(response.Content.ToString());
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.Write(ex.Message.ToString());
+                            }
+                        }
                     }
                 }
             }
+
+           
         }
 
         public void doneBackup(object sender, RunWorkerCompletedEventArgs e)

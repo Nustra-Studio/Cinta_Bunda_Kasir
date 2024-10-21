@@ -90,8 +90,7 @@ namespace KasirApp.GUI
         {
             if (kembali == 0)
             {
-                lblHeader.Text = "Uang Pas! Terimakasih sudah berbelanja";
-                lblHeader.Text = "Uang Pas! Terimakasih sudah berbelanja";
+                lblHeader.Text = "Uang Pas! \n Terimakasih sudah berbelanja";
             }
             else
             {
@@ -140,7 +139,7 @@ namespace KasirApp.GUI
             else
             {
                 barcodestatus = false;
-                txtBarcode.Text = model.Nama;
+                txtBarcode.Text = model.Kode;
                 txtHarga.Text = model.Harga_pokok;
                 txtQty.Text = "1";
                 txtDiskon.Text = "0";
@@ -424,7 +423,7 @@ namespace KasirApp.GUI
         //Raise ButtonEvents
         private void RaiseAddemember(object sender, EventArgs e)
         {
-            AddMember fra = new AddMember(_user);
+            AddMember fra = new AddMember(_user, _master);
             if (fra.IsDisposed)
             {
                 _master.subForm(fra);

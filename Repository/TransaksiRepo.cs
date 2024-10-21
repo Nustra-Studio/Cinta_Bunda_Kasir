@@ -532,7 +532,7 @@ namespace KasirApp.Repository
 
         public int cekdiskon(TransaksiModel model)
         {
-            //Cek apakah Diskon
+            //Cek apakah Diskons
             bool kenaDiskon = false;
             int diskon = 0;
             using (var cmd = new MySqlCommand($"SELECT * FROM category_barangs WHERE uuid='{model.Idkategori}'", op.Conn))
@@ -643,12 +643,13 @@ namespace KasirApp.Repository
                     rd.Read();
                     if (rd.HasRows)
                     {
-                        int total = Convert.ToInt32(rd["quantity"].ToString()) * Convert.ToInt32(rd[model.State].ToString()) - Convert.ToInt32(model.Diskon);
+                        int finalDiskon = Convert.ToInt32(rd["quantity"].ToString()) * Convert.ToInt32(model.Diskon);
+                        int total = Convert.ToInt32(rd["quantity"].ToString()) * Convert.ToInt32(rd[model.State].ToString()) - finalDiskon;
                         using (MySqlCommand com = new MySqlCommand("UPDATE histori_penjualan SET diskon = @discon,total = @total where nomerTrans = @nomor AND barcode = @kode", op.Conn))
                         {
                             com.Parameters.AddWithValue("nomor", model.NomorPJ);
                             com.Parameters.AddWithValue("kode", model.Barkode);
-                            com.Parameters.AddWithValue("discon", model.Diskon);
+                            com.Parameters.AddWithValue("discon", finalDiskon.ToString());
                             com.Parameters.AddWithValue("total", total);
 
                             op.KonekDB();
@@ -690,7 +691,7 @@ namespace KasirApp.Repository
                     {
                         model.Harga = rd[model.State].ToString();
                         model.Idkategori = rd["id_category"].ToString();
-                        int finaldiskon = Convert.ToInt32(rd["diskon"].ToString()) + diskon;
+                        int finaldiskon = (Convert.ToInt32(model.Quantity) * Convert.ToInt32(rd["diskon"].ToString())) + diskon;
                         model.Diskon = finaldiskon.ToString();
                         int total1 = Convert.ToInt32(model.Quantity) * Convert.ToInt32(rd[model.State].ToString());
                         int total = total1 - finaldiskon;
@@ -748,22 +749,6 @@ namespace KasirApp.Repository
                         listmodel.Add(md);
                     }
                 }
-
-                //foreach (var md in listmodel)
-                //{
-                //    int total = Convert.ToInt32(md.Quantity) * Convert.ToInt32(md.Harga) - Convert.ToInt32(md.Diskon);
-                //    using (MySqlCommand com = new MySqlCommand("UPDATE histori_penjualan SET " + model.State + " = @harga, total = @total where nomerTrans = @nomor AND barcode = @kode", op.Conn))
-                //    {
-                //        com.Parameters.AddWithValue("nomor", model.NomorPJ);
-                //        com.Parameters.AddWithValue("harga", md.Harga);
-                //        com.Parameters.AddWithValue("kode", md.Barkode);
-                //        com.Parameters.AddWithValue("total", total);
-
-                //        op.KonekDB();
-                //        com.ExecuteNonQuery();
-                //        op.KonekDB();
-                //    }
-                //}
             }
         }
 
@@ -788,6 +773,7 @@ namespace KasirApp.Repository
                         }
                     }
                 }
+
                 int final = stok - Convert.ToInt32(md.Quantity);
                 //Masukan Histori Stok
                 var mdh = new HistoriStokModel();
@@ -1003,69 +989,274 @@ namespace KasirApp.Repository
 
         public void insertHistori(userDataModel user, TransaksiModel model, int subtotal)
         {
-            if (op.CekNetwork() == false)
+            var statusKirim = false;
+            //Ambil Data Local
+            using (MySqlCommand cmd = new MySqlCommand("select * from histori_penjualan where nomerTrans = @nomer", op.Conn))
+            {
+                var listarr = new List<SendTransaksi>();
+                var listTrans = new List<TransaksiModel>();
+                cmd.Parameters.AddWithValue("@nomer", model.NomorPJ);
+                op.KonekDB();
+                string mem = "";
+
+                if (model.Id_member == "")
+                {
+                    mem = null;
+                }
+                else
+                {
+                    mem = model.Id_member;
+                }
+
+                using (MySqlDataReader rd = cmd.ExecuteReader())
+                {
+                    while (rd.Read())
+                    {
+                        var md = new SendTransaksi();
+
+                        //Data AssignMent
+                        md.nomorPJ = model.NomorPJ;
+                        md.id_kategori = rd["id_category"].ToString();
+                        md.nama = rd["nama"].ToString();
+                        md.barkode = rd["barcode"].ToString();
+                        md.quantity = rd["quantity"].ToString();
+                        md.harga = rd["harga_jual"].ToString();
+                        md.harga_pokok = rd["hpp"].ToString();
+                        md.harga_jual = rd["harga_jual"].ToString();
+                        md.tanggal = DateTime.Now.ToString("yyyy/MM/dd");
+                        md.id_member = mem;
+                        //Logic
+                        int qty = Convert.ToInt32(md.quantity);
+                        int HJ = Convert.ToInt32(md.harga_jual);
+                        int TotalPCS = Convert.ToInt32(rd["total"].ToString());
+                        md.total = TotalPCS.ToString();
+                        
+                        listarr.Add(md);
+                    }
+                }
+                using (var rd2 = cmd.ExecuteReader())
+                {
+                    while (rd2.Read())
+                    {
+                        var md = new TransaksiModel();
+
+                        //Data AssignMent
+                        md.NomorPJ = model.NomorPJ;
+                        md.Idkategori = rd2["id_category"].ToString();  
+                        md.Nama = rd2["nama"].ToString();
+                        md.Diskon = rd2["diskon"].ToString();
+                        md.State = rd2["status"].ToString();
+                        md.Barkode = rd2["barcode"].ToString();
+                        md.Satuan = rd2["satuan"].ToString();
+                        md.Quantity = rd2["quantity"].ToString();
+                        md.Harga = rd2["harga_jual"].ToString();
+                        md.Harga_pokok = rd2["hpp"].ToString();
+                        md.Harga_jual = rd2["harga_jual"].ToString();
+                        md.Tanggal = DateTime.Now.ToString("yyyy/MM/dd");
+                        md.Id_member = mem;
+                        
+                        //Logic
+                        int qty = Convert.ToInt32(md.Quantity);
+                        int HJ = Convert.ToInt32(md.Harga_jual);
+                        int TotalPCS = Convert.ToInt32(rd2["total"].ToString());
+                        md.Total = TotalPCS.ToString();
+
+                        listTrans.Add(md);
+                    }
+                }
+
+                //Update List Struk
+                //op.masukListStruk("PJC", model.NomorPJ);
+                //Update Nomor
+                UpdateNumberint();
+
+                if (op.CekNetwork() == false)
+                {
+                    insertPending(listTrans, user);
+                    mb.PeringatanOK("Jaringan bermasalah upload data ter pending");
+                }
+                else
+                {
+                    //Request simpan ke server, handle error dan timeout
+                    try
+                    {
+                        using (var client = new RestClient($"{op.url}cabangmember/"))
+                        {
+                            var body = new
+                            {
+                                token = user.token,
+                                id_cabang = user.cabang_id,
+                                data = listarr,
+                                subtotal = subtotal
+                            };  
+
+                            var arr = JsonConvert.SerializeObject(body);
+
+                            var rs = new RestRequest("transaksi", Method.Post);
+                            rs.AddJsonBody(arr);
+
+                            rs.Timeout = 10000;    
+
+                            var response = client.Execute(rs);
+                            if (response.StatusCode == HttpStatusCode.OK)
+                            {
+                                mb.InformasiOK("Transaksi Selesai");
+                                SubtrakBarangs(listTrans);
+                                statusKirim = true;
+                            }
+                            else
+                            {
+                                mb.PeringatanOK("terjadi Kesalahan pada server, Data ter Pending");
+                                insertPending(listTrans, user);
+                                //MessageBox.Show(response.Content.ToString(), "Error List", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        insertPending(listTrans, user);
+                        mb.peringatanError("Terjadi Timeout, Transaksi ter Pending");
+                    }
+                }
+            }
+            
+            if (statusKirim == true)
+            {
+                uploadPending(user);
+            }
+        }
+
+        private void uploadPending(userDataModel user)
+        {
+            var listPending = new List<SendTransaksi>();
+            var subtotal = 0;
+            //Get Subtotal
+
+            using (var cmd = new MySqlCommand("select * from pending_penjualan", op.Conn))
+            {
+                op.KonekDB();
+                using (var rd = cmd.ExecuteReader())
+                {
+                    while (rd.Read())
+                    {
+                        var md = new SendTransaksi();
+
+                        //Data AssignMent
+                        md.nomorPJ = rd["nomerTrans"].ToString();
+                        md.nama = rd["nama"].ToString();
+                        md.barkode = rd["barcode"].ToString();
+                        md.quantity = rd["quantity"].ToString();
+                        md.diskon = rd["diskon"].ToString();
+                        md.harga = rd["harga_jual"].ToString();
+                        md.harga_pokok = rd["hpp"].ToString();
+                        md.harga_jual = rd["harga_jual"].ToString();
+                        md.tanggal = DateTime.Now.ToString("yyyy/MM/dd");
+                        md.id_kategori = rd["id_member"].ToString();
+                        //Logic
+                        int qty = Convert.ToInt32(md.quantity);
+                        int HJ = Convert.ToInt32(md.harga);
+                        int TotalPCS = qty * HJ;
+                        md.total = TotalPCS.ToString();
+                        subtotal += Convert.ToInt32(rd["total"].ToString());
+                        listPending.Add(md);
+                    }
+                    
+                }
+            }
+
+            try
+            {
+                using (var client = new RestClient($"{op.url}cabangmember/"))
+                {
+                    var body = new
+                    {
+                        token = user.token,
+                        id_cabang = user.cabang_id,
+                        data = listPending,
+                        subtotal = subtotal
+                    };
+
+                    var arr = JsonConvert.SerializeObject(body);
+
+                    var rs = new RestRequest("transaksi", Method.Post);
+                    rs.AddJsonBody(arr);
+
+                    rs.Timeout = 10000;
+
+                    var response = client.Execute(rs);
+                    //mb.InformasiOK(response.Content.ToString());
+                    if (response.StatusCode == HttpStatusCode.OK)
+                    {
+                        clearPendingData();
+                        return;
+                    }
+                    else
+                    {
+                        mb.peringatanError("terjadi Kesalahan saat upload pending data");
+                        //mb.PeringatanOK("terjadi Kesalahan pada server, Data ter Pending");
+                        return;
+                        //MessageBox.Show(response.Content.ToString(), "Error List", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                mb.peringatanError(ex.Message.ToString());
+                //mb.PeringatanOK("terjadi Kesalahan pada server, Data ter Pending");
+                return;
+            }
+        }
+
+        private void clearPendingData()
+        {
+            using (var cmd = new MySqlCommand("delete  from pending_penjualan", op.Conn))
+            {
+                op.KonekDB();
+                cmd.ExecuteNonQuery();
+                op.KonekDB();
+            }
+        }
+
+        //Pending Barang jika gagal Upload
+        public void insertPending(List<TransaksiModel> listBarang, userDataModel user)
+        {
+            if(listBarang.Count <= 0)
             {
                 return;
             }
             else
             {
-                //Ambil Data Local
-                var listTrans = new List<TransaksiModel>();
-                using (MySqlCommand cmd = new MySqlCommand("select * from histori_penjualan where nomerTrans = @nomer", op.Conn))
+
+                foreach (var model in listBarang)
                 {
-                    cmd.Parameters.AddWithValue("@nomer", model.NomorPJ);
-                    op.KonekDB();
-                    using (MySqlDataReader rd = cmd.ExecuteReader())
+
+                    //Simpan Ke Pending
+                    using (MySqlCommand cmd = new MySqlCommand("INSERT INTO pending_penjualan VALUES (null,md5(RAND()),@idkategori, @nomorPJ, @nama, @barcode, @quantity, @satuan, @HJ, @HPP, @Diskon, @Total, @user, @id_member,@status, @tanggal)", op.Conn))
                     {
-                        while (rd.Read())
-                        {
-                            var md = new TransaksiModel();
-                            
-                            //Data AssignMent
-                            md.NomorPJ = model.NomorPJ;
-                            md.Nama = rd["nama"].ToString();
-                            md.Barkode = rd["barcode"].ToString();
-                            md.Quantity = rd["quantity"].ToString();
-                            md.Harga_jual = rd["harga_jual"].ToString();
-                            md.Harga_pokok = rd["hpp"].ToString();
-                            md.Diskon = rd["diskon"].ToString();
-                            md.Tanggal = DateTime.Now.ToString("yyyy/MM/dd");
-                            md.Id_member = model.Id_member;
-                            //Logic
-                            int qty = Convert.ToInt32(md.Quantity);
-                            int HJ = Convert.ToInt32(md.Harga_pokok);
-                            int TotalPCS = qty * HJ;
-                            md.Total = TotalPCS.ToString();
+                        cmd.Parameters.AddWithValue("@nomorPJ", model.NomorPJ);
+                        cmd.Parameters.AddWithValue("@idkategori", model.Idkategori);
+                        cmd.Parameters.AddWithValue("@nama", model.Nama);
+                        cmd.Parameters.AddWithValue("@barcode", model.Barkode);
+                        cmd.Parameters.AddWithValue("@quantity", model.Quantity);//insert satu quantity
+                        cmd.Parameters.AddWithValue("@satuan", model.Satuan);//insert satu quantity
+                        cmd.Parameters.AddWithValue("@HJ", model.Harga_jual);
+                        cmd.Parameters.AddWithValue("@HPP", model.Harga_pokok);
+                        cmd.Parameters.AddWithValue("@Total", model.Total);
+                        cmd.Parameters.AddWithValue("@tanggal", op.myDatetime);
+                        cmd.Parameters.AddWithValue("@Diskon", model.Diskon);// Set Diskon ke 0
+                        cmd.Parameters.AddWithValue("@status", model.State);// Set Diskon ke 0
+                        cmd.Parameters.AddWithValue("@id_member", model.Id_member);
+                        cmd.Parameters.AddWithValue("@user", _user.username);
 
-                            listTrans.Add(md);
-                        }
-                    }
-
-                    SubtrakBarangs(listTrans);
-                    //Update List Struk
-                    //op.masukListStruk("PJC", model.NomorPJ);
-
-                    using (var client = new RestClient($"{op.url}cabangmember/"))
-                    {
-                        var body = new
-                        {
-                            token = user.token,
-                            id_cabang = user.uuid,
-                            data = listTrans,
-                            subtotal = subtotal
-                        };
-
-                        var rs = new RestRequest("transaksi", Method.Post);
-                        rs.AddJsonBody(body);
-
-                        var response = client.Execute(rs);
-                        //mb.InformasiOK(response.Content.ToString());
-                        mb.InformasiOK("Transaksi Selesai");
+                        op.KonekDB();
+                        cmd.ExecuteNonQuery();
+                        op.KonekDB();
                     }
                 }
-                //Update Nomor
-                UpdateNumberint();
             }
+
+            return;
         }
 
         //FITURR PEMBULATAN / ROUNDING
@@ -1130,31 +1321,59 @@ namespace KasirApp.Repository
                 }
             }
 
-            double stHeigtBd = 7.4;
-            double stHeight = 19.5;
+            double stHeigtBd = 6.5;
+            double stHeight = 18.6;
 
-            double incremental = 0.8;
-            
+            double incremental = 0.6;
+
             double totalBody = stHeigtBd + (incremental * RowCount);
             double TotalHgt = stHeight + (incremental * RowCount);
 
+            Console.WriteLine("count : " + RowCount);
+            Console.WriteLine("body : " + totalBody);
+            Console.WriteLine("height : " + TotalHgt);
+
             var doc = new XmlDocument();
-            var namesps = new XmlNamespaceManager(doc.NameTable);
-            namesps.AddNamespace("ns1", "http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition");
-            namesps.AddNamespace("ns2", "http://schemas.microsoft.com/SQLServer/reporting/reportdesigner");
-
+            // Load the RDLC file
             doc.Load($"{op.pathReport("Struk.rdlc")}");
-            
+
+            // Set up the namespace manager
+            XmlNamespaceManager namesps = new XmlNamespaceManager(doc.NameTable);
+            namesps.AddNamespace("ns1", "http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition"); // Use the correct namespace
+
+            // Select the nodes
             XmlNode bodyNode = doc.SelectSingleNode("ns1:Report/ns1:ReportSections/ns1:ReportSection/ns1:Body/ns1:Height", namesps);
-            var heightNode = doc.SelectSingleNode("ns1:Report/ns1:ReportSections/ns1:ReportSection/ns1:Page/ns1:PageHeight", namesps);
+            XmlNode heightNode = doc.SelectSingleNode("ns1:Report/ns1:ReportSections/ns1:ReportSection/ns1:Page/ns1:PageHeight", namesps);
 
-            NumberFormatInfo nfi = new NumberFormatInfo();
-            nfi.NumberDecimalSeparator = ".";
+            if (bodyNode == null)
+            {
+                Console.WriteLine("Body Height node not found.");
+            }
+            else
+            {
+                Console.WriteLine("Body Node before : " + bodyNode.InnerText);
+                NumberFormatInfo nfi = new NumberFormatInfo { NumberDecimalSeparator = "." };
+                bodyNode.InnerText = $"{totalBody.ToString(nfi)}cm";
+                Console.WriteLine("Body Node after : " + bodyNode.InnerText);
 
-            bodyNode.InnerText = $"{totalBody.ToString(nfi)}cm";
-            heightNode.InnerText = $"{TotalHgt.ToString(nfi)}cm";
+            }
 
+            if (heightNode == null)
+            {
+                Console.WriteLine("Page Height node not found.");
+            }
+            else
+            {
+                Console.WriteLine("Height Node before : " + heightNode.InnerText);
+                NumberFormatInfo nfi = new NumberFormatInfo { NumberDecimalSeparator = "." };
+                heightNode.InnerText = $"{TotalHgt.ToString(nfi)}cm";
+                Console.WriteLine("Height Node after : " + heightNode.InnerText);
+            }
+
+            // Save the modified RDLC file
             doc.Save($"{op.pathReport("Struk.rdlc")}");
+
+            Console.WriteLine("RDLC file updated successfully.");
 
             PopulateRDLC();
         }
@@ -1243,7 +1462,7 @@ namespace KasirApp.Repository
                 }
             }
 
-            double stHeigtBd = 7.4;
+            double stHeigtBd = 7;
             double stHeight = 23.4;
 
             double incremental = 0.8;

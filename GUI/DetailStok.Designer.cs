@@ -29,14 +29,14 @@ namespace KasirApp.GUI
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.background = new Guna.UI.WinForms.GunaPictureBox();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.DGV1 = new Guna.UI.WinForms.GunaDataGridView();
@@ -69,8 +69,9 @@ namespace KasirApp.GUI
             this.background.Dock = System.Windows.Forms.DockStyle.Fill;
             this.background.Image = global::KasirApp.Properties.Resources.Wallpaper_Kasir;
             this.background.Location = new System.Drawing.Point(0, 0);
+            this.background.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.background.Name = "background";
-            this.background.Size = new System.Drawing.Size(1483, 792);
+            this.background.Size = new System.Drawing.Size(1112, 644);
             this.background.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.background.TabIndex = 1;
             this.background.TabStop = false;
@@ -84,10 +85,11 @@ namespace KasirApp.GUI
             this.guna2Panel1.BorderThickness = 10;
             this.guna2Panel1.Controls.Add(this.DGV1);
             this.guna2Panel1.Controls.Add(this.label1);
-            this.guna2Panel1.Location = new System.Drawing.Point(12, 84);
+            this.guna2Panel1.Location = new System.Drawing.Point(9, 68);
+            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
-            this.guna2Panel1.Size = new System.Drawing.Size(573, 631);
+            this.guna2Panel1.Size = new System.Drawing.Size(430, 513);
             this.guna2Panel1.TabIndex = 3;
             // 
             // DGV1
@@ -97,8 +99,8 @@ namespace KasirApp.GUI
             this.DGV1.AllowUserToOrderColumns = true;
             this.DGV1.AllowUserToResizeColumns = false;
             this.DGV1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.DGV1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            this.DGV1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
             this.DGV1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -107,38 +109,37 @@ namespace KasirApp.GUI
             this.DGV1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.DGV1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.DGV1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGV1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGV1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.DGV1.ColumnHeadersHeight = 30;
             this.DGV1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nama,
             this.Barcode,
             this.stok});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DGV1.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DGV1.DefaultCellStyle = dataGridViewCellStyle12;
             this.DGV1.EnableHeadersVisualStyles = false;
             this.DGV1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.DGV1.Location = new System.Drawing.Point(19, 90);
-            this.DGV1.Margin = new System.Windows.Forms.Padding(4);
+            this.DGV1.Location = new System.Drawing.Point(14, 73);
             this.DGV1.Name = "DGV1";
             this.DGV1.ReadOnly = true;
             this.DGV1.RowHeadersVisible = false;
             this.DGV1.RowHeadersWidth = 51;
             this.DGV1.RowTemplate.Height = 30;
             this.DGV1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGV1.Size = new System.Drawing.Size(536, 512);
+            this.DGV1.Size = new System.Drawing.Size(402, 416);
             this.DGV1.TabIndex = 7;
             this.DGV1.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Guna;
             this.DGV1.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -182,8 +183,8 @@ namespace KasirApp.GUI
             // stok
             // 
             this.stok.DataPropertyName = "Stok";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.stok.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.stok.DefaultCellStyle = dataGridViewCellStyle11;
             this.stok.HeaderText = "Stok";
             this.stok.MinimumWidth = 6;
             this.stok.Name = "stok";
@@ -194,9 +195,10 @@ namespace KasirApp.GUI
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(151, 35);
+            this.label1.Location = new System.Drawing.Point(113, 28);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(267, 32);
+            this.label1.Size = new System.Drawing.Size(205, 26);
             this.label1.TabIndex = 0;
             this.label1.Text = "Laporan Stok Minus";
             // 
@@ -209,10 +211,11 @@ namespace KasirApp.GUI
             this.guna2Panel2.BorderThickness = 10;
             this.guna2Panel2.Controls.Add(this.DGV2);
             this.guna2Panel2.Controls.Add(this.label2);
-            this.guna2Panel2.Location = new System.Drawing.Point(893, 84);
+            this.guna2Panel2.Location = new System.Drawing.Point(670, 68);
+            this.guna2Panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.guna2Panel2.Name = "guna2Panel2";
             this.guna2Panel2.ShadowDecoration.Parent = this.guna2Panel2;
-            this.guna2Panel2.Size = new System.Drawing.Size(578, 631);
+            this.guna2Panel2.Size = new System.Drawing.Size(434, 513);
             this.guna2Panel2.TabIndex = 8;
             // 
             // DGV2
@@ -222,8 +225,8 @@ namespace KasirApp.GUI
             this.DGV2.AllowUserToOrderColumns = true;
             this.DGV2.AllowUserToResizeColumns = false;
             this.DGV2.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            this.DGV2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
+            this.DGV2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
             this.DGV2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -232,38 +235,37 @@ namespace KasirApp.GUI
             this.DGV2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.DGV2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.DGV2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGV2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGV2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.DGV2.ColumnHeadersHeight = 30;
             this.DGV2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DGV2.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DGV2.DefaultCellStyle = dataGridViewCellStyle16;
             this.DGV2.EnableHeadersVisualStyles = false;
             this.DGV2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.DGV2.Location = new System.Drawing.Point(19, 90);
-            this.DGV2.Margin = new System.Windows.Forms.Padding(4);
+            this.DGV2.Location = new System.Drawing.Point(14, 73);
             this.DGV2.Name = "DGV2";
             this.DGV2.ReadOnly = true;
             this.DGV2.RowHeadersVisible = false;
             this.DGV2.RowHeadersWidth = 51;
             this.DGV2.RowTemplate.Height = 30;
             this.DGV2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGV2.Size = new System.Drawing.Size(541, 512);
+            this.DGV2.Size = new System.Drawing.Size(406, 416);
             this.DGV2.TabIndex = 8;
             this.DGV2.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Guna;
             this.DGV2.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -307,8 +309,8 @@ namespace KasirApp.GUI
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "Stok";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle15;
             this.dataGridViewTextBoxColumn3.HeaderText = "Stok";
             this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
@@ -319,9 +321,10 @@ namespace KasirApp.GUI
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(159, 35);
+            this.label2.Location = new System.Drawing.Point(119, 28);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(306, 32);
+            this.label2.Size = new System.Drawing.Size(237, 26);
             this.label2.TabIndex = 0;
             this.label2.Text = "Laporan Stok Minimum\r\n";
             // 
@@ -335,10 +338,11 @@ namespace KasirApp.GUI
             this.guna2Panel3.Controls.Add(this.label3);
             this.guna2Panel3.Controls.Add(this.tgl2);
             this.guna2Panel3.Controls.Add(this.tgl1);
-            this.guna2Panel3.Location = new System.Drawing.Point(591, 317);
+            this.guna2Panel3.Location = new System.Drawing.Point(443, 258);
+            this.guna2Panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.guna2Panel3.Name = "guna2Panel3";
             this.guna2Panel3.ShadowDecoration.Parent = this.guna2Panel3;
-            this.guna2Panel3.Size = new System.Drawing.Size(296, 187);
+            this.guna2Panel3.Size = new System.Drawing.Size(222, 152);
             this.guna2Panel3.TabIndex = 9;
             // 
             // btnApply
@@ -355,8 +359,7 @@ namespace KasirApp.GUI
             this.btnApply.ForeColor = System.Drawing.Color.White;
             this.btnApply.Image = null;
             this.btnApply.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnApply.Location = new System.Drawing.Point(71, 129);
-            this.btnApply.Margin = new System.Windows.Forms.Padding(4);
+            this.btnApply.Location = new System.Drawing.Point(53, 105);
             this.btnApply.Name = "btnApply";
             this.btnApply.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnApply.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -364,7 +367,7 @@ namespace KasirApp.GUI
             this.btnApply.OnHoverImage = null;
             this.btnApply.OnPressedColor = System.Drawing.Color.Black;
             this.btnApply.Radius = 15;
-            this.btnApply.Size = new System.Drawing.Size(153, 43);
+            this.btnApply.Size = new System.Drawing.Size(115, 35);
             this.btnApply.TabIndex = 15;
             this.btnApply.Text = "Apply";
             this.btnApply.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -373,9 +376,10 @@ namespace KasirApp.GUI
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(136, 62);
+            this.label3.Location = new System.Drawing.Point(102, 50);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(27, 17);
+            this.label3.Size = new System.Drawing.Size(23, 13);
             this.label3.TabIndex = 10;
             this.label3.Text = "s/d";
             // 
@@ -389,7 +393,8 @@ namespace KasirApp.GUI
             this.tgl2.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(243)))), ((int)(((byte)(189)))));
             this.tgl2.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.tgl2.ForeColor = System.Drawing.Color.Black;
-            this.tgl2.Location = new System.Drawing.Point(32, 82);
+            this.tgl2.Location = new System.Drawing.Point(24, 67);
+            this.tgl2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tgl2.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.tgl2.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.tgl2.Name = "tgl2";
@@ -397,7 +402,7 @@ namespace KasirApp.GUI
             this.tgl2.OnHoverBorderColor = System.Drawing.Color.Green;
             this.tgl2.OnHoverForeColor = System.Drawing.Color.Green;
             this.tgl2.OnPressedColor = System.Drawing.Color.Black;
-            this.tgl2.Size = new System.Drawing.Size(237, 40);
+            this.tgl2.Size = new System.Drawing.Size(178, 32);
             this.tgl2.TabIndex = 2;
             this.tgl2.Text = "08 August 2023";
             this.tgl2.Value = new System.DateTime(2023, 8, 8, 21, 37, 14, 572);
@@ -412,7 +417,8 @@ namespace KasirApp.GUI
             this.tgl1.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(243)))), ((int)(((byte)(189)))));
             this.tgl1.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.tgl1.ForeColor = System.Drawing.Color.Black;
-            this.tgl1.Location = new System.Drawing.Point(32, 21);
+            this.tgl1.Location = new System.Drawing.Point(24, 17);
+            this.tgl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tgl1.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.tgl1.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.tgl1.Name = "tgl1";
@@ -420,21 +426,22 @@ namespace KasirApp.GUI
             this.tgl1.OnHoverBorderColor = System.Drawing.Color.Green;
             this.tgl1.OnHoverForeColor = System.Drawing.Color.Green;
             this.tgl1.OnPressedColor = System.Drawing.Color.Black;
-            this.tgl1.Size = new System.Drawing.Size(237, 40);
+            this.tgl1.Size = new System.Drawing.Size(178, 32);
             this.tgl1.TabIndex = 1;
             this.tgl1.Text = "08 August 2023";
             this.tgl1.Value = new System.DateTime(2023, 8, 8, 21, 37, 14, 572);
             // 
             // DetailStok
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1483, 792);
+            this.ClientSize = new System.Drawing.Size(1112, 644);
             this.Controls.Add(this.guna2Panel3);
             this.Controls.Add(this.guna2Panel2);
             this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.background);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "DetailStok";
             this.Text = "DetailStok";
             ((System.ComponentModel.ISupportInitialize)(this.background)).EndInit();

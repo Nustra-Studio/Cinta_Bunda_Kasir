@@ -16,12 +16,14 @@ namespace KasirApp.GUI.Supervisor
     public partial class ResetStokKeNol : Form
     {
         iMasterForm _master;
+        userDataModel _user;
         MboxOperator mb = new MboxOperator();
         Operator op = new Operator();
-        public ResetStokKeNol(iMasterForm mstr)
+        public ResetStokKeNol(iMasterForm mstr, userDataModel user)
         {
             InitializeComponent();
             _master = mstr;
+            _user = user;
         }
 
         private void btnCancle_Click(object sender, EventArgs e)
@@ -47,6 +49,7 @@ namespace KasirApp.GUI.Supervisor
                     cmd.ExecuteNonQuery();
                     op.KonekDB();
                     mb.InformasiOK("Stok Ter Reset");
+                    op.insertHistoriUser(_user, this.Text, "Reset Stok");
                 }
             }
         }

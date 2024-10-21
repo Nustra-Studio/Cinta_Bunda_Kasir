@@ -30,9 +30,9 @@ namespace KasirApp.GUI
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.btnBatal = new Guna.UI.WinForms.GunaGradientButton();
             this.btnProses = new Guna.UI.WinForms.GunaGradientButton();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtSTOK = new Guna.UI.WinForms.GunaTextBox();
@@ -52,6 +52,7 @@ namespace KasirApp.GUI
             this.label11 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.chkKecuali = new System.Windows.Forms.CheckBox();
             this.txtBarcode = new Guna.UI.WinForms.GunaTextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -69,17 +70,6 @@ namespace KasirApp.GUI
             this.txtBarang = new Guna.UI.WinForms.GunaTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.lblperPCS = new System.Windows.Forms.Label();
-            this.lblTotal = new System.Windows.Forms.Label();
-            this.lblPajak = new System.Windows.Forms.Label();
-            this.lblLaba = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.lblHarga = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.chkKecuali = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -89,42 +79,23 @@ namespace KasirApp.GUI
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.groupBox1.Controls.Add(this.statusStrip1);
             this.groupBox1.Controls.Add(this.btnBatal);
             this.groupBox1.Controls.Add(this.btnProses);
+            this.groupBox1.Controls.Add(this.statusStrip1);
             this.groupBox1.Controls.Add(this.groupBox4);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Controls.Add(this.lblperPCS);
-            this.groupBox1.Controls.Add(this.lblTotal);
-            this.groupBox1.Controls.Add(this.lblPajak);
-            this.groupBox1.Controls.Add(this.lblLaba);
-            this.groupBox1.Controls.Add(this.label23);
-            this.groupBox1.Controls.Add(this.label21);
-            this.groupBox1.Controls.Add(this.lblHarga);
-            this.groupBox1.Controls.Add(this.label19);
-            this.groupBox1.Controls.Add(this.label17);
-            this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(13, 12);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(1027, 841);
+            this.groupBox1.Size = new System.Drawing.Size(1115, 657);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Insert Data";
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip1.Location = new System.Drawing.Point(4, 815);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(1019, 22);
-            this.statusStrip1.TabIndex = 5;
-            this.statusStrip1.Text = "statusStrip1";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // btnBatal
             // 
@@ -142,7 +113,7 @@ namespace KasirApp.GUI
             this.btnBatal.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.btnBatal.Image = null;
             this.btnBatal.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnBatal.Location = new System.Drawing.Point(835, 534);
+            this.btnBatal.Location = new System.Drawing.Point(993, 501);
             this.btnBatal.Margin = new System.Windows.Forms.Padding(4);
             this.btnBatal.Name = "btnBatal";
             this.btnBatal.OnHoverBaseColor1 = System.Drawing.Color.White;
@@ -152,7 +123,7 @@ namespace KasirApp.GUI
             this.btnBatal.OnHoverImage = null;
             this.btnBatal.OnPressedColor = System.Drawing.Color.Black;
             this.btnBatal.Size = new System.Drawing.Size(105, 37);
-            this.btnBatal.TabIndex = 1;
+            this.btnBatal.TabIndex = 17;
             this.btnBatal.Text = "Batal";
             this.btnBatal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnBatal.Click += new System.EventHandler(this.btnBatal_Click);
@@ -173,7 +144,7 @@ namespace KasirApp.GUI
             this.btnProses.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.btnProses.Image = null;
             this.btnProses.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnProses.Location = new System.Drawing.Point(715, 534);
+            this.btnProses.Location = new System.Drawing.Point(873, 501);
             this.btnProses.Margin = new System.Windows.Forms.Padding(4);
             this.btnProses.Name = "btnProses";
             this.btnProses.OnHoverBaseColor1 = System.Drawing.Color.White;
@@ -183,10 +154,20 @@ namespace KasirApp.GUI
             this.btnProses.OnHoverImage = null;
             this.btnProses.OnPressedColor = System.Drawing.Color.Black;
             this.btnProses.Size = new System.Drawing.Size(105, 37);
-            this.btnProses.TabIndex = 0;
+            this.btnProses.TabIndex = 6;
             this.btnProses.Text = "Proses";
             this.btnProses.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnProses.Click += new System.EventHandler(this.btnProses_Click);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip1.Location = new System.Drawing.Point(4, 631);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(1107, 22);
+            this.statusStrip1.TabIndex = 5;
+            this.statusStrip1.Text = "statusStrip1";
             // 
             // groupBox4
             // 
@@ -209,7 +190,7 @@ namespace KasirApp.GUI
             this.groupBox4.Controls.Add(this.label11);
             this.groupBox4.Controls.Add(this.label13);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(8, 360);
+            this.groupBox4.Location = new System.Drawing.Point(557, 24);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
@@ -474,7 +455,7 @@ namespace KasirApp.GUI
             this.groupBox3.Controls.Add(this.txtBarcode);
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(557, 23);
+            this.groupBox3.Location = new System.Drawing.Point(8, 360);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
@@ -482,6 +463,17 @@ namespace KasirApp.GUI
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Barcode";
+            // 
+            // chkKecuali
+            // 
+            this.chkKecuali.AutoSize = true;
+            this.chkKecuali.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkKecuali.Location = new System.Drawing.Point(125, 123);
+            this.chkKecuali.Name = "chkKecuali";
+            this.chkKecuali.Size = new System.Drawing.Size(220, 29);
+            this.chkKecuali.TabIndex = 1;
+            this.chkKecuali.Text = "Kecualikan Potongan";
+            this.chkKecuali.UseVisualStyleBackColor = true;
             // 
             // txtBarcode
             // 
@@ -769,136 +761,12 @@ namespace KasirApp.GUI
             this.label2.TabIndex = 0;
             this.label2.Text = "Nama Barang :";
             // 
-            // lblperPCS
-            // 
-            this.lblperPCS.AutoSize = true;
-            this.lblperPCS.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblperPCS.Location = new System.Drawing.Point(857, 423);
-            this.lblperPCS.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblperPCS.Name = "lblperPCS";
-            this.lblperPCS.Size = new System.Drawing.Size(110, 31);
-            this.lblperPCS.TabIndex = 0;
-            this.lblperPCS.Text = "Rp.0.00";
-            // 
-            // lblTotal
-            // 
-            this.lblTotal.AutoSize = true;
-            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.Location = new System.Drawing.Point(857, 471);
-            this.lblTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(110, 31);
-            this.lblTotal.TabIndex = 0;
-            this.lblTotal.Text = "Rp.0.00";
-            this.lblTotal.Visible = false;
-            // 
-            // lblPajak
-            // 
-            this.lblPajak.AutoSize = true;
-            this.lblPajak.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPajak.Location = new System.Drawing.Point(857, 380);
-            this.lblPajak.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblPajak.Name = "lblPajak";
-            this.lblPajak.Size = new System.Drawing.Size(110, 31);
-            this.lblPajak.TabIndex = 0;
-            this.lblPajak.Text = "Rp.0.00";
-            // 
-            // lblLaba
-            // 
-            this.lblLaba.AutoSize = true;
-            this.lblLaba.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLaba.Location = new System.Drawing.Point(857, 336);
-            this.lblLaba.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblLaba.Name = "lblLaba";
-            this.lblLaba.Size = new System.Drawing.Size(110, 31);
-            this.lblLaba.TabIndex = 0;
-            this.lblLaba.Text = "Rp.0.00";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(630, 423);
-            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(175, 31);
-            this.label23.TabIndex = 0;
-            this.label23.Text = "HJ Per PCS :";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(573, 471);
-            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(232, 26);
-            this.label21.TabIndex = 0;
-            this.label21.Text = "Keuntungan Sold Out :";
-            this.label21.Visible = false;
-            // 
-            // lblHarga
-            // 
-            this.lblHarga.AutoSize = true;
-            this.lblHarga.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHarga.Location = new System.Drawing.Point(857, 289);
-            this.lblHarga.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblHarga.Name = "lblHarga";
-            this.lblHarga.Size = new System.Drawing.Size(110, 31);
-            this.lblHarga.TabIndex = 0;
-            this.lblHarga.Text = "Rp.0.00";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(708, 380);
-            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(97, 31);
-            this.label19.TabIndex = 0;
-            this.label19.Text = "Pajak :";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(716, 336);
-            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(89, 31);
-            this.label17.TabIndex = 0;
-            this.label17.Text = "Laba :";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(608, 289);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(197, 31);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "Harga Barang :";
-            // 
-            // chkKecuali
-            // 
-            this.chkKecuali.AutoSize = true;
-            this.chkKecuali.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkKecuali.Location = new System.Drawing.Point(125, 123);
-            this.chkKecuali.Name = "chkKecuali";
-            this.chkKecuali.Size = new System.Drawing.Size(220, 29);
-            this.chkKecuali.TabIndex = 1;
-            this.chkKecuali.Text = "Kecualikan Potongan";
-            this.chkKecuali.UseVisualStyleBackColor = true;
-            // 
             // Insert
             // 
-            this.AcceptButton = this.btnProses;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
-            this.ClientSize = new System.Drawing.Size(1053, 865);
+            this.ClientSize = new System.Drawing.Size(1141, 681);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -933,8 +801,6 @@ namespace KasirApp.GUI
         private System.Windows.Forms.GroupBox groupBox3;
         private Guna.UI.WinForms.GunaTextBox txtBarcode;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label lblHarga;
         private System.Windows.Forms.GroupBox groupBox4;
         private Guna.UI.WinForms.GunaTextBox txtGrosir;
         private Guna.UI.WinForms.GunaTextBox txtHargaJual;
@@ -948,16 +814,8 @@ namespace KasirApp.GUI
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label lblLaba;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label lblPajak;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label lblTotal;
-        private System.Windows.Forms.Label label21;
         private Guna.UI.WinForms.GunaTextBox txtSTOK;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label lblperPCS;
-        private System.Windows.Forms.Label label23;
         private Guna.UI.WinForms.GunaTextBox txtHargapokok;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Panel panel1;
@@ -966,8 +824,8 @@ namespace KasirApp.GUI
         private System.Windows.Forms.Label label10;
         private Guna.UI.WinForms.GunaButton btnCategori;
         private Guna.UI.WinForms.GunaButton btnSatuan;
+        private System.Windows.Forms.CheckBox chkKecuali;
         private Guna.UI.WinForms.GunaGradientButton btnBatal;
         private Guna.UI.WinForms.GunaGradientButton btnProses;
-        private System.Windows.Forms.CheckBox chkKecuali;
     }
 }

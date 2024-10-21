@@ -87,7 +87,7 @@ namespace KasirApp.Repository
             else
             {
                 //Save ke table
-                using (MySqlCommand cmd = new MySqlCommand("INSERT INTO opnames VALUES(null,md5(RAND()),@nomer,@nama,@barcode,@stok,@perubahan,@selisih,@posted,@tanggal)", op.Conn))
+                using (MySqlCommand cmd = new MySqlCommand("INSERT INTO opnames VALUES(null,md5(RAND()),@nomer,@nama,@barcode,@stok,@perubahan,@selisih,@posted,@tanggal, null)", op.Conn))
                 {
                     cmd.Parameters.AddWithValue("nomer", model.Nomor);
                     cmd.Parameters.AddWithValue("nama", model.Nama);
@@ -281,7 +281,7 @@ namespace KasirApp.Repository
             {
                 using (var cmd = new MySqlCommand($"" +
                 $"INSERT INTO opnames VALUES (null,SHA2('{model.Barcode}' , 256), '{model.Nomor}', '{md.Nama}', '{model.Barcode}', " +
-                $"'{md.Stok}', '{md.Perubahan}', '{md.Selisih}', '0', '{op.myDatetime}')", op.Conn))
+                $"'{md.Stok}', '{md.Perubahan}', '{md.Selisih}', '0', '{op.myDatetime}', null)", op.Conn))
                 {
                     op.KonekDB();
                     cmd.ExecuteNonQuery();
@@ -433,6 +433,8 @@ namespace KasirApp.Repository
         {
             var status = false;
             var statusstring = "";
+            var perubahan = "";
+            var barcode = "";
             try
             {
                 using (var client = new RestClient($"{op.url}opname"))
@@ -469,6 +471,8 @@ namespace KasirApp.Repository
                             foreach (var item in oplist)
                             {
                                 bool isExist = false;
+                                perubahan = item.perubahan;
+                                barcode = item.barcode;
                                 using (var cmd = new MySqlCommand($"SELECT * FROM opnames WHERE Barcode='{item.barcode}' AND nomerTrans='{model.Nomor}'", op.Conn))
                                 {
                                     op.KonekDB();
@@ -494,15 +498,30 @@ namespace KasirApp.Repository
                                 else
                                 {
                                     int selisih = Convert.ToInt32(item.perubahan) - Convert.ToInt32(item.stock);
-                                    using (MySqlCommand cmd = new MySqlCommand("INSERT INTO opnames VALUES(null,md5(RAND()),@nomer,@nama,@barcode,@stok,@perubahan,@selisih,@posted,@tanggal)", op.Conn))
+                                    var nama = "";
+                                    using (var cmd = new MySqlCommand($"SELECT * FROM barangs where kode_barang='{item.barcode}'  ", op.Conn))
+                                    {
+                                        op.KonekDB();
+                                        using (var rd = cmd.ExecuteReader())
+                                        {
+                                            rd.Read();
+                                            if (rd.HasRows)
+                                            {
+                                            nama = rd["name"].ToString();
+                                            }
+                                        }
+                                        op.KonekDB();
+                                    }
+
+                                    using (MySqlCommand cmd = new MySqlCommand("INSERT INTO opnames VALUES(null,md5(RAND()),@nomer,@nama,@barcode,@stok,@perubahan,@selisih,@posted,@tanggal, null)", op.Conn))
                                     {
                                         cmd.Parameters.AddWithValue("nomer", model.Nomor);
-                                        cmd.Parameters.AddWithValue("nama", item.barcode);
+                                        cmd.Parameters.AddWithValue("nama", nama);
                                         cmd.Parameters.AddWithValue("barcode", item.barcode);
                                         cmd.Parameters.AddWithValue("stok", item.stock);
                                         cmd.Parameters.AddWithValue("perubahan", item.perubahan);
                                         cmd.Parameters.AddWithValue("selisih", selisih.ToString());
-                                        cmd.Parameters.AddWithValue("posted", "0");
+                                        cmd.Parameters.AddWithValue("posted", 0);
                                         cmd.Parameters.AddWithValue("tanggal", op.myDatetime);
 
                                         op.KonekDB();
@@ -517,13 +536,13 @@ namespace KasirApp.Repository
                     else
                     {
                         status = false;
-                        mb.PeringatanOK("Tidak ada data untuk di Sinkron");
+                        mb.PeringatanOK($"Tidak ada data untuk di Sinkron ");
                     }
                 }
             }
             catch (Exception ex)
             {
-                mb.PeringatanOK(ex.Message);
+                mb.PeringatanOK(ex.Message +  perubahan +  barcode);
                 //mb.PeringatanOK(statusstring);
             }
             return status;

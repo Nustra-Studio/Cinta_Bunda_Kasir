@@ -106,12 +106,12 @@ namespace KasirApp.Repository
             }
         }
 
-        private void UpdateOpname(List<OpnameModel> md)
+        private void UpdateOpname(List<OpnameModel> model)
         {
-            foreach (var model in md)
+            foreach (var md in model)
             {
                 bool isExist = false;
-                using (var cmd = new MySqlCommand($"SELECT * FROM barangs WHERE kode_barang = '{model.Barcode}'", op.Conn))
+                using (var cmd = new MySqlCommand($"SELECT * FROM barangs WHERE kode_barang = '{md.Barcode}'", op.Conn))
                 {
                     op.KonekDB();
                     using (var rd = cmd.ExecuteReader())
@@ -127,29 +127,38 @@ namespace KasirApp.Repository
                 {
                     using (MySqlCommand cmd = new MySqlCommand("UPDATE barangs SET stok = @stok WHERE kode_barang = @barcode", op.Conn))
                     {
-                        cmd.Parameters.AddWithValue("stok", model.Perubahan);
-                        cmd.Parameters.AddWithValue("barcode", model.Barcode);
+                        cmd.Parameters.AddWithValue("stok", md.Perubahan);
+                        cmd.Parameters.AddWithValue("barcode", md.Barcode);
 
                         op.KonekDB();
                         cmd.ExecuteNonQuery();
                         op.KonekDB();
                     }
                 }
+                var mdh = new HistoriStokModel();
+                mdh.Nama = md.Nama;
+                mdh.Barcode = md.Barcode;
+                mdh.NomerTrans = md.Nomor;
+                mdh.Tanggal = op.simpleDate;
+                mdh.Diskon = "0";
+                mdh.Harga_jual = "0";
+                mdh.Masuk = "0";
+                mdh.Keluar = md.Selisih;
+                mdh.Saldo = md.Perubahan;
+                mdh.Aktifitas = "Stok Opname";
+                op.masukHistoriBarangs(mdh);
             }
-            UpNumberingStatus(md);
+            UpNumberingStatus(model);
         }
 
         private void UpNumberingStatus(List<OpnameModel> mdl)
         {
             //Update Status Opname
-            foreach (var model in mdl)
+            using (MySqlCommand cmd = new MySqlCommand($"UPDATE opnames SET Posted = 1, updated_at = '{op.simpleDate2}' where nomerTrans = '{mdl[0].Nomor}'", op.Conn))
             {
-                using (MySqlCommand cmd = new MySqlCommand("UPDATE opnames SET Posted = 1", op.Conn))
-                {
-                    op.KonekDB();
-                    cmd.ExecuteNonQuery();
-                    op.KonekDB();
-                }
+                op.KonekDB();
+                cmd.ExecuteNonQuery();
+                op.KonekDB();
             }
             //Update Penomoran Kwitansi POP
             using (MySqlCommand cmd = new MySqlCommand("Select POP from numberingkwitansi", op.Conn))

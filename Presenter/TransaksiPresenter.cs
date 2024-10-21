@@ -186,8 +186,9 @@ namespace KasirApp.Presenter
             _repo.directPrint2(nomerTrans);
         }
 
-        public void PrintStruk(PembayaranModel model, RootMember _mem, userDataModel _usr)
+        public void PrintStruk(PembayaranModel model, RootMember _mem, userDataModel _usr, bool status)
         {  
+            _repo.MasukanLaporan(model, _usr);
             if (model.Diskontotal == "")
             {
                 model.Diskontotal = "0";
@@ -202,9 +203,8 @@ namespace KasirApp.Presenter
             {
                 mb.PeringatanOK("Masukan Nominal Bayar ");
             }
-            else
+            else if(status == true && model.Bayar != "")
             {
-                _repo.MasukanLaporan(model, _usr);
                 _repo.PrintPrinter(model, _mem,_usr);
             }
         }

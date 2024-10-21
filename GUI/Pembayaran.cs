@@ -22,6 +22,7 @@ namespace KasirApp.GUI
         userDataModel _model;
         TransaksiModel _trans;
         RootMember _mem;
+        MboxOperator mb = new MboxOperator();
         Operator op = new Operator();
         int diskonmember;
         int kembali;
@@ -75,7 +76,6 @@ namespace KasirApp.GUI
             model.Kembali = kembali.ToString();
             model.Status = _trans.State;
 
-            _trn.tampilKembali(kembali);
 
             var _pres = new TransaksiPresenter(_trn, _model, _rec, _mem);
 
@@ -83,15 +83,24 @@ namespace KasirApp.GUI
             {
                 MessageBox.Show("Uang tidak cukup", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            else if (model.Bayar == null || model.Bayar == "")
+            {
+                MessageBox.Show("Uang tidak cukup", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             else
             {
-                _pres.PrintStruk(model, _mem, _model);
+                _trn.tampilKembali(kembali);
+                
+                var status = mb.KonfimasiYesNo("Print Struk Transaksi?");
 
-                _pres.insertApi(Convert.ToInt32(_trans.Total));
-
-                _trn.FinishPayments();
+                _pres.PrintStruk(model, _mem, _model, status);
 
                 op.insertHistoriUser(_model, this.Text, "Pembayaran Transaksi");
+
+                _pres.insertApi(Convert.ToInt32(_trans.Total));
+                
+                _trn.FinishPayments();
+
                 this.Hide();
             }
         }

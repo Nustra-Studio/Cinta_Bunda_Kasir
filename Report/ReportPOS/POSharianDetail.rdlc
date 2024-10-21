@@ -283,7 +283,7 @@
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>7.79292cm</Height>
+                  <Height>6.81925cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -453,9 +453,7 @@
                                                 <TextRuns>
                                                   <TextRun>
                                                     <Value>Total Per tanggal :</Value>
-                                                    <Style>
-                                                      <Color>White</Color>
-                                                    </Style>
+                                                    <Style />
                                                   </TextRun>
                                                 </TextRuns>
                                                 <Style>
@@ -469,7 +467,6 @@
                                                 <Color>LightGrey</Color>
                                                 <Style>Solid</Style>
                                               </Border>
-                                              <BackgroundColor>Gray</BackgroundColor>
                                               <PaddingLeft>2pt</PaddingLeft>
                                               <PaddingRight>2pt</PaddingRight>
                                               <PaddingTop>2pt</PaddingTop>
@@ -488,9 +485,7 @@
                                                 <TextRuns>
                                                   <TextRun>
                                                     <Value>=Format(Cdbl(Sum(Cdec(Fields!subtotal.Value))), "###,###,###")</Value>
-                                                    <Style>
-                                                      <Color>White</Color>
-                                                    </Style>
+                                                    <Style />
                                                   </TextRun>
                                                 </TextRuns>
                                                 <Style>
@@ -504,7 +499,6 @@
                                                 <Color>LightGrey</Color>
                                                 <Style>Solid</Style>
                                               </Border>
-                                              <BackgroundColor>Gray</BackgroundColor>
                                               <PaddingLeft>2pt</PaddingLeft>
                                               <PaddingRight>2pt</PaddingRight>
                                               <PaddingTop>2pt</PaddingTop>
@@ -655,14 +649,12 @@
                                           <Value>User : </Value>
                                           <Style>
                                             <FontWeight>Medium</FontWeight>
-                                            <Color>White</Color>
                                           </Style>
                                         </TextRun>
                                         <TextRun>
                                           <Value>=First(Fields!user.Value)</Value>
                                           <Style>
                                             <FontWeight>Medium</FontWeight>
-                                            <Color>White</Color>
                                           </Style>
                                         </TextRun>
                                       </TextRuns>
@@ -693,7 +685,6 @@
                                 <Border>
                                   <Style>None</Style>
                                 </Border>
-                                <BackgroundColor>Gray</BackgroundColor>
                               </Style>
                             </Rectangle>
                             <Rectangle Name="Rectangle3">
@@ -708,7 +699,6 @@
                                           <Value>Retur Barang</Value>
                                           <Style>
                                             <FontWeight>Bold</FontWeight>
-                                            <Color>White</Color>
                                           </Style>
                                         </TextRun>
                                       </TextRuns>
@@ -743,7 +733,6 @@
                                 <Border>
                                   <Style>None</Style>
                                 </Border>
-                                <BackgroundColor>Gray</BackgroundColor>
                               </Style>
                             </Rectangle>
                             <Tablix Name="Tablix11">
@@ -1115,7 +1104,7 @@
                                                   <TextRun>
                                                     <Value>Total Retur :</Value>
                                                     <Style>
-                                                      <Color>White</Color>
+                                                      <FontWeight>Bold</FontWeight>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -1130,7 +1119,6 @@
                                                 <Color>LightGrey</Color>
                                                 <Style>Solid</Style>
                                               </Border>
-                                              <BackgroundColor>Gray</BackgroundColor>
                                               <PaddingLeft>2pt</PaddingLeft>
                                               <PaddingRight>2pt</PaddingRight>
                                               <PaddingTop>2pt</PaddingTop>
@@ -1154,7 +1142,7 @@
                                                   <TextRun>
                                                     <Value>=Format(Cdbl(Sum(Cdec(Fields!total.Value))), "###,###,###")</Value>
                                                     <Style>
-                                                      <Color>White</Color>
+                                                      <FontWeight>Bold</FontWeight>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -1169,7 +1157,6 @@
                                                 <Color>LightGrey</Color>
                                                 <Style>Solid</Style>
                                               </Border>
-                                              <BackgroundColor>Gray</BackgroundColor>
                                               <PaddingLeft>2pt</PaddingLeft>
                                               <PaddingRight>2pt</PaddingRight>
                                               <PaddingTop>2pt</PaddingTop>
@@ -1246,61 +1233,6 @@
                                 </Border>
                               </Style>
                             </Tablix>
-                            <Rectangle Name="Rectangle4">
-                              <ReportItems>
-                                <Textbox Name="Textbox8">
-                                  <CanGrow>true</CanGrow>
-                                  <KeepTogether>true</KeepTogether>
-                                  <Paragraphs>
-                                    <Paragraph>
-                                      <TextRuns>
-                                        <TextRun>
-                                          <Value>Total Per User : Rp.</Value>
-                                          <Style>
-                                            <FontWeight>Bold</FontWeight>
-                                            <Color>White</Color>
-                                          </Style>
-                                        </TextRun>
-                                        <TextRun>
-                                          <Value>=Format(Cdbl(Sum(Cdec(Fields!subtotal.Value))), "###,###,###")</Value>
-                                          <Style>
-                                            <FontWeight>Bold</FontWeight>
-                                            <Color>White</Color>
-                                          </Style>
-                                        </TextRun>
-                                      </TextRuns>
-                                      <Style>
-                                        <TextAlign>Center</TextAlign>
-                                      </Style>
-                                    </Paragraph>
-                                  </Paragraphs>
-                                  <rd:DefaultName>Textbox7</rd:DefaultName>
-                                  <Height>0.6cm</Height>
-                                  <Width>4.76483cm</Width>
-                                  <Style>
-                                    <Border>
-                                      <Style>None</Style>
-                                    </Border>
-                                    <PaddingLeft>2pt</PaddingLeft>
-                                    <PaddingRight>2pt</PaddingRight>
-                                    <PaddingTop>2pt</PaddingTop>
-                                    <PaddingBottom>2pt</PaddingBottom>
-                                  </Style>
-                                </Textbox>
-                              </ReportItems>
-                              <KeepTogether>true</KeepTogether>
-                              <Top>6.77098cm</Top>
-                              <Left>0.27792cm</Left>
-                              <Height>0.6cm</Height>
-                              <Width>19.82268cm</Width>
-                              <ZIndex>4</ZIndex>
-                              <Style>
-                                <Border>
-                                  <Style>None</Style>
-                                </Border>
-                                <BackgroundColor>Gray</BackgroundColor>
-                              </Style>
-                            </Rectangle>
                           </ReportItems>
                           <KeepTogether>true</KeepTogether>
                           <Style>
@@ -1332,9 +1264,9 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>POSdetailHarian</DataSetName>
-            <Top>3.07824cm</Top>
-            <Left>0.24699cm</Left>
-            <Height>7.79292cm</Height>
+            <Top>3.20024cm</Top>
+            <Left>0.269cm</Left>
+            <Height>6.81925cm</Height>
             <Width>20.50601cm</Width>
             <ZIndex>6</ZIndex>
             <Style>
@@ -1344,6 +1276,58 @@
               <BackgroundColor>White</BackgroundColor>
             </Style>
           </Tablix>
+          <Rectangle Name="Rectangle4">
+            <ReportItems>
+              <Textbox Name="Textbox8">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Total Per User : Rp.</Value>
+                        <Style>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                      <TextRun>
+                        <Value>=Format(Cdbl(Sum(Cdec(Fields!subtotal.Value))), "###,###,###")</Value>
+                        <Style>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Center</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox7</rd:DefaultName>
+                <Height>0.6cm</Height>
+                <Width>4.76483cm</Width>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+            </ReportItems>
+            <KeepTogether>true</KeepTogether>
+            <Top>10.19588cm</Top>
+            <Left>0.56893cm</Left>
+            <Height>0.6cm</Height>
+            <Width>19.82268cm</Width>
+            <ZIndex>7</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Rectangle>
         </ReportItems>
         <Height>29.5cm</Height>
         <Style>

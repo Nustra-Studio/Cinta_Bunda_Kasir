@@ -32,10 +32,13 @@ namespace KasirApp.GUI
             this.btnProses = new Guna.UI.WinForms.GunaGradientButton();
             this.txtBarang = new Guna.UI.WinForms.GunaTextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtStok = new Guna.UI.WinForms.GunaTextBox();
+            this.txtStokNow = new Guna.UI.WinForms.GunaTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnBatal = new Guna.UI.WinForms.GunaGradientButton();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtStok = new Guna.UI.WinForms.GunaTextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnProses
@@ -54,7 +57,7 @@ namespace KasirApp.GUI
             this.btnProses.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.btnProses.Image = null;
             this.btnProses.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnProses.Location = new System.Drawing.Point(200, 139);
+            this.btnProses.Location = new System.Drawing.Point(200, 210);
             this.btnProses.Margin = new System.Windows.Forms.Padding(4);
             this.btnProses.Name = "btnProses";
             this.btnProses.OnHoverBaseColor1 = System.Drawing.Color.White;
@@ -64,7 +67,7 @@ namespace KasirApp.GUI
             this.btnProses.OnHoverImage = null;
             this.btnProses.OnPressedColor = System.Drawing.Color.Black;
             this.btnProses.Size = new System.Drawing.Size(105, 37);
-            this.btnProses.TabIndex = 1;
+            this.btnProses.TabIndex = 3;
             this.btnProses.Text = "Proses";
             this.btnProses.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnProses.Click += new System.EventHandler(this.btnProses_Click);
@@ -86,7 +89,7 @@ namespace KasirApp.GUI
             this.txtBarang.PasswordChar = '\0';
             this.txtBarang.SelectedText = "";
             this.txtBarang.Size = new System.Drawing.Size(337, 37);
-            this.txtBarang.TabIndex = 2;
+            this.txtBarang.TabIndex = 0;
             this.txtBarang.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBarang_KeyDown);
             // 
             // label2
@@ -100,35 +103,35 @@ namespace KasirApp.GUI
             this.label2.TabIndex = 3;
             this.label2.Text = "Barcode Barang : ";
             // 
-            // txtStok
+            // txtStokNow
             // 
-            this.txtStok.BackColor = System.Drawing.SystemColors.Control;
-            this.txtStok.BaseColor = System.Drawing.Color.White;
-            this.txtStok.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
-            this.txtStok.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtStok.FocusedBaseColor = System.Drawing.Color.White;
-            this.txtStok.FocusedBorderColor = System.Drawing.Color.Lime;
-            this.txtStok.FocusedForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtStok.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txtStok.Location = new System.Drawing.Point(200, 66);
-            this.txtStok.Margin = new System.Windows.Forms.Padding(4);
-            this.txtStok.Name = "txtStok";
-            this.txtStok.PasswordChar = '\0';
-            this.txtStok.SelectedText = "";
-            this.txtStok.Size = new System.Drawing.Size(164, 37);
-            this.txtStok.TabIndex = 4;
-            this.txtStok.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBarang_KeyDown);
+            this.txtStokNow.BackColor = System.Drawing.SystemColors.Control;
+            this.txtStokNow.BaseColor = System.Drawing.Color.White;
+            this.txtStokNow.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
+            this.txtStokNow.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtStokNow.FocusedBaseColor = System.Drawing.Color.White;
+            this.txtStokNow.FocusedBorderColor = System.Drawing.Color.Lime;
+            this.txtStokNow.FocusedForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtStokNow.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtStokNow.Location = new System.Drawing.Point(200, 89);
+            this.txtStokNow.Margin = new System.Windows.Forms.Padding(4);
+            this.txtStokNow.Name = "txtStokNow";
+            this.txtStokNow.PasswordChar = '\0';
+            this.txtStokNow.SelectedText = "";
+            this.txtStokNow.Size = new System.Drawing.Size(105, 37);
+            this.txtStokNow.TabIndex = 1;
+            this.txtStokNow.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBarang_KeyDown);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(124, 71);
+            this.label1.Location = new System.Drawing.Point(54, 96);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 25);
+            this.label1.Size = new System.Drawing.Size(138, 25);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Stok : ";
+            this.label1.Text = "Stok Saat ini : ";
             // 
             // btnBatal
             // 
@@ -146,7 +149,7 @@ namespace KasirApp.GUI
             this.btnBatal.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.btnBatal.Image = null;
             this.btnBatal.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnBatal.Location = new System.Drawing.Point(313, 138);
+            this.btnBatal.Location = new System.Drawing.Point(313, 209);
             this.btnBatal.Margin = new System.Windows.Forms.Padding(4);
             this.btnBatal.Name = "btnBatal";
             this.btnBatal.OnHoverBaseColor1 = System.Drawing.Color.White;
@@ -156,7 +159,7 @@ namespace KasirApp.GUI
             this.btnBatal.OnHoverImage = null;
             this.btnBatal.OnPressedColor = System.Drawing.Color.Black;
             this.btnBatal.Size = new System.Drawing.Size(105, 37);
-            this.btnBatal.TabIndex = 6;
+            this.btnBatal.TabIndex = 4;
             this.btnBatal.Text = "Batal";
             this.btnBatal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnBatal.Click += new System.EventHandler(this.btnBatal_Click);
@@ -166,21 +169,64 @@ namespace KasirApp.GUI
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(196, 107);
+            this.label3.Location = new System.Drawing.Point(196, 178);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(195, 20);
             this.label3.TabIndex = 7;
             this.label3.Text = "F4 - Tampil List Barangs";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(196, 62);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(246, 20);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "-Tekan Enter untuk Check Stok-";
+            // 
+            // txtStok
+            // 
+            this.txtStok.BackColor = System.Drawing.SystemColors.Control;
+            this.txtStok.BaseColor = System.Drawing.Color.White;
+            this.txtStok.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
+            this.txtStok.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtStok.FocusedBaseColor = System.Drawing.Color.White;
+            this.txtStok.FocusedBorderColor = System.Drawing.Color.Lime;
+            this.txtStok.FocusedForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtStok.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtStok.Location = new System.Drawing.Point(200, 134);
+            this.txtStok.Margin = new System.Windows.Forms.Padding(4);
+            this.txtStok.Name = "txtStok";
+            this.txtStok.PasswordChar = '\0';
+            this.txtStok.SelectedText = "";
+            this.txtStok.Size = new System.Drawing.Size(164, 37);
+            this.txtStok.TabIndex = 2;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(83, 139);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(109, 25);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "StokBaru : ";
+            // 
             // SubPenyesuaian
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(553, 189);
+            this.ClientSize = new System.Drawing.Size(553, 278);
+            this.Controls.Add(this.txtStok);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnBatal);
-            this.Controls.Add(this.txtStok);
+            this.Controls.Add(this.txtStokNow);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnProses);
             this.Controls.Add(this.txtBarang);
@@ -197,9 +243,12 @@ namespace KasirApp.GUI
         private Guna.UI.WinForms.GunaGradientButton btnProses;
         private Guna.UI.WinForms.GunaTextBox txtBarang;
         private System.Windows.Forms.Label label2;
-        private Guna.UI.WinForms.GunaTextBox txtStok;
+        private Guna.UI.WinForms.GunaTextBox txtStokNow;
         private System.Windows.Forms.Label label1;
         private Guna.UI.WinForms.GunaGradientButton btnBatal;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private Guna.UI.WinForms.GunaTextBox txtStok;
+        private System.Windows.Forms.Label label5;
     }
 }

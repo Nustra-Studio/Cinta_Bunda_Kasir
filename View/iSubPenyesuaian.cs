@@ -12,6 +12,7 @@ namespace KasirApp.View
         string barcode { get; set; }
         string nama { get; set; }
         string stok { get; set; }
+        string stoknew { get; set; }
 
     }
 }

@@ -103,10 +103,9 @@ namespace KasirApp.GUI
             }
         }
 
-
         public void tombol(KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Insert)
+            if (e.KeyCode == Keys.Oemplus)
             {
                 Insert frm = new Insert(this.getData, _master, _user);
                 _master.subForm(frm);
@@ -182,7 +181,6 @@ namespace KasirApp.GUI
             {
                 return;
             }
-            
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -190,14 +188,27 @@ namespace KasirApp.GUI
             string a = textBox1.Text;
             string b = comboBox1.Text;
             string c = comboBox2.Text;
+
             if (textBox1.Text == "" && comboBox1.Text == "" && comboBox2.Text == "")
             {
                 //DGV.DataSource = op.getAll("view_barang where Nama LIKE '%" + a + "%' AND Supplier LIKE '" + b + "' AND Categori LIKE '" + c + "'");
                 DGV.DataSource = op.getAll("view_barang LIMIT 1000");
             }
+            else if (comboBox1.Text == "" && comboBox2.Text == "")
+            {
+                DGV.DataSource = op.getAll("view_barang where Nama LIKE '%" + a + "%' OR Barcode LIKE '%" + a + "%' LIMIT 500");
+            }
+            else if(comboBox1.Text == "")
+            {
+                DGV.DataSource = op.getAll("view_barang where Nama LIKE '%" + a + "%' OR Barcode LIKE '%" + a + "%' AND Supplier LIKE '%" + b + "%' LIMIT 500");
+            }
+            else if(comboBox2.Text == "")
+            {
+                DGV.DataSource = op.getAll("view_barang where Nama LIKE '%" + a + "%' OR Barcode LIKE '%" + a + "%' AND Categori LIKE '%" + c + "%'  LIMIT 500");
+            }
             else
             {
-                DGV.DataSource = op.getAll("view_barang where Nama LIKE '%" + a + "%' OR Barcode LIKE '%" + a + "%' AND Supplier LIKE '%" + b + "%' AND Categori LIKE '%" + c + "%' LIMIT 1000");
+                DGV.DataSource = op.getAll("view_barang where Nama LIKE '%" + a + "%' OR Barcode LIKE '%" + a + "%' AND Supplier LIKE '%" + b + "%' AND Categori LIKE '%" + c + "%' LIMIT 500");
             }
         }
 
@@ -206,7 +217,28 @@ namespace KasirApp.GUI
             string a = textBox1.Text;
             string b = comboBox1.Text;
             string c = comboBox2.Text;
-            DGV.DataSource = op.getAll("view_barang where Nama LIKE '%" + a + "%' AND Supplier LIKE '%" + b + "%' AND Categori LIKE '%" + c + "%'");
+
+            if (textBox1.Text == "" && comboBox1.Text == "" && comboBox2.Text == "")
+            {
+                //DGV.DataSource = op.getAll("view_barang where Nama LIKE '%" + a + "%' AND Supplier LIKE '" + b + "' AND Categori LIKE '" + c + "'");
+                DGV.DataSource = op.getAll("view_barang LIMIT 1000");
+            }
+            else if (comboBox1.Text == "" && comboBox2.Text == "")
+            {
+                DGV.DataSource = op.getAll("view_barang where Nama LIKE '%" + a + "%' OR Barcode LIKE '%" + a + "%' LIMIT 500");
+            }
+            else if (comboBox1.Text == "")
+            {
+                DGV.DataSource = op.getAll("view_barang where Nama LIKE '%" + a + "%' OR Barcode LIKE '%" + a + "%' AND Supplier LIKE '%" + b + "%' LIMIT 500");
+            }
+            else if (comboBox2.Text == "")
+            {
+                DGV.DataSource = op.getAll("view_barang where Nama LIKE '%" + a + "%' OR Barcode LIKE '%" + a + "%' AND Categori LIKE '%" + c + "%'  LIMIT 500");
+            }
+            else
+            {
+                DGV.DataSource = op.getAll("view_barang where Nama LIKE '%" + a + "%' OR Barcode LIKE '%" + a + "%' AND Supplier LIKE '%" + b + "%' AND Categori LIKE '%" + c + "%' LIMIT 500");
+            }
         }
 
         private void MasterBarang_FormClosing(object sender, FormClosingEventArgs e)

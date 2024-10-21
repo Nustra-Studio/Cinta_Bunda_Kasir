@@ -15,6 +15,7 @@ namespace KasirApp.Model
         public string sat { get; set; }
         public string selisih { get; set; }
         public string stok { get; set; }
+        public string stoknew { get; set; }
         public string harga_jual { get; set; }
         public int status { get; set; }
     }

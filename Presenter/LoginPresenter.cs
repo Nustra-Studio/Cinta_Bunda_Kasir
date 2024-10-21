@@ -104,6 +104,7 @@ namespace KasirApp.Presenter
                     var request = new RestRequest("login", Method.Post);
                     request.AddParameter("username", _login.Username);
                     request.AddParameter("password", _login.Password);
+                    request.AddParameter("cabang", op.settingData().Cabang);
                     try
                     {
                         RestResponse res = url.Execute(request);
@@ -125,7 +126,6 @@ namespace KasirApp.Presenter
                             usercl.role = _role;
                             usercl.cabang_id = fn.user.cabang_id;
                            
-
                             using (MySqlCommand cmd = new MySqlCommand("select * from roles where nama = @nama", op.Conn))
                             {
                                 cmd.Parameters.AddWithValue("@nama", _role);
@@ -153,12 +153,18 @@ namespace KasirApp.Presenter
                                     }
                                 }
                             }
+                            updateSupplier(usercl);
                         }
                         else if (res.StatusCode == HttpStatusCode.Unauthorized)
                         {
                             var jso = res.Content.ToString();
                             error fn = JsonConvert.DeserializeObject<error>(jso);
                             mb.PeringatanOK(fn.message.ToString());
+                        }
+                        else
+                        {
+                            var jso = res.Content.ToString();
+                            mb.PeringatanOK(jso);
                         }
                     }
                     catch (Exception ex)
@@ -170,10 +176,74 @@ namespace KasirApp.Presenter
             }
         }
 
+        string kwitansi;
+        
+        public void updateSupplier(userDataModel user)
+        {
+            var listSuplier = new List<SuplierModel>();
+            using (var client = new RestClient(op.url))
+            {
+                try
+                {
+                    var request = new RestRequest("supplier", Method.Get);
+                    var body = new
+                    {
+                        token = user.token,
+                        uuid = user.uuid
+                    };
+
+                    var response = client.Execute(request);
+                    if (response.StatusCode == HttpStatusCode.OK)
+                    {
+                        listSuplier = JsonConvert.DeserializeObject<List<SuplierModel>>(response.Content.ToString());
+                    }
+                    else
+                    {
+                        return;
+                    }
+
+                    if(listSuplier.Count >= 1)
+                    {
+                        foreach (var item in listSuplier)
+                        {
+                            //cek Data apakah Exist
+                            var isExist = false;
+                            using (var cmd = new MySqlCommand($"SELECT * FROM supliers where nama = {item.nama}", op.Conn))
+                            {
+                                op.KonekDB();
+                                using (var rd = cmd.ExecuteReader())
+                                {
+                                    if(rd.Read())
+                                    {
+                                        isExist = true;
+                                    }
+                                }
+                            }
+
+                            if(!isExist)
+                            {
+                                using (var cmd = new MySqlCommand($"insert into supliers values(null,'{item.uuid}','{item.nama}', '{item.alamat}', '{item.telepon}', '{item.product}','{item.keterangan}', '{item.category_barang_id}','{op.myDatetime}', '{op.myDatetime}')", op.Conn))
+                                {
+                                    op.KonekDB();
+                                    cmd.ExecuteNonQuery();
+                                    op.KonekDB();
+                                }
+                            }
+
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    return;
+                }
+            }
+        }
         public void updateKwitansi()
         {
             string tnggal = DateTime.Now.ToString("yyyy-MM-dd");
             bool updateTgl = false;
+            //Set current Tanggal
             using (var cmd = new MySqlCommand($"Select * from numberingkwitansi where tanggal = '{tnggal}'", op.Conn))
             {
                 op.KonekDB();
@@ -186,15 +256,59 @@ namespace KasirApp.Presenter
                     }
                 }
             }
-            if (updateTgl == true)
+
+            string[] table = { "report_penjualan", "report_transfergudang", "opnames", "report_penyesuaian" };
+            string[] identifier = { "id_penjualan", "id_transfer", "nomerTrans", "id_penyesuaian" };
+            string[] header = { "PJC", "PTG", "POP", "PAD" };
+
+            for (int i = 0; i <= 3; i++)
             {
-                string kwitansi = $"{DateTime.Now.ToString("yyMMdd")}0001";
-                using (var cmd = new MySqlCommand($"Update numberingkwitansi SET tanggal = '{tnggal}',PTG = '{kwitansi}', POP = '{kwitansi}', PAD = '{kwitansi}', PJC = '{kwitansi}' ", op.Conn))
+                var rowStatus = false;
+                //Cek Struk Sebelumnya
+                using (var cmd = new MySqlCommand($"SELECT * FROM {table[i]} where {identifier[i]} LIKE '%{header[i]}-{DateTime.Now.ToString("yyMMdd")}%'", op.Conn))
                 {
-                    op.KonekDB();
-                    cmd.ExecuteNonQuery();
+                    using (var rd = cmd.ExecuteReader())
+                    {
+                        rd.Read();
+                        if(rd.HasRows)
+                        {
+                            rowStatus = true;
+                        }
+                        else
+                        {
+                            kwitansi = $"{DateTime.Now.ToString("yyMMdd")}0001";
+                        }
+                    }
+                }
+
+                //Update ke no struk kemarin
+                if (rowStatus)
+                {
+                    using (var cmd = new MySqlCommand($"SELECT MAX({identifier[i]}) AS max_id FROM {table[i]} WHERE {identifier[i]} LIKE '%{header[i]}-{DateTime.Now.ToString("yyMMdd")}%'", op.Conn))
+                    {
+                        using (var rd = cmd.ExecuteReader())
+                        {
+                            if (rd.Read())
+                            {
+                                var number = Convert.ToInt64(rd["max_id"].ToString().Substring(4)) + 1;
+                                kwitansi = number.ToString();
+                            }
+                        }
+                    }
+                }
+
+                //Update Numbering
+                if (updateTgl == true)
+                {
+                    using (var cmd = new MySqlCommand($"Update numberingkwitansi SET tanggal = '{tnggal}',{header[i]} = '{kwitansi}'", op.Conn))
+                    {
+                        op.KonekDB();
+                        cmd.ExecuteNonQuery();
+                    }
                 }
             }
+
+
         }
     }
 }

@@ -8,21 +8,55 @@ using MySql.Data.MySqlClient;
 using System.Data;
 using System.Windows.Forms;
 using System.IO;
+using RestSharp;
+using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.Net;
 
 namespace KasirApp.Model
 {
     public class Operator
     {
         //public string url = "https://inventory.nustrastudio.com/api/";
-
-        public string url = "https://inventory.cinta-bunda.com/api/";
+        //public string url = "https://inventory.cinta-bunda.com/api/";
+        public string url = "https://cb.nustragroup.online/api/";
         public string urlcinta = "https://inventory.cinta-bunda.com";
         //3306 ORI 3307 TOYS2
         public MySqlConnection Conn = new MySqlConnection("server=localhost;user id=root;password =123;port=3306;database=kasirdb_deploy;Connection Timeout=3600;");
+        //public MySqlConnection Conn = new MySqlConnection("server=localh
+        //ost;user id=root;password =CB_TAMANAN;port=3306;database=kasirdb_deploy;Connection Timeout=3600;");
         public MySqlConnection Conn1 = new MySqlConnection("server=localhost;user id=root;password =123;port=3306;database=kasirdb_deploy;Connection Timeout=3600;");
         public string myDatetime = DateTime.Now.ToString("yyyy-MM-dd hh-mm-ss");
         public string simpleDate = DateTime.Now.ToString("dd/MMM/yy");
-        
+        public string simpleDate2 = DateTime.Now.ToString("dd-MM-yyyy");
+        MboxOperator mb = new MboxOperator();
+
+        public Operator()
+        {
+            string path = Path.GetDirectoryName(Application.ExecutablePath);
+            string filePath = Path.GetDirectoryName(Application.ExecutablePath) + $@"\Model\config.json";
+
+            string jsonfile = File.ReadAllText(filePath);
+            var setting = JsonConvert.DeserializeObject<SettingModel>(jsonfile);
+
+            url = setting.Endpoint;
+            
+            Conn = new MySqlConnection($"server={setting.Server}; user = {setting.User}; password = {setting.Password}; port = {setting.Port}; database = {setting.Database}");
+            Conn1 = new MySqlConnection($"server={setting.Server}; user = {setting.User}; password = {setting.Password}; port = {setting.Port}; database = {setting.Database}");
+        }
+
+        public SettingModel settingData()
+        {
+            string path = Path.GetDirectoryName(Application.ExecutablePath);
+            string filePath = Path.GetDirectoryName(Application.ExecutablePath) + $@"\Model\config.json";
+
+            string jsonfile = File.ReadAllText(filePath);
+            var setting = JsonConvert.DeserializeObject<SettingModel>(jsonfile);
+
+            return setting;
+        }
+
         public void KonekDB()
         {
             if (Conn.State == ConnectionState.Open)
@@ -65,6 +99,82 @@ namespace KasirApp.Model
             }
         }
 
+        public void uploadPending(userDataModel user)
+        {
+            var listPending = new List<TransaksiModel>();
+
+            using (var cmd = new MySqlCommand("select * from pending_penjualan", Conn))
+            {
+                KonekDB();
+                using (var rd = cmd.ExecuteReader())
+                {
+                    while (rd.Read())
+                    {
+                        var md = new TransaksiModel();
+                        md.Idkategori = rd["id_category"].ToString();
+                        md.NomorPJ = rd["nomerTrans"].ToString();
+                        md.Nama = rd["name"].ToString();
+                        md.Barkode = rd["barcode"].ToString();
+                        md.Quantity = rd["quantity"].ToString();
+                        md.Satuan = rd["satuan"].ToString();
+                        md.Harga_jual = rd["harga_jual"].ToString();
+                        md.Harga_pokok = rd["hpp"].ToString();
+                        md.Diskon = rd["diskon"].ToString();
+                        md.Total = rd["total"].ToString();
+                        md.Tanggal = rd["tanggal"].ToString();
+                        md.Id_member = rd["id_member"].ToString();
+
+                        //Logic
+                        int qty = Convert.ToInt32(md.Quantity);
+                        int HJ = Convert.ToInt32(md.Harga_jual);
+                        int TotalPCS = qty * HJ;
+                        md.Total = TotalPCS.ToString();
+
+                        listPending.Add(md);
+                    }
+                }
+            }
+
+            try
+            {
+                using (var client = new RestClient($"{url}cabangmember/"))
+                {
+                    var body = new
+                    {
+                        token = user.token,
+                        id_cabang = user.cabang_id,
+                        data = listPending,
+                        subtotal = 0
+                    };
+
+                    var arr = JsonConvert.SerializeObject(body);
+
+                    var rs = new RestRequest("transaksi", Method.Post);
+                    rs.AddJsonBody(arr);
+
+                    rs.Timeout = 3000;
+
+                    var response = client.Execute(rs);
+                    if (response.StatusCode == HttpStatusCode.OK)
+                    {
+                        mb.InformasiOK("Transaksi Selesai");
+                    }
+                    else
+                    {
+                        mb.PeringatanOK("terjadi Kesalahan pada server");
+                        //MessageBox.Show(response.Content.ToString(), "Error List", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                }
+
+            }
+            catch (Exception)
+            {
+                return;
+            }
+
+        }
+            
         public void insertHistoriUser(userDataModel user, string form, string aktifitas)
         {
             using (var cmd = new MySqlCommand($"INSERT INTO histori_user VALUES (null,md5(RAND()), '{user.username}', '{form}', '{aktifitas}', '{myDatetime}', '{myDatetime}', '{myDatetime}')", Conn))
@@ -72,7 +182,7 @@ namespace KasirApp.Model
                 KonekDB();
                 cmd.ExecuteNonQuery();
                 KonekDB();
-            }
+            }   
         }
 
         public string pathReport(string filename)
@@ -201,10 +311,11 @@ namespace KasirApp.Model
         public void masukHistoriBarangs(HistoriStokModel model)
         {
 
-            if (model.Diskon == "")
+            if (model.Diskon == "" || model.Diskon == null)
             {
                 model.Diskon = "0";
             }
+
             var md = new BarangsModel();
             using (var cmd = new MySqlCommand($"SELECT * FROM barangs where kode_barang='{model.Barcode}'", Conn))
             {

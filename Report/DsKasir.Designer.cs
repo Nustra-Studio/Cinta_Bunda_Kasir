@@ -2030,6 +2030,8 @@ namespace KasirApp.Report {
             
             private global::System.Data.DataColumn columnPosted;
             
+            private global::System.Data.DataColumn columnharga_jual;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public Dt_OpnamesDataTable() {
@@ -2121,6 +2123,14 @@ namespace KasirApp.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn harga_jualColumn {
+                get {
+                    return this.columnharga_jual;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2156,7 +2166,7 @@ namespace KasirApp.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Dt_OpnamesRow AddDt_OpnamesRow(string nomerTrans, string Nama, string Barcode, string Stok, string Perubahan, string Selisih, string Posted) {
+            public Dt_OpnamesRow AddDt_OpnamesRow(string nomerTrans, string Nama, string Barcode, string Stok, string Perubahan, string Selisih, string Posted, string harga_jual) {
                 Dt_OpnamesRow rowDt_OpnamesRow = ((Dt_OpnamesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         nomerTrans,
@@ -2165,7 +2175,8 @@ namespace KasirApp.Report {
                         Stok,
                         Perubahan,
                         Selisih,
-                        Posted};
+                        Posted,
+                        harga_jual};
                 rowDt_OpnamesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDt_OpnamesRow);
                 return rowDt_OpnamesRow;
@@ -2195,6 +2206,7 @@ namespace KasirApp.Report {
                 this.columnPerubahan = base.Columns["Perubahan"];
                 this.columnSelisih = base.Columns["Selisih"];
                 this.columnPosted = base.Columns["Posted"];
+                this.columnharga_jual = base.Columns["harga_jual"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2214,6 +2226,8 @@ namespace KasirApp.Report {
                 base.Columns.Add(this.columnSelisih);
                 this.columnPosted = new global::System.Data.DataColumn("Posted", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPosted);
+                this.columnharga_jual = new global::System.Data.DataColumn("harga_jual", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnharga_jual);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5465,6 +5479,22 @@ namespace KasirApp.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string harga_jual {
+                get {
+                    try {
+                        return ((string)(this[this.tableDt_Opnames.harga_jualColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'harga_jual\' in table \'Dt_Opnames\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDt_Opnames.harga_jualColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsnomerTransNull() {
                 return this.IsNull(this.tableDt_Opnames.nomerTransColumn);
             }
@@ -5545,6 +5575,18 @@ namespace KasirApp.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetPostedNull() {
                 this[this.tableDt_Opnames.PostedColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isharga_jualNull() {
+                return this.IsNull(this.tableDt_Opnames.harga_jualColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setharga_jualNull() {
+                this[this.tableDt_Opnames.harga_jualColumn] = global::System.Convert.DBNull;
             }
         }
         

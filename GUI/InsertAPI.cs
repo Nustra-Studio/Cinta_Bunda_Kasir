@@ -127,7 +127,7 @@ namespace KasirApp.GUI
         {
             try
             {
-                using (MySqlCommand cmd = new MySqlCommand("INSERT INTO barangs VALUE(NULL,SHA2('@name',256),(select uuid from category_barangs where name=@kategori),(select uuid from supliers where nama=@suplier),@kode,@harga,@hargajual,@hargapokok,@hargagrosir,@stok,@keterangan,@name,@merk,@satuan,@nodiskon,@tglbuat,@tglupdate)", op.Conn))
+                using (MySqlCommand cmd = new MySqlCommand("INSERT INTO barangs VALUE(NULL,md5(@uuid),(select uuid from category_barangs where name=@kategori),(select uuid from supliers where nama=@suplier),@kode,@harga,@hargajual,@hargapokok,@hargagrosir,@stok,@keterangan,@name,@merk,@satuan,@nodiskon,@tglbuat,@tglupdate)", op.Conn))
                 {
                     cmd.Parameters.AddWithValue("kategori", gunaComboBox1.Text);
                     cmd.Parameters.AddWithValue("suplier", gunaComboBox2.Text);
@@ -138,6 +138,7 @@ namespace KasirApp.GUI
                     cmd.Parameters.AddWithValue("hargagrosir", txtGrosir.Text);
                     cmd.Parameters.AddWithValue("stok", txtSTOK.Text);
                     cmd.Parameters.AddWithValue("keterangan", txtKeterangan.Text);
+                    cmd.Parameters.AddWithValue("uuid", DateTime.Now.ToString());
                     cmd.Parameters.AddWithValue("name", txtBarang.Text);
                     cmd.Parameters.AddWithValue("merk", txtMerek.Text);
                     cmd.Parameters.AddWithValue("satuan", cboSatuan.Text);
@@ -302,27 +303,27 @@ namespace KasirApp.GUI
 
         private void txtHarga_TextChanged(object sender, EventArgs e)
         {
-            if (txtHarga.Text == "" || txtLaba.Text == "" || txtPajak.Text == "" || txtSTOK.Text == "")
-            {
-                return;
-            }
-            else
-            {
-                decimal harga = Convert.ToDecimal(txtHarga.Text);
-                decimal Laba = Convert.ToDecimal(txtLaba.Text);
-                decimal Pajak = Convert.ToDecimal(txtPajak.Text);
-                decimal stok = Convert.ToDecimal(txtSTOK.Text);
+            //if (txtHarga.Text == "" || txtLaba.Text == "" || txtPajak.Text == "" || txtSTOK.Text == "")
+            //{
+            //    return;
+            //}
+            //else
+            //{
+            //    decimal harga = Convert.ToDecimal(txtHarga.Text);
+            //    decimal Laba = Convert.ToDecimal(txtLaba.Text);
+            //    decimal Pajak = Convert.ToDecimal(txtPajak.Text);
+            //    decimal stok = Convert.ToDecimal(txtSTOK.Text);
 
-                decimal perPCS = harga + (harga * Laba / 100) + (harga * Pajak / 100);
-                decimal total = stok * (harga * Laba / 100);
+            //    decimal perPCS = harga + (harga * Laba / 100) + (harga * Pajak / 100);
+            //    decimal total = stok * (harga * Laba / 100);
 
-                lblHarga.Text = "Rp." + harga.ToString();
-                txtHargaJual.Text = perPCS.ToString();
-                lblLaba.Text = "Rp." + Convert.ToString(harga * Laba / 100);
-                lblPajak.Text = "Rp." + Convert.ToString(harga * Pajak / 100);
-                lblperPCS.Text = "Rp." + perPCS.ToString();
-                lblTotal.Text = "Rp." + total.ToString();
-            }
+            //    lblHarga.Text = "Rp." + harga.ToString();
+            //    txtHargaJual.Text = perPCS.ToString();
+            //    lblLaba.Text = "Rp." + Convert.ToString(harga * Laba / 100);
+            //    lblPajak.Text = "Rp." + Convert.ToString(harga * Pajak / 100);
+            //    lblperPCS.Text = "Rp." + perPCS.ToString();
+            //    lblTotal.Text = "Rp." + total.ToString();
+            //}
         }
 
         private void btnCategori_Click(object sender, EventArgs e)
@@ -340,6 +341,11 @@ namespace KasirApp.GUI
         private void btnBatal_Click(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

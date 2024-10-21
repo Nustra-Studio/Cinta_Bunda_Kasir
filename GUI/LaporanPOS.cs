@@ -66,7 +66,7 @@ namespace KasirApp.GUI
             }
             else if (listBox1.SelectedIndex.ToString() == "1")
             {
-                showReport("POSdetailHarian", "POSharianDetail.rdlc", $"SELECT nomerTrans, subtotal, barcode, nama, qtyretur, total, status, user, DATE(created_at) as 'created_at' FROM report_penjualan_retur WHERE created_at BETWEEN '{tanggal1}' AND '{tanggal2}'");
+                showReport("POSdetailHarian", "POSharianDetail.rdlc", $"SELECT nomerTrans, subtotal, barcode, nama, qtyretur, total, status, user, DATE(created_at) as 'created_at' FROM report_penjualan_retur WHERE created_at BETWEEN '{tanggal1}' AND '{tanggal2}' {rpquery}");
             }
             else if (listBox1.SelectedIndex.ToString() == "2")
             {

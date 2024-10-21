@@ -1483,7 +1483,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Format(CDbl(Sum(Cdec(Fields!total.Value)) - Sum(Cdec(Fields!diskonItem.Value))), "###,###,###")</Value>
+                                  <Value>=Format(CDbl(Sum(Cdec(Fields!total.Value))), "###,###,###")</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
                                   </Style>
