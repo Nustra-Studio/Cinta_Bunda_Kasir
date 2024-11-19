@@ -43,7 +43,7 @@ namespace KasirApp
 
         public void developementMode()
         {
-            txtUser.Text = "supervisor_CB_Kedungwaru";
+            txtUser.Text = "supervisor_CB_Ngunut";
             txtPass.Text = "cintabunda123";
         }
 

@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("KasirApp")]
 [assembly: AssemblyDescription("Aplikasi Kaisir Cinta Bunda")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Kediri App")]
+[assembly: AssemblyCompany("Nustra Studio")]
 [assembly: AssemblyProduct("Kasir Cinta Bunda")]
 [assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]

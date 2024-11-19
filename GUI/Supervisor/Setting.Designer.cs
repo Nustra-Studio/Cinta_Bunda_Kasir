@@ -88,9 +88,9 @@ namespace KasirApp.GUI.Supervisor
             this.label24 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.label28 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.txtJeda = new Guna.UI.WinForms.GunaTextBox();
-            this.label28 = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -268,7 +268,7 @@ namespace KasirApp.GUI.Supervisor
             this.panel1.Controls.Add(this.label8);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 16);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(554, 256);
             this.panel1.TabIndex = 17;
@@ -298,14 +298,14 @@ namespace KasirApp.GUI.Supervisor
             this.txtACCReseller.Name = "txtACCReseller";
             this.txtACCReseller.PasswordChar = '\0';
             this.txtACCReseller.SelectedText = "";
-            this.txtACCReseller.Size = new System.Drawing.Size(63, 37);
+            this.txtACCReseller.Size = new System.Drawing.Size(47, 37);
             this.txtACCReseller.TabIndex = 9;
             // 
             // label26
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(404, 68);
+            this.label26.Location = new System.Drawing.Point(387, 68);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(152, 20);
             this.label26.TabIndex = 11;
@@ -325,14 +325,14 @@ namespace KasirApp.GUI.Supervisor
             this.txtACCkaryawan.Name = "txtACCkaryawan";
             this.txtACCkaryawan.PasswordChar = '\0';
             this.txtACCkaryawan.SelectedText = "";
-            this.txtACCkaryawan.Size = new System.Drawing.Size(63, 37);
+            this.txtACCkaryawan.Size = new System.Drawing.Size(47, 37);
             this.txtACCkaryawan.TabIndex = 12;
             // 
             // label27
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(404, 111);
+            this.label27.Location = new System.Drawing.Point(387, 111);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(137, 20);
             this.label27.TabIndex = 13;
@@ -389,7 +389,7 @@ namespace KasirApp.GUI.Supervisor
             this.panel2.Controls.Add(this.label10);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 16);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(270, 87);
             this.panel2.TabIndex = 17;
@@ -456,7 +456,7 @@ namespace KasirApp.GUI.Supervisor
             this.panel3.Controls.Add(this.label11);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(3, 16);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(550, 167);
             this.panel3.TabIndex = 17;
@@ -601,7 +601,7 @@ namespace KasirApp.GUI.Supervisor
             this.panel4.Controls.Add(this.label15);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(3, 16);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(550, 231);
             this.panel4.TabIndex = 17;
@@ -614,7 +614,7 @@ namespace KasirApp.GUI.Supervisor
             this.gunaLineTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.gunaLineTextBox1.LineColor = System.Drawing.Color.Gainsboro;
             this.gunaLineTextBox1.Location = new System.Drawing.Point(277, 125);
-            this.gunaLineTextBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gunaLineTextBox1.Margin = new System.Windows.Forms.Padding(2);
             this.gunaLineTextBox1.Name = "gunaLineTextBox1";
             this.gunaLineTextBox1.PasswordChar = '\0';
             this.gunaLineTextBox1.SelectedText = "";
@@ -751,7 +751,7 @@ namespace KasirApp.GUI.Supervisor
             this.panel5.Controls.Add(this.label19);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(3, 16);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(276, 157);
             this.panel5.TabIndex = 17;
@@ -844,7 +844,7 @@ namespace KasirApp.GUI.Supervisor
             this.panel6.Controls.Add(this.label24);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(3, 16);
-            this.panel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(270, 143);
             this.panel6.TabIndex = 17;
@@ -942,6 +942,16 @@ namespace KasirApp.GUI.Supervisor
             this.panel7.Size = new System.Drawing.Size(273, 74);
             this.panel7.TabIndex = 17;
             // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.Location = new System.Drawing.Point(213, 29);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(30, 20);
+            this.label28.TabIndex = 13;
+            this.label28.Text = "cm";
+            // 
             // label25
             // 
             this.label25.AutoSize = true;
@@ -970,16 +980,6 @@ namespace KasirApp.GUI.Supervisor
             this.txtJeda.TabIndex = 6;
             this.txtJeda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numeric);
             // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(213, 29);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(30, 20);
-            this.label28.TabIndex = 13;
-            this.label28.Text = "cm";
-            // 
             // Setting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -995,7 +995,7 @@ namespace KasirApp.GUI.Supervisor
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
             this.Name = "Setting";
-            this.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Padding = new System.Windows.Forms.Padding(4);
             this.Text = "Setting";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Setting_FormClosing);
             this.groupBox3.ResumeLayout(false);

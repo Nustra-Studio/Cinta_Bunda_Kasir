@@ -19,6 +19,8 @@ namespace KasirApp.GUI
     {
         Operator op = new Operator();
         userDataModel _user;
+        MboxOperator mb = new MboxOperator();
+
         iMasterForm _master;
         public readonly Action _getData;
         string aName;
@@ -58,7 +60,7 @@ namespace KasirApp.GUI
 
         public bool isNull()
         {
-            if (txtBarang.Text == "" || txtMerek.Text == "" || txtBarcode.Text == "" || txtHarga.Text =="" || txtSTOK.Text == "" || txtHargaJual.Text == "")
+            if (txtBarang.Text == "" || txtBarcode.Text == "" || txtHarga.Text =="" || txtSTOK.Text == "" || txtHargaJual.Text == "")
             {
                 return true;
             }
@@ -70,9 +72,8 @@ namespace KasirApp.GUI
 
         public bool cekUnique()
         {
-            using (MySqlCommand cmd = new MySqlCommand("select name,kode_barang from barangs where NAME=@nama and kode_barang=@kode", op.Conn))
+            using (MySqlCommand cmd = new MySqlCommand("select kode_barang from barangs where kode_barang=@kode", op.Conn))
             {
-                cmd.Parameters.AddWithValue("nama", txtBarang.Text);
                 cmd.Parameters.AddWithValue("kode", txtBarcode.Text);
                 op.KonekDB();
                 using (MySqlDataReader rd = cmd.ExecuteReader())
@@ -92,15 +93,18 @@ namespace KasirApp.GUI
         public void assignData(string name)
         {
             aName = name;
-            using (MySqlCommand cmd = new MySqlCommand("Select * from view_barangs_all where Nama='" + name + "'",op.Conn))
+            using (MySqlCommand cmd = new MySqlCommand("Select * from view_barangs_all where Barcode='" + name + "'",op.Conn))
             {
                 op.KonekDB();
                 using (MySqlDataReader rd = cmd.ExecuteReader())
                 {
                     while (rd.Read())
                     {
-                        decimal harga = Convert.ToDecimal(rd["Harga"].ToString());
-                        decimal hargaJual = Convert.ToDecimal(rd["Harga Jual"].ToString());
+                        var hppString = rd["Harga"].ToString() == "" ? "0" : rd["Harga"].ToString();
+                        var hjString = rd["Harga Jual"].ToString() == "" ? "0" : rd["Harga Jual"].ToString();
+
+                        decimal harga = Convert.ToDecimal(hppString);
+                        decimal hargaJual = Convert.ToDecimal(hjString);
 
                         txtBarang.Text = rd["Nama"].ToString();
                         txtMerek.Text = rd["Merk"].ToString();
@@ -122,7 +126,7 @@ namespace KasirApp.GUI
                 }
             }
         }
-
+        
         public void insData()
         {
             try
@@ -169,7 +173,7 @@ namespace KasirApp.GUI
                     "                                       ,harga_jual=@hargajual,harga_pokok=@hargapokok,harga_grosir=@hargagrosir" +
                     "                                       ,stok=@stok,keterangan=@keterangan" +
                     "                                       ,merek_barang=@merk" +
-                    "                                       ,satuan = @satuan, nodiskon = @nodiskon, updated_at=@tglUpdate WHERE name='" + aName + "'", op.Conn))
+                    "                                       ,satuan = @satuan, nodiskon = @nodiskon, updated_at=@tglUpdate WHERE kode_barang='" + aName + "'", op.Conn))
                 {
                     cmd.Parameters.AddWithValue("kategori", gunaComboBox1.Text);
                     cmd.Parameters.AddWithValue("suplier", gunaComboBox2.Text);
@@ -275,13 +279,13 @@ namespace KasirApp.GUI
         {
             if (isNull()==true)
             {
-                MessageBox.Show("Tolong Lengkapi Data");
+                mb.PeringatanOK("Tolong Lengkapi Data");
             }
             else if (btnProses.Text == "Proses")
             {
                 if (cekUnique() == true)
                 {
-                    MessageBox.Show("Sudah Ada");
+                    mb.PeringatanOK("Barang dengan barcode teresebut sudah ada");
                 }
                 else 
                 {

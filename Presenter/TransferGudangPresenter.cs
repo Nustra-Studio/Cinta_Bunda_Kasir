@@ -83,10 +83,10 @@ namespace KasirApp.Presenter
                 md.category_id = item.category_id;
                 md.id_supplier = item.id_supplier;
                 md.kode_barang = item.kode_barang;
-                md.harga = item.harga_jual;
+                md.harga = item.harga;
                 md.harga_jual = item.harga_jual;
                 md.harga_pokok = item.harga_pokok;
-                md.harga_grosir = item.harga_pokok;
+                md.harga_grosir = item.harga_grosir;
                 md.stok = Convert.ToInt32(item.stok);
                 md.keterangan = item.keterangan;
                 md.name = item.name;
@@ -108,7 +108,7 @@ namespace KasirApp.Presenter
             }
             else if (mb.KonfimasiYesNo("Simpan Item?") == true)
             {
-                _repo.masukanItem(nomerTrans);
+                _repo.masukanItem(nomerTrans, user);
                 _repo.masukanLaporan(nomerTrans, keterangan, user);
                 op.insertHistoriUser(user, "TransferGudang", "Simpan Tf Gudang");
             }

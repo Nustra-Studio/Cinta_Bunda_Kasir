@@ -89,19 +89,26 @@ namespace KasirApp.GUI
             }
             else
             {
-                _trn.tampilKembali(kembali);
+                try
+                {
+                    _trn.tampilKembali(kembali);
                 
-                var status = mb.KonfimasiYesNo("Print Struk Transaksi?");
+                    var status = mb.KonfimasiYesNo("Print Struk Transaksi?");
 
-                _pres.PrintStruk(model, _mem, _model, status);
+                    _pres.PrintStruk(model, _mem, _model, status);
 
-                op.insertHistoriUser(_model, this.Text, "Pembayaran Transaksi");
+                    op.insertHistoriUser(_model, this.Text, "Pembayaran Transaksi");
 
-                _pres.insertApi(Convert.ToInt32(_trans.Total));
+                    _pres.insertApi(Convert.ToInt32(_trans.Total));
                 
-                _trn.FinishPayments();
+                    _trn.FinishPayments();
 
-                this.Hide();
+                    this.Hide();
+                }
+                catch (Exception ex)
+                {
+                    mb.peringatanError(ex.Message);
+                }
             }
         }
 

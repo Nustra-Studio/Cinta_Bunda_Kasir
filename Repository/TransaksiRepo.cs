@@ -56,8 +56,10 @@ namespace KasirApp.Repository
                 }
                 op.KonekDB();
             }
+            UpdateNumberint();
             return nomor;
         }
+
 
         public bool CekData(TransaksiModel model)
         {
@@ -1068,7 +1070,6 @@ namespace KasirApp.Repository
                 //Update List Struk
                 //op.masukListStruk("PJC", model.NomorPJ);
                 //Update Nomor
-                UpdateNumberint();
 
                 if (op.CekNetwork() == false)
                 {

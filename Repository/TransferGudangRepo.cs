@@ -402,7 +402,7 @@ namespace KasirApp.Repository
             }
         }
 
-        public void masukanItem(string nomerTrans)
+        public void masukanItem(string nomerTrans, userDataModel user)
         {
             op.KonekDB();
             List<TransferGudangModel> listmodel = new List<TransferGudangModel>();
@@ -461,14 +461,18 @@ namespace KasirApp.Repository
                     using (var cmd = new MySqlCommand($"" +
                         $"INSERT INTO barangs VALUES (null,MD5(RAND()),'{takeCategory(item.kode_barang.Trim())}'," +
                         $"'{item.id_supplier}','{item.kode_barang.Trim()}','{item.harga_pokok}','{item.harga_jual}'," +
-                        $"'{item.harga_pokok}','{item.harga_jual}',{item.stok},'{item.keterangan}'," +
+                        $"'{item.harga_pokok}','{item.harga_grosir}',{item.stok},'{item.keterangan}'," +
                         $"'{item.name}','{item.merek_barang}','PCS', 0,'{DateTime.Now.ToString("yyyy-MM-dd hh-mm-ss")}'," +
                         $"'{DateTime.Now.ToString("yyyy-MM-dd hh-mm-ss")}')", op.Conn))
                     {
                         cmd.ExecuteNonQuery();
                         total = item.stok;
                     }
-                }
+                }   
+
+                //Update Kategori dan Supplier mencegah kekosongan data
+                op.updateKategori();
+                op.updateSupplier(user);
 
                 var mdb = new HistoriStokModel();
                 mdb.Barcode = item.kode_barang;

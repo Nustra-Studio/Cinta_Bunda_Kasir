@@ -20,6 +20,7 @@
   "Port": "3306",
   "User": "root",
   "Password": "123",
-  "Cabang" :  "Kedungwaru",
-  "Endpoint": "http://id-11.tunnel.web.id:9997/inventory/api/"
+  "Cabang": "Kedungwaru",
+  "Endpoint": "http://id-1.tunnel.id:661/inventory/api",
+  "LokasiConfig":  ""
 }

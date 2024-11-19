@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using KasirApp.Model;
 using KasirApp.View;
 using KasirApp.GUI;
+using System.Security.Cryptography;
 
 namespace KasirApp.Presenter
 {
@@ -99,7 +100,10 @@ namespace KasirApp.Presenter
             }
             else
             {
-                using (var url = new RestClient(op.url))
+                //config request
+                var option = new RestClientOptions(op.url) { MaxTimeout = 30000};
+
+                using (var url = new RestClient(option))
                 {
                     var request = new RestRequest("login", Method.Post);
                     request.AddParameter("username", _login.Username);
@@ -119,13 +123,19 @@ namespace KasirApp.Presenter
                             _role = fn.user.role.ToString();
                             _token = fn.token.ToString();
 
+                            var hash = hashString(_login.Password);
+
                             var usercl = new userDataModel();
                             usercl.token = _token;
+                            usercl.api_key = _token;
                             usercl.uuid = fn.user.uuid.ToString();
+                            usercl.password = hash.ToString();
                             usercl.username = fn.user.username.ToString();
                             usercl.role = _role;
                             usercl.cabang_id = fn.user.cabang_id;
-                           
+
+                            updateAkunOffline(usercl);
+
                             using (MySqlCommand cmd = new MySqlCommand("select * from roles where nama = @nama", op.Conn))
                             {
                                 cmd.Parameters.AddWithValue("@nama", _role);
@@ -153,13 +163,26 @@ namespace KasirApp.Presenter
                                     }
                                 }
                             }
+                            updateKategori();
                             updateSupplier(usercl);
                         }
                         else if (res.StatusCode == HttpStatusCode.Unauthorized)
-                        {
+                        {   
                             var jso = res.Content.ToString();
                             error fn = JsonConvert.DeserializeObject<error>(jso);
                             mb.PeringatanOK(fn.message.ToString());
+                        }
+                        else if(res.StatusCode == HttpStatusCode.RequestTimeout)
+                        {
+                            var hashed = SHA256.Create(_login.Password);
+
+                            var offlineUser = new userDataModel() 
+                            { 
+                                username = _login.Username,
+                                password = hashed.ToString(),
+                            };
+
+                            offlineLogin(offlineUser);
                         }
                         else
                         {
@@ -178,6 +201,199 @@ namespace KasirApp.Presenter
 
         string kwitansi;
         
+        public string hashString(string Key)
+        {
+            using (var sha = SHA256.Create())
+            {
+                byte[] bytes = sha.ComputeHash(Encoding.UTF8.GetBytes(Key));
+
+                StringBuilder builder = new StringBuilder();
+                foreach (byte b in bytes)
+                {
+                    builder.Append(b.ToString("x2"));
+                }
+
+                return builder.ToString();
+            }
+        }
+
+        public void updateAkunOffline(userDataModel user)
+        {
+            //exist status
+            var isExist = false;
+
+            using (var cmd = new MySqlCommand($"SELECT * FROM user_cabangs where username = '{user.username}' AND password = '{user.password}'", op.Conn))
+            {
+                op.KonekDB();
+                using (var rd = cmd.ExecuteReader())
+                {
+                    if (rd.Read())
+                    {
+                        isExist = true;
+                    }
+                }
+                op.KonekDB();
+            }
+
+            if(!isExist)
+            {
+                using (var cmd = new MySqlCommand($"insert into user_cabangs values(null,'{user.username}','{user.nama ?? ""}', '{user.password}', '{user.uuid}','{user.role}','0', '{user.cabang_id}', '{user.api_key}', '{op.myDatetime}', '{op.myDatetime}')", op.Conn))
+                {
+                    op.KonekDB();
+                    cmd.ExecuteNonQuery();
+                    op.KonekDB();
+                }
+            }
+            else
+            {
+                using (var cmd = new MySqlCommand($"update user_cabangs set api_key = '{user.api_key}', password = '{user.password}' where username = '{user.username}' and password ='{user.password}'", op.Conn))
+                {
+                    op.KonekDB();
+                    cmd.ExecuteNonQuery();
+                    op.KonekDB();
+                }
+            }
+        }
+
+        public void offlineLogin(userDataModel userLogin)
+        {
+            //deklarasi Kredensial user offline
+            var offlineUser = new userDataModel();
+            var isExist = false;
+
+            //Ambil Data User Offline
+            using (var cmd = new MySqlCommand($"select * from user_cabangs where username = '{userLogin.username}' AND password = '{userLogin.password}'" ,op.Conn))
+            {
+                op.KonekDB();
+                using (var rd = cmd.ExecuteReader())
+                {
+                    if (rd.Read())
+                    {
+                        var model = new userDataModel()
+                        {
+                            api_key = rd["api_key"].ToString(),
+                            token = rd["api_key"].ToString(),
+                            username = rd["username"].ToString(),
+                            nama = rd["nama"].ToString(),
+                            password = rd["password"].ToString(),
+                            uuid = rd["uuid"].ToString(),
+                            role = rd["role"].ToString(),
+                        };
+
+                        offlineUser = model;
+
+                        isExist = true;
+                    }
+                    else
+                    {
+                        mb.peringatanError("Mencoba Login Offline, User Belum Login Sebelumnya");
+                    }
+                }
+                op.KonekDB();
+            }
+
+            if(isExist)
+            {
+                mb.InformasiOK("Login Offline sebagai : " + offlineUser.role + " Berhasil");
+
+                _login.hideForm();
+
+                using (MySqlCommand cmd = new MySqlCommand("select * from roles where nama = @nama", op.Conn))
+                {
+                    cmd.Parameters.AddWithValue("@nama", offlineUser.role);
+                    op.KonekDB();
+                    using (MySqlDataReader rd = cmd.ExecuteReader())
+                    {
+                        if (rd.Read())
+                        {
+                            usrRole user = new usrRole()
+                            {
+                                Id = Convert.ToInt32(rd["id"]),
+                                Uuid = rd["uuid"].ToString(),
+                                Kode1 = rd["kode"].ToString(),
+                                Nama = rd["nama"].ToString(),
+                                Masters = Convert.ToInt32(rd["masters"].ToString()),
+                                Gudang = Convert.ToInt32(rd["Gudang"].ToString()),
+                                Penjualan = Convert.ToInt32(rd["Penjualan"].ToString()),
+                                Kasbank = Convert.ToInt32(rd["KasBank"].ToString()),
+                                Akuntansi = Convert.ToInt32(rd["Akuntansi"].ToString()),
+                                Supervisor = Convert.ToInt32(rd["Supervisor"].ToString()),
+                                Token = _token
+                            };
+                            _iform.Role(user, offlineUser);
+                            _iform.CloseForm();
+                        }
+                    }
+                }
+                updateKategori();
+            }
+        }
+
+        public void updateKategori()
+        {
+            //declare list barang
+            var listbarang = new List<BarangsModel>();
+
+            //read barang dengan kategori kosong
+            using (var cmd = new MySqlCommand("SELECT * FROM barangs where category_id = ''", op.Conn))
+            {
+                op.KonekDB();
+                using (var rd = cmd.ExecuteReader())
+                {
+                    while (rd.Read())
+                    {
+                        var model = new BarangsModel();
+                        model.Kode = rd["kode_barang"].ToString();
+
+                        listbarang.Add(model);
+                    }
+                }
+            }
+
+            foreach (var item in listbarang)
+            {
+                //take 3 letter pertama barcode
+                var kategori = item.Kode.Substring(0, 3).ToString();
+
+                //status Barang eksis dan kode kategori
+                var uuidKategori = "";
+
+                //get uuid tidak ada kategori 
+                using (var cmd = new MySqlCommand("select * from category_barangs where name = 'Tanpa Kategori'", op.Conn))
+                {
+                    op.KonekDB();
+                    using (var rd = cmd.ExecuteReader())
+                    {
+                        if(rd.Read())
+                        {
+                            uuidKategori = rd["uuid"].ToString();
+                        }
+                    }
+                }
+
+                //search di tabel kategori
+                using (var cmd = new MySqlCommand($"select * from category_barangs where name ='{kategori}' ", op.Conn))
+                {
+                    op.KonekDB();
+                    using (var rd = cmd.ExecuteReader())
+                    {
+                        if(rd.Read())
+                        {
+                            uuidKategori = rd["uuid"].ToString();
+                        }
+                    }
+                }
+
+                //jika barang ada maka update id kategori
+                using (var cmd = new MySqlCommand($"update barangs set category_id = '{uuidKategori}' where kode_barang ='{item.Kode}'", op.Conn))
+                {
+                    op.KonekDB();
+                    cmd.ExecuteNonQuery();
+                    op.KonekDB();
+                }
+            }
+        }
+            
         public void updateSupplier(userDataModel user)
         {
             var listSuplier = new List<SuplierModel>();
@@ -239,6 +455,7 @@ namespace KasirApp.Presenter
                 }
             }
         }
+
         public void updateKwitansi()
         {
             string tnggal = DateTime.Now.ToString("yyyy-MM-dd");

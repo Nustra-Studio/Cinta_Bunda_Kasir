@@ -308,6 +308,133 @@ namespace KasirApp.Model
             return model;
         }
 
+        public void updateKategori()
+        {
+            //declare list barang
+            var listbarang = new List<BarangsModel>();
+
+            //read barang dengan kategori kosong
+            using (var cmd = new MySqlCommand("SELECT * FROM barangs where category_id = ''", Conn))
+            {
+                KonekDB();
+                using (var rd = cmd.ExecuteReader())
+                {
+                    while (rd.Read())
+                    {
+                        var model = new BarangsModel();
+                        model.Kode = rd["kode_barang"].ToString();
+
+                        listbarang.Add(model);
+                    }
+                }
+            }
+
+            foreach (var item in listbarang)
+            {
+                //take 3 letter pertama barcode
+                var kategori = item.Kode.Substring(0, 3).ToString();
+
+                //status Barang eksis dan kode kategori
+                var uuidKategori = "";
+
+                //get uuid tidak ada kategori 
+                using (var cmd = new MySqlCommand("select * from category_barangs where name = 'Tanpa Kategori'", Conn))
+                {
+                    KonekDB();
+                    using (var rd = cmd.ExecuteReader())
+                    {
+                        if (rd.Read())
+                        {
+                            uuidKategori = rd["uuid"].ToString();
+                        }
+                    }
+                }
+
+                //search di tabel kategori
+                using (var cmd = new MySqlCommand($"select * from category_barangs where name ='{kategori}' ", Conn))
+                {
+                    KonekDB();
+                    using (var rd = cmd.ExecuteReader())
+                    {
+                        if (rd.Read())
+                        {
+                            uuidKategori = rd["uuid"].ToString();
+                        }
+                    }
+                }
+
+                //jika barang ada maka update id kategori
+                using (var cmd = new MySqlCommand($"update barangs set category_id = '{uuidKategori}' where kode_barang ='{item.Kode}'", Conn))
+                {
+                    KonekDB();
+                    cmd.ExecuteNonQuery();
+                    KonekDB();
+                }
+            }
+        }
+
+        public void updateSupplier(userDataModel user)
+        {
+            var listSuplier = new List<SuplierModel>();
+            using (var client = new RestClient(url))
+            {
+                try
+                {
+                    var request = new RestRequest("supplier", Method.Get);
+                    var body = new
+                    {
+                        token = user.token,
+                        uuid = user.uuid
+                    };
+
+                    var response = client.Execute(request);
+                    if (response.StatusCode == HttpStatusCode.OK)
+                    {
+                        listSuplier = JsonConvert.DeserializeObject<List<SuplierModel>>(response.Content.ToString());
+                    }
+                    else
+                    {
+                        return;
+                    }
+
+                    if (listSuplier.Count >= 1)
+                    {
+                        foreach (var item in listSuplier)
+                        {
+                            //cek Data apakah Exist
+                            var isExist = false;
+                            using (var cmd = new MySqlCommand($"SELECT * FROM supliers where nama = {item.nama}",Conn))
+                            {
+                                KonekDB();
+                                using (var rd = cmd.ExecuteReader())
+                                {
+                                    if (rd.Read())
+                                    {
+                                        isExist = true;
+                                    }
+                                }
+                            }
+
+                            if (!isExist)
+                            {
+                                using (var cmd = new MySqlCommand($"insert into supliers values(null,'{item.uuid}','{item.nama}', '{item.alamat}', '{item.telepon}', '{item.product}','{item.keterangan}', '{item.category_barang_id}','{myDatetime}', '{myDatetime}')", Conn))
+                                {
+                                    KonekDB();
+                                    cmd.ExecuteNonQuery();
+                                    KonekDB();
+                                }
+                            }
+
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    return;
+                }
+            }
+        }
+
         public void masukHistoriBarangs(HistoriStokModel model)
         {
 

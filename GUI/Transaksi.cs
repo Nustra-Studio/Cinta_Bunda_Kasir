@@ -206,6 +206,7 @@ namespace KasirApp.GUI
             _master = form;
             _prn.UpdateState("reguler");
             ClearAll();
+            op.updateKategori();
         }
 
         //Method

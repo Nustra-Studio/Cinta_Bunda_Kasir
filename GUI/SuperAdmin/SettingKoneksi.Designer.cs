@@ -30,6 +30,8 @@ namespace KasirApp.GUI.SuperAdmin
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtCabang = new Guna.UI.WinForms.GunaTextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.txtEndpoint = new Guna.UI.WinForms.GunaTextBox();
@@ -48,10 +50,12 @@ namespace KasirApp.GUI.SuperAdmin
             this.label6 = new System.Windows.Forms.Label();
             this.txtPort = new Guna.UI.WinForms.GunaTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtCabang = new Guna.UI.WinForms.GunaTextBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btnFolder = new Guna.UI.WinForms.GunaGradientButton();
+            this.label11 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -67,6 +71,33 @@ namespace KasirApp.GUI.SuperAdmin
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(485, 176);
             this.panel2.TabIndex = 17;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(35, 113);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(73, 20);
+            this.label8.TabIndex = 20;
+            this.label8.Text = "Cabang :";
+            // 
+            // txtCabang
+            // 
+            this.txtCabang.BackColor = System.Drawing.SystemColors.Control;
+            this.txtCabang.BaseColor = System.Drawing.Color.White;
+            this.txtCabang.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
+            this.txtCabang.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtCabang.FocusedBaseColor = System.Drawing.Color.White;
+            this.txtCabang.FocusedBorderColor = System.Drawing.Color.Lime;
+            this.txtCabang.FocusedForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtCabang.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtCabang.Location = new System.Drawing.Point(114, 106);
+            this.txtCabang.Name = "txtCabang";
+            this.txtCabang.PasswordChar = '\0';
+            this.txtCabang.SelectedText = "";
+            this.txtCabang.Size = new System.Drawing.Size(319, 37);
+            this.txtCabang.TabIndex = 19;
             // 
             // label7
             // 
@@ -122,7 +153,7 @@ namespace KasirApp.GUI.SuperAdmin
             this.btnProses.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.btnProses.Image = null;
             this.btnProses.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnProses.Location = new System.Drawing.Point(830, 273);
+            this.btnProses.Location = new System.Drawing.Point(830, 344);
             this.btnProses.Name = "btnProses";
             this.btnProses.OnHoverBaseColor1 = System.Drawing.Color.White;
             this.btnProses.OnHoverBaseColor2 = System.Drawing.Color.LightGreen;
@@ -153,7 +184,7 @@ namespace KasirApp.GUI.SuperAdmin
             this.btnSimpan.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.btnSimpan.Image = null;
             this.btnSimpan.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnSimpan.Location = new System.Drawing.Point(655, 273);
+            this.btnSimpan.Location = new System.Drawing.Point(655, 344);
             this.btnSimpan.Name = "btnSimpan";
             this.btnSimpan.OnHoverBaseColor1 = System.Drawing.Color.White;
             this.btnSimpan.OnHoverBaseColor2 = System.Drawing.Color.LightGreen;
@@ -350,41 +381,66 @@ namespace KasirApp.GUI.SuperAdmin
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(485, 304);
+            this.panel1.Size = new System.Drawing.Size(485, 375);
             this.panel1.TabIndex = 10;
             // 
-            // label8
+            // panel3
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(35, 113);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(73, 20);
-            this.label8.TabIndex = 20;
-            this.label8.Text = "Cabang :";
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
+            this.panel3.Controls.Add(this.btnFolder);
+            this.panel3.Controls.Add(this.label11);
+            this.panel3.Location = new System.Drawing.Point(503, 194);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(485, 110);
+            this.panel3.TabIndex = 21;
             // 
-            // txtCabang
+            // btnFolder
             // 
-            this.txtCabang.BackColor = System.Drawing.SystemColors.Control;
-            this.txtCabang.BaseColor = System.Drawing.Color.White;
-            this.txtCabang.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(223)))), ((int)(((byte)(153)))));
-            this.txtCabang.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtCabang.FocusedBaseColor = System.Drawing.Color.White;
-            this.txtCabang.FocusedBorderColor = System.Drawing.Color.Lime;
-            this.txtCabang.FocusedForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtCabang.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txtCabang.Location = new System.Drawing.Point(114, 106);
-            this.txtCabang.Name = "txtCabang";
-            this.txtCabang.PasswordChar = '\0';
-            this.txtCabang.SelectedText = "";
-            this.txtCabang.Size = new System.Drawing.Size(319, 37);
-            this.txtCabang.TabIndex = 19;
+            this.btnFolder.AnimationHoverSpeed = 0.07F;
+            this.btnFolder.AnimationSpeed = 0.03F;
+            this.btnFolder.BaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(212)))));
+            this.btnFolder.BaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(246)))), ((int)(((byte)(197)))));
+            this.btnFolder.BorderColor = System.Drawing.Color.Black;
+            this.btnFolder.BorderSize = 1;
+            this.btnFolder.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFolder.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnFolder.FocusedColor = System.Drawing.Color.Empty;
+            this.btnFolder.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnFolder.ForeColor = System.Drawing.Color.Black;
+            this.btnFolder.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            this.btnFolder.Image = null;
+            this.btnFolder.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnFolder.Location = new System.Drawing.Point(105, 55);
+            this.btnFolder.Name = "btnFolder";
+            this.btnFolder.OnHoverBaseColor1 = System.Drawing.Color.White;
+            this.btnFolder.OnHoverBaseColor2 = System.Drawing.Color.Lime;
+            this.btnFolder.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnFolder.OnHoverForeColor = System.Drawing.Color.White;
+            this.btnFolder.OnHoverImage = null;
+            this.btnFolder.OnPressedColor = System.Drawing.Color.Black;
+            this.btnFolder.Size = new System.Drawing.Size(328, 32);
+            this.btnFolder.TabIndex = 22;
+            this.btnFolder.Text = "Pilih File";
+            this.btnFolder.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnFolder.Click += new System.EventHandler(this.btnFolder_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(17, 17);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(189, 20);
+            this.label11.TabIndex = 10;
+            this.label11.Text = "Import External Config";
             // 
             // SettingKoneksi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(998, 335);
+            this.ClientSize = new System.Drawing.Size(998, 406);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.btnProses);
             this.Controls.Add(this.btnSimpan);
             this.Controls.Add(this.panel2);
@@ -395,6 +451,8 @@ namespace KasirApp.GUI.SuperAdmin
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -421,5 +479,8 @@ namespace KasirApp.GUI.SuperAdmin
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label8;
         private Guna.UI.WinForms.GunaTextBox txtCabang;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label11;
+        private Guna.UI.WinForms.GunaGradientButton btnFolder;
     }
 }

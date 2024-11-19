@@ -11,6 +11,7 @@ namespace KasirApp.Model
     public class SettingModel
     {
         string karyawan;
+        string lokasiConfig;
         string reseller;
         string karyawanacc;
         string reselleracc;
@@ -66,5 +67,6 @@ namespace KasirApp.Model
         public string Endpoint { get => endpoint; set => endpoint = value; }
         public string Cabang { get => cabang; set => cabang = value; }
         public string Jeda { get => jeda; set => jeda = value; }
+        public string LokasiConfig { get => lokasiConfig; set => lokasiConfig = value; }
     }
 }

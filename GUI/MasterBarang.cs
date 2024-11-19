@@ -114,6 +114,10 @@ namespace KasirApp.GUI
             {
                 Insert frm = new Insert(this.getData, _master, _user);
                 _master.subForm(frm);
+
+                //ganti select menjadi selected barcode
+                select = gunaTextBox1.Text;
+
                 frm.assignData(select);
             }
             else if (e.KeyCode == Keys.Delete)
@@ -157,8 +161,8 @@ namespace KasirApp.GUI
         {
             try
             {
-                select = DGV.Rows[e.RowIndex].Cells["Nama"].Value.ToString();
-                using (MySqlCommand cmd = new MySqlCommand("select * from view_barang_detail where Name='" + select + "'", op.Conn))
+                select = DGV.Rows[e.RowIndex].Cells["Barcode"].Value.ToString();
+                using (MySqlCommand cmd = new MySqlCommand("select * from view_barang_detail where Kode='" + select + "'", op.Conn))
                 {
                     op.KonekDB();
                     using (MySqlDataReader rd = cmd.ExecuteReader())
