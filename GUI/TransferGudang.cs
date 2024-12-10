@@ -103,7 +103,7 @@ namespace KasirApp.GUI
             editState = false;
         }
 
-        public void print()
+        public  void print()
         {
             if (txtNomorPTG.Text != "")
             {
@@ -230,7 +230,7 @@ namespace KasirApp.GUI
             txtKeterangan.Enabled = true;
             txtKeterangan.Focus();
         }
-
+            
         public void RaiseKeydown(object sender, KeyEventArgs e)
         {
             var listBarang = new List<TfGudangAPI>();

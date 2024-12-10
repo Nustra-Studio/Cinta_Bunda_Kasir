@@ -21,6 +21,6 @@
   "User": "root",
   "Password": "123",
   "Cabang": "Kedungwaru",
-  "Endpoint": "http://id-1.tunnel.id:661/inventory/api",
-  "LokasiConfig":  ""
+  "Endpoint": "https://cintabunda.sporta.me/inventory/api",
+  "LokasiConfig": ""
 }
