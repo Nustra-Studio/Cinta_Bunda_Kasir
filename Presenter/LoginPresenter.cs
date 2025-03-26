@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using KasirApp.Model;
 using KasirApp.View;
 using KasirApp.GUI;
+using KasirApp.Repository;
 using System.Security.Cryptography;
 
 namespace KasirApp.Presenter
@@ -19,6 +20,7 @@ namespace KasirApp.Presenter
     {
         MboxOperator mb = new MboxOperator();
         Operator op = new Operator();
+        TransaksiRepo rep = new TransaksiRepo(null);
         iLogin _login;
         iMasterForm _iform;
 
@@ -126,6 +128,7 @@ namespace KasirApp.Presenter
                             var hash = hashString(_login.Password);
 
                             var usercl = new userDataModel();
+                            usercl.csrf_token = res.Headers.FirstOrDefault(h => h.Name == "X-CSRF-TOKEN")?.Value?.ToString();
                             usercl.token = _token;
                             usercl.api_key = _token;
                             usercl.uuid = fn.user.uuid.ToString();
@@ -163,8 +166,10 @@ namespace KasirApp.Presenter
                                     }
                                 }
                             }
+                            rep.uploadPending(usercl);
                             updateKategori();
                             updateSupplier(usercl);
+
                         }
                         else if (res.StatusCode == HttpStatusCode.Unauthorized)
                         {   

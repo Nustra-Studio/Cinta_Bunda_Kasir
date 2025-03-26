@@ -421,7 +421,7 @@ namespace KasirApp.Repository
                         tf.merek_barang = rd["merk"].ToString();
                         tf.harga = rd["harga_pokok"].ToString();
                         tf.harga_pokok = rd["harga_pokok"].ToString();
-                        tf.harga_grosir = rd["harga_jual"].ToString();
+                        tf.harga_grosir = rd["harga_grosir"].ToString();
                         tf.harga_jual = rd["harga_jual"].ToString();
                         listmodel.Add(tf);
                     }
@@ -450,7 +450,7 @@ namespace KasirApp.Repository
                 if (Exist == true)
                 {   
                     total = stokAwal + item.stok;
-                    using (var cmd = new MySqlCommand($"UPDATE barangs SET stok = '{total.ToString()}', harga_grosir = '{item.harga_jual}', harga_jual = '{item.harga_jual}', harga = '{item.harga_pokok}', harga_pokok = '{item.harga_pokok}' where kode_barang = '{item.kode_barang}'", op.Conn))
+                    using (var cmd = new MySqlCommand($"UPDATE barangs SET stok = '{total.ToString()}', harga_grosir = '{item.harga_grosir}', harga_jual = '{item.harga_jual}', harga = '{item.harga_pokok}', harga_pokok = '{item.harga_pokok}' where kode_barang = '{item.kode_barang}'", op.Conn))
                     {
                         cmd.ExecuteNonQuery();
                     }

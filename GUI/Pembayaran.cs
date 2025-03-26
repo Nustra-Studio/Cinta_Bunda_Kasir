@@ -107,7 +107,7 @@ namespace KasirApp.GUI
                 }
                 catch (Exception ex)
                 {
-                    mb.peringatanError(ex.Message);
+                    mb.peringatanError($"Terjadi Error : {ex.Message}, ");
                 }
             }
         }

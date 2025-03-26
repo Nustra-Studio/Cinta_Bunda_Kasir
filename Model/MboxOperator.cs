@@ -52,5 +52,11 @@ namespace KasirApp.Model
             MessageBox.Show(body, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
+        public void fotoIni(string body, string kode)
+        {
+            MessageBox.Show(body, $"Foto ini dan laporkan ke Developer || {kode}", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        }
+
     }
 }

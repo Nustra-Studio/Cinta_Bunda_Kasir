@@ -53,6 +53,7 @@ namespace KasirApp.Model
     public class userDataModel 
     {
         public string token { get; set; }
+        public string csrf_token { get; set; }
         public int id
         {
             get;

@@ -38,7 +38,7 @@ namespace KasirApp
             InitializeComponent();
             CenterToParent();
             _frm = frm;
-            //developementMode();
+            developementMode();
         }
 
         public void developementMode()

@@ -1074,6 +1074,7 @@ namespace KasirApp.Repository
                 if (op.CekNetwork() == false)
                 {
                     insertPending(listTrans, user);
+                    SubtrakBarangs(listTrans);
                     mb.PeringatanOK("Jaringan bermasalah upload data ter pending");
                 }
                 else
@@ -1081,8 +1082,9 @@ namespace KasirApp.Repository
                     //Request simpan ke server, handle error dan timeout
                     try
                     {
-                        using (var client = new RestClient($"{op.url}cabangmember/"))
+                        using (var client = new RestClient($"{op.url}/cabangmember/"))
                         {
+                            var rs = new RestRequest("transaksi", Method.Post);
                             var body = new
                             {
                                 token = user.token,
@@ -1093,8 +1095,12 @@ namespace KasirApp.Repository
 
                             var arr = JsonConvert.SerializeObject(body);
 
-                            var rs = new RestRequest("transaksi", Method.Post);
                             rs.AddJsonBody(arr);
+                            if(!string.IsNullOrEmpty(user.csrf_token))
+                            {
+                                rs.AddHeader("X-CSRF-TOKEN", user.csrf_token);
+                            }
+                            rs.AddHeader("Content-Type", "application/json");
 
                             rs.Timeout = 10000;    
 
@@ -1102,12 +1108,11 @@ namespace KasirApp.Repository
                             if (response.StatusCode == HttpStatusCode.OK)
                             {
                                 mb.InformasiOK("Transaksi Selesai");
-                                SubtrakBarangs(listTrans);
                                 statusKirim = true;
                             }
                             else
                             {
-                                mb.PeringatanOK("terjadi Kesalahan pada server, Data ter Pending");
+                                mb.PeringatanOK("Terjadi Kesalahan pada server, Data ter Pending");
                                 insertPending(listTrans, user);
                                 //MessageBox.Show(response.Content.ToString(), "Error List", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
@@ -1120,15 +1125,16 @@ namespace KasirApp.Repository
                         mb.peringatanError("Terjadi Timeout, Transaksi ter Pending");
                     }
                 }
+                SubtrakBarangs(listTrans);
             }
-            
+
             if (statusKirim == true)
             {
-                uploadPending(user);
+                //uploadPending(user);
             }
         }
 
-        private void uploadPending(userDataModel user)
+        public void uploadPending(userDataModel user)
         {
             var listPending = new List<SendTransaksi>();
             var subtotal = 0;
@@ -1168,8 +1174,9 @@ namespace KasirApp.Repository
 
             try
             {
-                using (var client = new RestClient($"{op.url}cabangmember/"))
+                using (var client = new RestClient($"{op.url}/cabangmember/"))
                 {
+                    var rs = new RestRequest("transaksi", Method.Post);
                     var body = new
                     {
                         token = user.token,
@@ -1180,8 +1187,12 @@ namespace KasirApp.Repository
 
                     var arr = JsonConvert.SerializeObject(body);
 
-                    var rs = new RestRequest("transaksi", Method.Post);
                     rs.AddJsonBody(arr);
+                    if (!string.IsNullOrEmpty(user.csrf_token))
+                    {
+                        rs.AddHeader("X-CSRF-TOKEN", user.csrf_token);
+                    }
+                    rs.AddHeader("Content-Type", "application/json");
 
                     rs.Timeout = 10000;
 
@@ -1195,6 +1206,7 @@ namespace KasirApp.Repository
                     else
                     {
                         mb.peringatanError("terjadi Kesalahan saat upload pending data");
+                        mb.fotoIni(response.Content.ToString(), "API ERROR");
                         //mb.PeringatanOK("terjadi Kesalahan pada server, Data ter Pending");
                         return;
                         //MessageBox.Show(response.Content.ToString(), "Error List", MessageBoxButtons.OK, MessageBoxIcon.Warning);

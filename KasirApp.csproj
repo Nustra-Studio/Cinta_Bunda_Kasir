@@ -33,7 +33,7 @@
     <SuiteName>NustraStudio</SuiteName>
     <MinimumRequiredVersion>1.1.0.0</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>119</ApplicationRevision>
+    <ApplicationRevision>128</ApplicationRevision>
     <ApplicationVersion>1.10.1.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -66,10 +66,10 @@
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
-    <ManifestCertificateThumbprint>B6016948C22C819C728F19FF33462818A7A73F6F</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>0E895B10E23ACCF5807D055DCCF29202D3319EF0</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>KasirApp_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>KasirApp_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -78,7 +78,7 @@
     <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>false</SignManifests>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
@@ -603,6 +603,7 @@
     <Content Include="Report\Struk.rdlc" />
     <Content Include="Report\ReportOpname.rdlc" />
     <EmbeddedResource Include="Report\Struk - Copy.rdlc" />
+    <None Include="KasirApp_1_TemporaryKey.pfx" />
     <None Include="Resources\upload.png" />
     <EmbeddedResource Include="GUI\AddMember.resx">
       <DependentUpon>AddMember.cs</DependentUpon>
